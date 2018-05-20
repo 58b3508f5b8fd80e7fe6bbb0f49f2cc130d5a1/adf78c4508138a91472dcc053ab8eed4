@@ -18,7 +18,9 @@ class JobController extends Controller
      */
 
     public function index(){
-
+        $job = new JobController();
+        $data['applications'] = $job->getJobs();
+        return view('index', $data);
     }
 
     public function getJobs($page=1)
