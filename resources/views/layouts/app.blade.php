@@ -29,7 +29,8 @@
     <link href="{{asset($public.'/css/cssf043.css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic-ext,vietnamese')}}"
           rel="stylesheet">
     <link href="{{ mix($public.'css/app.css') }}" rel="stylesheet" type="text/css">
-@yield('styles')
+    <link rel="stylesheet" href="{{asset($public.'/css/sweetalert.min.css')}}">
+    @yield('styles')
 </head>
 
 <body>
@@ -231,12 +232,14 @@
                         <ul>
                             <li>
                                 <label>Email Address:</label>
-                                <input placeholder="Enter Your Email Address" type="email" name="email" value="{{old('email')}}" class="form-control">
+                                <input placeholder="Enter Your Email Address" type="email" name="email"
+                                       value="{{old('email')}}" class="form-control">
                                 <i class="careerfy-icon careerfy-mail"></i>
                             </li>
                             <li>
                                 <label>Password:</label>
-                                <input placeholder="Enter Password" name="password" type="password" class="form-control">
+                                <input placeholder="Enter Password" name="password" type="password"
+                                       class="form-control">
                                 <i class="careerfy-icon careerfy-multimedia"></i>
                             </li>
                             <li>
@@ -385,6 +388,13 @@
 <script src="{{asset($public.'/js/isotope.min.js')}}"></script>
 <script src="{{asset($public.'/js/functions.js')}}"></script>
 <script src="{{asset($public.'/js/functions-2.js')}}"></script>
+<script src="{{asset($public.'/js/sweetalert.min.js')}}"></script>
+<script>
+    @if(!null == session('status'))
+    @php $status=session('status') @endphp
+    swal("Status", "{{$status['message']}}", "{{$status['state']}}");
+    @endif
+</script>
 @yield('scripts')
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     {{csrf_field()}}

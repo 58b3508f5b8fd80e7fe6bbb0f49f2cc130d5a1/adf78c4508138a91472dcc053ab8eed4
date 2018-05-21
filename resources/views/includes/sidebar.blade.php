@@ -8,8 +8,8 @@
                         <span><i class="careerfy-icon careerfy-add"></i> Upload Photo</span>
                         <input class="careerfy-upload" type="file">
                     </div>
-                    <h2>Nora Tsunoda</h2>
-                    <span class="careerfy-dashboard-subtitle">UI/UX Designer</span>
+                    <h3>{{Auth::user()->first_name.' '.Auth::user()->last_name}}</h3>
+                    <span class="careerfy-dashboard-subtitle">{{Auth::user()->job_title}}</span>
                 </figcaption>
             </figure>
             <ul>

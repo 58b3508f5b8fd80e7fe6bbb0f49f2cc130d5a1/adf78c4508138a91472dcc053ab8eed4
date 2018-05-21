@@ -57,18 +57,20 @@ class ProfileController extends Controller
                 'first_name' => $request->input('first_name'),
                 'last_name'  => $request->input('last_name'),
                 'phone_no'   => $request->input('phone_no'),
+                'job_title'  => $request->input('job_title'),
+                'status'     => 'registered',
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
         if ($isUpdated && $userTable) {
             $message = 'Your profile details have been updated successfully.';
-            $status='success';
+            $status = 'success';
         } else {
             $message = 'An error occurred during update.';
-            $status='danger';
+            $status = 'danger';
         }
         return redirect()->back()->with('status', [
             'message' => $message,
-            'state'  => $status
+            'state'   => $status
         ]);
     }
 }

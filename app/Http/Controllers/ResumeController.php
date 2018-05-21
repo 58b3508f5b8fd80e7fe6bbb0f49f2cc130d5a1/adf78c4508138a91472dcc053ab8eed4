@@ -10,4 +10,8 @@ class ResumeController extends Controller
     public function index(Request $request){
 
     }
+
+    public function getResume(Request $request){
+
+    }
 }

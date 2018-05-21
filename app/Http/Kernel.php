@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\CheckMaintenance;
+use App\Http\Middleware\CheckUserStatus;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,5 +66,6 @@ class Kernel extends HttpKernel
             'guest'            => \App\Http\Middleware\RedirectIfAuthenticated::class,
             'throttle'         => \Illuminate\Routing\Middleware\ThrottleRequests::class,
             'checkMaintenance' => CheckMaintenance::class,
+            'checkUserStatus'  => CheckUserStatus::class,
         ];
 }
