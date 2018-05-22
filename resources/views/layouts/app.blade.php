@@ -28,8 +28,14 @@
     <link href="{{asset($public.'/css/responsive.css')}}" rel="stylesheet">
     <link href="{{asset($public.'/css/cssf043.css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic-ext,vietnamese')}}"
           rel="stylesheet">
-    <link href="{{ mix($public.'css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{asset($public.'/css/editor.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset($public.'/css/sweetalert.min.css')}}">
+    <style>
+        .bar {
+            height: 18px;
+            background: green;
+        }
+    </style>
     @yield('styles')
 </head>
 
@@ -42,8 +48,8 @@
     <header id="careerfy-header" class="careerfy-header-one">
         <div class="container">
             <div class="row">
-                <aside class="col-md-2"><a href="index-2.html" class="careerfy-logo"><img
-                                src="{{asset($public.'/png/logo.png')}}" alt=""></a></aside>
+                <aside class="col-md-2"><a href="index-2.html" class="careerfy-logo"><img src="png/logo.png" alt=""></a>
+                </aside>
                 <aside class="col-md-6">
                     <nav class="careerfy-navigation">
                         <div class="navbar-header">
@@ -51,21 +57,21 @@
                                     data-target="#careerfy-navbar-collapse-1" aria-expanded="false">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
-                                ~ <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
                             </button>
                         </div>
                         <div class="collapse navbar-collapse" id="careerfy-navbar-collapse-1">
                             <ul class="navbar-nav">
-                                <li class="active"><a href="index-2.html">Home</a>
+                                <li class="active submenu-addicon"><a href="index-2.html">Home</a>
                                     <ul class="sub-menu">
-                                        <li><a href="index.html">Demo careerfy</a></li>
+                                        <li><a href="index.html">Demo Careerfy</a></li>
                                         <li><a href="https://eyecix.com/html/careerfy-demos/hireright-demo/">Demo
                                                 Hireright</a></li>
                                         <li><a href="https://eyecix.com/html/careerfy-demos/jobshub-demo/">Demo
                                                 Jobshub</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Pages</a>
+                                <li class="submenu-addicon"><a href="#">Pages</a>
                                     <ul class="sub-menu">
                                         <li><a href="about-us.html">About Us</a></li>
                                         <li><a href="cv-packages.html">CV Packages</a></li>
@@ -77,7 +83,7 @@
                                         <li><a href="job-packages.html">Job Packages</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">For Candidates</a>
+                                <li class="submenu-addicon"><a href="#">For Candidates</a>
                                     <ul class="sub-menu">
                                         <li><a href="candidate-dashboard-applied-jobs.html">Applied Jobs</a></li>
                                         <li><a href="candidate-dashboard-changed-password.html">Changed Password</a>
@@ -92,7 +98,7 @@
                                         <li><a href="candidate-detail.html">Candidate Detail</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">For Employers</a>
+                                <li class="submenu-addicon"><a href="#">For Employers</a>
                                     <ul class="sub-menu">
                                         <li><a href="employer-list.html">Employer List</a></li>
                                         <li><a href="employer-grid.html">Employer Grid</a></li>
@@ -122,8 +128,13 @@
                             </ul>
                         @endguest
                         @auth
-                            <a class="careerfy-simple-btn careerfy-bgcolor" href="{{ route('logout') }}"
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            <ul class="careerfy-user-section">
+                                <li><a class="careerfy-color careerfy-open-signin-tab" href="{{route('home')}}">Dashboard</a>
+                                </li>
+                                <li><a class="careerfy-color careerfy-open-signin-tab" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                </li>
+                            </ul>
                         @endauth
                         {{--<a href="#" class="careerfy-simple-btn careerfy-bgcolor"><span> <i
                                         class="careerfy-icon careerfy-arrows-2"></i> Post Job</span></a>--}}
@@ -389,12 +400,62 @@
 <script src="{{asset($public.'/js/functions.js')}}"></script>
 <script src="{{asset($public.'/js/functions-2.js')}}"></script>
 <script src="{{asset($public.'/js/sweetalert.min.js')}}"></script>
+<script src="{{asset($public.'/js/editor.js')}}"></script>
 <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).ready(function () {
+        $("#textEditor").Editor({
+            'print': false,
+            'togglescreen': false,
+            'rm_format': false,
+            'source': false,
+            'splchars': false,
+            'screeneffects': false,
+            'fonts': false,
+            'styles': false,
+            'advancedoptions': false,
+            'extraeffects': false,
+            'insertoptions': false
+        });
+    });
     @if(!null == session('status'))
     @php $status=session('status') @endphp
     swal("Status", "{{$status['message']}}", "{{$status['state']}}");
     @endif
 </script>
+@if(strcmp(strtolower($title),strtolower('resume'))===0)
+    <script src="{{asset($public.'/fileUpload/js/vendor/jquery.ui.widget.js')}}"></script>
+    <script src="{{asset($public.'/fileUpload/js/jquery.iframe-transport.js')}}"></script>
+    <script src="{{asset($public.'/fileUpload/js/jquery.fileupload.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#textEditor").Editor("setText", {!! json_encode($resume->cover_letter) !!});
+        });
+        $(function () {
+            $('#fileupload').fileupload({
+                dataType: 'json',
+                done: function (e, data) {
+                    $.each(data.result.files, function (index, file) {
+                        $('<p/>').text(file.name).appendTo(document.body);
+                    });
+                },
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .bar').css(
+                        'width',
+                        progress + '%'
+                    );
+                }
+            });
+
+        });
+    </script>
+    <script src="{{asset($public.'/js/resume.js')}}"></script>
+@endif
 @yield('scripts')
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     {{csrf_field()}}

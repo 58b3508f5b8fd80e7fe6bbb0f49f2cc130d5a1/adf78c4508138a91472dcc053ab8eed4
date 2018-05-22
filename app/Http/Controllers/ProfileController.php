@@ -6,6 +6,7 @@ use App\User;
 use App\User_meta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class ProfileController extends Controller
 {
@@ -17,8 +18,9 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $data = $this->getProfile();
+        $data=$this->getProfile();
         return view('profile', $data);
+
     }
 
     public function home()

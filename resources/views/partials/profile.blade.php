@@ -1,28 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
-            <div class="careerfy-subheader careerfy-subheader-without-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="careerfy-page-title">
-                                <h1>Companies</h1>
-                                <p>Thousands of prestigious employers for you, search for a recruiter right now.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="careerfy-breadcrumb">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Pages</a></li>
-                        <li>Candidates</li>
-                    </ul>
-                </div>
+            <div class="careerfy-breadcrumb">
+                <ul>
+                    <li><a href="{{route('home')}}">Home</a></li>
+                    <li><a href="#">{{Auth::user()->first_name}}</a></li>
+                    <li>Profile</li>
+                </ul>
             </div>
-
 
             <!-- Main Section -->
             <div class="careerfy-main-section careerfy-dashboard-full">
@@ -86,10 +71,8 @@
                                                 </li>
                                                 <li class="careerfy-column-6">
                                                     <label>Phone *</label>
-                                                    <input name="phone_no"
-                                                           value="{{$profile->phone_no or old('phone_number')}}"
-                                                           placeholder="Phone No."
-                                                           type="text">
+                                                    <input name="phone_no" value="{{$profile->phone_no or old('phone_number')}}"
+                                                           placeholder="Phone No." type="text">
                                                     @if ($errors->has('phone_no'))
                                                         <span class="text-danger">
                                                             <strong>{{ $errors->first('phone_no') }}</strong>

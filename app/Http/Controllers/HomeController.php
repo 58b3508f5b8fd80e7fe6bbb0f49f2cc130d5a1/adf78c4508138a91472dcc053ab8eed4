@@ -34,17 +34,20 @@ class HomeController extends Controller
                 $data=$profile->getProfile();
                 $html = View::make('partials.profile',$data);
                 $data['html'] = $html->render();
+                $data['title']='Profile';
                 break;
             case 'registered':
                 $resume = new ResumeController();
-                $data['applications'] = $resume->getResume();
-                $html = View::make('partials.jobs', $data);
+                $data['resume'] = $resume->getResume();
+                $html = View::make('partials.resume', $data);
+                $data['title']='Resume';
                 $data['html'] = $html->render();
                 break;
             case 'applicant':
                 $job = new JobController();
                 $data['applications'] = $job->getJobs();
                 $html = View::make('partials.jobs', $data);
+                $data['title']='Jobs';
                 $data['html'] = $html->render();
                 break;
             case 'processing':
@@ -60,7 +63,6 @@ class HomeController extends Controller
                 $data['html'] = $html->render();
                 break;
         }
-
 
         return view('index', $data);
     }

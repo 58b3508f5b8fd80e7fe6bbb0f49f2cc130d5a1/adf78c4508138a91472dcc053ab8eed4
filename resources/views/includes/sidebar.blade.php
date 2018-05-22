@@ -1,3 +1,4 @@
+@php    $public='';    if(config('app.env') == 'production')    $public ='public'; @endphp
 <aside class="careerfy-column-3">
     <div class="careerfy-typo-wrap">
         <div class="careerfy-employer-dashboard-nav">
