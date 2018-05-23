@@ -41,35 +41,35 @@
                                 </div>
                                 <div class="careerfy-applied-jobs">
                                     <ul class="careerfy-row">
-                                        @foreach($applications as $application)
+                                        @foreach($jobs as $job)
                                             <li class="careerfy-column-12">
                                                 <div class="careerfy-applied-jobs-wrap">
                                                     <a href="#" class="careerfy-applied-jobs-thumb"><img
                                                                 src="jpg/candidate-01.jpg" alt=""></a>
                                                     <div class="careerfy-applied-jobs-text">
                                                         <div class="careerfy-applied-jobs-left">
-                                                            <h2><a href="#">{{$application->title}}</a></h2>
-                                                            <span>{{$application->description}}</span>
+                                                            <h2><a href="#">{{$job->title}}</a></h2>
+                                                            <span>{{$job->description}}</span>
                                                             <ul>
                                                                 <li><i class="fa fa-map-marker"></i>
-                                                                    {{$application->state.', '.$application->lga}}
+                                                                    {{$job->state.', '.$job->lga}}
                                                                 </li>
                                                                 <li>
                                                                     <i class="careerfy-icon careerfy-filter-tool-black-shape"></i>
-                                                                    <a href="#">Experience: {{$application->experience}}</a>
+                                                                    <a href="#">Experience: {{$job->experience}}</a>
                                                                 </li>
                                                                 <li>
                                                                     <i class="careerfy-icon careerfy-calendar"></i>
-                                                                    Posted: {{date('jS M, Y', strtotime($application->post_at))}}
+                                                                    Posted: {{date('jS M, Y', strtotime($job->post_at))}}
                                                                 </li>
                                                                 <li>
                                                                     <i class="careerfy-icon careerfy-calendar"></i>
-                                                                    Deadline: {{date('jS M, Y', strtotime($application->close_at))}}
+                                                                    Deadline: {{date('jS M, Y', strtotime($job->close_at))}}
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                         <a href="#"
-                                                           class="careerfy-savedjobs-links">{{strtoupper($application->status)}}</a>
+                                                           class="careerfy-savedjobs-links">{{strtoupper($job->status)}}</a>
                                                         {{--<a href="#" class="careerfy-savedjobs-links"><i
                                                                     class="careerfy-icon careerfy-view"></i></a>--}}
                                                     </div>

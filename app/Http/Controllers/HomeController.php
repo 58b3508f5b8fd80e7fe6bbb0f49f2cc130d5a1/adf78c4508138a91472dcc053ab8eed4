@@ -25,7 +25,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $status = Auth::user()->status;
         switch ($status) {
@@ -38,10 +38,7 @@ class HomeController extends Controller
                 break;
             case 'registered':
                 $resume = new ResumeController();
-                $data['resume'] = $resume->getResume();
-                $html = View::make('partials.resume', $data);
-                $data['title']='Resume';
-                $data['html'] = $html->render();
+                return $resume->index($request);
                 break;
             case 'applicant':
                 $job = new JobController();

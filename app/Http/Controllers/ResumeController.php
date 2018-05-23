@@ -9,6 +9,7 @@ use App\Resume;
 use App\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
@@ -17,7 +18,7 @@ class ResumeController extends Controller
     {
         $data['resume'] = $this->getResume();
         $data['educations'] = $this->getEducation();
-        $data['experience'] = $this->getExperience();
+        $data['experiences'] = $this->getExperience();
         $data['honors'] = $this->getHonors();
         $data['skills'] = $this->getSkills();
         $data['title'] = 'Resume';
@@ -38,6 +39,39 @@ class ResumeController extends Controller
             $data['message'] = 'Sorry, an error occurred';
             $data['state'] = 'danger';
             $data['text'] = 'text';
+        }
+        return response()->json($data);
+    }
+
+    function curriculumVitae(Request $request)
+    {
+        $id = (int)$request->input('id') - 373;
+        $resume = Resume::find($id);
+        if ($request->hasFile('cv_location')
+            && $request->file('cv_location')->isValid()
+        ) {
+            if ($resume->cv_location !== null) {
+                Storage::delete($resume->cv_location);
+            }
+            $location = $request->file('cv_location')
+                ->store('careers.touchinglivesskills/app/user/resume/cv');
+            $resume->cv_location = $location;
+
+
+            if ($resume->save()) {
+                $data['message'] = 'Your cover letter has been changed. '
+                    . $location;
+                $data['state'] = 'success';
+                $data['success'] = true;
+            } else {
+                $data['message'] = 'Sorry, an error occurred';
+                $data['state'] = 'danger';
+                $data['error'] = 'Sorry, an error occurred';
+            }
+        } else {
+            $data['message'] = 'Sorry, an error occurred';
+            $data['state'] = 'danger';
+            $data['errpr'] = 'Sorry, an error occurred';
         }
         return response()->json($data);
     }

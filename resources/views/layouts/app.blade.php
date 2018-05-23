@@ -30,12 +30,232 @@
           rel="stylesheet">
     <link href="{{asset($public.'/css/editor.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset($public.'/css/sweetalert.min.css')}}">
-    <style>
-        .bar {
-            height: 18px;
-            background: green;
-        }
-    </style>
+    @if(strcmp(strtolower($title),strtolower('resume'))===0)
+        <style>
+            .js {
+                width: 100%;
+                max-width: 680px; /* 800 */
+                text-align: center;
+                margin: 0 auto;
+                float: left;
+            }
+
+            .js h1 {
+                font-size: 42px;
+                font-weight: 300;
+                color: #0f3c4b;
+                margin-bottom: 40px;
+            }
+
+            .js h1 a:hover,
+            .js h1 a:focus {
+                color: #39bfd3 !important;
+            }
+
+            .js nav {
+                margin-bottom: 40px !important;
+            }
+
+            .js nav a {
+                border-bottom: 2px solid #c8dadf !important;
+                display: inline-block !important;
+                padding: 4px 8px !important;
+                margin: 0 5px !important;
+            }
+
+            .js nav a.is-selected {
+                font-weight: 700 !important;
+                color: #39bfd3 !important;
+                border-bottom-color: currentColor !important;
+            }
+
+            .js nav a:not( .is-selected ):hover,
+            .js nav a:not( .is-selected ):focus {
+                border-bottom-color: #0f3c4b !important;
+            }
+
+            .js footer {
+                color: #92b0b3 !important;
+                margin-top: 40px !important;
+            }
+
+            .js .notice {
+                text-align: center;
+                color: #333333;
+            }
+
+            .js footer a:hover,
+            .js footer a:focus {
+                color: #39bfd3 !important;
+            }
+
+            .box {
+                font-size: 1.253em !important; /* 20 */
+                background-color: #c8dadf !important;
+                position: relative !important;
+                padding: 30px 20px !important;
+            }
+
+            .box.has-advanced-upload {
+                outline: 2px dashed #92b0b3 !important;
+                outline-offset: -10px !important;
+
+                -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear !important;
+                transition: outline-offset .15s ease-in-out, background-color .15s linear !important;
+            }
+
+            .box.is-dragover {
+                outline-offset: -20px !important;
+                outline-color: #c8dadf !important;
+                background-color: #fff !important;
+            }
+
+            .box__dragndrop,
+            .box__icon {
+                display: none !important;
+            }
+
+            .box.has-advanced-upload .box__dragndrop {
+                display: inline !important;
+            }
+
+            .box.has-advanced-upload .box__icon {
+                width: 100% !important;
+                height: 80px !important;
+                fill: #92b0b3 !important;
+                display: block !important;
+                margin-bottom: 40px !important;
+            }
+
+            .box.is-uploading .box__input,
+            .box.is-success .box__input,
+            .box.is-error .box__input {
+                visibility: hidden !important;
+            }
+
+            .box__uploading,
+            .box__success,
+            .box__error {
+                display: none !important;
+            }
+
+            .box.is-uploading .box__uploading,
+            .box.is-success .box__success,
+            .box.is-error .box__error {
+                display: block !important;
+                position: absolute !important;
+                top: 50% !important;
+                right: 0 !important;
+                left: 0 !important;
+
+                -webkit-transform: translateY(-50%) !important;
+                transform: translateY(-50%) !important;
+            }
+
+            .box__uploading {
+                font-style: italic !important;
+            }
+
+            .box__success {
+                -webkit-animation: appear-from-inside .25s ease-in-out !important;
+                animation: appear-from-inside .25s ease-in-out !important;
+            }
+
+            @-webkit-keyframes appear-from-inside {
+                from {
+                    -webkit-transform: translateY(-50%) scale(0) !important;
+                }
+                75% {
+                    -webkit-transform: translateY(-50%) scale(1.1) !important;
+                }
+                to {
+                    -webkit-transform: translateY(-50%) scale(1) !important;
+                }
+            }
+
+            @keyframes appear-from-inside {
+                from {
+                    transform: translateY(-50%) scale(0) !important;
+                }
+                75% {
+                    transform: translateY(-50%) scale(1.1) !important;
+                }
+                to {
+                    transform: translateY(-50%) scale(1) !important;
+                }
+            }
+
+            .box__restart {
+                font-weight: 700 !important;
+            }
+
+            .box__restart:focus,
+            .box__restart:hover {
+                color: #39bfd3 !important;
+            }
+
+            .js .box__file {
+                width: 0.1px !important;
+                height: 0.1px !important;
+                opacity: 0 !important;
+                overflow: hidden !important;
+                position: absolute !important;
+                z-index: -1 !important;
+            }
+
+            .js .box__file + label {
+                max-width: 80% !important;
+                text-overflow: ellipsis !important;
+                white-space: nowrap !important;
+                cursor: pointer !important;
+                display: inline-block !important;
+                overflow: hidden !important;
+            }
+
+            .js .box__file + label:hover strong,
+            .box__file:focus + label strong,
+            .box__file.has-focus + label strong {
+                color: #39bfd3 !important;
+            }
+
+            .js .box__file:focus + label,
+            .js .box__file.has-focus + label {
+                outline: 1px dotted #000 !important;
+                outline: -webkit-focus-ring-color auto 5px !important;
+            }
+
+            .js .box__file + label * {
+                /* pointer-events: none !important; */ /* in case of FastClick lib use */
+            }
+
+            .no-js .box__file + label {
+                display: none !important;
+            }
+
+            .no-js .box__button {
+                display: block !important;
+            }
+
+            .box__button {
+                font-weight: 700 !important;
+                color: #e5edf1 !important;
+                background-color: #39bfd3 !important;
+                display: block !important;
+                padding: 8px 16px !important;
+                margin: 40px auto 0 !important;
+            }
+
+            .box__button:hover,
+            .box__button:focus {
+                background-color: #0f3c4b !important;
+            }
+
+        </style>
+        <script>(function (e, t, n) {
+                var r = e.querySelectorAll("html")[0];
+                r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2")
+            })(document, window, 0);</script>
+    @endif
     @yield('styles')
 </head>
 
@@ -428,31 +648,11 @@
     @endif
 </script>
 @if(strcmp(strtolower($title),strtolower('resume'))===0)
-    <script src="{{asset($public.'/fileUpload/js/vendor/jquery.ui.widget.js')}}"></script>
-    <script src="{{asset($public.'/fileUpload/js/jquery.iframe-transport.js')}}"></script>
-    <script src="{{asset($public.'/fileUpload/js/jquery.fileupload.js')}}"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $("#textEditor").Editor("setText", {!! json_encode($resume->cover_letter) !!});
         });
-        $(function () {
-            $('#fileupload').fileupload({
-                dataType: 'json',
-                done: function (e, data) {
-                    $.each(data.result.files, function (index, file) {
-                        $('<p/>').text(file.name).appendTo(document.body);
-                    });
-                },
-                progressall: function (e, data) {
-                    var progress = parseInt(data.loaded / data.total * 100, 10);
-                    $('#progress .bar').css(
-                        'width',
-                        progress + '%'
-                    );
-                }
-            });
 
-        });
     </script>
     <script src="{{asset($public.'/js/resume.js')}}"></script>
 @endif
