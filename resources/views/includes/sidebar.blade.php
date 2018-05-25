@@ -3,7 +3,7 @@
     <div class="careerfy-typo-wrap">
         <div class="careerfy-employer-dashboard-nav">
             <figure>
-                <a href="#" class="employer-dashboard-thumb"><img src="jpg/candidate-dashboard-navthumb.jpg" alt=""></a>
+                <a href="#" class="employer-dashboard-thumb"><img src="{{asset($public.'/png/default-user.png')}}" alt=""></a>
                 <figcaption>
                     <div class="careerfy-fileUpload">
                         <span><i class="careerfy-icon careerfy-add"></i> Upload Photo</span>

@@ -16,7 +16,7 @@ class CheckUserStatus
     public function handle($request, Closure $next)
     {
         $response = $next($request);
-        if (in_array($request->user()->status,['visitor'])) {
+        if ($request->user()->status=='visitor') {
             return redirect('home')->with('status', [
                 'message' => 'Please complete the given form',
                 'state'   => 'danger'

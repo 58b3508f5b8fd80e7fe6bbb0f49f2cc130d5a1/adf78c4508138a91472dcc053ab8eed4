@@ -318,7 +318,7 @@
                                         <li><a href="candidate-detail.html">Candidate Detail</a></li>
                                     </ul>
                                 </li>
-                                <li class="submenu-addicon"><a href="#">For Employers</a>
+{{--                                <li class="submenu-addicon"><a href="#">For Employers</a>
                                     <ul class="sub-menu">
                                         <li><a href="employer-list.html">Employer List</a></li>
                                         <li><a href="employer-grid.html">Employer Grid</a></li>
@@ -333,7 +333,7 @@
                                         <li><a href="employer-dashboard-confitmation.html">Employer Confitmation</a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li>--}}
                                 <li><a href="contact-us.html">Contact</a></li>
                             </ul>
                         </div>

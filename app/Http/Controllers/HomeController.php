@@ -30,11 +30,8 @@ class HomeController extends Controller
         $status = Auth::user()->status;
         switch ($status) {
             case 'visitor':
-                $profile=new ProfileController();
-                $data=$profile->getProfile();
-                $html = View::make('partials.profile',$data);
-                $data['html'] = $html->render();
-                $data['title']='Profile';
+                $profile = new ProfileController();
+                return $profile->index();
                 break;
             case 'registered':
                 $resume = new ResumeController();
@@ -44,7 +41,7 @@ class HomeController extends Controller
                 $job = new JobController();
                 $data['applications'] = $job->getJobs();
                 $html = View::make('partials.jobs', $data);
-                $data['title']='Jobs';
+                $data['title'] = 'Jobs';
                 $data['html'] = $html->render();
                 break;
             case 'processing':

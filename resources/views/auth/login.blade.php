@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','login')
+@section('title','Login')
 @section('content')
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 panel">
         <div class="careerfy-typo-wrap panel-body">

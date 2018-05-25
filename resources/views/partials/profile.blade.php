@@ -1,6 +1,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="careerfy-page-title">
+                            <h1>Profile</h1>
+                            <p>You can update your profile details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
             <div class="careerfy-breadcrumb">
                 <ul>
                     <li><a href="{{route('home')}}">Home</a></li>
@@ -16,14 +27,15 @@
                         @include('includes.sidebar',['profile_sidebar'=>true])
                         <div class="careerfy-column-9">
                             @if(!null == session('status'))
-                                @php $status=session('status') @endphp
-                                <div class="alert alert-{{$status['state']}}"><p>{{$status['message']}}</p></div>
+                                @php $status=session('status'); var_dump($status)@endphp
+                                {{--<div class="alert alert-{{$status['state']}}">{{$status['message']}}</div>--}}
                             @endif
                             <div class="careerfy-typo-wrap">
                                 <form class="careerfy-employer-dasboard" action="{{route('update_profile')}}"
                                       method="post">
                                     {{csrf_field()}}
-                                    <input type="hidden" name="id" value={{($profile->id+3021) or null}}>
+                                    @if(isset($profile))<input type="hidden" name="id"
+                                                               value={{($profile->id+3021)}}>@endif
                                     <div>
                                         <div class="careerfy-employer-box-section">
                                             <div class="careerfy-profile-title"><h2>Basic Information</h2></div>
@@ -50,7 +62,8 @@
                                                 </li>
                                                 <li class="careerfy-column-6">
                                                     <label>Email *</label>
-                                                    <input name="email" value="{{$profile->email}}" readonly
+                                                    <input name="email" value="{{$profile->email or old('email')}}"
+                                                           readonly
                                                            type="text">
                                                     @if ($errors->has('email'))
                                                         <span class="text-danger">
@@ -60,7 +73,8 @@
                                                 </li>
                                                 <li class="careerfy-column-6">
                                                     <label>Date of Birth:</label>
-                                                    <input name="dob" value="{{date('Y-m-d',strtotime($profile->dob))}}"
+                                                    <input name="dob"
+                                                           value="@if(isset($profile->dob)){{date('Y-m-d',strtotime($profile->dob))}}@endif"
                                                            type="text">
                                                     @if ($errors->has('dob'))
                                                         <span class="text-danger">
@@ -71,7 +85,8 @@
                                                 </li>
                                                 <li class="careerfy-column-6">
                                                     <label>Phone *</label>
-                                                    <input name="phone_no" value="{{$profile->phone_no or old('phone_number')}}"
+                                                    <input name="phone_no"
+                                                           value="{{$profile->phone_no or old('phone_number')}}"
                                                            placeholder="Phone No." type="text">
                                                     @if ($errors->has('phone_no'))
                                                         <span class="text-danger">
@@ -110,7 +125,7 @@
                                                     <div class="careerfy-profile-select">
                                                         <select name="country" state="country">
                                                             @foreach(__('countries.index') as $country)
-                                                                <option @if($profile->country == $country || old('country') == $country) selected
+                                                                <option @if(isset($profile->country)&&( $profile->country == $country || old('country') == $country)) selected
                                                                         @endif value="{{$country}}">{{$country}}</option>
                                                             @endforeach
                                                         </select>
@@ -127,7 +142,7 @@
                                                         <select name="state" id="state">
                                                             @foreach(__('states.index') as $state)
                                                                 <option value="{{$state}}"
-                                                                        @if($profile->state == $state || old('state') == $state) selected @endif>{{$state}}</option>
+                                                                        @if(isset($profile->state)&& ($profile->state == $state || old('state') == $state)) selected @endif>{{$state}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -171,11 +186,11 @@
                                                         <select name="experience">
                                                             @for($i=1;$i<=50;$i++)
                                                                 @if($i==1)
-                                                                    <option @if($profile->experience==$i || old('experience')==$i) selected @endif>{{$i}}
+                                                                    <option @if(isset($profile)&&($profile->experience==$i || old('experience')==$i)) selected @endif>{{$i}}
                                                                         Year
                                                                     </option>
                                                                 @else
-                                                                    <option @if($profile->experience==$i || old('experience')==$i) selected @endif>{{$i}}
+                                                                    <option @if(isset($profile)&&($profile->experience==$i || old('experience')==$i)) selected @endif>{{$i}}
                                                                         Years
                                                                     </option>
                                                                 @endif

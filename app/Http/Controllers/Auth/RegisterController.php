@@ -40,32 +40,51 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('auth.register', ['title' => 'Register']);
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'email'      => 'required|string|email|max:255|unique:users',
+            'phone_no'   => 'required|string|max:255|unique:users',
+            'password'   => 'required|string|min:6|confirmed',
+            'job_title'  => 'required|string|max:255'
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
+     *
      * @return \App\User
      */
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'first_name' => $data['first_name'],
+            'last_name'  => $data['last_name'],
+            'job_title'  => $data['job_title'],
+            'user_id'    => md5($data['email'] . date('YmdHis')),
+            'email'      => $data['email'],
+            'phone_no'   => $data['phone_no'],
+            'password'   => bcrypt($data['password']),
         ]);
     }
 }

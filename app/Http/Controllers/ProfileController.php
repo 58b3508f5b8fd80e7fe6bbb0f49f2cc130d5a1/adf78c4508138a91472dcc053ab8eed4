@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Job;
+use App\Resume;
 use App\User;
 use App\User_meta;
 use Illuminate\Http\Request;
@@ -18,9 +20,9 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $data=$this->getProfile();
+        $data = $this->getProfile();
+        $data['title'] = 'Profile';
         return view('profile', $data);
-
     }
 
     public function home()
@@ -30,11 +32,65 @@ class ProfileController extends Controller
 
     public function getProfile()
     {
-        $data = [];
-        $data['profile'] = User_meta::where('user_id', Auth::user()->user_id)
+        $meta = User_meta::where('user_id', Auth::user()->user_id)
             ->first();
-        //$data['degrees'] = $this->home()->getEnumValues('user_metas',);
+        if (!$meta) {
+            $data['profile'] = User::where('user_id', Auth::user()->user_id)
+                ->first();
+        } else {
+            $data['profile'] = $meta;
+        }
         return $data;
+    }
+
+    public function profile(Request $request)
+    {
+        $profile = User_meta::where('user_id', Auth::user()->user_id)
+            ->first();
+        if ($profile) {
+            return $this->update($request);
+        }
+        return $this->create($request);
+    }
+
+    public function create(Request $request)
+    {
+        $details = $request->all();
+        $details = array_merge($details, [
+            'updated_at' => date('Y-m-d H:i:s'),
+            'user_id'    => Auth::user()->user_id
+        ]);
+
+        unset($details['_token']);
+        unset($details['id']);
+        unset($details[0]);
+
+        $isCreated = User_meta::create($details);
+
+        $userTable = User::where('user_id', Auth::user()->user_id)
+            ->update([
+                'first_name' => $request->input('first_name'),
+                'last_name'  => $request->input('last_name'),
+                'phone_no'   => $request->input('phone_no'),
+                'job_title'  => $request->input('job_title'),
+                'status'     => 'registered',
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+
+        $resume = new Resume();
+        $resume->resume_id = Auth::user()->user_id;
+
+        if ($isCreated && $userTable && $resume->save()) {
+            $message = 'Your profile details have been updated successfully.';
+            $status = 'success';
+        } else {
+            $message = 'An error occurred during update.';
+            $status = 'danger';
+        }
+        return redirect()->back()->with('status', [
+            'message' => $message,
+            'state'   => $status
+        ]);
     }
 
     public function update(Request $request)
