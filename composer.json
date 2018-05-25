@@ -8,12 +8,9 @@
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "barryvdh/laravel-debugbar": "^3.1",
-        "mews/purifier": "~2.0",
         "laravel/framework": "5.5.*",
-        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "league/flysystem-aws-s3-v3": "~1.0",
-        "league/flysystem-rackspace": "~1.0",
         "spatie/laravel-backup": "^5.1"
     },
     "require-dev": {
