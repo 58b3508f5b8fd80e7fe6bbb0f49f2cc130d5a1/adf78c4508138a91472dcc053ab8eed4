@@ -202,7 +202,7 @@ class ProviderRepository
      *
      * @param  string  $provider
      * @return \Illuminate\Support\ServiceProvider
-     */
+      */
     public function createProvider($provider)
     {
         return new $provider($this->app);
