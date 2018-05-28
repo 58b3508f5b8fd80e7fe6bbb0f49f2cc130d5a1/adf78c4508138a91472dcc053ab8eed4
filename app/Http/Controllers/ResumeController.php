@@ -35,11 +35,9 @@ class ResumeController extends Controller
         if ($resume->save()) {
             $data['message'] = 'Your cover letter has been changed.';
             $data['state'] = 'success';
-            $data['text'] = 'text';
         } else {
             $data['message'] = 'Sorry, an error occurred';
             $data['state'] = 'danger';
-            $data['text'] = 'text';
         }
         return response()->json($data);
     }
@@ -94,14 +92,12 @@ class ResumeController extends Controller
         if ($education->save()) {
             $data['message'] = 'Your education has been added.';
             $data['state'] = 'success';
-            $data['text'] = 'text';
             $subData['educations'] = $this->getEducation();
             $html = View::make('partials.sub.education', $subData);
             $data['html'] = $html->render();
         } else {
             $data['message'] = 'Sorry, an error occurred';
             $data['state'] = 'danger';
-            $data['text'] = 'text';
         }
         return response()->json($data);
     }
@@ -124,14 +120,12 @@ class ResumeController extends Controller
         if ($experience->save()) {
             $data['message'] = 'Your experience has been added.';
             $data['state'] = 'success';
-            $data['text'] = 'text';
             $subData['experiences'] = $this->getExperiences();
             $html = View::make('partials.sub.experience', $subData);
             $data['html'] = $html->render();
         } else {
             $data['message'] = 'Sorry, an error occurred';
             $data['state'] = 'danger';
-            $data['text'] = 'text';
         }
         return response()->json($data);
     }
@@ -146,14 +140,12 @@ class ResumeController extends Controller
         if ($skill->save()) {
             $data['message'] = 'Your skill has been added.';
             $data['state'] = 'success';
-            $data['text'] = 'text';
             $subData['skills'] = $this->getSkills();
             $html = View::make('partials.sub.skill', $subData);
             $data['html'] = $html->render();
         } else {
             $data['message'] = 'Sorry, an error occurred';
             $data['state'] = 'danger';
-            $data['text'] = 'text';
         }
         return response()->json($data);
     }
@@ -170,14 +162,12 @@ class ResumeController extends Controller
         if ($honor->save()) {
             $data['message'] = 'Your honor has been added.';
             $data['state'] = 'success';
-            $data['text'] = 'text';
             $subData['honors'] = $this->getHonors();
             $html = View::make('partials.sub.honor', $subData);
             $data['html'] = $html->render();
         } else {
             $data['message'] = 'Sorry, an error occurred';
             $data['state'] = 'danger';
-            $data['text'] = 'text';
         }
         return response()->json($data);
     }

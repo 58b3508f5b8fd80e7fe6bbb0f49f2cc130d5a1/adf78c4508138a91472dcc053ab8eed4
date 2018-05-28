@@ -71,7 +71,8 @@
                                                             </ul>
                                                             @if($type=='new')
                                                                 <span class="pull-right">
-                                                                <button class="btn btn-info btn-sm"><i
+                                                                <button class="btn btn-info btn-sm" data-id="{{$job->id+9431}}"
+                                                                        onclick="applyJob(this)"><i
                                                                             class="fa fa-plane"></i> Apply Now
                                                                 </button>
                                                                 </span>

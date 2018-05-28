@@ -6,6 +6,7 @@ use App\Application;
 use App\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class JobController extends Controller
 {
@@ -14,7 +15,7 @@ class JobController extends Controller
     {
         $data['jobs'] = $this->getJobs();
         $data['title'] = 'Jobs';
-        $data['type']='new';
+        $data['type'] = 'new';
         return view('jobs', $data);
     }
 
@@ -22,13 +23,50 @@ class JobController extends Controller
     {
         $data['jobs'] = $this->getAppliedJobs();
         $data['title'] = 'Applied jobs';
-        $data['type']='applied';
+        $data['type'] = 'applied';
         return view('jobs', $data);
     }
 
-    public function getJobs($page = 1)
+    public function apply(Request $request)
     {
-        $jobs = Job::whereDate('close_at', '>=', date('Y-m-d'))->latest()
+        $id = $request->id - 9431;
+        $job = Job::find($id);
+        $application = new Application();
+        $application->application_id = md5($job->job_id . Auth::user()->user_id
+            . date('YmdHis'));
+        $application->resume_id = Auth::user()->user_id;
+        $application->job_id = $job->job_id;
+        $application->status = "pending";
+
+        if ($application->save()) {
+            $data['message']
+                = "We have received your job application. You will be contacted if you're among those selected.";
+            $data['state'] = 'success';
+            $subData['jobs'] = $this->getJobs();
+            $subData['type'] = 'new';
+            $subData['title'] = 'Jobs';
+            $html = View::make('partials.jobs', $subData);
+            $data['html'] = $html->render();
+        } else {
+            $data['message'] = 'Sorry, an error occurred';
+            $data['state'] = 'danger';
+        }
+        return response()->json($data);
+    }
+
+    public function delete()
+    {
+
+    }
+
+    public function getJobs(
+        $page = 1
+    ) {
+        $jobs = Job::leftJoin('applications','jobs.job_id','<>','applications.job_id')
+            ->where('applications.resume_id', '<>', Auth::user()->user_id)
+            ->whereDate('jobs.close_at', '>=', date('Y-m-d'))->limit(100)
+            ->select('jobs.*')
+            ->latest()
             ->get();
         return $jobs;
     }
@@ -40,7 +78,8 @@ class JobController extends Controller
             ->select('applications.id', 'jobs.title', 'jobs.country',
                 'jobs.state', 'jobs.lga', 'jobs.description',
                 'salary_from', 'jobs.experience', 'jobs.close_at',
-                'applications.created_at', 'applications.status')->latest()
+                'applications.created_at', 'applications.status')->limit(100)
+            ->latest()
             ->get();
 
         return $jobs;

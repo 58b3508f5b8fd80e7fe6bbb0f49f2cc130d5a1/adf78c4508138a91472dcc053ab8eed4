@@ -2,7 +2,10 @@
 @extends('layouts.app')
 @section('title',$title)
 @section('content')
-    <div class="container">
+    <div class="container" id="jobs">
         @include('partials.jobs')
     </div>
+@endsection
+@section('scripts')
+    <script src="{{asset($public.'/js/jobs.js')}}"></script>
 @endsection
