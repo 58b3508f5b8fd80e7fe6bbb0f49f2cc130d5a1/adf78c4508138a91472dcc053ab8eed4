@@ -1,0 +1,528 @@
+/* Modal Box */
+body.careerfy-modal-active {
+    overflow: hidden;
+    -ms-overflow: hidden;
+}
+
+.careerfy-modal {
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.careerfy-modal.fade {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.careerfy-modal.fade.in {
+    visibility: visible;
+    opacity: 1;
+}
+
+.careerfy-modal .modal-inner-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.70;
+    z-index: 9999;
+ }
+
+.careerfy-modal .modal-content-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    -ms-overflow-y: scroll;
+    z-index: 99999;
+    text-align: center;
+}
+
+.careerfy-modal .modal-box-area {
+    display: inline-block;
+    width: 600px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 30px 30px 30px 30px;
+    margin: 60px 0px 0px 0px;
+}
+
+.careerfy-modal .modal-close {
+    cursor: pointer;
+    float: right;
+    color: #d1d1d1;
+    font-size: 19px;
+    line-height: 1;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.careerfy-modal-title-box {
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.careerfy-modal-title-box h2 {
+    float: left;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 0px;
+    line-height: 1;
+}
+
+.careerfy-box-title {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 33px;
+    line-height: 25px;
+}
+
+.careerfy-box-title:before,
+.careerfy-box-title:after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 2px;
+    width: 1px;
+    height: 10px;
+    background-color: #e5e5e5;
+}
+
+.careerfy-box-title:after {
+    left: auto;
+    right: 0px;
+}
+
+.careerfy-box-title span:before,
+.careerfy-box-title span:after {
+    background-color: #e5e5e5;
+    content: "";
+    height: 1px;
+    left: 100%;
+    margin-left: 8px;
+    position: absolute;
+    top: 12px;
+    width: 999em;
+}
+
+.careerfy-box-title span:after {
+    left: auto;
+    right: 100%;
+    margin-left: 0px;
+    margin-right: 8px;
+}
+
+.careerfy-box-title span {
+    display: inline-block;
+    font-size: 12px;
+    color: #1cb5ea;
+    position: relative;
+}
+
+/* Modal Box User Options */
+.careerfy-user-options, .careerfy-user-options ul {
+    float: left;
+    width: 100%;
+}
+
+.careerfy-user-options ul li {
+    float: left;
+    width: 50%;
+    list-style: none;
+    padding: 0px 10px 28px 10px;
+    text-align: center;
+    line-height: 1;
+}
+
+.careerfy-user-options i {
+    position: absolute;
+    left: 50%;
+    top: -16px;
+    color: #ffffff;
+    border-radius: 100%;
+    width: 33px;
+    height: 33px;
+    background-color: #1cb4e9;
+    font-size: 17px;
+    padding-top: 8px;
+    margin-left: -16px;
+}
+
+.careerfy-user-options span {
+    display: block;
+    font-size: 20px;
+    color: #2c3e50;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.careerfy-user-options small {
+    font-size: 12px;
+    color: #555555;
+    font-style: italic;
+}
+
+.careerfy-user-options ul li a {
+    border: 1px solid #dddddd;
+    float: left;
+    width: 100%;
+    padding: 30px 10px 15px 10px;
+    position: relative;
+}
+
+.careerfy-user-options ul li.active a {
+    background-color: #2c3e50;
+}
+
+.careerfy-user-options ul li.active span {
+    color: #fff;
+}
+
+.careerfy-user-options ul li.active small {
+    color: #c4d3dd;
+}
+
+.careerfy-user-options ul li.active i {
+    background-color: #93c907;
+}
+
+.box-title span:after {
+    left: auto;
+    right: 100%;
+    margin-left: 0px;
+    margin-right: 8px;
+}
+
+.box-title span {
+    display: inline-block;
+    font-size: 12px;
+    color: #1cb5ea;
+    position: relative;
+}
+
+.user-form, .user-form label, .user-form-info,
+.user-form input[type="text"], .user-form input[type="password"], .user-form input[type="email"], .user-form input[type="submit"] {
+    float: left;
+    width: 100%;
+    text-align: left;
+}
+
+.user-form ul {
+    margin: 0px -10px;
+}
+
+.user-form ul li {
+    float: left;
+    width: 100%;
+    list-style: none;
+    padding: 0px 10px;
+    position: relative;
+    line-height: 1;
+    margin-bottom: 18px;
+}
+
+.user-form label {
+    font-size: 14px;
+    color: #666666;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.user-form input[type="text"],
+.user-form input[type="password"],
+.user-form input[type="date"],
+.user-form input[type="number"],
+.user-form input[type="email"] {
+    padding: 6px 13px;
+    color: #999999;
+    font-size: 12px;
+    height: 42px;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    background-color: #ffffff;
+}
+
+.user-form i {
+    position: absolute;
+    right: 29px;
+    bottom: 20px;
+    font-size: 20px;
+    opacity: 0.6;
+    color: #aaaaaa;
+}
+
+.user-form input[type="submit"] {
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 12px 15px;
+    border-radius: 40px;
+    border: none;
+    background-color: #13b5ea;
+    color: #ffffff;
+}
+
+.user-form-info {
+    margin-bottom: 13px;
+}
+
+.user-form-info p {
+    float: left;
+    color: #555555;
+    font-size: 12px;
+    margin-bottom: 0px;
+    line-height: 1;
+}
+
+.user-form-info p a {
+    color: #13b5ea;
+}
+
+.user-form-info .checkbox {
+    float: right;
+    width: auto;
+}
+
+.user-form-info .checkbox input[type="checkbox"] + label,
+.user-form-info .checkbox input[type="radio"] + label {
+    color: #555555;
+    line-height: 1;
+}
+
+.user-form-info .checkbox input[type="checkbox"] + label span,
+.user-form-info .checkbox input[type="radio"] + label span {
+    margin-right: 8px;
+    margin-top: -2px;
+}
+
+.js {
+    width: 100%;
+    max-width: 680px; /* 800 */
+    text-align: center;
+    margin: 0 auto;
+    float: left;
+}
+
+.js h1 {
+    font-size: 42px;
+    font-weight: 300;
+    color: #0f3c4b;
+    margin-bottom: 40px;
+}
+
+.js h1 a:hover,
+.js h1 a:focus {
+    color: #39bfd3 !important;
+}
+
+.js nav {
+    margin-bottom: 40px !important;
+}
+
+.js nav a {
+    border-bottom: 2px solid #c8dadf !important;
+    display: inline-block !important;
+    padding: 4px 8px !important;
+    margin: 0 5px !important;
+}
+
+.js nav a.is-selected {
+    font-weight: 700 !important;
+    color: #39bfd3 !important;
+    border-bottom-color: currentColor !important;
+}
+
+.js nav a:not( .is-selected ):hover,
+.js nav a:not( .is-selected ):focus {
+    border-bottom-color: #0f3c4b !important;
+}
+
+.js footer {
+    color: #92b0b3 !important;
+    margin-top: 40px !important;
+}
+
+.js .notice {
+    text-align: center;
+    color: #333333;
+}
+
+.js footer a:hover,
+.js footer a:focus {
+    color: #39bfd3 !important;
+}
+
+.box {
+    font-size: 1.253em !important; /* 20 */
+    background-color: #c8dadf !important;
+    position: relative !important;
+    padding: 30px 20px !important;
+}
+
+.box.has-advanced-upload {
+    outline: 2px dashed #92b0b3 !important;
+    outline-offset: -10px !important;
+
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear !important;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear !important;
+}
+
+.box.is-dragover {
+    outline-offset: -20px !important;
+    outline-color: #c8dadf !important;
+    background-color: #fff !important;
+}
+
+.box__dragndrop,
+.box__icon {
+    display: none !important;
+}
+
+.box.has-advanced-upload .box__dragndrop {
+    display: inline !important;
+}
+
+.box.has-advanced-upload .box__icon {
+    width: 100% !important;
+    height: 80px !important;
+    fill: #92b0b3 !important;
+    display: block !important;
+    margin-bottom: 40px !important;
+}
+
+.box.is-uploading .box__input,
+.box.is-success .box__input,
+.box.is-error .box__input {
+    visibility: hidden !important;
+}
+
+.box__uploading,
+.box__success,
+.box__error {
+    display: none !important;
+}
+
+.box.is-uploading .box__uploading,
+.box.is-success .box__success,
+.box.is-error .box__error {
+    display: block !important;
+    position: absolute !important;
+    top: 50% !important;
+    right: 0 !important;
+    left: 0 !important;
+
+    -webkit-transform: translateY(-50%) !important;
+    transform: translateY(-50%) !important;
+}
+
+.box__uploading {
+    font-style: italic !important;
+}
+
+.box__success {
+    -webkit-animation: appear-from-inside .25s ease-in-out !important;
+    animation: appear-from-inside .25s ease-in-out !important;
+}
+
+@-webkit-keyframes appear-from-inside {
+    from {
+        -webkit-transform: translateY(-50%) scale(0) !important;
+    }
+    75% {
+        -webkit-transform: translateY(-50%) scale(1.1) !important;
+    }
+    to {
+        -webkit-transform: translateY(-50%) scale(1) !important;
+    }
+}
+
+@keyframes appear-from-inside {
+    from {
+        transform: translateY(-50%) scale(0) !important;
+    }
+    75% {
+        transform: translateY(-50%) scale(1.1) !important;
+    }
+    to {
+        transform: translateY(-50%) scale(1) !important;
+    }
+}
+
+.box__restart {
+    font-weight: 700 !important;
+}
+
+.box__restart:focus,
+.box__restart:hover {
+    color: #39bfd3 !important;
+}
+
+.js .box__file {
+    width: 0.1px !important;
+    height: 0.1px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    z-index: -1 !important;
+}
+
+.js .box__file + label {
+    max-width: 80% !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    overflow: hidden !important;
+}
+
+.js .box__file + label:hover strong,
+.box__file:focus + label strong,
+.box__file.has-focus + label strong {
+    color: #39bfd3 !important;
+}
+
+.js .box__file:focus + label,
+.js .box__file.has-focus + label {
+    outline: 1px dotted #000 !important;
+    outline: -webkit-focus-ring-color auto 5px !important;
+}
+
+.js .box__file + label * {
+    /* pointer-events: none !important; */ /* in case of FastClick lib use */
+}
+
+.no-js .box__file + label {
+    display: none !important;
+}
+
+.no-js .box__button {
+    display: block !important;
+}
+
+.box__button {
+    font-weight: 700 !important;
+    color: #e5edf1 !important;
+    background-color: #39bfd3 !important;
+    display: block !important;
+    padding: 8px 16px !important;
+    margin: 40px auto 0 !important;
+}
+
+.box__button:hover,
+.box__button:focus {
+    background-color: #0f3c4b !important;
+}

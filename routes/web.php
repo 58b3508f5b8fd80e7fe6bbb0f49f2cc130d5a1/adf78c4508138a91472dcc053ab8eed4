@@ -19,8 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['checkMaintenance'])->group(function () {
-    Route::middleware(['checkUserStatus'])->group(function (
-    ) {
+    Route::middleware(['auth','checkUserStatus'])->group(function () {
         Route::get('/profile', 'ProfileController@index')->name('profile');
         Route::get('/resume', 'ResumeController@index')->name('resume');
         Route::get('/jobs', 'JobController@index')->name('jobs');
@@ -31,10 +30,15 @@ Route::middleware(['checkMaintenance'])->group(function () {
     Route::post('profile/update', 'ProfileController@profile')
         ->name('update_profile');
     Route::prefix('/resume')->group(function () {
+        Route::get('/download/cv','ResumeController@downloadCV');
+        Route::get('/modal/{action}/{type}/{id?}','ResumeController@getModal');
+        Route::post('/delete', 'ResumeController@delete');
+        Route::post('/delete', 'ResumeController@delete');
         Route::post('/coverletter', 'ResumeController@coverLetter');
-        Route::post('/education', 'ResumeController@education');
-        Route::post('/experiences', 'ResumeController@experience');
-        Route::post('/honors', 'ResumeController@honors');
+        Route::post('/education', 'ResumeController@addEducation');
+        Route::post('/experiences', 'ResumeController@addExperience');
+        Route::post('/honors', 'ResumeController@addHonors');
+        Route::post('/skills', 'ResumeController@addSkills');
         Route::post('/curriculumvitae', 'ResumeController@curriculumVitae');
     });
 });
@@ -42,7 +46,7 @@ Route::post('getlgas', function (\Illuminate\Support\Facades\Request $request) {
     $state = $request->input('state');
     $lgas = $this->LGAs();
     $html = "<option selected disabled>Select LGA</option>";
-    foreach ($lgas as $lga) {
+    foreach (__('lgas.index') as $lga) {
         if ($lga[0] == $state) {
             $html .= "<option>$lga[1]</option>";
         }

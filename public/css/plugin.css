@@ -2209,6 +2209,7 @@ ul li:hover .careerfy-employer-grid-btn {
 .careerfy-employer-profile-form li input[type="password"],
 .careerfy-employer-profile-form li textarea,
 .careerfy-employer-profile-form li input[type="email"],
+.careerfy-employer-profile-form li input[type="date"],
 .careerfy-employer-profile-form li input[type="number"] {
     float: left;
     width: 100%;
@@ -4606,6 +4607,8 @@ body.careerfy-modal-active {
 
 .careerfy-user-form input[type="text"],
 .careerfy-user-form input[type="password"],
+.careerfy-user-form input[type="date"],
+.careerfy-user-form input[type="number"],
 .careerfy-user-form input[type="email"] {
     padding: 6px 13px;
     color: #999999;

@@ -27,8 +27,8 @@
                         @include('includes.sidebar',['profile_sidebar'=>true])
                         <div class="careerfy-column-9">
                             @if(!null == session('status'))
-                                @php $status=session('status'); var_dump($status)@endphp
-                                {{--<div class="alert alert-{{$status['state']}}">{{$status['message']}}</div>--}}
+                                @php $status=session('status'); @endphp
+                                <div class="alert alert-{{$status['state']}}">{{$status['message']}}</div>
                             @endif
                             <div class="careerfy-typo-wrap">
                                 <form class="careerfy-employer-dasboard" action="{{route('update_profile')}}"

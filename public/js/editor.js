@@ -1072,11 +1072,13 @@ You should have received a copy of the GNU General Public License along with thi
 	       	}
 
 	       	//For contextmenu	       	
-		    $(document.body).mousedown(function(event) {
+		    /*$(document.body).mousedown(function(event) {
 		        var target = $(event.target);
+/!*
 		        if (!target.parents().andSelf().is('#context-menu')) { // Clicked outside
 		            $('#context-menu').remove();
-		        } 
+		        }
+*!/
 		        if (!target.parents().andSelf().is('#specialchar') && (target.closest('a').html()!='<i class="fa fa-asterisk"></i>')) { //Clicked outside
 		        	if($("#specialchar").is(':visible'))
 		            {
@@ -1091,7 +1093,7 @@ You should have received a copy of the GNU General Public License along with thi
 						$('#paletteCntr').remove();
 		           	}
 		        }
-		    });
+		    });*/
 		    editor.bind("contextmenu", function(e){
 	       		if($('#context-menu').length)
 	       			$('#context-menu').remove();
