@@ -27,12 +27,16 @@
         <div class="careerfy-main-section careerfy-dashboard-full">
             <div class="container">
                 <div class="row">
-                    @include('includes.sidebar',['jobs_sidebar'=>true])
+                    @if($type=='new')
+                        @include('includes.sidebar',['jobs_sidebar'=>true])
+                    @else
+                        @include('includes.sidebar',['applied_sidebar'=>true])
+                    @endif
                     <div class="careerfy-column-9">
                         <div class="careerfy-typo-wrap">
                             <div class="careerfy-employer-box-section">
                                 <div class="careerfy-profile-title">
-                                    <h2>Applied Jobs</h2>
+                                    <h2>{{$title}}</h2>
                                     <form class="careerfy-employer-search">
                                         <input value="Search orders" type="text">
                                         <input value="" type="submit">
@@ -44,10 +48,8 @@
                                         @foreach($jobs as $job)
                                             <li class="careerfy-column-12">
                                                 <div class="careerfy-applied-jobs-wrap">
-                                                    <a href="#" class="careerfy-applied-jobs-thumb"><img
-                                                                src="jpg/candidate-01.jpg" alt=""></a>
                                                     <div class="careerfy-applied-jobs-text">
-                                                        <div class="careerfy-applied-jobs-left">
+                                                        <div class="careerfy-applied-jobs-left col-xs-12">
                                                             <h2><a href="#">{{$job->title}}</a></h2>
                                                             <span>{{$job->description}}</span>
                                                             <ul>
@@ -67,9 +69,19 @@
                                                                     Deadline: {{date('jS M, Y', strtotime($job->close_at))}}
                                                                 </li>
                                                             </ul>
+                                                            @if($type=='new')
+                                                                <span class="pull-right">
+                                                                <button class="btn btn-info btn-sm"><i
+                                                                            class="fa fa-plane"></i> Apply Now
+                                                                </button>
+                                                                </span>
+                                                            @else
+                                                                <span class="pull-right">
+                                                                    <a href="#"
+                                                                       class="careerfy-savedjobs-links">{{strtoupper($job->status)}}</a>
+                                                                </span>
+                                                            @endif
                                                         </div>
-                                                        <a href="#"
-                                                           class="careerfy-savedjobs-links">{{strtoupper($job->status)}}</a>
                                                         {{--<a href="#" class="careerfy-savedjobs-links"><i
                                                                     class="careerfy-icon careerfy-view"></i></a>--}}
                                                     </div>

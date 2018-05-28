@@ -3,12 +3,9 @@
     <div class="careerfy-typo-wrap">
         <div class="careerfy-employer-dashboard-nav">
             <figure>
-                <a href="#" class="employer-dashboard-thumb"><img src="{{asset($public.'/png/default-user.png')}}" alt=""></a>
+                <a href="#" class="employer-dashboard-thumb"><img src="{{Storage::url(Auth::user()->avatar_location)}}" class="user-avatar" alt=""></a>
                 <figcaption>
-                    <div class="careerfy-fileUpload">
-                        <span><i class="careerfy-icon careerfy-add"></i> Upload Photo</span>
-                        <input class="careerfy-upload" type="file">
-                    </div>
+
                     <h3>{{Auth::user()->first_name.' '.Auth::user()->last_name}}</h3>
                     <span class="careerfy-dashboard-subtitle">{{Auth::user()->job_title}}</span>
                 </figcaption>

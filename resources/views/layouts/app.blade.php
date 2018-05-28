@@ -29,8 +29,8 @@
           rel="stylesheet">
     <link href="{{asset($public.'/css/editor.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset($public.'/css/sweetalert.min.css')}}">
+    <link rel="stylesheet" href="{{asset($public.'/css/resume.css')}}">
     @if(strcmp(strtolower($title),strtolower('resume'))===0)
-        <link rel="stylesheet" href="{{asset($public.'/css/resume.css')}}">
         <script>(function (e, t, n) {
                 var r = e.querySelectorAll("html")[0];
                 r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2")
@@ -98,22 +98,22 @@
                                         <li><a href="candidate-detail.html">Candidate Detail</a></li>
                                     </ul>
                                 </li>
-{{--                                <li class="submenu-addicon"><a href="#">For Employers</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="employer-list.html">Employer List</a></li>
-                                        <li><a href="employer-grid.html">Employer Grid</a></li>
-                                        <li><a href="employer-detail.html">Employer Detail</a></li>
-                                        <li><a href="employer-dashboard-transactions.html">Transactions</a></li>
-                                        <li><a href="employer-dashboard-resumes.html">Employer Resumes</a></li>
-                                        <li><a href="employer-dashboard-profile-seting.html">Profile Setting</a></li>
-                                        <li><a href="employer-dashboard-pkgpayment.html">Package Payment</a></li>
-                                        <li><a href="employer-dashboard-packages.html">Packages</a></li>
-                                        <li><a href="employer-dashboard-newjob.html">Employer New Job</a></li>
-                                        <li><a href="employer-dashboard-manage-jobs.html">Menage Jobs</a></li>
-                                        <li><a href="employer-dashboard-confitmation.html">Employer Confitmation</a>
-                                        </li>
-                                    </ul>
-                                </li>--}}
+                                {{--                                <li class="submenu-addicon"><a href="#">For Employers</a>
+                                                                    <ul class="sub-menu">
+                                                                        <li><a href="employer-list.html">Employer List</a></li>
+                                                                        <li><a href="employer-grid.html">Employer Grid</a></li>
+                                                                        <li><a href="employer-detail.html">Employer Detail</a></li>
+                                                                        <li><a href="employer-dashboard-transactions.html">Transactions</a></li>
+                                                                        <li><a href="employer-dashboard-resumes.html">Employer Resumes</a></li>
+                                                                        <li><a href="employer-dashboard-profile-seting.html">Profile Setting</a></li>
+                                                                        <li><a href="employer-dashboard-pkgpayment.html">Package Payment</a></li>
+                                                                        <li><a href="employer-dashboard-packages.html">Packages</a></li>
+                                                                        <li><a href="employer-dashboard-newjob.html">Employer New Job</a></li>
+                                                                        <li><a href="employer-dashboard-manage-jobs.html">Menage Jobs</a></li>
+                                                                        <li><a href="employer-dashboard-confitmation.html">Employer Confitmation</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>--}}
                                 <li><a href="contact-us.html">Contact</a></li>
                             </ul>
                         </div>
@@ -427,9 +427,10 @@
     swal("Status", "{{$status['message']}}", "{{$status['state']}}");
     @endif
 </script>
+<script src="{{asset($public.'/js/bootstrap-notify.min.js')}}"></script>
+<script src="{{asset($public.'/js/resume.js')}}"></script>
+<script src="{{asset($public.'/js/upload.js')}}"></script>
 @if(strcmp(strtolower($title),strtolower('resume'))===0)
-    <script src="{{asset($public.'/js/bootstrap-notify.min.js')}}"></script>
-    <script src="{{asset($public.'/js/resume.js')}}"></script>
     <script>
         $(document).ready(function () {
             $("#textEditor").Editor("setText", {!! json_encode($resume->cover_letter) !!});

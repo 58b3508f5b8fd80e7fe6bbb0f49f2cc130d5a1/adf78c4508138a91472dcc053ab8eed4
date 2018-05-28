@@ -8,6 +8,7 @@ use App\User;
 use App\User_meta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 
 class ProfileController extends Controller
@@ -30,7 +31,47 @@ class ProfileController extends Controller
         return new HomeController();
     }
 
-    public function getProfile()
+    public function avatar(Request $request)
+    {
+        $id = (int)$request->input('id') - 1933;
+        $userMeta = User_meta::find($id);
+        $user = Auth::user();
+        if ($request->hasFile('avatar_location')
+            && $request->file('avatar_location')->isValid()
+        ) {
+            if ($userMeta->avatar_location !== null
+                && $userMeta->avatar_location !== config('app.default-image')
+            ) {
+                Storage::delete($userMeta->avatar_location);
+            }
+            $location = $request->file('avatar_location')
+                ->store('careers.touchinglivesskills/app/user/avatar');
+            $userMeta->avatar_location = $location;
+            $user->avatar_location = $location;
+
+            if ($userMeta->save() && $user->save()) {
+                $data['message'] = 'Your profile image has been changed. '
+                    . $location;
+                $data['state'] = 'success';
+                $data['type'] = 'img';
+                $data['avatar'] = Storage::url($user->avatar_location);
+                $data['success'] = true;
+            } else {
+                $data['message'] = 'Sorry, an error occurred';
+                $data['state'] = 'danger';
+                $data['error'] = 'Sorry, an error occurred';
+            }
+        } else {
+            $data['message'] = 'Sorry, an error occurred';
+            $data['state'] = 'danger';
+            $data['error'] = 'Sorry, an error occurred';
+        }
+
+        return response()->json($data);
+    }
+
+    public
+    function getProfile()
     {
         $meta = User_meta::where('user_id', Auth::user()->user_id)
             ->first();
@@ -43,8 +84,10 @@ class ProfileController extends Controller
         return $data;
     }
 
-    public function profile(Request $request)
-    {
+    public
+    function profile(
+        Request $request
+    ) {
         $profile = User_meta::where('user_id', Auth::user()->user_id)
             ->first();
         if ($profile) {
@@ -53,8 +96,10 @@ class ProfileController extends Controller
         return $this->create($request);
     }
 
-    public function create(Request $request)
-    {
+    public
+    function create(
+        Request $request
+    ) {
         $details = $request->all();
         $details = array_merge($details, [
             'updated_at' => date('Y-m-d H:i:s'),
@@ -93,8 +138,10 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function update(Request $request)
-    {
+    public
+    function update(
+        Request $request
+    ) {
 
         $details = $request->all();
         /*$id = (int)$request->input('id') - 3021;

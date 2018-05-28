@@ -13,14 +13,16 @@ class JobController extends Controller
     public function index()
     {
         $data['jobs'] = $this->getJobs();
-        $data['title'] = 'jobs';
+        $data['title'] = 'Jobs';
+        $data['type']='new';
         return view('jobs', $data);
     }
 
     public function applied()
     {
-        $data['jobs'] = $this->getJobs();
-        $data['title'] = 'jobs';
+        $data['jobs'] = $this->getAppliedJobs();
+        $data['title'] = 'Applied jobs';
+        $data['type']='applied';
         return view('jobs', $data);
     }
 

@@ -29,6 +29,8 @@ Route::middleware(['checkMaintenance'])->group(function () {
 
     Route::post('profile/update', 'ProfileController@profile')
         ->name('update_profile');
+    Route::post('profile/avatar', 'ProfileController@avatar')
+        ->name('update_avatar');
     Route::prefix('/resume')->group(function () {
         Route::get('/download/cv','ResumeController@downloadCV');
         Route::get('/modal/{action}/{type}/{id?}','ResumeController@getModal');
