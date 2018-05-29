@@ -54,20 +54,35 @@ class JobController extends Controller
         return response()->json($data);
     }
 
-    public function delete()
+    public function cancel(Request $request)
     {
+        $id = $request->id - 113;
+        $job = Application::where('resume_id', Auth::user()->user_id)
+            ->find($id);
 
+        if ($job->delete()) {
+            $data['message']
+                = "Your application was canceled successfully..";
+            $data['state'] = 'success';
+            $subData['jobs'] = $this->getAppliedJobs();
+            $subData['type'] = 'applied';
+            $subData['title'] = 'Jobs';
+            $html = View::make('partials.jobs', $subData);
+            $data['html'] = $html->render();
+        } else {
+            $data['message'] = 'Sorry, an error occurred';
+            $data['state'] = 'danger';
+        }
+        return response()->json($data);
     }
 
-    public function getJobs(
-        $page = 1
-    ) {
-        $jobs = Job::leftJoin('applications','jobs.job_id','<>','applications.job_id')
-            ->where('applications.resume_id', '<>', Auth::user()->user_id)
+    public function getJobs($page = 1)
+    {
+        $applications = Application::where('resume_id', Auth::user()->user_id)
+            ->pluck('job_id');
+        $jobs = Job::whereNotIn('job_id', $applications)
             ->whereDate('jobs.close_at', '>=', date('Y-m-d'))->limit(100)
-            ->select('jobs.*')
-            ->latest()
-            ->get();
+            ->latest()->get();
         return $jobs;
     }
 

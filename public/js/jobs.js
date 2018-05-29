@@ -1,5 +1,6 @@
 function applyJob(elem) {
     var data = {
+        'title': $(elem).attr("data-title"),
         'id': $(elem).attr("data-id"),
     };
     jobApply(data);
@@ -8,12 +9,11 @@ function applyJob(elem) {
 function jobApply(data) {
     swal({
         title: "Are you sure?",
-        text: "Are you sure that you want to delete " + data.title + "?",
-        type: "warning",
+        text: "Are you sure that you want to apply for " + data.title + "?",
+        type: "success",
         showCancelButton: true,
         closeOnConfirm: true,
-        confirmButtonText: "Yes, delete it!",
-        confirmButtonColor: "#ec6c62"
+        confirmButtonText: "Yes, go ahead!",
     }, function (isConfirm) {
         $.post('/jobs/apply', data, function (result) {
             $.notify({
@@ -24,7 +24,7 @@ function jobApply(data) {
                 {
                     'type': result.state
                 });
-            $('#jobs').fadeOut(800).html(result.html).fadeIn(1200);
+            $('#jobs').fadeOut(300).html(result.html).fadeIn(1200);
         }).fail(function () {
             $.notify({
                     // options
@@ -38,16 +38,15 @@ function jobApply(data) {
     });
 }
 
-function deleteJob(elem) {
+function cancelJob(elem) {
     var data = {
-        'title': $(elem).attr("data-title"),
+        'title':$(elem).attr("data-title"),
         'id': $(elem).attr("data-id"),
-        'type': $(elem).attr("data-type"),
     };
-    resumeDelete(data);
+    jobCancel(data);
 }
 
-function jobDelete(data) {
+function jobCancel(data) {
     swal({
         title: "Are you sure?",
         text: "Are you sure that you want to delete " + data.title + "?",
@@ -57,7 +56,7 @@ function jobDelete(data) {
         confirmButtonText: "Yes, delete it!",
         confirmButtonColor: "#ec6c62"
     }, function (isConfirm) {
-        $.post('/resume/delete', data, function (result) {
+        $.post('/jobs/cancel', data, function (result) {
             $.notify({
                     // options
                     icon: 'fa fa-check',
@@ -66,7 +65,7 @@ function jobDelete(data) {
                 {
                     'type': result.state
                 });
-            $('#resume-' + result.type).fadeOut(800).html(result.html).fadeIn(1200);
+            $('#jobs').fadeOut(300).html(result.html).fadeIn(1200);
         }).fail(function () {
             $.notify({
                     // options

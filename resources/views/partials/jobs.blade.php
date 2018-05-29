@@ -68,19 +68,33 @@
                                                                     <i class="careerfy-icon careerfy-calendar"></i>
                                                                     Deadline: {{date('jS M, Y', strtotime($job->close_at))}}
                                                                 </li>
+                                                                @if($type != 'new')
+                                                                    <li>
+                                                                        Status: {{strtoupper($job->status)}}
+                                                                    </li>
+                                                                @endif
                                                             </ul>
                                                             @if($type=='new')
                                                                 <span class="pull-right">
-                                                                <button class="btn btn-info btn-sm" data-id="{{$job->id+9431}}"
+                                                                <button class="btn btn-info btn-sm"
+                                                                        data-title="{{$job->title}}"
+                                                                        data-id="{{$job->id+9431}}"
                                                                         onclick="applyJob(this)"><i
                                                                             class="fa fa-plane"></i> Apply Now
                                                                 </button>
                                                                 </span>
                                                             @else
-                                                                <span class="pull-right">
-                                                                    <a href="#"
-                                                                       class="careerfy-savedjobs-links">{{strtoupper($job->status)}}</a>
-                                                                </span>
+                                                                <ul class="list-inline pull-right">
+                                                                    <li>
+                                                                        <button class="btn btn-link btn-sm"
+                                                                                data-title="{{$job->title}}"
+                                                                                data-id="{{$job->id+113}}"
+                                                                                onclick="cancelJob(this)"><i
+                                                                                    class="fa fa-times"></i> Cancel
+                                                                            Application
+                                                                        </button>
+                                                                    </li>
+                                                                </ul>
                                                             @endif
                                                         </div>
                                                         {{--<a href="#" class="careerfy-savedjobs-links"><i

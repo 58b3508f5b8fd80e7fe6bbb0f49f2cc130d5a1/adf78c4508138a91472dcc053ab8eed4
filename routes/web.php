@@ -25,8 +25,7 @@ Route::middleware(['checkMaintenance'])->group(function () {
         Route::get('/jobs', 'JobController@index')->name('jobs');
         Route::get('/jobs/applied', 'JobController@applied')->name('applied');
         Route::post('/jobs/apply', 'JobController@apply');
-        Route::post('/jobs/delete', 'JobController@delete');
-//Route::get('/{any}', 'HomeController@index')->where('any', '.*');
+        Route::post('/jobs/cancel', 'JobController@cancel');
     });
 
     Route::post('profile/update', 'ProfileController@profile')
