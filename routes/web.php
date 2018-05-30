@@ -58,3 +58,12 @@ Route::post('getlgas', function (\Illuminate\Support\Facades\Request $request) {
         'html' => $html
     ]);
 })->middleware('checkMaintenance');
+Route::get('/contact', function(){
+   return view('contact',['title'=>'Contact Us']);
+});
+Route::get('/about', function(){
+    return view('about',['title'=>'About Us']);
+});
+Route::get('/faq', function(){
+    return view('faq',['title'=>'Frequently Asked Questions']);
+});

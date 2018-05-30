@@ -62,15 +62,11 @@
                         </div>
                         <div class="collapse navbar-collapse" id="careerfy-navbar-collapse-1">
                             <ul class="navbar-nav">
-                                <li class="active submenu-addicon"><a href="index-2.html">Home</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">Demo Careerfy</a></li>
-                                        <li><a href="https://eyecix.com/html/careerfy-demos/hireright-demo/">Demo
-                                                Hireright</a></li>
-                                        <li><a href="https://eyecix.com/html/careerfy-demos/jobshub-demo/">Demo
-                                                Jobshub</a></li>
-                                    </ul>
-                                </li>
+                                <li class="active"><a href="{{url('/')}}">Home</a></li>
+                                <li><a href="{{url('/about')}}">About us</a></li>
+                                <li><a href="{{url('/contact')}}">Contact</a></li>
+                                <li><a href="{{url('/faq')}}">Faq's</a></li>
+                                {{--
                                 <li class="submenu-addicon"><a href="#">Pages</a>
                                     <ul class="sub-menu">
                                         <li><a href="about-us.html">About Us</a></li>
@@ -98,7 +94,7 @@
                                         <li><a href="candidate-detail.html">Candidate Detail</a></li>
                                     </ul>
                                 </li>
-                                {{--                                <li class="submenu-addicon"><a href="#">For Employers</a>
+                                                                <li class="submenu-addicon"><a href="#">For Employers</a>
                                                                     <ul class="sub-menu">
                                                                         <li><a href="employer-list.html">Employer List</a></li>
                                                                         <li><a href="employer-grid.html">Employer Grid</a></li>
@@ -114,7 +110,6 @@
                                                                         </li>
                                                                     </ul>
                                                                 </li>--}}
-                                <li><a href="contact-us.html">Contact</a></li>
                             </ul>
                         </div>
                     </nav>
