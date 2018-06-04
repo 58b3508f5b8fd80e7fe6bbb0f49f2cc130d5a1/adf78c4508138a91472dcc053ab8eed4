@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -78,14 +80,41 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'first_name'      => $data['first_name'],
-            'last_name'       => $data['last_name'],
-            'job_title'       => $data['job_title'],
-            'user_id'         => md5($data['email'] . date('YmdHis')),
-            'email'           => $data['email'],
-            'phone_no'        => $data['phone_no'],
-            'password'        => bcrypt($data['password']),
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'job_title' => $data['job_title'],
+            'user_id' => md5($data['email'] . date('YmdHis')),
+            'email' => $data['email'],
+            'phone_no' => $data['phone_no'],
+            'password' => bcrypt($data['password']),
             'avatar_location' => config('app.default-image')
         ]);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $validate = $this->validator($request->all());
+
+        if ($validate->fails()) {
+            return redirect('/register')
+                ->withErrors($validate)
+                ->withInput();
+        }
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath())->with([
+                'status' => 'Your registration was successful. Please update your profile details.',
+                'state'  => 'danger'
+            ]);
     }
 }

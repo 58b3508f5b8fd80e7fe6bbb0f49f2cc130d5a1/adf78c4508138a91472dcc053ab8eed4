@@ -4,6 +4,8 @@ namespace App\Http;
 
 use App\Http\Middleware\CheckMaintenance;
 use App\Http\Middleware\CheckUserStatus;
+use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\IsUser;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,5 +69,7 @@ class Kernel extends HttpKernel
             'throttle'         => \Illuminate\Routing\Middleware\ThrottleRequests::class,
             'checkMaintenance' => CheckMaintenance::class,
             'checkUserStatus'  => CheckUserStatus::class,
+            'isAdmin'          => IsAdmin::class,
+            'isUser'           => IsUser::class
         ];
 }

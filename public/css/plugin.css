@@ -687,6 +687,21 @@
     line-height: 1;
 }
 
+.careerfy-pagination-blog ul li strong {
+    float: left;
+    width: 49px;
+    height: 49px;
+    font-size: 14px;
+    border-radius: 100%;
+    text-align: center;
+    padding: 17px 0px 0px 0px;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
 .careerfy-pagination-blog ul li a,
 .careerfy-pagination-blog ul li span {
     float: left;
@@ -707,7 +722,8 @@
 
 .careerfy-pagination-blog ul li:hover a,
 .careerfy-pagination-blog ul li:hover span,
-.careerfy-pagination-blog ul li span.current {
+.careerfy-pagination-blog ul li span.current,
+.careerfy-pagination-blog ul li a.current{
     background-color: #13b5ea;
     color: #ffffff;
 }
@@ -2444,6 +2460,17 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-employer-search input[type="text"] {
+    float: left;
+    width: 100%;
+    height: 32px;
+    font-size: 12px;
+    color: #b8bcbe;
+    padding: 6px 12px;
+    border: 1px solid #dfe2e3;
+    background-color: #ffffff;
+}
+
+.careerfy-employer-search select{
     float: left;
     width: 100%;
     height: 32px;

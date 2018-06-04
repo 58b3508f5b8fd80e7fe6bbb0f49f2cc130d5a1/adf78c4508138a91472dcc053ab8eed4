@@ -70,8 +70,7 @@ class ProfileController extends Controller
         return response()->json($data);
     }
 
-    public
-    function getProfile()
+    public function getProfile()
     {
         $meta = User_meta::where('user_id', Auth::user()->user_id)
             ->first();
@@ -84,10 +83,8 @@ class ProfileController extends Controller
         return $data;
     }
 
-    public
-    function profile(
-        Request $request
-    ) {
+    public function profile(Request $request)
+    {
         $profile = User_meta::where('user_id', Auth::user()->user_id)
             ->first();
         if ($profile) {
@@ -96,10 +93,8 @@ class ProfileController extends Controller
         return $this->create($request);
     }
 
-    public
-    function create(
-        Request $request
-    ) {
+    public function create(Request $request)
+    {
         $details = $request->all();
         $details = array_merge($details, [
             'updated_at' => date('Y-m-d H:i:s'),
@@ -138,11 +133,8 @@ class ProfileController extends Controller
         ]);
     }
 
-    public
-    function update(
-        Request $request
-    ) {
-
+    public function update(Request $request)
+    {
         $details = $request->all();
         /*$id = (int)$request->input('id') - 3021;
         $userMeta = User_meta::find($id);*/

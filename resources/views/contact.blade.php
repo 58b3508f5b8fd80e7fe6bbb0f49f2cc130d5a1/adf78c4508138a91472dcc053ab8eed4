@@ -102,19 +102,19 @@
                             <p>A better career is out there. We'll help you find it to use.</p>
                         </section>
                         <div class="careerfy-partner-slider">
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="png/partner-logo-1.png"
+                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-1.png')}}"
                                                                                         alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="png/partner-logo-2.png"
+                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-2.png')}}"
                                                                                         alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="png/partner-logo-3.png"
+                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-3.png')}}"
                                                                                         alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="png/partner-logo-4.png"
+                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-4.png')}}"
                                                                                         alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="png/partner-logo-5.png"
+                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-5.png')}}"
                                                                                         alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="png/partner-logo-6.png"
+                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-6.png')}}"
                                                                                         alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="png/partner-logo-3.png"
+                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-3.png')}}"
                                                                                         alt=""></a></div>
                         </div>
                     </div>

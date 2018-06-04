@@ -78,8 +78,8 @@ return [
     |
     */
 
-    'locale' => 'en',
-    'default-image'=>'careers.touchinglivesskills/app/user/avatar/default-user.png',
+    'locale'        => 'en',
+    'default-image' => 'careers.touchinglivesskills/app/user/avatar/default-user.png',
 
     /*
     |--------------------------------------------------------------------------

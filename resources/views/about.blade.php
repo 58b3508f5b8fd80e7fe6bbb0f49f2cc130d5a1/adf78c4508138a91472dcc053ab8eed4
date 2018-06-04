@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 careerfy-typo-wrap">
-                        <div class="careerfy-about-thumb"><img src="png/about-us-thumb.png" alt=""></div>
+                        <div class="careerfy-about-thumb"><img src="{{asset($public.'/png/about-us-thumb.png')}}" alt=""></div>
                     </div>
                     <div class="col-md-12 careerfy-typo-wrap">
                         <div class="careerfy-modren-counter">
@@ -65,7 +65,7 @@
                     <div class="careerfy-typo-wrap">
                         <div class="careerfy-testimonial-section">
                             <div class="row">
-                                <aside class="col-md-5"><img src="jpg/testimonial-thumb-1.jpg" alt=""></aside>
+                                <aside class="col-md-5"><img src="{{asset($public.'/jpg/testimonial-thumb-1.jpg')}}" alt=""></aside>
                                 <aside class="col-md-7">
                                     <div class="careerfy-testimonial-slider">
                                         <div class="careerfy-testimonial-slide-layer">
@@ -168,27 +168,27 @@
                         </section>
                         <div class="careerfy-service-slider">
                             <div class="careerfy-service-slider-layer">
-                                <a href="#"><img src="png/our-featured-slider-1.png" alt=""></a>
+                                <a href="#"><img src="{{asset($public.'/png/our-featured-slider-1.png')}}" alt=""></a>
                                 <span>Joel Dudley, <small>Web Designer</small></span>
                             </div>
                             <div class="careerfy-service-slider-layer">
-                                <a href="#"><img src="png/our-featured-slider-2.png" alt=""></a>
+                                <a href="#"><img src="{{asset($public.'/png/our-featured-slider-2.png')}}" alt=""></a>
                                 <span>David Stevens, <small>Supervisor</small></span>
                             </div>
                             <div class="careerfy-service-slider-layer">
-                                <a href="#"><img src="png/our-featured-slider-3.png" alt=""></a>
+                                <a href="#"><img src="{{asset($public.'/png/our-featured-slider-3.png')}}" alt=""></a>
                                 <span>James Ray, <small>Web Designer</small></span>
                             </div>
                             <div class="careerfy-service-slider-layer">
-                                <a href="#"><img src="png/our-featured-slider-4.png" alt=""></a>
+                                <a href="#"><img src="{{asset($public.'/png/our-featured-slider-4.png')}}" alt=""></a>
                                 <span>Noah Zimmerman, <small>Director</small></span>
                             </div>
                             <div class="careerfy-service-slider-layer">
-                                <a href="#"><img src="png/our-featured-slider-5.png" alt=""></a>
+                                <a href="#"><img src="{{asset($public.'/png/our-featured-slider-5.png')}}" alt=""></a>
                                 <span>Matt John, <small>Web Designer</small></span>
                             </div>
                             <div class="careerfy-service-slider-layer">
-                                <a href="#"><img src="png/our-featured-slider-1.png" alt=""></a>
+                                <a href="#"><img src="{{asset($public.'/png/our-featured-slider-1.png')}}" alt=""></a>
                                 <span>Joel Dudley, <small>Web Designer</small></span>
                             </div>
                         </div>
@@ -214,7 +214,7 @@
                         </div>
                     </aside>
                     <aside class="col-md-6 careerfy-typo-wrap">
-                        <div class="careerfy-logo-thumb"><img src="jpg/multiple-logos.jpg" alt=""></div>
+                        <div class="careerfy-logo-thumb"><img src="{{asset($public.'/jpg/multiple-logos.jpg')}}" alt=""></div>
                     </aside>
 
                 </div>

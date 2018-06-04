@@ -17,13 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['checkMaintenance'])->group(function () {
-    Route::middleware(['auth','checkUserStatus'])->group(function () {
+    Route::middleware(['auth', 'isUser', 'checkUserStatus'])->group(function (
+    ) {
+        Route::get('/home', 'HomeController@index')->name('home');
         Route::get('/profile', 'ProfileController@index')->name('profile');
         Route::get('/resume', 'ResumeController@index')->name('resume');
         Route::get('/jobs', 'JobController@index')->name('jobs');
-        Route::get('/jobs/applied', 'JobController@applied')->name('applied');
+        Route::get('/jobs/applied', 'JobController@applied')
+            ->name('applied');
         Route::post('/jobs/apply', 'JobController@apply');
         Route::post('/jobs/cancel', 'JobController@cancel');
     });
@@ -33,8 +35,9 @@ Route::middleware(['checkMaintenance'])->group(function () {
     Route::post('profile/avatar', 'ProfileController@avatar')
         ->name('update_avatar');
     Route::prefix('/resume')->group(function () {
-        Route::get('/download/cv','ResumeController@downloadCV');
-        Route::get('/modal/{action}/{type}/{id?}','ResumeController@getModal');
+        Route::get('/download/cv', 'ResumeController@downloadCV');
+        Route::get('/modal/{action}/{type}/{id?}',
+            'ResumeController@getModal');
         Route::post('/delete', 'ResumeController@delete');
         Route::post('/delete', 'ResumeController@delete');
         Route::post('/coverletter', 'ResumeController@coverLetter');
@@ -43,6 +46,18 @@ Route::middleware(['checkMaintenance'])->group(function () {
         Route::post('/honors', 'ResumeController@addHonors');
         Route::post('/skills', 'ResumeController@addSkills');
         Route::post('/curriculumvitae', 'ResumeController@curriculumVitae');
+    });
+    Route::middleware(['auth', 'isAdmin'])->group(function () {
+        Route::namespace('Admin')->group(function () {
+            Route::prefix('/backend')->group(function () {
+                Route::get('', 'AdminController@index');
+                Route::get('/user/{id}','AdminController@user');
+                Route::get('/applicants/{id}/{page?}/{per?}',
+                    'JobController@jobApplicants');
+                Route::get('/jobs/{page?}/{per?}', 'JobController@jobs');
+                Route::get('/download/cv/{id}', 'AdminController@downloadCV');
+            });
+        });
     });
 });
 Route::post('getlgas', function (\Illuminate\Support\Facades\Request $request) {
@@ -58,12 +73,15 @@ Route::post('getlgas', function (\Illuminate\Support\Facades\Request $request) {
         'html' => $html
     ]);
 })->middleware('checkMaintenance');
-Route::get('/contact', function(){
-   return view('contact',['title'=>'Contact Us']);
+Route::get('/contact', function () {
+    return view('contact', ['title' => 'Contact Us']);
 });
-Route::get('/about', function(){
-    return view('about',['title'=>'About Us']);
+Route::get('/about', function () {
+    return view('about', ['title' => 'About Us']);
 });
-Route::get('/faq', function(){
-    return view('faq',['title'=>'Frequently Asked Questions']);
+Route::get('/faq', function () {
+    return view('faq', ['title' => 'Frequently Asked Questions']);
+});
+Route::get('test', function (\Illuminate\Http\Request $request) {
+    echo $request->user()->type;
 });

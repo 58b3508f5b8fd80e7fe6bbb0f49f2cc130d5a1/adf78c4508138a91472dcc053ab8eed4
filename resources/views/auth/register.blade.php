@@ -28,7 +28,8 @@
                     <ul>
                         <li>
                             <label>First Name:</label>
-                            <input value="{{old('first_name')}}" name="first_name" type="text" placeholder="Enter first name">
+                            <input value="{{old('first_name')}}" name="first_name" type="text"
+                                   placeholder="Enter first name">
                             <i class="fa fa-user"></i>
                             @if ($errors->has('first_name'))
                                 <span class="text-danger">{{ $errors->first('first_name') }}</span>
@@ -36,7 +37,8 @@
                         </li>
                         <li>
                             <label>Last Name:</label>
-                            <input value="{{old('last_name')}}" name="last_name" type="text" placeholder="Enter last name">
+                            <input value="{{old('last_name')}}" name="last_name" type="text"
+                                   placeholder="Enter last name">
                             <i class="fa fa-user"></i>
                             @if ($errors->has('last_name'))
                                 <span class="text-danger">{{ $errors->first('last_name') }}</span>
@@ -52,7 +54,8 @@
                         </li>
                         <li>
                             <label>Phone Number:</label>
-                            <input value="{{old('phone_no')}}" name="phone_no" type="text" placeholder="Enter Phone number">
+                            <input value="{{old('phone_no')}}" name="phone_no" type="text"
+                                   placeholder="Enter Phone number">
                             <i class="fa fa-phone"></i>
                             @if ($errors->has('phone_no'))
                                 <span class="text-danger">{{ $errors->first('phone_no') }}</span>
@@ -73,10 +76,11 @@
                         </li>
                         <li class="careerfy-user-form-coltwo-full">
                             <label>Job Title</label>
-                            <input value="{{old('job_title')}}" name="job_title" type="text" placeholder="Enter job title">
+                            <input value="{{old('job_title')}}" name="job_title" type="text"
+                                   placeholder="Enter job title">
                             <i class="fa fa-briefcase"></i>
-                            @if ($errors->has('phone_no'))
-                                <span class="text-danger">{{ $errors->first('phone_no') }}</span>
+                            @if ($errors->has('job_title'))
+                                <span class="text-danger">{{ $errors->first('job_title') }}</span>
                             @endif
                         </li>
                         <li class="careerfy-user-form-coltwo-full">
