@@ -51,7 +51,7 @@ Route::middleware(['checkMaintenance'])->group(function () {
         Route::namespace('Admin')->group(function () {
             Route::prefix('/backend')->group(function () {
                 Route::get('', 'AdminController@index');
-                Route::get('/user/{id}','AdminController@user');
+                Route::get('/user/{id}','UserController@index');
                 Route::get('/applicants/{id}/{page?}/{per?}',
                     'JobController@jobApplicants');
                 Route::get('/jobs/{page?}/{per?}', 'JobController@jobs');

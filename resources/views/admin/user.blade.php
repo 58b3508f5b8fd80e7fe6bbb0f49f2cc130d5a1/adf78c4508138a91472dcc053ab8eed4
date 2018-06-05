@@ -51,7 +51,7 @@
                                 <div class="careerfy-employer-dashboard-nav">
                                     <figure>
                                         <a href="#" class="employer-dashboard-thumb"><img
-                                                    src="png/employer-dashboard-1.png" alt=""></a>
+                                                    src="{{Storage::url(Auth::user()->avatar_location)}}" alt=""></a>
                                         <figcaption>
                                             <div class="careerfy-fileUpload">
                                                 <span><i class="careerfy-icon careerfy-add"></i> Upload Photo</span>
@@ -90,149 +90,121 @@
                         </aside>
                         <div class="careerfy-column-9">
                             <div class="careerfy-typo-wrap">
+                                <div class="careerfy-content-title">
+                                    <h2>About {{"$user->first_name $user->last_name"}}</h2>
+                                </div>
+                                <div class="careerfy-candidate careerfy-candidate-grid">
+                                    <ul class="careerfy-row">
+                                        <li class="careerfy-column-12">
+                                            <figure>
+                                                <a href="#" class="careerfy-candidate-grid-thumb"><img src="{{asset($public.'/jpg/candidates-grid-thumb-2.jpg')}}" alt=""> <span class="careerfy-candidate-grid-status careerfy-yellow"></span></a>
+                                                <figcaption>
+                                                    <h2><a href="#">{{"$user->first_name $user->last_name"}}</a></h2>
+                                                    <p>{{$user->job_title}}</p>
+                                                    <span>{{"$user->state, $user->lga"}}</span>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <div class="careerfy-candidate-editor">
-                                    <div class="careerfy-content-title"><h2>About Ariana Grande</h2></div>
                                     <div class="careerfy-jobdetail-services">
                                         <ul class="careerfy-row">
                                             <li class="careerfy-column-4">
                                                 <i class="careerfy-icon careerfy-salary"></i>
-                                                <div class="careerfy-services-text">Offerd Salary <small>£50,000+</small></div>
+                                                <div class="careerfy-services-text">Current Salary
+                                                    <small>&#8358;{{number_format($user->current_salary)}}</small>
+                                                </div>
                                             </li>
                                             <li class="careerfy-column-4">
-                                                <i class="careerfy-icon careerfy-social-media"></i>
-                                                <div class="careerfy-services-text">Career Level <small>Manager</small></div>
+                                                <i class="careerfy-icon careerfy-salary"></i>
+                                                <div class="careerfy-services-text">Expected Salary
+                                                    <small>&#8358;{{number_format($user->expected_salary)}}</small>
+                                                </div>
                                             </li>
                                             <li class="careerfy-column-4">
                                                 <i class="careerfy-icon careerfy-briefcase"></i>
-                                                <div class="careerfy-services-text">Experience <small>7 Years</small></div>
-                                            </li>
-                                            <li class="careerfy-column-4">
-                                                <i class="careerfy-icon careerfy-user"></i>
-                                                <div class="careerfy-services-text">Gender <small>Male</small></div>
-                                            </li>
-                                            <li class="careerfy-column-4">
-                                                <i class="careerfy-icon careerfy-network"></i>
-                                                <div class="careerfy-services-text">Industry <small>Banking</small></div>
-                                            </li>
-                                            <li class="careerfy-column-4">
-                                                <i class="careerfy-icon careerfy-mortarboard"></i>
-                                                <div class="careerfy-services-text">Qualification <small>Master’s Degree</small></div>
+                                                <div class="careerfy-services-text">Experience
+                                                    <small>{{$user->experience}} years</small>
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="careerfy-content-title"><h2>Candidte Description</h2></div>
                                     <div class="careerfy-description">
-                                        <p>Hello my name is Ariana Gande Connor and I’m a Financial Supervisor from Netherlands, Rotterdam. In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante accumsan ac est.</p>
-                                    </div>
-                                    <div class="careerfy-description">
-                                        <p>Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec.</p>
+                                        <p>{!! nl2br($user->description) !!}}</p>
                                     </div>
                                 </div>
-                                <div class="careerfy-candidate-title"> <h2><i class="careerfy-icon careerfy-mortarboard"></i> Education</h2> </div>
+                                <div class="careerfy-candidate-title"><h2><i
+                                                class="careerfy-icon careerfy-mortarboard"></i> Education</h2></div>
                                 <div class="careerfy-candidate-timeline">
                                     <ul class="careerfy-row">
-                                        <li class="careerfy-column-12">
-                                            <small>2002 - 2004</small>
-                                            <div class="careerfy-candidate-timeline-text">
-                                                <span>Walters University</span>
-                                                <h2><a href="#">Masters in Fine Arts</a></h2>
-                                                <p>Fussy penguin insect additionally wow absolutely crud meretriciously hastily dalmatian a glowered. outside oh arrogantly vehement.</p>
-                                            </div>
-                                        </li>
-                                        <li class="careerfy-column-12">
-                                            <small>2012 - 2015</small>
-                                            <div class="careerfy-candidate-timeline-text">
-                                                <span>Bachlors in Fine Arts</span>
-                                                <h2><a href="#">Tommers College</a></h2>
-                                                <p>That one rank beheld bluebird after outside ignobly allegedly more when oh arrogantly vehement irresistibly fussy penguin insect additionally.</p>
-                                            </div>
-                                        </li>
-                                        <li class="careerfy-column-12">
-                                            <small>2014 - 2015</small>
-                                            <div class="careerfy-candidate-timeline-text">
-                                                <span>Imperieal Institute of Art Direction</span>
-                                                <h2><a href="#">Diploma in Fine Arts</a></h2>
-                                                <p>Outside ignobly allegedly more when oh arrogantly vehement irresistibly fussy penguin insect additionally wow absolutely crud meretriciously  a glowered.</p>
-                                            </div>
-                                        </li>
+                                        @foreach($educations as $education)
+                                            <li class="careerfy-column-12">
+                                                <small>{{date('Y', strtotime($education->started_at)) .' - ' .date('Y', strtotime($education->finished_at))}}</small>
+                                                <div class="careerfy-candidate-timeline-text">
+                                                    <span>{{$education->institution}}</span>
+                                                    <h2>
+                                                        <a href="#">{{"$education->qualification in $education->title"}}</a>
+                                                    </h2>
+                                                    <p>{{$education->description}}</p>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
-                                <div class="careerfy-candidate-title"> <h2><i class="careerfy-icon careerfy-social-media"></i> Experince</h2> </div>
+                                <div class="careerfy-candidate-title"><h2><i
+                                                class="careerfy-icon careerfy-social-media"></i> Experince</h2></div>
                                 <div class="careerfy-candidate-timeline">
                                     <ul class="careerfy-row">
-                                        <li class="careerfy-column-12">
-                                            <small>2010 - 2012</small>
-                                            <div class="careerfy-candidate-timeline-text">
-                                                <span>Atract Solutions</span>
-                                                <h2><a href="#">Development Manager</a></h2>
-                                                <p>Arrogantly vehement irresistibly fussy penguin insect additionally wow absolutely crud meretriciously hastily dalmatian a glowered.</p>
-                                            </div>
-                                        </li>
-                                        <li class="careerfy-column-12">
-                                            <small>2006 - 2008</small>
-                                            <div class="careerfy-candidate-timeline-text">
-                                                <span>Bachlors in Fine Arts</span>
-                                                <h2><a href="#">Minor Solutions</a></h2>
-                                                <p>Far much that one rank beheld bluebird after outside ignobly allegedly more when oh arrogantly vehement irresistibly fussy penguin insect additionally.</p>
-                                            </div>
-                                        </li>
-                                        <li class="careerfy-column-12">
-                                            <small>2002 - 2004</small>
-                                            <div class="careerfy-candidate-timeline-text">
-                                                <span>Abstraxct Max</span>
-                                                <h2><a href="#">Self Employed Professional</a></h2>
-                                                <p>Outside ignobly allegedly more when oh arrogantly vehement irresistibly fussy penguin insect additionally wow absolutely crud meretriciously</p>
-                                            </div>
-                                        </li>
+                                        @foreach($experiences as $experience)
+                                            <li class="careerfy-column-12">
+                                                <small>{{date('Y', strtotime($experience->started_at)).' - '.date('Y', strtotime($experience->finished_at))}}</small>
+                                                <div class="careerfy-candidate-timeline-text">
+                                                    <span>{{$experience->company}}</span>
+                                                    <h2><a href="#">{{$experience->title}}</a></h2>
+                                                    <p>{{$experience->description}}</p>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 <div class="jobsearch_progressbar_wrap">
                                     <div class="careerfy-row">
                                         <div class="careerfy-column-12">
-                                            <div class="careerfy-candidate-title"> <h2><i class="careerfy-icon careerfy-design-skills"></i> Skills</h2> </div>
-                                            <div class="jobsearch_progressbar" data-width="90"><span class="title">Sale Product</span><div class="bar-container " style="background-color:#dbdbdb;height:6px;"><span class="backgroundBar"></span><span class="bar" style="background-color: rgb(19, 181, 234); opacity: 1; width: 90%;"></span></div></div>
-                                            <div class="jobsearch_progressbar" data-width="72"><span class="title">Google Seo</span><div class="bar-container " style="background-color:#dbdbdb;height:6px;"><span class="backgroundBar"></span><span class="bar" style="background-color: rgb(19, 181, 234); opacity: 1; width: 72%;"></span></div></div>
-                                            <div class="jobsearch_progressbar" data-width="50"><span class="title">Listening</span><div class="bar-container " style="background-color:#dbdbdb;height:6px;"><span class="backgroundBar"></span><span class="bar" style="background-color: rgb(19, 181, 234); opacity: 1; width: 50%;"></span></div></div>
-                                            <div class="jobsearch_progressbar" data-width="95"><span class="title">Graphic Design</span><div class="bar-container " style="background-color:#dbdbdb;height:6px;"><span class="backgroundBar"></span><span class="bar" style="background-color: rgb(19, 181, 234); opacity: 1; width: 95%;"></span></div></div>
-                                            <div class="jobsearch_progressbar" data-width="75"><span class="title">Business Sense</span><div class="bar-container " style="background-color:#dbdbdb;height:6px;"><span class="backgroundBar"></span><span class="bar" style="background-color: rgb(19, 181, 234); opacity: 1; width: 75%;"></span></div></div>
+                                            <div class="careerfy-candidate-title"><h2><i
+                                                            class="careerfy-icon careerfy-design-skills"></i> Skills
+                                                </h2></div>
+
+                                            @foreach($skills as $skill)
+                                                <div class="jobsearch_progressbar" data-width="{{$skill->percentage}}">
+                                                    <span class="title">{{$skill->title}} ({{$skill->percentage}}
+                                                        %)</span>
+                                                    <div class="bar-container "
+                                                         style="background-color:#dbdbdb;height:6px;">
+                                                        <span class="backgroundBar"></span>
+                                                        <span class="bar"
+                                                              style="background-color: rgb(19, 181, 234); opacity: 1; width: {{$skill->percentage}}%;"></span>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
-                                <div class="careerfy-candidate-title"> <h2><i class="careerfy-icon careerfy-trophy"></i> Honors &amp; awards</h2> </div>
+                                <div class="careerfy-candidate-title"><h2><i class="careerfy-icon careerfy-trophy"></i>
+                                        Honors &amp; awards</h2></div>
                                 <div class="careerfy-candidate-timeline">
                                     <ul class="careerfy-row">
-                                        <li class="careerfy-column-12">
-                                            <small>2007</small>
-                                            <div class="careerfy-candidate-timeline-text">
-                                                <span>Yeartam</span>
-                                                <h2><a href="#">Distinguished Service Award</a></h2>
-                                                <p>Fussy penguin insect additionally wow absolutely crud meretriciously hastily dalmatian a glowered. outside ignobly allegedly more when vehement.</p>
-                                            </div>
-                                        </li>
-                                        <li class="careerfy-column-12">
-                                            <small>2012</small>
-                                            <div class="careerfy-candidate-timeline-text">
-                                                <span>Goldtech</span>
-                                                <h2><a href="#">Robin Milner Young Researcher Award</a></h2>
-                                                <p>That one rank beheld bluebird after outside ignobly allegedly more when oh arrogantly vehement irresistibly fussy penguin insect additionally.</p>
-                                            </div>
-                                        </li>
-                                        <li class="careerfy-column-12">
-                                            <small>2014</small>
-                                            <div class="careerfy-candidate-timeline-text">
-                                                <span>Unodoncity</span>
-                                                <h2><a href="#">Doctoral Dissertation Award</a></h2>
-                                                <p>Outside ignobly allegedly more when oh arrogantly vehement irresistibly fussy penguin insect additionally wow absolutely crud meretriciously a glowered.</p>
-                                            </div>
-                                        </li>
-                                        <li class="careerfy-column-12">
-                                            <small>Dec 2016</small>
-                                            <div class="careerfy-candidate-timeline-text">
-                                                <span>Techzenbam</span>
-                                                <h2><a href="#">Programming Languages Achievement</a></h2>
-                                                <p>Outside ignobly allegedly more when oh arrogantly vehement irresistibly fussy penguin insect additionally wow absolutely hastily dalmatian a glowered.</p>
-                                            </div>
-                                        </li>
+                                        @foreach($honors as $honor)
+                                            <li class="careerfy-column-12">
+                                                <small>{{$honor->received_at}}</small>
+                                                <div class="careerfy-candidate-timeline-text">
+                                                    <span>{{$honor->company}}</span>
+                                                    <h2><a href="#">{{$honor->title}}</a></h2>
+                                                    <p>{{$honor->description}}</p>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
