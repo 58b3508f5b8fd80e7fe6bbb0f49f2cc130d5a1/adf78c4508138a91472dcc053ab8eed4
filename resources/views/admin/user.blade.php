@@ -46,48 +46,7 @@
             <div class="careerfy-main-section careerfy-dashboard-fulltwo">
                 <div class="container">
                     <div class="row">
-                        <aside class="careerfy-column-3">
-                            <div class="careerfy-typo-wrap">
-                                <div class="careerfy-employer-dashboard-nav">
-                                    <figure>
-                                        <a href="#" class="employer-dashboard-thumb"><img
-                                                    src="{{Storage::url(Auth::user()->avatar_location)}}" alt=""></a>
-                                        <figcaption>
-                                            <div class="careerfy-fileUpload">
-                                                <span><i class="careerfy-icon careerfy-add"></i> Upload Photo</span>
-                                                <input class="careerfy-upload" type="file">
-                                            </div>
-                                            <h2>Graveholdings</h2>
-                                        </figcaption>
-                                    </figure>
-                                    <ul>
-                                        <li><a href="employer-dashboard-profile-seting.html"><i
-                                                        class="careerfy-icon careerfy-user"></i> Company Profile</a>
-                                        </li>
-                                        <li class="active"><a href="#employer-dashboard-manage-jobs.html"><i
-                                                        class="careerfy-icon careerfy-briefcase-1"></i> Manage Jobs</a>
-                                        </li>
-                                        <li><a href="employer-dashboard-transactions.html"><i
-                                                        class="careerfy-icon careerfy-salary"></i> Transactions</a></li>
-                                        <li><a href="employer-dashboard-resumes.html"><i
-                                                        class="careerfy-icon careerfy-heart"></i> Shortlisted
-                                                Resumes</a></li>
-                                        <li><a href="employer-dashboard-packages.html"><i
-                                                        class="careerfy-icon careerfy-credit-card-1"></i> Packages</a>
-                                        </li>
-                                        <li><a href="employer-dashboard-newjob.html"><i
-                                                        class="careerfy-icon careerfy-plus"></i> Post a New Job</a></li>
-                                        <li><a href="employer-dashboard-manage-jobs.html"><i
-                                                        class="careerfy-icon careerfy-alarm"></i> Job Alerts</a></li>
-                                        <li><a href="candidate-dashboard-changed-password.html"><i
-                                                        class="careerfy-icon careerfy-multimedia"></i> Change
-                                                Password</a></li>
-                                        <li><a href="index-2.html"><i class="careerfy-icon careerfy-logout"></i> Logout</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </aside>
+                        @include('includes.admin.sidebar',['users_sidebar'=>true])
                         <div class="careerfy-column-9">
                             <div class="careerfy-typo-wrap">
                                 <div class="careerfy-content-title">
@@ -97,7 +56,7 @@
                                     <ul class="careerfy-row">
                                         <li class="careerfy-column-12">
                                             <figure>
-                                                <a href="#" class="careerfy-candidate-grid-thumb"><img src="{{asset($public.'/jpg/candidates-grid-thumb-2.jpg')}}" alt=""> <span class="careerfy-candidate-grid-status careerfy-yellow"></span></a>
+                                                <a href="#" class="careerfy-candidate-grid-thumb"><img src="{{Storage::url($user->avatar_location)}}" alt=""> <span class="careerfy-candidate-grid-status careerfy-yellow"></span></a>
                                                 <figcaption>
                                                     <h2><a href="#">{{"$user->first_name $user->last_name"}}</a></h2>
                                                     <p>{{$user->job_title}}</p>

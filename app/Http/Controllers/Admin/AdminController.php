@@ -26,21 +26,4 @@ class AdminController extends Controller
 
     }
 
-    public function downloadCV($id)
-    {
-        $resume = Resume::where('resume_id', $id)->first();
-        if ($resume && Storage::exists($resume->cv_location)) {
-            $path = Storage::get($resume->cv_location);
-            $name = $id . "_cv_" . date('YmdHis');
-            return Storage::download($resume->cv_location, $name);
-        } else {
-            $message = "Sorry, file does not exist..";
-            $status = "danger";
-        }
-
-        return redirect()->back()->with([
-            'message' => $message,
-            'state'   => $status
-        ]);
-    }
 }

@@ -3,40 +3,26 @@
     <div class="careerfy-typo-wrap">
         <div class="careerfy-employer-dashboard-nav">
             <figure>
-                <a href="#" class="employer-dashboard-thumb"><img
-                            src="png/employer-dashboard-1.png" alt=""></a>
+                <a href="#" class="employer-dashboard-thumb">
+                    <img src="{{Storage::url(Auth::user()->avatar_location)}}" class="user-avatar" alt=""></a>
                 <figcaption>
-                    <div class="careerfy-fileUpload">
-                        <span><i class="careerfy-icon careerfy-add"></i> Upload Photo</span>
-                        <input class="careerfy-upload" type="file">
-                    </div>
-                    <h2>Graveholdings</h2>
+                    <h3>{{Auth::user()->first_name.' '.Auth::user()->last_name}}</h3>
+                    <span class="careerfy-dashboard-subtitle">{{Auth::user()->job_title}}</span>
                 </figcaption>
             </figure>
             <ul>
-                <li><a href="employer-dashboard-profile-seting.html"><i
-                                class="careerfy-icon careerfy-user"></i> Company Profile</a>
-                </li>
-                <li class="active"><a href="#employer-dashboard-manage-jobs.html"><i
-                                class="careerfy-icon careerfy-briefcase-1"></i> Manage Jobs</a>
-                </li>
-                <li><a href="employer-dashboard-transactions.html"><i
-                                class="careerfy-icon careerfy-salary"></i> Transactions</a></li>
-                <li><a href="employer-dashboard-resumes.html"><i
-                                class="careerfy-icon careerfy-heart"></i> Shortlisted
-                        Resumes</a></li>
-                <li><a href="employer-dashboard-packages.html"><i
-                                class="careerfy-icon careerfy-credit-card-1"></i> Packages</a>
-                </li>
-                <li><a href="employer-dashboard-newjob.html"><i
-                                class="careerfy-icon careerfy-plus"></i> Post a New Job</a></li>
-                <li><a href="employer-dashboard-manage-jobs.html"><i
-                                class="careerfy-icon careerfy-alarm"></i> Job Alerts</a></li>
-                <li><a href="candidate-dashboard-changed-password.html"><i
-                                class="careerfy-icon careerfy-multimedia"></i> Change
-                        Password</a></li>
-                <li><a href="index-2.html"><i class="careerfy-icon careerfy-logout"></i> Logout</a>
-                </li>
+                <li @if(isset($profile_sidebar)) class="active" @endif><a href="{{route('profile')}}"><i
+                                class="careerfy-icon careerfy-user"></i> My Profile</a></li>
+                <li @if(isset($resume_sidebar)) class="active" @endif><a href="{{route('resume')}}"><i
+                                class="careerfy-icon careerfy-resume"></i> My Resume</a></li>
+                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('jobs')}}"><i
+                                class="careerfy-icon careerfy-heart"></i> Job Alerts</a></li>
+                <li @if(isset($applied_sidebar)) class="active" @endif><a href="{{route('applied')}}"><i
+                                class="careerfy-icon careerfy-briefcase-1"></i>
+                        Applied Jobs</a></li>
+                <li><a href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                class="careerfy-icon careerfy-logout"></i> Logout</a></li>
             </ul>
         </div>
     </div>

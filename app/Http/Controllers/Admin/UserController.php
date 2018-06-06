@@ -38,6 +38,21 @@ class UserController extends Controller
 
     }
 
+    public function downloadCV($id)
+    {
+        $resume = Resume::where('resume_id', $id)->first();
+        if ($resume && Storage::exists($resume->cv_location)) {
+            $path = Storage::get($resume->cv_location);
+            $name = $id . "_cv_" . date('YmdHis');
+            return Storage::download($resume->cv_location, $name);
+        }
+
+        return redirect()->back()->with([
+            'status' => 'Sorry, file does not exist..',
+            'state'  => 'danger'
+        ]);
+    }
+
     public function getResume($id)
     {
         $resume = Resume::where('resume_id', $id)->first();
@@ -46,27 +61,29 @@ class UserController extends Controller
 
     public function getEducation($id)
     {
-        $education = Education::where('resume_id', $id)
+        $education = Education::where('resume_id', $id)->orderBy('started_at','desc')
+            ->orderBy('finished_at','desc')
             ->get();
         return $education;
     }
 
     public function getExperience($id)
     {
-        $experience = Experience::where('resume_id', $id)
+        $experience = Experience::where('resume_id', $id)->orderBy('started_at','desc')
+            ->orderBy('finished_at','desc')
             ->get();
         return $experience;
     }
 
     public function getHonors($id)
     {
-        $honors = Honor::where('resume_id', $id)->get();
+        $honors = Honor::where('resume_id', $id)->orderBy('received_at','desc')->get();
         return $honors;
     }
 
     public function getSkills($id)
     {
-        $skills = Skill::where('resume_id', $id)->get();
+        $skills = Skill::where('resume_id', $id)->orderBy('title')->get();
         return $skills;
     }
 

@@ -55,7 +55,8 @@ Route::middleware(['checkMaintenance'])->group(function () {
                 Route::get('/applicants/{id}/{page?}/{per?}',
                     'JobController@jobApplicants');
                 Route::get('/jobs/{page?}/{per?}', 'JobController@jobs');
-                Route::get('/download/cv/{id}', 'AdminController@downloadCV');
+                Route::get('/download/cv/{id}', 'UserController@downloadCV');
+                Route::post('/jobs/shortlist','JobController@shortlistApplicant');
             });
         });
     });

@@ -36,7 +36,7 @@ class JobController extends Controller
             . date('YmdHis'));
         $application->resume_id = Auth::user()->user_id;
         $application->job_id = $job->job_id;
-        $application->status = "pending";
+        $application->status = "applied";
 
         if ($application->save()) {
             $data['message']

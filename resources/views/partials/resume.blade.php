@@ -27,7 +27,7 @@
                     <div class="careerfy-column-9">
                         @if(!null == session('status'))
                             @php $status=session('status'); @endphp
-                            <div class="alert alert-{{$status['state']}}">{{$status['message']}}</div>
+                            <div class="alert alert-{{session('state')}}">{{session('status')}}</div>
                         @endif
                         <div class="careerfy-typo-wrap">
 
