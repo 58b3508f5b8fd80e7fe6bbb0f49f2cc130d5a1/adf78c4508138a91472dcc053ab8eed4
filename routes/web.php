@@ -28,6 +28,8 @@ Route::middleware(['checkMaintenance'])->group(function () {
             ->name('applied');
         Route::post('/jobs/apply', 'JobController@apply');
         Route::post('/jobs/cancel', 'JobController@cancel');
+        Route::get('/jobs/test/{id}', 'TestController@index');
+        Route::post('/jobs/test/start','TestController@startTest');
     });
 
     Route::post('profile/update', 'ProfileController@profile')
@@ -47,29 +49,36 @@ Route::middleware(['checkMaintenance'])->group(function () {
         Route::post('/skills', 'ResumeController@addSkills');
         Route::post('/curriculumvitae', 'ResumeController@curriculumVitae');
     });
+
+    // drg >> Routes for the administrators
     Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::namespace('Admin')->group(function () {
             Route::prefix('/backend')->group(function () {
                 Route::get('', 'AdminController@index');
-                Route::get('/user/{id}','UserController@index');
+                Route::get('/user/{id}', 'UserController@index');
                 Route::get('/applicants/{id}/{page?}/{per?}',
                     'JobController@jobApplicants');
                 Route::get('/jobs/{page?}/{per?}', 'JobController@jobs');
+                Route::get('/jobs/search/{page?}/{per?}', 'JobController@searchJobs');
                 Route::get('/download/cv/{id}', 'UserController@downloadCV');
-                Route::post('/jobs/shortlist','JobController@shortlistApplicant');
+                Route::post('/jobs/shortlist',
+                    'JobController@shortlistApplicant');
+                Route::prefix('/test')->group(function () {
+                    Route::get('/add', 'TestController@addTest');
+                });
             });
         });
     });
 });
-Route::post('getlgas', function (\Illuminate\Support\Facades\Request $request) {
+Route::post('getlgas', function (\Illuminate\Http\Request $request) {
     $state = $request->input('state');
-    $lgas = $this->LGAs();
     $html = "<option selected disabled>Select LGA</option>";
     foreach (__('lgas.index') as $lga) {
         if ($lga[0] == $state) {
             $html .= "<option>$lga[1]</option>";
         }
     }
+
     return response()->json([
         'html' => $html
     ]);

@@ -33,7 +33,7 @@
                         @include('includes.sidebar',['applied_sidebar'=>true])
                     @endif
                     <div class="careerfy-column-9">
-                        <div class="careerfy-typo-wrap">
+                        <div>
                             <div class="careerfy-employer-box-section">
                                 <div class="careerfy-profile-title">
                                     <h2>{{$title}}</h2>
@@ -50,7 +50,35 @@
                                                 <div class="careerfy-applied-jobs-wrap">
                                                     <div class="careerfy-applied-jobs-text">
                                                         <div class="careerfy-applied-jobs-left col-xs-12">
-                                                            <h2><a href="#">{{$job->title}}</a></h2>
+                                                            <h2><a href="#">{{$job->title}}</a>
+                                                                <div class="pull-right">
+                                                                    @if($type=='new')
+                                                                        <a class="text-success btn"
+                                                                           data-title="{{$job->title}}"
+                                                                           data-id="{{$job->id+9431}}"
+                                                                           onclick="applyJob(this)"><i
+                                                                                    class="fa fa-plane"></i> Apply Now
+                                                                        </a>
+                                                                    @else
+                                                                        @if($job->status=='shortlisted')
+
+                                                                            <a class="text-success btn"
+                                                                               href="{{url("/jobs/test/$job->application_id")}}"><i
+                                                                                        class="fa fa-check"></i> Take
+                                                                                Test
+                                                                            </a>
+
+                                                                        @endif
+                                                                        <a class="text-danger btn"
+                                                                           data-title="{{$job->title}}"
+                                                                           data-id="{{$job->id+113}}"
+                                                                           onclick="cancelJob(this)"><i
+                                                                                    class="fa fa-times"></i> Cancel
+                                                                        </a>
+
+                                                                    @endif
+                                                                </div>
+                                                            </h2>
                                                             <span>{{$job->description}}</span>
                                                             <ul>
                                                                 <li><i class="fa fa-map-marker"></i>
@@ -74,28 +102,7 @@
                                                                     </li>
                                                                 @endif
                                                             </ul>
-                                                            @if($type=='new')
-                                                                <span class="pull-right">
-                                                                <button class="btn btn-info btn-sm"
-                                                                        data-title="{{$job->title}}"
-                                                                        data-id="{{$job->id+9431}}"
-                                                                        onclick="applyJob(this)"><i
-                                                                            class="fa fa-plane"></i> Apply Now
-                                                                </button>
-                                                                </span>
-                                                            @else
-                                                                <ul class="list-inline pull-right">
-                                                                    <li>
-                                                                        <button class="btn btn-link btn-sm"
-                                                                                data-title="{{$job->title}}"
-                                                                                data-id="{{$job->id+113}}"
-                                                                                onclick="cancelJob(this)"><i
-                                                                                    class="fa fa-times"></i> Cancel
-                                                                            Application
-                                                                        </button>
-                                                                    </li>
-                                                                </ul>
-                                                            @endif
+
                                                         </div>
                                                         {{--<a href="#" class="careerfy-savedjobs-links"><i
                                                                     class="careerfy-icon careerfy-view"></i></a>--}}

@@ -54,14 +54,19 @@
                                         <!-- Profile Title -->
                                         <div class="careerfy-profile-title">
                                             <h2>Manage Jobs</h2>
-                                            <form class="careerfy-employer-search">
-                                                <input value="Search orders"
-                                                       onblur="if(this.value == '') { this.value ='Search orders'; }"
-                                                       onfocus="if(this.value =='Search orders') { this.value = ''; }"
+                                            <form action="{{url("/backend/jobs/search/$page/$per")}}" method="get"
+                                                  class="careerfy-employer-search">
+                                                <input placeholder="Search jobs"
+                                                       name="search" value="{{$search or null}}"
                                                        type="text">
                                                 <input value="" type="submit">
                                                 <i class="careerfy-icon careerfy-search"></i>
                                             </form>
+                                        </div>
+                                        <div class="careerfy-filterable">
+                                            <h2>Showing {{$page*$per - $per}}
+                                                to {{$page*$per < sizeof($jobs) ? $page*$per : sizeof($jobs)}}
+                                                of {{sizeof($jobs)}} results</h2>
                                         </div>
                                         <!-- Manage Jobs -->
                                         <div class="careerfy-managejobs-list-wrap">
@@ -130,12 +135,12 @@
                                         <div class="col-xs-6 col-sm-4 careerfy-employer-search">
                                             <label>Results per page: </label>
                                             <select id="per-page">
-                                                <option value="10">10 results</option>
-                                                <option value="20">20 results</option>
-                                                <option value="30">30 results</option>
-                                                <option value="40">40 results</option>
-                                                <option value="50">50 results</option>
-                                                <option value="100">100 results</option>
+                                                <option value="10" @if($per==10) selected @endif>10 results</option>
+                                                <option value="20" @if($per==20) selected @endif>20 results</option>
+                                                <option value="30" @if($per==30) selected @endif>30 results</option>
+                                                <option value="40" @if($per==40) selected @endif>40 results</option>
+                                                <option value="50" @if($per==50) selected @endif>50 results</option>
+                                                <option value="100" @if($per==100) selected @endif>100 results</option>
                                             </select>
                                         </div>
                                         <div class="careerfy-pagination-blog">
@@ -154,9 +159,19 @@
                                                 </li>
                                                 @for($pg=1; $pg<=$pages;$pg++)
                                                     @if(($pg>$page-3 && $pg<$page+3) || ($page<=4 && $pg<=4))
+                                                        @php
+                                                            if(isset($search)){
+                                                                $issearch="/search";
+                                                                $query='?'.urlencode($search);
+                                                            }
+                                                            else {
+                                                                $issearch="";
+                                                                $query="";
+                                                            }
+                                                        @endphp
                                                         <li>
                                                             <a href="javascript:void(0)"
-                                                               onclick="var per=document.getElementById('per-page').value;window.location='{{url("/backend/jobs/$pg")}}/'+per;"
+                                                               onclick="var per=document.getElementById('per-page').value;window.location='{{url("/backend/jobs$issearch/$pg")}}/'+per+'{{$query}}';"
                                                                class="page-numbers @if($pg==$page) current @endif">{{str_pad($pg,2,"0",STR_PAD_LEFT)}}</a>
                                                         </li>
                                                     @endif

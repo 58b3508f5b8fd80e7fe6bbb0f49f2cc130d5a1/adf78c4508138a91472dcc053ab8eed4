@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Codebase - Bootstrap 4 Admin Template &amp; UI Framework | DEMO</title>
+    <title>@yield('title') - {{config('app.name')}}</title>
     <meta name="description"
           content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest | This is the demo of Codebase! You need to purchase a license for legal use! | DEMO">
     <meta name="author" content="pixelcave">
@@ -22,10 +22,12 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
-    <link rel="shortcut icon" href="{{asset($public.'/png/favicon.png')}}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{asset($public.'/png/favicon-192x192.png')}}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset($public.'/png/apple-touch-icon-180x180.png')}}">
-    <link rel="stylesheet" id="css-main" href="{{asset($public.'/css/codebase.min-1.4.css')}}">
+    <link rel="shortcut icon" href="{{asset($public.'/dashboard/png/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{asset($public.'/dashboard/png/favicon-192x192.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="{{asset($public.'/dashboard/png/apple-touch-icon-180x180.png')}}">
+    <link rel="stylesheet" id="css-main" href="{{asset($public.'/dashboard/css/codebase.min-1.4.css')}}">
+    @yield('styles')
 </head>
 <body>
 <div id="page-container" class="sidebar-inverse side-scroll page-header-fixed page-header-inverse main-content-boxed">
@@ -304,9 +306,9 @@
         </div>
     </footer>
 </div>
-<script src="{{asset($public.'/js/codebase.min-1.4.js')}}"></script>
-<script src="{{asset($public.'/js/chart.bundle.min.js')}}"></script>
-<script src="{{asset($public.'/js/be_pages_dashboard.js')}}"></script>
+<script src="{{asset($public.'/dashboard/js/codebase.min-1.4.js')}}"></script>
+<script src="{{asset($public.'/dashboard/js/chart.bundle.min.js')}}"></script>
+<script src="{{asset($public.'/dashboard/js/be_pages_dashboard.js')}}"></script>
 <script>(function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
@@ -319,6 +321,7 @@
     })(window, document, 'script', 'js/analytics.js', 'ga');
     ga('create', 'UA-16158021-6', 'auto');
     ga('send', 'pageview');</script>
+@yield('scripts')
 </body>
 
 </html>

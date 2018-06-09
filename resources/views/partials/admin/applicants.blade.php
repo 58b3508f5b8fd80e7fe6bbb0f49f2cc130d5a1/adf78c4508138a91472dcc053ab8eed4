@@ -1,7 +1,8 @@
 <div class="careerfy-typo-wrap">
     <!-- FilterAble -->
     <div class="careerfy-filterable">
-        <h2>Showing 0-12 of 37 results</h2>
+        <h2>Showing {{$page*$per - $per}} to {{$page*$per < sizeof($applicants) ? $page*$per : sizeof($applicants)}}
+            of {{sizeof($applicants)}} results</h2>
         <ul>
             <li>
                 <i class="careerfy-icon careerfy-sort"></i>
@@ -81,11 +82,13 @@
                                     </li>
                                 </ul>
                             </div>
-                            <a href="javascript:void(0)"
-                               onclick="shortlist('{{$applicant->id+5451}}','{{$applicant->resume_id}}')"
-                               class="careerfy-candidate-default-btn"><i
-                                        class="careerfy-icon careerfy-add-list"></i>
-                                Shortlist</a>
+                            @if($applicant->status=='applied')
+                                <a href="javascript:void(0)"
+                                   onclick="shortlist('{{$applicant->id+5451}}','{{$applicant->resume_id}}')"
+                                   class="careerfy-candidate-default-btn"><i
+                                            class="careerfy-icon careerfy-add-list"></i>
+                                    Shortlist</a>
+                            @endif
                         </div>
                     </div>
                 </li>
@@ -96,12 +99,12 @@
     <div class="col-xs-6 col-sm-4 careerfy-employer-search">
         <label>Results per page: </label>
         <select id="per-page">
-            <option value="10">10 results</option>
-            <option value="20">20 results</option>
-            <option value="30">30 results</option>
-            <option value="40">40 results</option>
-            <option value="50">50 results</option>
-            <option value="100">100 results</option>
+            <option value="10" @if($per==10) selected @endif>10 results</option>
+            <option value="20" @if($per==20) selected @endif>20 results</option>
+            <option value="30" @if($per==30) selected @endif>30 results</option>
+            <option value="40" @if($per==40) selected @endif>40 results</option>
+            <option value="50" @if($per==50) selected @endif>50 results</option>
+            <option value="100" @if($per==100) selected @endif>100 results</option>
         </select>
     </div>
     <div class="careerfy-pagination-blog">
