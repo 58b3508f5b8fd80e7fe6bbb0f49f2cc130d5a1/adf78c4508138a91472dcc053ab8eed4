@@ -30,6 +30,8 @@ Route::middleware(['checkMaintenance'])->group(function () {
         Route::post('/jobs/cancel', 'JobController@cancel');
         Route::get('/jobs/test/{id}', 'TestController@index');
         Route::post('/jobs/test/start','TestController@startTest');
+        Route::post('/jobs/test/submit','TestController@submitTest');
+
     });
 
     Route::post('profile/update', 'ProfileController@profile')
@@ -63,8 +65,11 @@ Route::middleware(['checkMaintenance'])->group(function () {
                 Route::get('/download/cv/{id}', 'UserController@downloadCV');
                 Route::post('/jobs/shortlist',
                     'JobController@shortlistApplicant');
-                Route::prefix('/test')->group(function () {
+                Route::prefix('/tests')->group(function () {
+                    Route::get('/', 'TestController@index');
+                    Route::get('/view', 'TestController@index');
                     Route::get('/add', 'TestController@addTest');
+                    Route::get('/result', 'TestController@viewTestResults');
                 });
             });
         });

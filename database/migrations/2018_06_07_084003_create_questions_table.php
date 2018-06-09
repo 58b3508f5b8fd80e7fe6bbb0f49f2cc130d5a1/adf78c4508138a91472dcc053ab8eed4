@@ -23,6 +23,7 @@ class CreateQuestionsTable extends Migration
             $table->text('option_c');
             $table->text('option_d');
             $table->enum('answer', ['a', 'b', 'c', 'd']);
+            $table->integer('score');
             $table->unique('question_id');
             $table->timestamps();
         });

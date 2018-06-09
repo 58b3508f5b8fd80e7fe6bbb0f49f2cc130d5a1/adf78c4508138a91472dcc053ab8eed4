@@ -13,17 +13,17 @@
             <ul>
                 <li @if(isset($profile_sidebar)) class="active" @endif><a href="{{url('/backend/jobs')}}"><i
                                 class="careerfy-icon careerfy-user"></i> View Jobs</a></li>
-                <li @if(isset($resume_sidebar)) class="active" @endif><a href="{{route('resume')}}"><i
+                <li @if(isset($resume_sidebar)) class="active" @endif><a href="{{route('backend/jobs/add')}}"><i
                                 class="careerfy-icon careerfy-resume"></i> Add Job</a></li>
-                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('jobs')}}"><i
+                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('/backend/interviews')}}"><i
                                 class="careerfy-icon careerfy-heart"></i> Interviews</a></li>
-                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('jobs')}}"><i
+                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('/backend/tests')}}"><i
                                 class="careerfy-icon careerfy-heart"></i> View Tests</a></li>
-                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('jobs')}}"><i
+                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('/backend/tests/add')}}"><i
                                 class="careerfy-icon careerfy-heart"></i> Add Test</a></li>
-                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('jobs')}}"><i
+                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('/backend/tests/result')}}"><i
                                 class="careerfy-icon careerfy-heart"></i> Test Results</a></li>
-                <li @if(isset($applied_sidebar)) class="active" @endif><a href="{{route('applied')}}"><i
+                <li @if(isset($applied_sidebar)) class="active" @endif><a href="{{route('/backend/settings')}}"><i
                                 class="careerfy-icon careerfy-briefcase-1"></i> Settings</a></li>
                 <li><a href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i

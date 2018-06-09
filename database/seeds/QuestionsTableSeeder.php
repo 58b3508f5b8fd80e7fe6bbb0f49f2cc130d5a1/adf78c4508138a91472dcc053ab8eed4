@@ -25,6 +25,7 @@ class QuestionsTableSeeder extends Seeder
                 'option_c'    => $faker->realText(25),
                 'option_d'    => $faker->realText(25),
                 'answer'      => $faker->randomElement($options),
+                'score'       => 1
             ]);
 
         }

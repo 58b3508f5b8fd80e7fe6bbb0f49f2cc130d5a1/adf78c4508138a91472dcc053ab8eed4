@@ -69,6 +69,7 @@ class TestController extends Controller
                 }
             }
             $data['test'] = $test;
+            $data['result'] = $result;
             $data['title'] = $test->title;
         } else {
             $data['title'] = 'Invalid Test';
@@ -77,7 +78,47 @@ class TestController extends Controller
         return view('dashboard.questions', $data);
     }
 
-    public function scoreTest(Request $request){
+    public function submitTest(Request $request)
+    {
+        $questions = $request->all();
+        $score = 0;
+        $data = [];
+        $isValid = Test::join('results', 'tests.test_id', '=',
+            'results.test_id')->where('tests.test_id', $request->tid)
+            ->where('results.result_id', $request->rid)
+            ->first();
+
+        if ($isValid) {
+
+            $score = Question::where(function ($query) use ($questions) {
+                foreach ($questions as $question => $answer) {
+                    $query->orWhere([
+                        ['question_id', $question],
+                        ['answer', $answer]
+                    ]);
+                }
+            })->sum('score');
+            $totalScore = Question::where(function ($query) use ($questions) {
+                foreach ($questions as $question => $answer) {
+                    $query->orWhere('question_id', $question);
+                }
+            })->sum('score');
+
+            $result = Result::find($isValid->id);
+
+            $result->score = ($score / $totalScore) * 100;
+            $result->save();
+        } else {
+            $data['error'] = "Oops! This is not a valid test";
+        }
+        if ($request->ajax()) {
+
+        }
+
+        $data['title'] = 'Submited';
+        $data['score'] = $score;
+        $data['percent'] = ($score / $isValid->length) * 100;
+        return view('dashboard.submitted', $data);
 
     }
 }
