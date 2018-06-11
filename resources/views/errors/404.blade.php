@@ -1,4 +1,4 @@
-@php    $public='';    if(App::environment('production'))    $public ='public'; @endphp @extends('layouts.error')
+@php    $public='';    if(App::environment('production'))    $public ='public/dashboard'; @endphp @extends('layouts.error')
 @section('title', '404 - Page not found')
 @section('content')
 

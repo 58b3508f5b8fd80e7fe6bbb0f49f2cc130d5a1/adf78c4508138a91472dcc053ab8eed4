@@ -65,8 +65,8 @@
                                         </div>
                                         <div class="careerfy-filterable">
                                             <h2>Showing {{$page*$per - $per}}
-                                                to {{$page*$per < sizeof($jobs) ? $page*$per : sizeof($jobs)}}
-                                                of {{sizeof($jobs)}} results</h2>
+                                                to {{$page*$per < $pages ? $page*$per : $pages}}
+                                                of {{$pages }} results</h2>
                                         </div>
                                         <!-- Manage Jobs -->
                                         <div class="careerfy-managejobs-list-wrap">

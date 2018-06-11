@@ -12,10 +12,10 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
-    <link rel="shortcut icon" href="{{asset($public.'/png/favicon.png')}}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{asset($public.'/png/favicon-192x192.png')}}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset($public.'/png/apple-touch-icon-180x180.png')}}">
-    <link rel="stylesheet" id="css-main" href="{{asset($public.'/css/tlsavings.min.css')}}">
+    <link rel="shortcut icon" href="{{asset($public.'/dashboard/png/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{asset($public.'/dashboard/png/favicon-192x192.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset($public.'/dashboard/png/apple-touch-icon-180x180.png')}}">
+    <link rel="stylesheet" id="css-main" href="{{asset($public.'/dashboard/css/codebase.min-1.4.css')}}">
 </head>
 <body>
 <div id="page-container" class="main-content-boxed">
@@ -38,7 +38,7 @@
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     {{ csrf_field() }}
 </form>
-<script src="{{asset($public.'/js/codebase.min-1.4.js')}}"></script>
+<script src="{{asset($public.'/dashboard/js/codebase.min-1.4.js')}}"></script>
 </body>
 
 <!-- Mirrored from demo.pixelcave.com/codebase/op_error_404.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Jan 2018 22:08:21 GMT -->
