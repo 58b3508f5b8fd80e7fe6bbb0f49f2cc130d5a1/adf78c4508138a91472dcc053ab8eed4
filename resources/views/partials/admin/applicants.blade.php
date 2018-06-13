@@ -24,7 +24,7 @@
             @foreach($applicants as $applicant)
                 <li class="careerfy-column-12">
                     <div class="careerfy-candidate-default-wrap">
-                        <figure><a href="#"><img
+                        <figure><a href="{{url("/backend/user/$applicant->resume_id")}}"><img
                                         src="{{Storage::url($applicant->avatar_location)}}"
                                         alt=""></a></figure>
                         <div class="careerfy-candidate-default-text">

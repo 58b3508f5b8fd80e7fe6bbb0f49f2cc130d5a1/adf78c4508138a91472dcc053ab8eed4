@@ -105,9 +105,16 @@ class TestController extends Controller
             })->sum('score');
 
             $result = Result::find($isValid->id);
+            $applicant = Application::where('id', $result->application_id)
+                ->first();
+            if ($applicant) {
+                $application=Application::find($applicant->id);
+                $application->status="processing";
+                $result->score = ($score / $totalScore) * 100;
 
-            $result->score = ($score / $totalScore) * 100;
-            $result->save();
+                $application->save();
+                $result->save();
+            }
         } else {
             $data['error'] = "Oops! This is not a valid test";
         }

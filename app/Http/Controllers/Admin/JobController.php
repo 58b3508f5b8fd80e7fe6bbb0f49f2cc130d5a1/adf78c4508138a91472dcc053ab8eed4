@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Application;
+use App\Interview;
 use App\Job_test;
 use App\Result;
 use Illuminate\Http\Request;
@@ -152,4 +153,6 @@ class JobController extends Controller
         return response()->json($data);
 
     }
+
+
 }

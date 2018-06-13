@@ -31,76 +31,84 @@
                     <div class="row">
                         @include('includes.admin.sidebar',['applicants_sidebar'=>true])
 
-                        <div class="careerfy-column-9">
-                            <div class="careerfy-typo-wrap">
-                                <!-- FilterAble -->
-                                <div class="careerfy-filterable">
-                                    <h2>Showing 0-12 of 37 results</h2>
-                                    <ul>
-                                        <li>
-                                            <i class="careerfy-icon careerfy-sort"></i>
-                                            <div class="careerfy-filterable-select">
-                                                <select>
-                                                    <option>Sort</option>
-                                                    <option>Sort</option>
-                                                    <option>Sort</option>
-                                                </select>
-                                            </div>
-                                        </li>
-                                        <li><a href="#"><i class="careerfy-icon careerfy-squares"></i> Grid</a></li>
-                                        <li><a href="#"><i class="careerfy-icon careerfy-list"></i> List</a></li>
-                                    </ul>
-                                </div>
-                                <!-- Candidate Listings -->
-                                <div class="careerfy-candidate careerfy-candidate-grid">
-                                    <ul class="careerfy-row">
-                                        @foreach($results as $result)
-                                            <li class="careerfy-column-4">
-                                                <figure>
-                                                    <a href="#" class="careerfy-candidate-grid-thumb"><img
-                                                                src="{{Storage::url($result->avatar_location)}}" alt=""> <span
-                                                                class="careerfy-candidate-grid-status"></span></a>
-                                                    <figcaption>
-                                                        <h2><a href="#">{{"$result->first_name, $result->last_name"}}</a></h2>
-                                                        <p>{{$result->job_title}}</p>
-                                                        <span>{{"$result->state, $result->lga"}}</span>
-                                                    </figcaption>
-                                                </figure>
-                                                <ul class="careerfy-candidate-grid-option" style="margin:0;">
-                                                    <li>
-                                                        <div class="careerfy-right">
-                                                            <span>Experience:</span>
-                                                            {{$result->experience}}
-                                                        </div>
-                                                    </li><li>
-                                                        <div class="careerfy-right">
-                                                            <span>Score:</span>
-                                                            <span class="label">{{$result->score}}</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                <!-- Pagination -->
-                                <div class="careerfy-pagination-blog">
-                                    <ul class="page-numbers">
-                                        <li><a class="prev page-numbers" href="#"><span><i
-                                                            class="careerfy-icon careerfy-arrows4"></i></span></a></li>
-                                        <li><span class="page-numbers current">01</span></li>
-                                        <li><a class="page-numbers" href="#">02</a></li>
-                                        <li><a class="page-numbers" href="#">03</a></li>
-                                        <li><a class="page-numbers" href="#">04</a></li>
-                                        <li><a class="next page-numbers" href="#"><span><i
-                                                            class="careerfy-icon careerfy-arrows4"></i></span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="careerfy-column-9" id="results">
+                            @include('partials.admin.results')
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Modal Signup Box -->
+    <div id="interview-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="background-color: #fff;">
+                <div class="modal-header" style="background-color:#2c3e50;">
+                    <button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
+                    <h4 class="modal-title" style="color: #ffffff;">Schedule Interview</h4>
+                </div>
+                <div class="modal-body pull-left" id="invite" style="background-color: #f5f5f5; float:left;">
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+@endsection
+@section('scripts')
+    <script src="{{asset($public.'/js/loadingoverlay.min.js')}}"></script>
+
+    <script>
+        function showInviteModal(id) {
+            $.get('/backend/tests/invite/' + id, function (result) {
+                $('#interview-modal .modal-body').html(result.html);
+                $('#interview-modal').modal('show');
+            });
+        }
+
+        function sendInvite() {
+
+            $.notify({
+                // options
+                message: 'Hello World'
+            }, {
+                // settings
+                type: 'danger'
+            });
+        }
+
+        $('#interview-modal').on('shown.bs.modal', function () {
+
+            $('#invite-form').on('submit', function (e) {
+                e.preventDefault();
+                $(".modal-body").LoadingOverlay("show");
+                var form = this;
+
+                var data = new FormData(form);
+
+                $.ajax({
+                    url: form.action,
+                    method: form.method,
+                    contentType: false,
+                    data: data,
+                    processData: false,
+                    success: function (result) {
+                        $(".modal-body").LoadingOverlay("hide");
+                        $('#interview-modal').modal('hide');
+                        swal("Oops!", result.message, result.state);
+                    },
+                    error: function () {
+                        $(".modal-body").LoadingOverlay("hide");
+                        $('#interview-modal').modal('hide');
+                        swal("Oops!", "Sorry, an error occured..","error");
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
 @endsection

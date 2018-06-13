@@ -69,6 +69,8 @@ Route::middleware(['checkMaintenance'])->group(function () {
                     Route::get('/', 'TestController@index');
                     Route::get('/view', 'TestController@index');
                     Route::get('/add', 'TestController@addTest');
+                    Route::get('/invite/{id}','TestController@getInvite');
+                    Route::post('/invite','TestController@sendInvite');
                     Route::get('/result', 'TestController@viewJobResults');
                     Route::get('/result/{id}', 'TestController@viewTestResults');
                 });
