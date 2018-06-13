@@ -9,8 +9,15 @@
                     <h1 class="display-4 font-w700 text-white mb-10 js-appear-enabled animated fadeInDown"
                         data-toggle="appear" data-class="animated fadeInDown">Codebase</h1>
                     <h2 class="font-w400 text-white-op mb-50 js-appear-enabled animated fadeInUp"
-                        data-toggle="appear" data-class="animated fadeInUp" data-timeout="250">It’s Time to Create
-                        Your Next Amazing Project</h2>
+                        data-toggle="appear" data-class="animated fadeInUp" data-timeout="250">
+                        @if(isset($error))
+                            {{$error}}
+                        @endif
+                    </h2>
+                    @if(!isset($error))
+                        <h2>{{$score}}</h2>
+                        <h2>{{$percent}}</h2>
+                    @endif
                     <a class="btn btn-hero btn-noborder btn-rounded btn-primary js-appear-enabled animated bounceIn"
                        data-toggle="appear" data-class="animated bounceIn" data-timeout="750"
                        href="be_layout_hero_image.html">

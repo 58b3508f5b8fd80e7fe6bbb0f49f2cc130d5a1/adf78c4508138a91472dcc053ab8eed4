@@ -86,6 +86,7 @@ class TestController extends Controller
         $isValid = Test::join('results', 'tests.test_id', '=',
             'results.test_id')->where('tests.test_id', $request->tid)
             ->where('results.result_id', $request->rid)
+            ->select('tests.*', 'results.*', 'results.id as id')
             ->first();
 
         if ($isValid) {
@@ -97,23 +98,27 @@ class TestController extends Controller
                         ['answer', $answer]
                     ]);
                 }
-            })->sum('score');
-            $totalScore = Question::where(function ($query) use ($questions) {
-                foreach ($questions as $question => $answer) {
-                    $query->orWhere('question_id', $question);
-                }
-            })->sum('score');
+            })->count();
 
             $result = Result::find($isValid->id);
-            $applicant = Application::where('id', $result->application_id)
+            $applicant = Application::where('application_id',
+                $result->application_id)
                 ->first();
             if ($applicant) {
-                $application=Application::find($applicant->id);
-                $application->status="processing";
-                $result->score = ($score / $totalScore) * 100;
+                $application = Application::find($applicant->id);
+                $application->status = "processing";
+                $result->score = ($score / $isValid->length) * 100;
+                $result->status = "closed";
 
                 $application->save();
                 $result->save();
+
+                $data['title'] = 'Submited';
+                $data['score'] = $score;
+                $data['percent'] = ($score / $isValid->length) * 100;
+            } else {
+                $data['error']
+                    = "Oops! We cant find the client writing this test..";
             }
         } else {
             $data['error'] = "Oops! This is not a valid test";
@@ -123,8 +128,7 @@ class TestController extends Controller
         }
 
         $data['title'] = 'Submited';
-        $data['score'] = $score;
-        $data['percent'] = ($score / $isValid->length) * 100;
+
         return view('dashboard.submitted', $data);
 
     }

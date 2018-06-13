@@ -68,7 +68,7 @@ class TestController extends Controller
         $id = $request->id;
         $applicant = Application::where([
             ['application_id', $id],
-            ['status', 'shortlisted']
+            ['status', 'processing']
         ])->first();
         if ($applicant) {
             $application = Application::find($applicant->id);

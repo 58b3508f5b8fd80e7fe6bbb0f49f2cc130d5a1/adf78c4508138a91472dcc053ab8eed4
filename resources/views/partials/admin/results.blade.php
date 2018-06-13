@@ -47,7 +47,12 @@
                                                 class="careerfy-icon careerfy-download-arrow"></i>
                                         Send Invite</a>
                                 </h2>
+                            @elseif($result->application_status=='invited')
+                                <div>
+                                    <h3 class="badge">Invited</h3>
+                                </div>
                             @endif
+
                         </figcaption>
                     </figure>
                     <ul class="careerfy-candidate-grid-option" style="margin:0;">
