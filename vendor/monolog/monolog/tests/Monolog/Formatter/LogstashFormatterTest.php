@@ -100,7 +100,7 @@ class LogstashFormatterTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('ctxt_from', $message_array);
         $this->assertEquals('logger', $message_array['ctxt_from']);
 
-        // Test with extraPrefix
+        // Online_test with extraPrefix
         $formatter = new LogstashFormatter('test', null, null, 'CTX');
         $message = json_decode($formatter->format($record), true);
 
@@ -133,7 +133,7 @@ class LogstashFormatterTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('key', $message_array);
         $this->assertEquals('pair', $message_array['key']);
 
-        // Test with extraPrefix
+        // Online_test with extraPrefix
         $formatter = new LogstashFormatter('test', null, 'EXT');
         $message = json_decode($formatter->format($record), true);
 
@@ -238,7 +238,7 @@ class LogstashFormatterTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('ctxt_from', $message);
         $this->assertEquals('logger', $message['ctxt_from']);
 
-        // Test with extraPrefix
+        // Online_test with extraPrefix
         $formatter = new LogstashFormatter('test', null, null, 'CTX', LogstashFormatter::V1);
         $message = json_decode($formatter->format($record), true);
 
@@ -267,7 +267,7 @@ class LogstashFormatterTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('key', $message);
         $this->assertEquals('pair', $message['key']);
 
-        // Test with extraPrefix
+        // Online_test with extraPrefix
         $formatter = new LogstashFormatter('test', null, 'EXT', 'ctxt_', LogstashFormatter::V1);
         $message = json_decode($formatter->format($record), true);
 

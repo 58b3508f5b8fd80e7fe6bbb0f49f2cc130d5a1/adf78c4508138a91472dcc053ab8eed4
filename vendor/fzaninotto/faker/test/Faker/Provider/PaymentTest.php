@@ -176,10 +176,10 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
             return;
         }
 
-        // Test format
+        // Online_test format
         $this->assertRegExp($this->ibanFormats[$countryCode], $iban);
 
-        // Test checksum
+        // Online_test checksum
         $this->assertTrue(Iban::isValid($iban), "Checksum for $iban is invalid");
     }
 
@@ -198,10 +198,10 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
     {
         $iban = $this->faker->iban($countryCode);
 
-        // Test format
+        // Online_test format
         $this->assertRegExp($regex, $iban);
 
-        // Test checksum
+        // Online_test checksum
         $this->assertTrue(Iban::isValid($iban), "Checksum for $iban is invalid");
     }
 }

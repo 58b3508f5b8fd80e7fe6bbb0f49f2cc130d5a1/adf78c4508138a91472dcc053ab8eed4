@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.lms.home')
 
 @section('main')
 
@@ -47,7 +47,7 @@
             </form>
             @endif
         @else
-            <a href="{{ route('auth.register') }}?redirect_url={{ route('courses.show', [$course->slug]) }}"
+            <a href="{{ route('register') }}?redirect_url={{ route('courses.show', [$course->slug]) }}"
                class="btn btn-primary">Buy course (${{ $course->price }})</a>
         @endif
     </p>

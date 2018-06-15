@@ -63,8 +63,8 @@ use PHPUnit\TextUI\ResultPrinter;
  *          reverseDefectList="false"
  *          registerMockObjectsFromTestArgumentsRecursively="false">
  *   <testsuites>
- *     <testsuite name="My Test Suite">
- *       <directory suffix="Test.php" phpVersion="5.3.0" phpVersionOperator=">=">/path/to/files</directory>
+ *     <testsuite name="My Online_test Suite">
+ *       <directory suffix="Online_testne_test.php" phpVersion="5.3.0" phpVersionOperator=">=">/path/to/files</directory>
  *       <file phpVersion="5.3.0" phpVersionOperator=">=">/path/to/MyTest.php</file>
  *       <exclude>/path/to/files/exclude</exclude>
  *     </testsuite>
@@ -1000,7 +1000,7 @@ class Configuration
             if ($directoryNode->hasAttribute('suffix')) {
                 $suffix = (string) $directoryNode->getAttribute('suffix');
             } else {
-                $suffix = 'Test.php';
+                $suffix = 'Online_testne_test.php';
             }
 
             $files = $fileIteratorFacade->getFilesAsArray(

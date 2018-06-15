@@ -118,11 +118,11 @@ class MethodTest extends TestCase
     }
     public function testDocComment() {
         $node = $this->createMethodBuilder('test')
-            ->setDocComment('/** Test */')
+            ->setDocComment('/** Online_test */')
             ->getNode();
 
         $this->assertEquals(new Stmt\ClassMethod('test', [], [
-            'comments' => [new Comment\Doc('/** Test */')]
+            'comments' => [new Comment\Doc('/** Online_test */')]
         ]), $node);
     }
 

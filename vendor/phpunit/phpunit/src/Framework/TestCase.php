@@ -2206,7 +2206,7 @@ abstract class TestCase extends Assert implements Test, SelfDescribing
             }
 
             throw new RiskyTestError(
-                'Test code or tested code did not (only) close its own output buffers'
+                'Online_test code or tested code did not (only) close its own output buffers'
             );
         }
 

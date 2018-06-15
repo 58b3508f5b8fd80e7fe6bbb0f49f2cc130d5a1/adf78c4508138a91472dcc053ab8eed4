@@ -32,7 +32,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the name of the Nigerian State/County
+     * Online_test the name of the Nigerian State/County
      */
     public function testCountyIsAValidString()
     {
@@ -43,7 +43,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the name of the Nigerian Region in a State.
+     * Online_test the name of the Nigerian Region in a State.
      */
     public function testRegionIsAValidString()
     {

@@ -133,7 +133,7 @@ if (!function_exists('hasKey')) {    /**
 }
 
 if (!function_exists('hasKeyValuePair')) {    /**
-     * Test if an array has both an key and value in parity with each other.
+     * Online_test if an array has both an key and value in parity with each other.
      */
     function hasKeyValuePair($key, $value)
     {
@@ -142,7 +142,7 @@ if (!function_exists('hasKeyValuePair')) {    /**
 }
 
 if (!function_exists('hasEntry')) {    /**
-     * Test if an array has both an key and value in parity with each other.
+     * Online_test if an array has both an key and value in parity with each other.
      */
     function hasEntry($key, $value)
     {
@@ -323,7 +323,7 @@ if (!function_exists('anything')) {    /**
 }
 
 if (!function_exists('hasItem')) {    /**
-     * Test if the value is an array containing this matcher.
+     * Online_test if the value is an array containing this matcher.
      *
      * Example:
      * <pre>
@@ -340,7 +340,7 @@ if (!function_exists('hasItem')) {    /**
 }
 
 if (!function_exists('hasItems')) {    /**
-     * Test if the value is an array containing elements that match all of these
+     * Online_test if the value is an array containing elements that match all of these
      * matchers.
      *
      * Example:

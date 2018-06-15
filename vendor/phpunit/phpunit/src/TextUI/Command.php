@@ -727,7 +727,7 @@ class Command
         }
 
         if (!isset($this->arguments['testSuffixes'])) {
-            $this->arguments['testSuffixes'] = ['Test.php', '.phpt'];
+            $this->arguments['testSuffixes'] = ['Online_testne_test.php', '.phpt'];
         }
 
         if (isset($includePath)) {
@@ -1046,7 +1046,7 @@ Logging Options:
   --testdox-xml <file>        Write agile documentation in XML format to file.
   --reverse-list              Print defects in reverse order
 
-Test Selection Options:
+Online_test Selection Options:
 
   --filter <pattern>          Filter which tests to run.
   --testsuite <name,...>      Filter which testsuite to run.
@@ -1057,9 +1057,9 @@ Test Selection Options:
   --list-tests                List available tests.
   --list-tests-xml <file>     List available tests in XML format.
   --test-suffix ...           Only search for test in files with specified
-                              suffix(es). Default: Test.php,.phpt
+                              suffix(es). Default: Online_test.phpest.php,.phpt
 
-Test Execution Options:
+Online_test Execution Options:
 
   --dont-report-useless-tests Do not report tests that do not test anything.
   --strict-coverage           Be strict about @covers annotation usage.

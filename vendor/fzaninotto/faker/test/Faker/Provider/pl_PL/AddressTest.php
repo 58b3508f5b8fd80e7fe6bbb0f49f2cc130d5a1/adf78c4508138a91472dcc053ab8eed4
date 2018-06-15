@@ -19,7 +19,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the validity of state
+     * Online_test the validity of state
      */
     public function testState()
     {

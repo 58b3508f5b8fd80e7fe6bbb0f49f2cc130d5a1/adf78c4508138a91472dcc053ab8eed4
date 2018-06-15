@@ -66,7 +66,7 @@ class IsArrayContainingKeyValuePair extends TypeSafeMatcher
     }
 
     /**
-     * Test if an array has both an key and value in parity with each other.
+     * Online_test if an array has both an key and value in parity with each other.
      *
      * @factory hasEntry
      */

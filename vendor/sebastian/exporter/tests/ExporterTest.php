@@ -32,7 +32,7 @@ class ExporterTest extends TestCase
         $obj2 = new \stdClass;
         $obj2->foo = 'bar';
 
-        $obj3 = (object)array(1,2,"Test\r\n",4,5,6,7,8);
+        $obj3 = (object)array(1,2,"Online_test\r\n",4,5,6,7,8);
 
         $obj = new \stdClass;
         //@codingStandardsIgnoreStart
@@ -143,7 +143,7 @@ EOF
 stdClass Object &%x (
     0 => 1
     1 => 2
-    2 => 'Test\\r\\n
+    2 => 'Online_test\\r\\n
 '
     3 => 4
     4 => 5

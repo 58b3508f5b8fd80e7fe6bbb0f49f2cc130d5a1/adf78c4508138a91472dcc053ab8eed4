@@ -3542,7 +3542,7 @@
         return frag;
     }
 
-    // Test for the presence of the Safari template cloning bug
+    // Online_test for the presence of the Safari template cloning bug
     // https://bugs.webkit.org/showug.cgi?id=137755
     var hasBrokenTemplate = (function () {
         /* istanbul ignore else */
@@ -3555,7 +3555,7 @@
         }
     })();
 
-    // Test for IE10/11 textarea placeholder clone bug
+    // Online_test for IE10/11 textarea placeholder clone bug
     var hasTextareaCloneBug = (function () {
         /* istanbul ignore else */
         if (inBrowser) {

@@ -32,16 +32,16 @@ class Swift_MessageTest extends \PHPUnit\Framework\TestCase
     {
         $message1 = new Swift_Message('Test');
         $html = new Swift_MimePart('<html></html>', 'text/html');
-        $html->getHeaders()->addTextHeader('X-Test-Remove', 'Test-Value');
-        $html->getHeaders()->addTextHeader('X-Test-Alter', 'Test-Value');
+        $html->getHeaders()->addTextHeader('X-Online_test-Remove', 'Online_test-Value');
+        $html->getHeaders()->addTextHeader('X-Online_test-Alter', 'Online_test-Value');
         $message1->attach($html);
         $source = $message1->toString();
         $message2 = clone $message1;
         $message2->setSubject('Message2');
         foreach ($message2->getChildren() as $child) {
             $child->setBody('Test');
-            $child->getHeaders()->removeAll('X-Test-Remove');
-            $child->getHeaders()->get('X-Test-Alter')->setValue('Altered');
+            $child->getHeaders()->removeAll('X-Online_test-Remove');
+            $child->getHeaders()->get('X-Online_test-Alter')->setValue('Altered');
         }
         $final = $message1->toString();
         if ($source != $final) {

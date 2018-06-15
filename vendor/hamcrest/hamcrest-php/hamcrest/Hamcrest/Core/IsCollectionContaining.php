@@ -49,7 +49,7 @@ class IsCollectionContaining extends TypeSafeMatcher
     }
 
     /**
-     * Test if the value is an array containing this matcher.
+     * Online_test if the value is an array containing this matcher.
      *
      * Example:
      * <pre>
@@ -69,7 +69,7 @@ class IsCollectionContaining extends TypeSafeMatcher
     }
 
     /**
-     * Test if the value is an array containing elements that match all of these
+     * Online_test if the value is an array containing elements that match all of these
      * matchers.
      *
      * Example:

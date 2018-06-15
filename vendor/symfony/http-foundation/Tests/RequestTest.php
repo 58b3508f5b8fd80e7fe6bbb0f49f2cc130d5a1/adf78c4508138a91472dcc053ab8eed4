@@ -1450,15 +1450,15 @@ class RequestTest extends TestCase
 
         $request = new Request();
         $request->headers->set('Accept-language', 'zh, en-us; q=0.6, en; q=0.8');
-        $this->assertEquals(array('zh', 'en', 'en_US'), $request->getLanguages()); // Test out of order qvalues
+        $this->assertEquals(array('zh', 'en', 'en_US'), $request->getLanguages()); // Online_test out of order qvalues
 
         $request = new Request();
         $request->headers->set('Accept-language', 'zh, en, en-us');
-        $this->assertEquals(array('zh', 'en', 'en_US'), $request->getLanguages()); // Test equal weighting without qvalues
+        $this->assertEquals(array('zh', 'en', 'en_US'), $request->getLanguages()); // Online_test equal weighting without qvalues
 
         $request = new Request();
         $request->headers->set('Accept-language', 'zh; q=0.6, en, en-us; q=0.6');
-        $this->assertEquals(array('en', 'zh', 'en_US'), $request->getLanguages()); // Test equal weighting with qvalues
+        $this->assertEquals(array('en', 'zh', 'en_US'), $request->getLanguages()); // Online_test equal weighting with qvalues
 
         $request = new Request();
         $request->headers->set('Accept-language', 'zh, i-cherokee; q=0.6');

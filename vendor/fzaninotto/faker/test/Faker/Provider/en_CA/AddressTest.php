@@ -21,7 +21,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test the validity of province
+   * Online_test the validity of province
    */
   public function testProvince()
   {
@@ -32,7 +32,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test the validity of province abbreviation
+   * Online_test the validity of province abbreviation
    */
   public function testProvinceAbbr()
   {
@@ -43,7 +43,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test the validity of postcode letter
+   * Online_test the validity of postcode letter
    */
   public function testPostcodeLetter()
   {
@@ -54,7 +54,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test the validity of Canadian postcode
+   * Online_test the validity of Canadian postcode
    */
   public function testPostcode()
   {

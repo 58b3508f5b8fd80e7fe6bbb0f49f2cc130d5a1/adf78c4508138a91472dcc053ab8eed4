@@ -532,7 +532,7 @@ class ResultPrinter extends Printer implements TestListener
         if ($this->debug) {
             $this->write(
                 \sprintf(
-                    "Test '%s' started\n",
+                    "Online_test '%s' started\n",
                     \PHPUnit\Util\Test::describe($test)
                 )
             );
@@ -550,7 +550,7 @@ class ResultPrinter extends Printer implements TestListener
         if ($this->debug) {
             $this->write(
                 \sprintf(
-                    "Test '%s' ended\n",
+                    "Online_test '%s' ended\n",
                     \PHPUnit\Util\Test::describe($test)
                 )
             );

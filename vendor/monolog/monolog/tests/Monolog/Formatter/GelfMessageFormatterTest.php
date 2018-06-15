@@ -120,7 +120,7 @@ class GelfMessageFormatterTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('_ctxt_from', $message_array);
         $this->assertEquals('logger', $message_array['_ctxt_from']);
 
-        // Test with extraPrefix
+        // Online_test with extraPrefix
         $formatter = new GelfMessageFormatter(null, null, 'CTX');
         $message = $formatter->format($record);
 
@@ -185,7 +185,7 @@ class GelfMessageFormatterTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('_key', $message_array);
         $this->assertEquals('pair', $message_array['_key']);
 
-        // Test with extraPrefix
+        // Online_test with extraPrefix
         $formatter = new GelfMessageFormatter(null, 'EXT');
         $message = $formatter->format($record);
 

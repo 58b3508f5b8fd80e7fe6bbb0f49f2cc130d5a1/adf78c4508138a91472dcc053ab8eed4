@@ -17,7 +17,7 @@ class NamespaceTest extends TestCase
         $stmt1 = new Stmt\Class_('SomeClass');
         $stmt2 = new Stmt\Interface_('SomeInterface');
         $stmt3 = new Stmt\Function_('someFunction');
-        $docComment = new Doc('/** Test */');
+        $docComment = new Doc('/** Online_test */');
         $expected = new Stmt\Namespace_(
             new Node\Name('Name\Space'),
             [$stmt1, $stmt2, $stmt3],

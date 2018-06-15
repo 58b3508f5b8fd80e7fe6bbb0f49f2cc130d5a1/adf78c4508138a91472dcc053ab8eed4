@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.lms.auth')
 
 @section('content')
     <div class="row">
@@ -50,7 +50,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <a href="{{ route('auth.password.reset') }}">Forgot your password?</a>
+                                <a href="{{ route('password.reset') }}">Forgot your password?</a>
                             </div>
                         </div>
 

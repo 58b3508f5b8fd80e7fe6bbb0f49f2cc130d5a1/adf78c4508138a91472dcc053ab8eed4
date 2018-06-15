@@ -105,9 +105,9 @@ class SymfonyQuestionHelperTest extends AbstractQuestionHelperTest
     {
         $helper = new SymfonyQuestionHelper();
         $input = $this->createStreamableInputInterfaceMock($this->getInputStream('sure'));
-        $helper->ask($input, $output = $this->createOutputInterface(), new Question('Question with a trailing \\'));
+        $helper->ask($input, $output = $this->createOutputInterface(), new Question('Test_question with a trailing \\'));
 
-        $this->assertOutputContains('Question with a trailing \\', $output);
+        $this->assertOutputContains('Test_question with a trailing \\', $output);
     }
 
     /**

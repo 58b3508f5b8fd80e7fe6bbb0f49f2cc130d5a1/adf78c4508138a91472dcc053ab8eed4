@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 /**
- * Test class for Event.
+ * Online_test class for Event.
  */
 class GenericEventTest extends TestCase
 {

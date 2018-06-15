@@ -108,7 +108,7 @@ class Matchers
     }
 
     /**
-     * Test if an array has both an key and value in parity with each other.
+     * Online_test if an array has both an key and value in parity with each other.
      */
     public static function hasKeyValuePair($key, $value)
     {
@@ -116,7 +116,7 @@ class Matchers
     }
 
     /**
-     * Test if an array has both an key and value in parity with each other.
+     * Online_test if an array has both an key and value in parity with each other.
      */
     public static function hasEntry($key, $value)
     {
@@ -280,7 +280,7 @@ class Matchers
     }
 
     /**
-     * Test if the value is an array containing this matcher.
+     * Online_test if the value is an array containing this matcher.
      *
      * Example:
      * <pre>
@@ -296,7 +296,7 @@ class Matchers
     }
 
     /**
-     * Test if the value is an array containing elements that match all of these
+     * Online_test if the value is an array containing elements that match all of these
      * matchers.
      *
      * Example:

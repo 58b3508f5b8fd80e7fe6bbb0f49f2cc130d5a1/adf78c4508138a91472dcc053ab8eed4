@@ -70,7 +70,7 @@ class Swift_DependencyContainer
     }
 
     /**
-     * Test if an item is registered in this container with the given name.
+     * Online_test if an item is registered in this container with the given name.
      *
      * @see register()
      *

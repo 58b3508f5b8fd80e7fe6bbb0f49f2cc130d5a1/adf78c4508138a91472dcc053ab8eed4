@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeSessionHandler;
 
 /**
- * Test class for NativeSessionHandler.
+ * Online_test class for NativeSessionHandler.
  *
  * @author Drak <drak@zikula.org>
  *

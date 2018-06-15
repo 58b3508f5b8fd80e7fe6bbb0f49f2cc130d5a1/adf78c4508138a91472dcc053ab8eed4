@@ -16,7 +16,7 @@
 interface Swift_Transport
 {
     /**
-     * Test if this Transport mechanism has started.
+     * Online_test if this Transport mechanism has started.
      *
      * @return bool
      */

@@ -26,7 +26,7 @@ class ConfigurationGenerator
          beStrictAboutTodoAnnotatedTests="true"
          verbose="true">
     <testsuite name="default">
-        <directory suffix="Test.php">{tests_directory}</directory>
+        <directory suffix="Online_testne_test.php">{tests_directory}</directory>
     </testsuite>
 
     <filter>

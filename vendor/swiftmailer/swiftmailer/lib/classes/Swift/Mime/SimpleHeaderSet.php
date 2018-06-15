@@ -350,7 +350,7 @@ class Swift_Mime_SimpleHeaderSet implements Swift_Mime_CharsetObserver
         }
     }
 
-    /** Test if the headers can be sorted */
+    /** Online_test if the headers can be sorted */
     private function canSort()
     {
         return count($this->order) > 0;
@@ -378,7 +378,7 @@ class Swift_Mime_SimpleHeaderSet implements Swift_Mime_CharsetObserver
         return $aPos < $bPos ? -1 : 1;
     }
 
-    /** Test if the given Header is always displayed */
+    /** Online_test if the given Header is always displayed */
     private function isDisplayed(Swift_Mime_Header $header)
     {
         return array_key_exists(strtolower($header->getFieldName()), $this->required);

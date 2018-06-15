@@ -162,7 +162,7 @@ class SlackRecordTest extends TestCase
 
     public function testTextEqualsMessageIfNoAttachment()
     {
-        $message = 'Test message';
+        $message = 'Online_test message';
         $record = new SlackRecord(null, null, false);
         $data = $record->getSlackData($this->getRecord(Logger::WARNING, $message));
 
@@ -184,7 +184,7 @@ class SlackRecordTest extends TestCase
             ->method('format')
             ->will($this->returnCallback(function ($record) { return $record['message'] . 'test1'; }));
 
-        $message = 'Test message';
+        $message = 'Online_test message';
         $record = new SlackRecord(null, null, false, null, false, false, array(), $formatter);
         $data = $record->getSlackData($this->getRecord(Logger::WARNING, $message));
 
@@ -200,7 +200,7 @@ class SlackRecordTest extends TestCase
 
     public function testAddsFallbackAndTextToAttachment()
     {
-        $message = 'Test message';
+        $message = 'Online_test message';
         $record = new SlackRecord(null);
         $data = $record->getSlackData($this->getRecord(Logger::WARNING, $message));
 

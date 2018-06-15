@@ -37,7 +37,7 @@ class MultipleTest extends ParserTest
         return [
             [
                 // PHP 7 only code
-                '<?php class Test { function function() {} }',
+                '<?php class Online_test { function function() {} }',
                 $this->getPrefer5(),
                 [
                     new Stmt\Class_('Test', ['stmts' => [

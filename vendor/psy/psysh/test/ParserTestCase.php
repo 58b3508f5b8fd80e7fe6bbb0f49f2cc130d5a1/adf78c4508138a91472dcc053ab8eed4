@@ -21,6 +21,13 @@ class ParserTestCase extends \PHPUnit\Framework\TestCase
     private $parser;
     private $printer;
 
+    public function tearDown()
+    {
+        $this->traverser = null;
+        $this->parser = null;
+        $this->printer = null;
+    }
+
     protected function parse($code, $prefix = '<?php ')
     {
         $code = $prefix . $code;
@@ -43,7 +50,7 @@ class ParserTestCase extends \PHPUnit\Framework\TestCase
     protected function traverse(array $stmts)
     {
         if (!isset($this->traverser)) {
-            throw new \RuntimeException('Test cases must provide a traverser');
+            throw new \RuntimeException('Online_test cases must provide a traverser');
         }
 
         return $this->traverser->traverse($stmts);
@@ -58,7 +65,8 @@ class ParserTestCase extends \PHPUnit\Framework\TestCase
     {
         $stmts = $this->parse($from);
         $stmts = $this->traverse($stmts);
-        $this->assertSame($to, $this->prettyPrint($stmts));
+        $toStmts = $this->parse($to);
+        $this->assertSame($this->prettyPrint($toStmts), $this->prettyPrint($stmts));
     }
 
     private function getParser()

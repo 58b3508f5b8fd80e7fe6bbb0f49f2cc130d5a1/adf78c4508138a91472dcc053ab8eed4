@@ -105,7 +105,7 @@ class ArgumentResolverTest extends TestCase
 
         $this->assertEquals(array('foo', null), self::$resolver->getArguments($request, $controller));
 
-        // Test default bar overridden by request attribute
+        // Online_test default bar overridden by request attribute
         $request->attributes->set('bar', 'bar');
 
         $this->assertEquals(array('foo', 'bar'), self::$resolver->getArguments($request, $controller));

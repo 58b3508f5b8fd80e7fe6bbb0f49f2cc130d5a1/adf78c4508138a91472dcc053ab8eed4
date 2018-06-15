@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHa
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 
 /**
- * Test class for NativeFileSessionHandler.
+ * Online_test class for NativeFileSessionHandler.
  *
  * @author Drak <drak@zikula.org>
  *

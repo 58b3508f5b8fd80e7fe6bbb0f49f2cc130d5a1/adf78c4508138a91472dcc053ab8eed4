@@ -122,7 +122,7 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
     }
 
     /**
-     * Test if delsp is being used for this entity.
+     * Online_test if delsp is being used for this entity.
      *
      * @return bool
      */

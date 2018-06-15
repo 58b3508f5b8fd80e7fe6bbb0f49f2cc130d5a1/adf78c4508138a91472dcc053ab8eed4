@@ -196,7 +196,7 @@ class JUnit extends Printer implements TestListener
         $error = $this->document->createElement(
             'error',
             Xml::prepareString(
-                "Risky Test\n" .
+                "Risky Online_test\n" .
                 Filter::getFilteredStacktrace($e)
             )
         );

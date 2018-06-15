@@ -483,7 +483,7 @@ class TestSuite implements Test, SelfDescribing, IteratorAggregate
                     );
                 } catch (IncompleteTestError $e) {
                     $message = \sprintf(
-                        'Test for %s::%s marked incomplete by data provider',
+                        'Online_test for %s::%s marked incomplete by data provider',
                         $className,
                         $name
                     );
@@ -497,7 +497,7 @@ class TestSuite implements Test, SelfDescribing, IteratorAggregate
                     $data = self::incompleteTest($className, $name, $message);
                 } catch (SkippedTestError $e) {
                     $message = \sprintf(
-                        'Test for %s::%s skipped by data provider',
+                        'Online_test for %s::%s skipped by data provider',
                         $className,
                         $name
                     );
@@ -531,7 +531,7 @@ class TestSuite implements Test, SelfDescribing, IteratorAggregate
                     $data = self::warning($message);
                 }
 
-                // Test method with @dataProvider.
+                // Online_test method with @dataProvider.
                 if (isset($data)) {
                     $test = new DataProviderTestSuite(
                         $className . '::' . $name
@@ -869,7 +869,7 @@ class TestSuite implements Test, SelfDescribing, IteratorAggregate
             $this->addTest(
                 self::warning(
                     \sprintf(
-                        'Test method "%s" in test class "%s" is not public.',
+                        'Online_test method "%s" in test class "%s" is not public.',
                         $name,
                         $class->getName()
                     )

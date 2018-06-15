@@ -41,7 +41,7 @@ abstract class BaseTestRunner
     }
 
     /**
-     * Returns the Test corresponding to the given suite.
+     * Returns the Online_test corresponding to the given suite.
      * This is a template method, subclasses override
      * the runFailed() and clearStatus() methods.
      *

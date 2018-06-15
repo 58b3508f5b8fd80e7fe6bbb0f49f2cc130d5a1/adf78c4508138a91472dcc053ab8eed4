@@ -97,7 +97,7 @@ class DayOfWeekField extends AbstractField
             $value = implode('-', $parts);
         }
 
-        // Test to see which Sunday to use -- 0 == 7 == Sunday
+        // Online_test to see which Sunday to use -- 0 == 7 == Sunday
         $format = in_array(7, str_split($value)) ? 'N' : 'w';
         $fieldValue = $date->format($format);
 

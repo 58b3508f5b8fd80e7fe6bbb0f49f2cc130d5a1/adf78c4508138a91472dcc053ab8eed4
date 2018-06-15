@@ -74,15 +74,15 @@ class ValidClassNamePassTest extends CodeCleanerTestCase
 
             // namespaced collisions
             ['
-                namespace Psy\\Test\\CodeCleaner {
+                namespace Psy\\Online_test\\CodeCleaner {
                     class ValidClassNamePassTest {}
                 }
             '],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidClassNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidClassNamePass {
                     class Beta {}
                 }
-                namespace Psy\\Test\\CodeCleaner\\ValidClassNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidClassNamePass {
                     class Beta {}
                 }
             '],
@@ -98,18 +98,18 @@ class ValidClassNamePassTest extends CodeCleanerTestCase
             // class instantiations
             ['new Psy_Test_CodeCleaner_ValidClassNamePass_Gamma();'],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidClassNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidClassNamePass {
                     new Psy_Test_CodeCleaner_ValidClassNamePass_Delta();
                 }
             '],
 
             // class constant fetch
-            ['Psy\\Test\\CodeCleaner\\ValidClassNamePass\\NotAClass::FOO'],
+            ['Psy\\Online_test\\CodeCleaner\\ValidClassNamePass\\NotAClass::FOO'],
 
             // static call
-            ['Psy\\Test\\CodeCleaner\\ValidClassNamePass\\NotAClass::foo()'],
-            ['Psy\\Test\\CodeCleaner\\ValidClassNamePass\\NotAClass::$foo()'],
-            ['Psy\\Test\\CodeCleaner\\ValidClassNamePassTest::notAMethod()'],
+            ['Psy\\Online_test\\CodeCleaner\\ValidClassNamePass\\NotAClass::foo()'],
+            ['Psy\\Online_test\\CodeCleaner\\ValidClassNamePass\\NotAClass::$foo()'],
+            ['Psy\\Online_test\\CodeCleaner\\ValidClassNamePassTest::notAMethod()'],
         ];
     }
 
@@ -130,7 +130,7 @@ class ValidClassNamePassTest extends CodeCleanerTestCase
             ['namespace Psy\Test\CodeCleaner\ValidClassNamePass; class Zeta {}'],
             ['
                 namespace { class Psy_Test_CodeCleaner_ValidClassNamePass_Eta {}; }
-                namespace Psy\\Test\\CodeCleaner\\ValidClassNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidClassNamePass {
                     class Psy_Test_CodeCleaner_ValidClassNamePass_Eta {}
                 }
             '],
@@ -140,25 +140,25 @@ class ValidClassNamePassTest extends CodeCleanerTestCase
             ['new stdClass();'],
             ['new stdClass();'],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidClassNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidClassNamePass {
                     class Theta {}
                 }
-                namespace Psy\\Test\\CodeCleaner\\ValidClassNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidClassNamePass {
                     new Theta();
                 }
             '],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidClassNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidClassNamePass {
                     class Iota {}
                     new Iota();
                 }
             '],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidClassNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidClassNamePass {
                     class Kappa {}
                 }
                 namespace {
-                    new \\Psy\\Test\\CodeCleaner\\ValidClassNamePass\\Kappa();
+                    new \\Psy\\Online_test\\CodeCleaner\\ValidClassNamePass\\Kappa();
                 }
             '],
 

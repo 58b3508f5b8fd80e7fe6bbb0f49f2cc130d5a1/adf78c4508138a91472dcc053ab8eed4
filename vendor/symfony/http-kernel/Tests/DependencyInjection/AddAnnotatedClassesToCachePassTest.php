@@ -66,7 +66,7 @@ class AddAnnotatedClassesToCachePassTest extends TestCase
         $this->assertSame('Foo\\Acme\\Bar', $expand(array('Foo\\**'), array('\\Foo\\Acme\\Bar'))[0]);
 
         $this->assertSame(array('Foo\\Bar'), $expand(array('Foo\\*'), array('Foo\\Bar', 'Foo\\BarTest')));
-        $this->assertSame(array('Foo\\Bar', 'Foo\\BarTest'), $expand(array('Foo\\*', 'Foo\\*Test'), array('Foo\\Bar', 'Foo\\BarTest')));
+        $this->assertSame(array('Foo\\Bar', 'Foo\\BarTest'), $expand(array('Foo\\*', 'Foo\\*Online_test'), array('Foo\\Bar', 'Foo\\BarTest')));
 
         $this->assertSame(
             'Acme\\FooBundle\\Controller\\DefaultController',

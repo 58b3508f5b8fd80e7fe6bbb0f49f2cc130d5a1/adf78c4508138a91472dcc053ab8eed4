@@ -22,7 +22,7 @@ class FirePHPHandlerTest extends TestCase
     public function setUp()
     {
         TestFirePHPHandler::reset();
-        $_SERVER['HTTP_USER_AGENT'] = 'Monolog Test; FirePHP/1.0';
+        $_SERVER['HTTP_USER_AGENT'] = 'Monolog Online_test; FirePHP/1.0';
     }
 
     public function testHeaders()

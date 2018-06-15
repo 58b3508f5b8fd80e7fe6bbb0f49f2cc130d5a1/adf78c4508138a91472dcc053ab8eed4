@@ -31,7 +31,7 @@ class Swift_Mime_Headers_UnstructuredHeaderTest extends \SwiftMailerTestCase
         */
         $header = $this->getHeader('Subject', $this->getEncoder('Q', true));
         $header->setValue('Test');
-        $this->assertEquals('Subject: Test'."\r\n", $header->toString());
+        $this->assertEquals('Subject: Online_test'."\r\n", $header->toString());
     }
 
     public function testLongHeadersAreFoldedAtWordBoundary()
@@ -75,7 +75,7 @@ class Swift_Mime_Headers_UnstructuredHeaderTest extends \SwiftMailerTestCase
         */
 
         $nonAsciiChar = pack('C', 0x8F);
-        $header = $this->getHeader('X-Test', $this->getEncoder('Q', true));
+        $header = $this->getHeader('X-Online_test', $this->getEncoder('Q', true));
         $header->setValue($nonAsciiChar);
         $this->assertRegExp(
             '~^[^:\x00-\x20\x80-\xFF]+: [^\x80-\xFF\r\n]+\r\n$~s',
@@ -92,10 +92,10 @@ class Swift_Mime_Headers_UnstructuredHeaderTest extends \SwiftMailerTestCase
         */
 
         $nonAsciiChar = pack('C', 0x8F);
-        $header = $this->getHeader('X-Test', $this->getEncoder('Q', true));
+        $header = $this->getHeader('X-Online_test', $this->getEncoder('Q', true));
         $header->setValue($nonAsciiChar);
         $this->assertRegExp(
-            '~^X-Test: \=?.*?\?.*?\?.*?\?=\r\n$~s',
+            '~^X-Online_test: \=?.*?\?.*?\?.*?\?=\r\n$~s',
             $header->toString()
             );
     }
@@ -118,10 +118,10 @@ class Swift_Mime_Headers_UnstructuredHeaderTest extends \SwiftMailerTestCase
                 ->with($nonAsciiChar, \Mockery::any(), \Mockery::any(), \Mockery::any())
                 ->andReturn('=8F');
 
-        $header = $this->getHeader('X-Test', $encoder);
+        $header = $this->getHeader('X-Online_test', $encoder);
         $header->setValue($nonAsciiChar);
         $this->assertEquals(
-            'X-Test: =?'.$this->charset.'?Q?=8F?='."\r\n",
+            'X-Online_test: =?'.$this->charset.'?Q?=8F?='."\r\n",
             $header->toString()
             );
     }
@@ -198,12 +198,12 @@ class Swift_Mime_Headers_UnstructuredHeaderTest extends \SwiftMailerTestCase
         //Note that multi-line headers begin with LWSP which makes 75 + 1 = 76
         //Note also that =?utf-8?q??= is 12 chars which makes 75 - 12 = 63
 
-        //* X-Test: is 8 chars
-        $header = $this->getHeader('X-Test', $encoder);
+        //* X-Online_test: is 8 chars
+        $header = $this->getHeader('X-Online_test', $encoder);
         $header->setValue($nonAsciiChar);
 
         $this->assertEquals(
-            'X-Test: =?'.$this->charset.'?Q?=8F?='."\r\n",
+            'X-Online_test: =?'.$this->charset.'?Q?=8F?='."\r\n",
             $header->toString()
             );
     }
@@ -229,12 +229,12 @@ class Swift_Mime_Headers_UnstructuredHeaderTest extends \SwiftMailerTestCase
         //Note that multi-line headers begin with LWSP which makes 75 + 1 = 76
         //Note also that =?utf-8?q??= is 12 chars which makes 75 - 12 = 63
 
-        //* X-Test: is 8 chars
-        $header = $this->getHeader('X-Test', $encoder);
+        //* X-Online_test: is 8 chars
+        $header = $this->getHeader('X-Online_test', $encoder);
         $header->setValue($nonAsciiChar);
 
         $this->assertEquals(
-            'X-Test: =?'.$this->charset.'?Q?line_one_here?='."\r\n".
+            'X-Online_test: =?'.$this->charset.'?Q?line_one_here?='."\r\n".
             ' =?'.$this->charset.'?Q?line_two_here?='."\r\n",
             $header->toString()
             );
@@ -272,12 +272,12 @@ class Swift_Mime_Headers_UnstructuredHeaderTest extends \SwiftMailerTestCase
                 ->with($word, \Mockery::any(), \Mockery::any(), \Mockery::any())
                 ->andReturn('w=8Frd');
 
-        $header = $this->getHeader('X-Test', $encoder);
+        $header = $this->getHeader('X-Online_test', $encoder);
         $header->setValue($text);
 
         $headerString = $header->toString();
 
-        $this->assertEquals('X-Test: start =?'.$this->charset.'?Q?'.
+        $this->assertEquals('X-Online_test: start =?'.$this->charset.'?Q?'.
             'w=8Frd_w=8Frd?= then end =?'.$this->charset.'?Q?'.
             'w=8Frd?='."\r\n", $headerString,
             '%s: Adjacent encoded words should appear grouped with WSP encoded'

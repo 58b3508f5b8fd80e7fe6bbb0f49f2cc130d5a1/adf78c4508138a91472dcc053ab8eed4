@@ -194,7 +194,7 @@ class DebugClassLoaderTest extends TestCase
         $e = error_reporting(0);
         trigger_error('', E_USER_DEPRECATED);
 
-        class_exists('Test\\'.__NAMESPACE__.'\\'.$class, true);
+        class_exists('Online_test\\'.__NAMESPACE__.'\\'.$class, true);
 
         error_reporting($e);
         restore_error_handler();
@@ -204,7 +204,7 @@ class DebugClassLoaderTest extends TestCase
 
         $xError = array(
             'type' => E_USER_DEPRECATED,
-            'message' => 'The "Test\Symfony\Component\Debug\Tests\\'.$class.'" class '.$type.' "Symfony\Component\Debug\Tests\Fixtures\\'.$super.'" that is deprecated but this is a test deprecation notice.',
+            'message' => 'The "Online_test\Symfony\Component\Debug\Tests\\'.$class.'" class '.$type.' "Symfony\Component\Debug\Tests\Fixtures\\'.$super.'" that is deprecated but this is a test deprecation notice.',
         );
 
         $this->assertSame($xError, $lastError);
@@ -224,7 +224,7 @@ class DebugClassLoaderTest extends TestCase
         $e = error_reporting(0);
         trigger_error('', E_USER_NOTICE);
 
-        class_exists('Test\\'.__NAMESPACE__.'\\NonDeprecatedInterfaceClass', true);
+        class_exists('Online_test\\'.__NAMESPACE__.'\\NonDeprecatedInterfaceClass', true);
 
         error_reporting($e);
         restore_error_handler();
@@ -272,7 +272,7 @@ class DebugClassLoaderTest extends TestCase
         $e = error_reporting(0);
         trigger_error('', E_USER_NOTICE);
 
-        class_exists('Test\\'.__NAMESPACE__.'\\Float', true);
+        class_exists('Online_test\\'.__NAMESPACE__.'\\Float', true);
 
         error_reporting($e);
         restore_error_handler();
@@ -282,7 +282,7 @@ class DebugClassLoaderTest extends TestCase
 
         $xError = array(
             'type' => E_USER_DEPRECATED,
-            'message' => 'The "Test\Symfony\Component\Debug\Tests\Float" class uses the reserved name "Float", it will break on PHP 7 and higher',
+            'message' => 'The "Online_test\Symfony\Component\Debug\Tests\Float" class uses the reserved name "Float", it will break on PHP 7 and higher',
         );
 
         $this->assertSame($xError, $lastError);
@@ -294,7 +294,7 @@ class DebugClassLoaderTest extends TestCase
         $e = error_reporting(0);
         trigger_error('', E_USER_NOTICE);
 
-        class_exists('Test\\'.__NAMESPACE__.'\\ExtendsFinalClass', true);
+        class_exists('Online_test\\'.__NAMESPACE__.'\\ExtendsFinalClass', true);
 
         error_reporting($e);
         restore_error_handler();
@@ -304,7 +304,7 @@ class DebugClassLoaderTest extends TestCase
 
         $xError = array(
             'type' => E_USER_DEPRECATED,
-            'message' => 'The "Symfony\Component\Debug\Tests\Fixtures\FinalClass" class is considered final since version 3.3. It may change without further notice as of its next major version. You should not extend it from "Test\Symfony\Component\Debug\Tests\ExtendsFinalClass".',
+            'message' => 'The "Symfony\Component\Debug\Tests\Fixtures\FinalClass" class is considered final since version 3.3. It may change without further notice as of its next major version. You should not extend it from "Online_test\Symfony\Component\Debug\Tests\ExtendsFinalClass".',
         );
 
         $this->assertSame($xError, $lastError);
@@ -338,7 +338,7 @@ class DebugClassLoaderTest extends TestCase
         $e = error_reporting(0);
         trigger_error('', E_USER_NOTICE);
 
-        class_exists('Test\\'.__NAMESPACE__.'\\ExtendsAnnotatedClass', true);
+        class_exists('Online_test\\'.__NAMESPACE__.'\\ExtendsAnnotatedClass', true);
 
         error_reporting($e);
         restore_error_handler();
@@ -355,16 +355,16 @@ class DebugClassLoaderTest extends TestCase
         set_error_handler(function ($type, $msg) use (&$deprecations) { $deprecations[] = $msg; });
         $e = error_reporting(E_USER_DEPRECATED);
 
-        class_exists('Test\\'.__NAMESPACE__.'\\ExtendsInternals', true);
+        class_exists('Online_test\\'.__NAMESPACE__.'\\ExtendsInternals', true);
 
         error_reporting($e);
         restore_error_handler();
 
         $this->assertSame($deprecations, array(
-            'The "Symfony\Component\Debug\Tests\Fixtures\InternalClass" class is considered internal since version 3.4. It may change without further notice. You should not use it from "Test\Symfony\Component\Debug\Tests\ExtendsInternalsParent".',
-            'The "Symfony\Component\Debug\Tests\Fixtures\InternalInterface" interface is considered internal. It may change without further notice. You should not use it from "Test\Symfony\Component\Debug\Tests\ExtendsInternalsParent".',
-            'The "Symfony\Component\Debug\Tests\Fixtures\InternalTrait" trait is considered internal. It may change without further notice. You should not use it from "Test\Symfony\Component\Debug\Tests\ExtendsInternals".',
-            'The "Symfony\Component\Debug\Tests\Fixtures\InternalTrait2::internalMethod()" method is considered internal since version 3.4. It may change without further notice. You should not extend it from "Test\Symfony\Component\Debug\Tests\ExtendsInternals".',
+            'The "Symfony\Component\Debug\Tests\Fixtures\InternalClass" class is considered internal since version 3.4. It may change without further notice. You should not use it from "Online_test\Symfony\Component\Debug\Tests\ExtendsInternalsParent".',
+            'The "Symfony\Component\Debug\Tests\Fixtures\InternalInterface" interface is considered internal. It may change without further notice. You should not use it from "Online_test\Symfony\Component\Debug\Tests\ExtendsInternalsParent".',
+            'The "Symfony\Component\Debug\Tests\Fixtures\InternalTrait" trait is considered internal. It may change without further notice. You should not use it from "Online_test\Symfony\Component\Debug\Tests\ExtendsInternals".',
+            'The "Symfony\Component\Debug\Tests\Fixtures\InternalTrait2::internalMethod()" method is considered internal since version 3.4. It may change without further notice. You should not extend it from "Online_test\Symfony\Component\Debug\Tests\ExtendsInternals".',
         ));
     }
 }
@@ -398,28 +398,28 @@ class ClassLoader
             return $fixtureDir.'notPsr0Bis.php';
         } elseif ('Symfony\Bridge\Debug\Tests\Fixtures\ExtendsDeprecatedParent' === $class) {
             eval('namespace Symfony\Bridge\Debug\Tests\Fixtures; class ExtendsDeprecatedParent extends \\'.__NAMESPACE__.'\Fixtures\DeprecatedClass {}');
-        } elseif ('Test\\'.__NAMESPACE__.'\DeprecatedParentClass' === $class) {
-            eval('namespace Test\\'.__NAMESPACE__.'; class DeprecatedParentClass extends \\'.__NAMESPACE__.'\Fixtures\DeprecatedClass {}');
-        } elseif ('Test\\'.__NAMESPACE__.'\DeprecatedInterfaceClass' === $class) {
-            eval('namespace Test\\'.__NAMESPACE__.'; class DeprecatedInterfaceClass implements \\'.__NAMESPACE__.'\Fixtures\DeprecatedInterface {}');
-        } elseif ('Test\\'.__NAMESPACE__.'\NonDeprecatedInterfaceClass' === $class) {
-            eval('namespace Test\\'.__NAMESPACE__.'; class NonDeprecatedInterfaceClass implements \\'.__NAMESPACE__.'\Fixtures\NonDeprecatedInterface {}');
-        } elseif ('Test\\'.__NAMESPACE__.'\Float' === $class) {
-            eval('namespace Test\\'.__NAMESPACE__.'; class Float {}');
-        } elseif ('Test\\'.__NAMESPACE__.'\ExtendsFinalClass' === $class) {
-            eval('namespace Test\\'.__NAMESPACE__.'; class ExtendsFinalClass extends \\'.__NAMESPACE__.'\Fixtures\FinalClass {}');
-        } elseif ('Test\\'.__NAMESPACE__.'\ExtendsAnnotatedClass' === $class) {
-            eval('namespace Test\\'.__NAMESPACE__.'; class ExtendsAnnotatedClass extends \\'.__NAMESPACE__.'\Fixtures\AnnotatedClass {
+        } elseif ('Online_test\\'.__NAMESPACE__.'\DeprecatedParentClass' === $class) {
+            eval('namespace Online_test\\'.__NAMESPACE__.'; class DeprecatedParentClass extends \\'.__NAMESPACE__.'\Fixtures\DeprecatedClass {}');
+        } elseif ('Online_test\\'.__NAMESPACE__.'\DeprecatedInterfaceClass' === $class) {
+            eval('namespace Online_test\\'.__NAMESPACE__.'; class DeprecatedInterfaceClass implements \\'.__NAMESPACE__.'\Fixtures\DeprecatedInterface {}');
+        } elseif ('Online_test\\'.__NAMESPACE__.'\NonDeprecatedInterfaceClass' === $class) {
+            eval('namespace Online_test\\'.__NAMESPACE__.'; class NonDeprecatedInterfaceClass implements \\'.__NAMESPACE__.'\Fixtures\NonDeprecatedInterface {}');
+        } elseif ('Online_test\\'.__NAMESPACE__.'\Float' === $class) {
+            eval('namespace Online_test\\'.__NAMESPACE__.'; class Float {}');
+        } elseif ('Online_test\\'.__NAMESPACE__.'\ExtendsFinalClass' === $class) {
+            eval('namespace Online_test\\'.__NAMESPACE__.'; class ExtendsFinalClass extends \\'.__NAMESPACE__.'\Fixtures\FinalClass {}');
+        } elseif ('Online_test\\'.__NAMESPACE__.'\ExtendsAnnotatedClass' === $class) {
+            eval('namespace Online_test\\'.__NAMESPACE__.'; class ExtendsAnnotatedClass extends \\'.__NAMESPACE__.'\Fixtures\AnnotatedClass {
                 public function deprecatedMethod() { }
             }');
-        } elseif ('Test\\'.__NAMESPACE__.'\ExtendsInternals' === $class) {
-            eval('namespace Test\\'.__NAMESPACE__.'; class ExtendsInternals extends ExtendsInternalsParent {
+        } elseif ('Online_test\\'.__NAMESPACE__.'\ExtendsInternals' === $class) {
+            eval('namespace Online_test\\'.__NAMESPACE__.'; class ExtendsInternals extends ExtendsInternalsParent {
                 use \\'.__NAMESPACE__.'\Fixtures\InternalTrait;
 
                 public function internalMethod() { }
             }');
-        } elseif ('Test\\'.__NAMESPACE__.'\ExtendsInternalsParent' === $class) {
-            eval('namespace Test\\'.__NAMESPACE__.'; class ExtendsInternalsParent extends \\'.__NAMESPACE__.'\Fixtures\InternalClass implements \\'.__NAMESPACE__.'\Fixtures\InternalInterface { }');
+        } elseif ('Online_test\\'.__NAMESPACE__.'\ExtendsInternalsParent' === $class) {
+            eval('namespace Online_test\\'.__NAMESPACE__.'; class ExtendsInternalsParent extends \\'.__NAMESPACE__.'\Fixtures\InternalClass implements \\'.__NAMESPACE__.'\Fixtures\InternalInterface { }');
         }
     }
 }

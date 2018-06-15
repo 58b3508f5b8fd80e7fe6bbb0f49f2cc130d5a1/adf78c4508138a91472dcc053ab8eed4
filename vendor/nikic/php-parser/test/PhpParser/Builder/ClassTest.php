@@ -93,7 +93,7 @@ class ClassTest extends TestCase
     public function testDocComment() {
         $docComment = <<<'DOC'
 /**
- * Test
+ * Online_test
  */
 DOC;
         $class = $this->createClassBuilder('Test')

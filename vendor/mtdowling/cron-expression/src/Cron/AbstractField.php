@@ -51,7 +51,7 @@ abstract class AbstractField implements FieldInterface
     }
 
     /**
-     * Test if a value is within a range
+     * Online_test if a value is within a range
      *
      * @param string $dateValue Set date value
      * @param string $value     Value to test
@@ -66,7 +66,7 @@ abstract class AbstractField implements FieldInterface
     }
 
     /**
-     * Test if a value is within an increments of ranges (offset[-to]/step size)
+     * Online_test if a value is within an increments of ranges (offset[-to]/step size)
      *
      * @param string $dateValue Set date value
      * @param string $value     Value to test

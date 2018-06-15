@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.lms.app')
 
 @section('content')
     <h3 class="page-title">@lang('global.tests.title')</h3>

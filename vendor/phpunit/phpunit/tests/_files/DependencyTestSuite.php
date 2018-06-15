@@ -5,7 +5,7 @@ class DependencyTestSuite
 {
     public static function suite()
     {
-        $suite = new TestSuite('Test Dependencies');
+        $suite = new TestSuite('Online_test Dependencies');
 
         $suite->addTestSuite(DependencySuccessTest::class);
         $suite->addTestSuite(DependencyFailureTest::class);

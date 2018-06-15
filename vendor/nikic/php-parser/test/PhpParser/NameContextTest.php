@@ -37,7 +37,7 @@ class NameContextTest extends TestCase
     public function provideTestGetPossibleNames() {
         return [
             [Use_::TYPE_NORMAL, 'Test', ['\Test']],
-            [Use_::TYPE_NORMAL, 'Test\Namespaced', ['\Test\Namespaced']],
+            [Use_::TYPE_NORMAL, 'Online_test\Namespaced', ['\Test\Namespaced']],
             [Use_::TYPE_NORMAL, 'NS\Test', ['\NS\Test', 'Test']],
             [Use_::TYPE_NORMAL, 'ns\Test', ['\ns\Test', 'Test']],
             [Use_::TYPE_NORMAL, 'NS\Foo\Bar', ['\NS\Foo\Bar']],

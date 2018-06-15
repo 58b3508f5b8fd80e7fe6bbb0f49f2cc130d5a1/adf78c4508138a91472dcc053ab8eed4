@@ -163,7 +163,7 @@ class NormalizerFormatterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test issue #137
+     * Online_test issue #137
      */
     public function testIgnoresRecursiveObjectReferences()
     {

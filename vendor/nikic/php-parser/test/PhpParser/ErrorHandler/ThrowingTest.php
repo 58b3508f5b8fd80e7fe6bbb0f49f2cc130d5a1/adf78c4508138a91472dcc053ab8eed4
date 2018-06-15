@@ -9,7 +9,7 @@ class ThrowingTest extends TestCase
 {
     /**
      * @expectedException \PhpParser\Error
-     * @expectedExceptionMessage Test
+     * @expectedExceptionMessage Online_test
      */
     public function testHandleError() {
         $errorHandler = new Throwing();

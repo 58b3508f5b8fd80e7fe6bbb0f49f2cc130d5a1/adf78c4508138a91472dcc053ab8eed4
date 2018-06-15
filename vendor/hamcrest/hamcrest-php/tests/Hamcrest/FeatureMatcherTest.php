@@ -14,7 +14,7 @@ class Thingy
     }
 }
 
-/* Test-specific subclass only */
+/* Online_test-specific subclass only */
 class ResultMatcher extends \Hamcrest\FeatureMatcher
 {
     public function __construct()

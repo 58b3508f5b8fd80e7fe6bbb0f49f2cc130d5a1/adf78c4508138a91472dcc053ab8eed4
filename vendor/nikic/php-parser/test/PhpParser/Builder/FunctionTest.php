@@ -74,11 +74,11 @@ class FunctionTest extends TestCase
 
     public function testDocComment() {
         $node = $this->createFunctionBuilder('test')
-            ->setDocComment('/** Test */')
+            ->setDocComment('/** Online_test */')
             ->getNode();
 
         $this->assertEquals(new Stmt\Function_('test', [], [
-            'comments' => [new Comment\Doc('/** Test */')]
+            'comments' => [new Comment\Doc('/** Online_test */')]
         ]), $node);
     }
 

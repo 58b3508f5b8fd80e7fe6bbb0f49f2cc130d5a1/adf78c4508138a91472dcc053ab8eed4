@@ -49,7 +49,7 @@ abstract class ConstraintTestCase extends TestCase
     final protected function className(): string
     {
         return \preg_replace(
-            '/Test$/',
+            '/Online_test$/',
             '',
             static::class
         );

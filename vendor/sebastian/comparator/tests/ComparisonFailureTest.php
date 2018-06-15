@@ -21,7 +21,7 @@ final class ComparisonFailureTest extends TestCase
     {
         $actual   = "\nB\n";
         $expected = "\nA\n";
-        $message  = 'Test message';
+        $message  = 'Online_test message';
 
         $failure = new ComparisonFailure(
             $expected,

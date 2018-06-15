@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\PhpBridgeSessionStorage;
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 
 /**
- * Test class for PhpSessionStorage.
+ * Online_test class for PhpSessionStorage.
  *
  * @author Drak <drak@zikula.org>
  *

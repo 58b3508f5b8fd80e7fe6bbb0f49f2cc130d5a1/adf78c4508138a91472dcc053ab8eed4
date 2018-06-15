@@ -478,7 +478,7 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
                 ->andReturn(array(
                     'foo@bar' => null,
                     'zip@button' => 'Zip Button',
-                    'test@domain' => 'Test user',
+                    'test@domain' => 'Online_test user',
                 ));
         $buf->shouldReceive('write')
             ->once()
@@ -526,7 +526,7 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
                 ->once()
                 ->andReturn(array(
                     'zip@button' => 'Zip Button',
-                    'test@domain' => 'Test user',
+                    'test@domain' => 'Online_test user',
                 ));
         $buf->shouldReceive('write')
             ->once()
@@ -574,7 +574,7 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
                 ->once()
                 ->andReturn(array(
                     'zip@button' => 'Zip Button',
-                    'test@domain' => 'Test user',
+                    'test@domain' => 'Online_test user',
                 ));
         $buf->shouldReceive('write')
             ->once()
@@ -852,7 +852,7 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
                 ->zeroOrMoreTimes()
                 ->andReturn(array(
                     'zip@button' => 'Zip Button',
-                    'test@domain' => 'Test user',
+                    'test@domain' => 'Online_test user',
                 ));
         $message->shouldReceive('setBcc')
                 ->once()
@@ -881,7 +881,7 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
                 ->zeroOrMoreTimes()
                 ->andReturn(array(
                     'zip@button' => 'Zip Button',
-                    'test@domain' => 'Test user',
+                    'test@domain' => 'Online_test user',
                 ));
         $message->shouldReceive('setBcc')
                 ->atLeast()->once()
@@ -891,12 +891,12 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
                 ->with(array('zip@button' => 'Zip Button'));
         $message->shouldReceive('setBcc')
                 ->once()
-                ->with(array('test@domain' => 'Test user'));
+                ->with(array('test@domain' => 'Online_test user'));
         $message->shouldReceive('setBcc')
                 ->atLeast()->once()
                 ->with(array(
                     'zip@button' => 'Zip Button',
-                    'test@domain' => 'Test user',
+                    'test@domain' => 'Online_test user',
                 ));
 
         $buf->shouldReceive('write')->once()->with("MAIL FROM:<me@domain.com>\r\n")->andReturn(1);
@@ -947,7 +947,7 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
                 ->zeroOrMoreTimes()
                 ->andReturn(array(
                     'zip@button' => 'Zip Button',
-                    'test@domain' => 'Test user',
+                    'test@domain' => 'Online_test user',
                 ));
         $message->shouldReceive('setBcc')
                 ->once()
@@ -956,7 +956,7 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
                 ->once()
                 ->with(array(
                     'zip@button' => 'Zip Button',
-                    'test@domain' => 'Test user',
+                    'test@domain' => 'Online_test user',
                 ));
         $buf->shouldReceive('write')
             ->once()
@@ -1105,7 +1105,7 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
                 ->zeroOrMoreTimes()
                 ->andReturn(array(
                     'zip@button' => 'Zip Button',
-                    'test@domain' => 'Test user',
+                    'test@domain' => 'Online_test user',
                 ));
         $message->shouldReceive('setBcc')
                 ->atLeast()->once()
@@ -1115,12 +1115,12 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
                 ->with(array('zip@button' => 'Zip Button'));
         $message->shouldReceive('setBcc')
                 ->once()
-                ->with(array('test@domain' => 'Test user'));
+                ->with(array('test@domain' => 'Online_test user'));
         $message->shouldReceive('setBcc')
                 ->atLeast()->once()
                 ->with(array(
                     'zip@button' => 'Zip Button',
-                    'test@domain' => 'Test user',
+                    'test@domain' => 'Online_test user',
                 ));
 
         $buf->shouldReceive('write')->once()->with("MAIL FROM:<me@domain.com>\r\n")->andReturn(1);

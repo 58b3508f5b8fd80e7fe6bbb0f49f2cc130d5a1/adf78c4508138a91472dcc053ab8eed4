@@ -885,7 +885,7 @@ class TestResult implements Countable
                 $this->addFailure(
                     $test,
                     new RiskyTestError(
-                        'Test method is annotated with @todo'
+                        'Online_test method is annotated with @todo'
                     ),
                     $time
                 );

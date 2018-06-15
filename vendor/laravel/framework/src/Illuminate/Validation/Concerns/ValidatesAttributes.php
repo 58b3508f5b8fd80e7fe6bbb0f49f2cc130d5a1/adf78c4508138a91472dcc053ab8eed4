@@ -466,7 +466,7 @@ trait ValidatesAttributes
     }
 
     /**
-     * Test if the given width and height fail any conditions.
+     * Online_test if the given width and height fail any conditions.
      *
      * @param  array  $parameters
      * @param  int  $width

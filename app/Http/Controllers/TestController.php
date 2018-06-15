@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Application;
 use App\Job_test;
-use App\Question;
+use App\Test_question;
 use App\Result;
-use App\Test;
+use App\Online_test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +15,7 @@ class TestController extends Controller
     //
     public function index($id)
     {
-        $data['title'] = "Online Test";
+        $data['title'] = "Online Online_test";
         $user = Application::join('results', 'applications.application_id',
             'results.application_id')->where([
             ['results.application_id', $id],
@@ -51,7 +51,7 @@ class TestController extends Controller
     public function startTest(Request $request)
     {
         $id = $request->id;
-        $test = Test::where('test_id', $id)->first();
+        $test = Online_test::where('test_id', $id)->first();
         $data = [];
         if ($test) {
             $result = Result::where([
@@ -59,7 +59,7 @@ class TestController extends Controller
                 ['resume_id', Auth::user()->user_id]
             ])->first();
             if ($result && $result->status == 'open') {
-                $data['questions'] = Question::where('test_id', $test->test_id)
+                $data['questions'] = Test_question::where('test_id', $test->test_id)
                     ->inRandomOrder()->limit($test->length)->get();
             } else {
                 if (!$result) {
@@ -72,7 +72,7 @@ class TestController extends Controller
             $data['result'] = $result;
             $data['title'] = $test->title;
         } else {
-            $data['title'] = 'Invalid Test';
+            $data['title'] = 'Invalid Online_test';
         }
 
         return view('dashboard.questions', $data);
@@ -83,7 +83,7 @@ class TestController extends Controller
         $questions = $request->all();
         $score = 0;
         $data = [];
-        $isValid = Test::join('results', 'tests.test_id', '=',
+        $isValid = Online_test::join('results', 'tests.test_id', '=',
             'results.test_id')->where('tests.test_id', $request->tid)
             ->where('results.result_id', $request->rid)
             ->select('tests.*', 'results.*', 'results.id as id')
@@ -91,7 +91,7 @@ class TestController extends Controller
 
         if ($isValid) {
 
-            $score = Question::where(function ($query) use ($questions) {
+            $score = Test_question::where(function ($query) use ($questions) {
                 foreach ($questions as $question => $answer) {
                     $query->orWhere([
                         ['question_id', $question],

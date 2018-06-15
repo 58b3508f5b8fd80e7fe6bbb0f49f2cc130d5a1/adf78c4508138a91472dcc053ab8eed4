@@ -525,7 +525,7 @@ class ApplicationTest extends TestCase
             $this->assertEquals(sprintf('Command "%s" is not defined.', $commandName), $e->getMessage(), '->find() throws a CommandNotFoundException if command does not exist, without alternatives');
         }
 
-        // Test if "bar1" command throw a "CommandNotFoundException" and does not contain
+        // Online_test if "bar1" command throw a "CommandNotFoundException" and does not contain
         // "foo:bar" as alternative because "bar1" is too far from "foo:bar"
         try {
             $application->find($commandName = 'bar1');

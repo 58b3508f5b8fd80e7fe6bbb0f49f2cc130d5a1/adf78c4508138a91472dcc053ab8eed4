@@ -71,11 +71,11 @@ class InterfaceTest extends TestCase
 
     public function testDocComment() {
         $node = $this->builder
-            ->setDocComment('/** Test */')
+            ->setDocComment('/** Online_test */')
             ->getNode();
 
         $this->assertEquals(new Stmt\Interface_('Contract', [], [
-            'comments' => [new Comment\Doc('/** Test */')]
+            'comments' => [new Comment\Doc('/** Online_test */')]
         ]), $node);
     }
 

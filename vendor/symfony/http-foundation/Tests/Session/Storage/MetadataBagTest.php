@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Storage\MetadataBag;
 
 /**
- * Test class for MetadataBag.
+ * Online_test class for MetadataBag.
  *
  * @group time-sensitive
  */

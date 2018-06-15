@@ -355,7 +355,7 @@ class ConfigurationTest extends TestCase
                 'extensionsDirectory'                        => '/tmp',
                 'printerClass'                               => 'PHPUnit\TextUI\ResultPrinter',
                 'testSuiteLoaderClass'                       => 'PHPUnit\Runner\StandardTestSuiteLoader',
-                'defaultTestSuite'                           => 'My Test Suite',
+                'defaultTestSuite'                           => 'My Online_test Suite',
                 'verbose'                                    => false,
                 'timeoutForSmallTests'                       => 1,
                 'timeoutForMediumTests'                      => 10,

@@ -10,7 +10,7 @@ use Faker;
 /**
  * Class ProviderOverrideTest
  *
- * @package Faker\Test\Provider
+ * @package Faker\Online_test\Provider
  *
  * This class tests a large portion of all locale specific providers. It does not test the entire stack, because each
  * locale specific provider (can) has specific implementations. The goal of this test is to test the common denominator

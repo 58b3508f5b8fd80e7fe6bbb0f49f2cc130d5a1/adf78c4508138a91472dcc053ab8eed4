@@ -108,7 +108,7 @@
             
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
-                <a href="{{ route('auth.change_password') }}">
+                <a href="{{ route('change_password') }}">
                     <i class="fa fa-key"></i>
                     <span class="title">Change password</span>
                 </a>

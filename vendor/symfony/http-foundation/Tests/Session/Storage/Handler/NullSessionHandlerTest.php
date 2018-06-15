@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
- * Test class for NullSessionHandler.
+ * Online_test class for NullSessionHandler.
  *
  * @author Drak <drak@zikula.org>
  *

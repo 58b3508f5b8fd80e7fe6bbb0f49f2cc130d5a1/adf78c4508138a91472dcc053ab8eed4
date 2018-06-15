@@ -104,7 +104,7 @@ class CodeCoverage
     private $disableIgnoredLines = false;
 
     /**
-     * Test data.
+     * Online_test data.
      *
      * @var array
      */

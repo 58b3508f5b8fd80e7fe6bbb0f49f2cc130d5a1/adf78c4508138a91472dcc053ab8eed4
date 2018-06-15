@@ -101,7 +101,7 @@ class TranslatorTest extends TestCase
         $translator->addResource('loader-b', array('bar' => 'foobar'), $locale, 'domain-b');
 
         /*
-         * Test that we get a single catalogue comprising messages
+         * Online_test that we get a single catalogue comprising messages
          * from different loaders and different domains
          */
         $catalogue = $translator->getCatalogue($locale);

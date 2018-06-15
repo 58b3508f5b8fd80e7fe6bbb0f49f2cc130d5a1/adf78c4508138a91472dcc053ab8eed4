@@ -13,7 +13,7 @@ namespace PHPUnit\Framework;
 use Countable;
 
 /**
- * A Test can be run and collect its results.
+ * A Online_test can be run and collect its results.
  */
 interface Test extends Countable
 {

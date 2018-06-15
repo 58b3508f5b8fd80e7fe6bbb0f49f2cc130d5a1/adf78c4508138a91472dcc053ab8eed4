@@ -75,10 +75,10 @@ final class ParserTest extends TestCase
     public function testParseWithRemovedLines()
     {
         $content = <<<A
-diff --git a/Test.txt b/Test.txt
+diff --git a/Online_test.txt b/Online_test.txt
 index abcdefg..abcdefh 100644
---- a/Test.txt
-+++ b/Test.txt
+--- a/Online_test.txt
++++ b/Online_test.txt
 @@ -49,9 +49,8 @@
  A
 -B
@@ -118,10 +118,10 @@ A;
     public function testParseDiffForMulitpleFiles()
     {
         $content = <<<A
-diff --git a/Test.txt b/Test.txt
+diff --git a/Online_test.txt b/Online_test.txt
 index abcdefg..abcdefh 100644
---- a/Test.txt
-+++ b/Test.txt
+--- a/Online_test.txt
++++ b/Online_test.txt
 @@ -1,3 +1,2 @@
  A
 -B
@@ -139,8 +139,8 @@ A;
 
         /** @var Diff $diff */
         $diff = $diffs[0];
-        $this->assertSame('a/Test.txt', $diff->getFrom());
-        $this->assertSame('b/Test.txt', $diff->getTo());
+        $this->assertSame('a/Online_test.txt', $diff->getFrom());
+        $this->assertSame('b/Online_test.txt', $diff->getTo());
         $this->assertCount(1, $diff->getChunks());
 
         $diff = $diffs[1];

@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Symfony\Component\HttpFoundation\Session\Storage\Proxy\SessionHandlerProxy;
 
 /**
- * Test class for NativeSessionStorage.
+ * Online_test class for NativeSessionStorage.
  *
  * @author Drak <drak@zikula.org>
  *

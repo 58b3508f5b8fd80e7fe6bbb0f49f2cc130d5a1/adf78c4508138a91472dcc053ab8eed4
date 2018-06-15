@@ -95,7 +95,7 @@ class MessageSelectorTest extends TestCase
             array('There are no apples', '{0} There are no apples|]0,1[There are %count% apples|{1} There is one apple|[1,Inf] There is more than one apple', 0.0),
             array('There are no apples', '{0.0} There are no apples|]0,1[There are %count% apples|{1} There is one apple|[1,Inf] There is more than one apple', 0),
 
-            // Test texts with new-lines
+            // Online_test texts with new-lines
             // with double-quotes and \n in id & double-quotes and actual newlines in text
             array("This is a text with a\n            new-line in it. Selector = 0.", '{0}This is a text with a
             new-line in it. Selector = 0.|{1}This is a text with a

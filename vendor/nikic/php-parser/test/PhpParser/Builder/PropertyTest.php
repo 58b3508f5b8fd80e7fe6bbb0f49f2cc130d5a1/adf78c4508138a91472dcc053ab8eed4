@@ -66,7 +66,7 @@ class PropertyTest extends TestCase
 
     public function testDocComment() {
         $node = $this->createPropertyBuilder('test')
-            ->setDocComment('/** Test */')
+            ->setDocComment('/** Online_test */')
             ->getNode();
 
         $this->assertEquals(new Stmt\Property(
@@ -75,7 +75,7 @@ class PropertyTest extends TestCase
                 new Stmt\PropertyProperty('test')
             ],
             [
-                'comments' => [new Comment\Doc('/** Test */')]
+                'comments' => [new Comment\Doc('/** Online_test */')]
             ]
         ), $node);
     }

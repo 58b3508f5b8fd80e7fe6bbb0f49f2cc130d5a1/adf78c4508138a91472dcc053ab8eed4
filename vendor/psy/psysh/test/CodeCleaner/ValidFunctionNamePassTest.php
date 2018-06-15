@@ -40,10 +40,10 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
                 function psy_test_codecleaner_validfunctionnamepass_alpha() {}
             '],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass {
                     function beta() {}
                 }
-                namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass {
                     function beta() {}
                 }
             '],
@@ -51,7 +51,7 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
             // function calls
             ['psy_test_codecleaner_validfunctionnamepass_gamma()'],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass {
                     delta();
                 }
             '],
@@ -75,7 +75,7 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
         return [
             ['function psy_test_codecleaner_validfunctionnamepass_epsilon() {}'],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass {
                     function zeta() {}
                 }
             '],
@@ -83,12 +83,12 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
                 namespace {
                     function psy_test_codecleaner_validfunctionnamepass_eta() {}
                 }
-                namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass {
                     function psy_test_codecleaner_validfunctionnamepass_eta() {}
                 }
             '],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass {
                     function psy_test_codecleaner_validfunctionnamepass_eta() {}
                 }
                 namespace {
@@ -96,7 +96,7 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
                 }
             '],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass {
                     function array_merge() {}
                 }
             '],
@@ -104,21 +104,21 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
             // function calls
             ['array_merge();'],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass {
                     function theta() {}
                 }
-                namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass {
                     theta();
                 }
             '],
             // closures
             ['$test = function(){};$test()'],
             ['
-                namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
+                namespace Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass {
                     function theta() {}
                 }
                 namespace {
-                    Psy\\Test\\CodeCleaner\\ValidFunctionNamePass\\theta();
+                    Psy\\Online_test\\CodeCleaner\\ValidFunctionNamePass\\theta();
                 }
             '],
 

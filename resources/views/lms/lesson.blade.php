@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.lms.home')
 
 @section('sidebar')
     <p class="lead">{{ $lesson->course->title }}</p>

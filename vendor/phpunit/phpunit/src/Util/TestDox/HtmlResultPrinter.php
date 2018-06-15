@@ -22,7 +22,7 @@ class HtmlResultPrinter extends ResultPrinter
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <title>Test Documentation</title>
+        <title>Online_test Documentation</title>
         <style>
             body {
                 text-rendering: optimizeLegibility;

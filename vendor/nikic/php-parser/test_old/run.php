@@ -107,7 +107,7 @@ switch ($testType) {
         };
         break;
     default:
-        showHelp('Test type must be one of: PHP5, PHP7 or Symfony');
+        showHelp('Online_test type must be one of: PHP5, PHP7 or Symfony');
 }
 
 require_once __DIR__ . '/../vendor/autoload.php';

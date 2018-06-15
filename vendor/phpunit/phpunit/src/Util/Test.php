@@ -27,7 +27,7 @@ use SebastianBergmann\Environment\OperatingSystem;
 use Traversable;
 
 /**
- * Test helpers.
+ * Online_test helpers.
  */
 class Test
 {

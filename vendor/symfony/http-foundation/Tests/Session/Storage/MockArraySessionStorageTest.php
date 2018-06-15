@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 /**
- * Test class for MockArraySessionStorage.
+ * Online_test class for MockArraySessionStorage.
  *
  * @author Drak <drak@zikula.org>
  */

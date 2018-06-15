@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\Kernel;
 class ProfilerListenerTest extends TestCase
 {
     /**
-     * Test a master and sub request with an exception and `onlyException` profiler option enabled.
+     * Online_test a master and sub request with an exception and `onlyException` profiler option enabled.
      */
     public function testKernelTerminate()
     {

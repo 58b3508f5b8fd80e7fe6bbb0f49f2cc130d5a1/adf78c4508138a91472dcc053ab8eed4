@@ -112,10 +112,10 @@ class QuestionHelperTest extends AbstractQuestionHelperTest
         }
 
         // Acm<NEWLINE>
-        // Ac<BACKSPACE><BACKSPACE>s<TAB>Test<NEWLINE>
+        // Ac<BACKSPACE><BACKSPACE>s<TAB>Online_test<NEWLINE>
         // <NEWLINE>
         // <UP ARROW><UP ARROW><NEWLINE>
-        // <UP ARROW><UP ARROW><UP ARROW><UP ARROW><UP ARROW><TAB>Test<NEWLINE>
+        // <UP ARROW><UP ARROW><UP ARROW><UP ARROW><UP ARROW><TAB>Online_test<NEWLINE>
         // <DOWN ARROW><NEWLINE>
         // S<BACKSPACE><BACKSPACE><DOWN ARROW><DOWN ARROW><NEWLINE>
         // F00<BACKSPACE><BACKSPACE>oo<TAB><NEWLINE>
@@ -582,10 +582,10 @@ class QuestionHelperTest extends AbstractQuestionHelperTest
         }
 
         // Acm<NEWLINE>
-        // Ac<BACKSPACE><BACKSPACE>s<TAB>Test<NEWLINE>
+        // Ac<BACKSPACE><BACKSPACE>s<TAB>Online_test<NEWLINE>
         // <NEWLINE>
         // <UP ARROW><UP ARROW><NEWLINE>
-        // <UP ARROW><UP ARROW><UP ARROW><UP ARROW><UP ARROW><TAB>Test<NEWLINE>
+        // <UP ARROW><UP ARROW><UP ARROW><UP ARROW><UP ARROW><TAB>Online_test<NEWLINE>
         // <DOWN ARROW><NEWLINE>
         // S<BACKSPACE><BACKSPACE><DOWN ARROW><DOWN ARROW><NEWLINE>
         // F00<BACKSPACE><BACKSPACE>oo<TAB><NEWLINE>
@@ -875,7 +875,7 @@ class QuestionHelperTest extends AbstractQuestionHelperTest
      */
     public function testEmptyChoices()
     {
-        new ChoiceQuestion('Question', array(), 'irrelevant');
+        new ChoiceQuestion('Test_question', array(), 'irrelevant');
     }
 
     public function testTraversableAutocomplete()
@@ -885,10 +885,10 @@ class QuestionHelperTest extends AbstractQuestionHelperTest
         }
 
         // Acm<NEWLINE>
-        // Ac<BACKSPACE><BACKSPACE>s<TAB>Test<NEWLINE>
+        // Ac<BACKSPACE><BACKSPACE>s<TAB>Online_test<NEWLINE>
         // <NEWLINE>
         // <UP ARROW><UP ARROW><NEWLINE>
-        // <UP ARROW><UP ARROW><UP ARROW><UP ARROW><UP ARROW><TAB>Test<NEWLINE>
+        // <UP ARROW><UP ARROW><UP ARROW><UP ARROW><UP ARROW><TAB>Online_test<NEWLINE>
         // <DOWN ARROW><NEWLINE>
         // S<BACKSPACE><BACKSPACE><DOWN ARROW><DOWN ARROW><NEWLINE>
         // F00<BACKSPACE><BACKSPACE>oo<TAB><NEWLINE>

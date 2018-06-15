@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.lms.app')
 
 @section('content')
     <h3 class="page-title">@lang('global.questions-options.title')</h3>
@@ -12,7 +12,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('question_id', 'Question', ['class' => 'control-label']) !!}
+                    {!! Form::label('question_id', 'Test_question', ['class' => 'control-label']) !!}
                     {!! Form::select('question_id', $questions, old('question_id'), ['class' => 'form-control select2']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('question_id'))

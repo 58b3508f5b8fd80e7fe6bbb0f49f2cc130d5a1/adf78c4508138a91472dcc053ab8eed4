@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Storage\Proxy\NativeProxy;
 
 /**
- * Test class for NativeProxy.
+ * Online_test class for NativeProxy.
  *
  * @group legacy
  *

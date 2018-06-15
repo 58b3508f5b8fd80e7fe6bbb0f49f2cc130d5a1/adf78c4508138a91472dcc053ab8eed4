@@ -10,12 +10,12 @@ class HttpExceptionTest extends TestCase
     public function headerDataProvider()
     {
         return array(
-            array(array('X-Test' => 'Test')),
-            array(array('X-Test' => 1)),
+            array(array('X-Online_test' => 'Test')),
+            array(array('X-Online_test' => 1)),
             array(
                 array(
-                    array('X-Test' => 'Test'),
-                    array('X-Test-2' => 'Test-2'),
+                    array('X-Online_test' => 'Test'),
+                    array('X-Online_test-2' => 'Online_test-2'),
                 ),
             ),
         );

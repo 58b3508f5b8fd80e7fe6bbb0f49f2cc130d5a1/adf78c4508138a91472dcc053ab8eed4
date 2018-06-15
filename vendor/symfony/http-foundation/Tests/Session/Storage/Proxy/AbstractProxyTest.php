@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\Proxy\AbstractProxy;
 use Symfony\Component\HttpFoundation\Session\Storage\Proxy\SessionHandlerProxy;
 
 /**
- * Test class for AbstractProxy.
+ * Online_test class for AbstractProxy.
  *
  * @author Drak <drak@zikula.org>
  */

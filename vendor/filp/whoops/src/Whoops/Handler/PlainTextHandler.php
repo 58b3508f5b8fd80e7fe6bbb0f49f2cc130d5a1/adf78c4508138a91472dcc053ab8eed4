@@ -187,7 +187,7 @@ class PlainTextHandler extends Handler
     }
 
     /**
-     * Test if handler can output to stdout.
+     * Online_test if handler can output to stdout.
      * @return bool
      */
     private function canOutput()

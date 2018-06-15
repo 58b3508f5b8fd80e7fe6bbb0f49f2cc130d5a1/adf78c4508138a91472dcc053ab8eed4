@@ -180,7 +180,7 @@ EOTXT;
             ),
             'Level 1 Item 0',
             array(
-                // Test setMaxString:
+                // Online_test setMaxString:
                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
                 'SHORT',
             ),

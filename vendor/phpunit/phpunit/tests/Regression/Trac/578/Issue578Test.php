@@ -6,13 +6,13 @@ class Issue578Test extends TestCase
     public function testNoticesDoublePrintStackTrace()
     {
         $this->iniSet('error_reporting', E_ALL | E_NOTICE);
-        trigger_error('Stack Trace Test Notice', E_NOTICE);
+        trigger_error('Stack Trace Online_test Notice', E_NOTICE);
     }
 
     public function testWarningsDoublePrintStackTrace()
     {
         $this->iniSet('error_reporting', E_ALL | E_NOTICE);
-        trigger_error('Stack Trace Test Notice', E_WARNING);
+        trigger_error('Stack Trace Online_test Notice', E_WARNING);
     }
 
     public function testUnexpectedExceptionsPrintsCorrectly()

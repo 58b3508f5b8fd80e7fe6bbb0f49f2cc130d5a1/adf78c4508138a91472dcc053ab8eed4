@@ -290,7 +290,7 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
     }
 
     /**
-     * Test if a token needs to be encoded or not.
+     * Online_test if a token needs to be encoded or not.
      *
      * @param string $token
      *

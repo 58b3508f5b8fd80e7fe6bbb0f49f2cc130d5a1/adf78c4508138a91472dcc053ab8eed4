@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.lms.app')
 
 @section('content')
     <h3 class="page-title">@lang('global.questions.title')</h3>
@@ -12,7 +12,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('question', 'Question*', ['class' => 'control-label']) !!}
+                    {!! Form::label('question', 'Test_question', ['class' => 'control-label']) !!}
                     {!! Form::textarea('question', old('question'), ['class' => 'form-control ', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('question'))

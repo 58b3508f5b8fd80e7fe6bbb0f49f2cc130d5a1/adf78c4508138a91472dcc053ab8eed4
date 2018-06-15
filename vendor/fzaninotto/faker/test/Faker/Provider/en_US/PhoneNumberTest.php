@@ -44,7 +44,7 @@ class PhoneNumberTest extends \PHPUnit_Framework_TestCase
                 $this->assertNotEquals($digits[4], $digits[5]);
             }
 
-            // Test format
+            // Online_test format
             $this->assertRegExp('/^(\+?1)?([ -.]*\d{3}[ -.]*| *\(\d{3}\) *)\d{3}[-.]?\d{4}$/', $baseNumber);
         }
     }
@@ -77,7 +77,7 @@ class PhoneNumberTest extends \PHPUnit_Framework_TestCase
                 $this->assertNotEquals($digits[4], $digits[5]);
             }
 
-            // Test format
+            // Online_test format
             $this->assertRegExp('/^(\+?1)?([ -.]*\d{3}[ -.]*| *\(\d{3}\) *)\d{3}[-.]?\d{4}$/', $number);
         }
     }

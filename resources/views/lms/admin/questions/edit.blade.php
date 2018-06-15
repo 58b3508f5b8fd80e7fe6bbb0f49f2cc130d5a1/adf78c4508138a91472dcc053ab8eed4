@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.lms.app')
 
 @section('content')
     <h3 class="page-title">@lang('global.questions.title')</h3>
@@ -28,7 +28,7 @@
                     @if ($question->question_image)
                         <a href="{{ asset('uploads/'.$question->question_image) }}" target="_blank"><img src="{{ asset('uploads/thumb/'.$question->question_image) }}"></a>
                     @endif
-                    {!! Form::label('question_image', 'Question image', ['class' => 'control-label']) !!}
+                    {!! Form::label('question_image', 'Test_question', ['class' => 'control-label']) !!}
                     {!! Form::file('question_image', ['class' => 'form-control', 'style' => 'margin-top: 4px;']) !!}
                     {!! Form::hidden('question_image_max_size', 8) !!}
                     {!! Form::hidden('question_image_max_width', 4000) !!}
