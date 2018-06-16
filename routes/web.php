@@ -14,11 +14,12 @@
 Route::get('/', function () {
     return view('welcome', ['title' => 'home']);
 });
-
+//1	Admin	admin@admin.com	$2y$10$l4MghrLnKXTRUDlR07XQeesKHRIaAe7WzDf90g751BEf70AwnJ5m.		2018-06-14 06:06:47	2018-06-14 06:06:47
 Auth::routes();
 
 Route::middleware(['checkMaintenance'])->group(function () {
-    Route::middleware(['auth', 'isUser', 'checkUserStatus'])->group(function () {
+    Route::middleware(['auth', 'isUser', 'checkUserStatus'])->group(function (
+    ) {
         Route::get('/home', 'HomeController@index')->name('home');
         Route::get('/profile', 'ProfileController@index')->name('profile');
         Route::get('/resume', 'ResumeController@index')->name('resume');
@@ -69,12 +70,16 @@ Route::middleware(['checkMaintenance'])->group(function () {
                     Route::get('/', 'TestController@index');
                     Route::get('/view', 'TestController@index');
                     Route::get('/add', 'TestController@addTest');
-                    Route::get('/invite/{id}', 'TestController@getInvite');
-                    Route::post('/invite', 'TestController@sendInvite');
+                    Route::get('/invite/{id}', 'InterviewController@getInvite');
+                    Route::post('/invite', 'InterviewController@sendInvite');
                     Route::get('/result', 'TestController@viewJobResults');
                     Route::get('/result/{id}',
                         'TestController@viewTestResults');
                 });
+                Route::get('/interviews',
+                    'InterviewController@viewJobInterviews');
+                Route::get('/interviews/{id}',
+                    'InterviewController@viewInterviews');
             });
         });
     });
