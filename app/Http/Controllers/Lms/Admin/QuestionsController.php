@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreQuestionsRequest;
 use App\Http\Requests\Admin\UpdateQuestionsRequest;
-use App\Http\Controllers\Traits\FileUploadTrait;
+use App\Http\Controllers\Lms\Traits\FileUploadTrait;
 
 class QuestionsController extends Controller
 {

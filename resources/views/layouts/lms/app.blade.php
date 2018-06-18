@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('partials.head')
+        @include('partials.lms.head')
 </head>
 
 
@@ -10,8 +10,8 @@
 
 <div id="wrapper">
 
-@include('partials.topbar')
-@include('partials.sidebar')
+@include('partials.lms.topbar')
+@include('partials.lms.sidebar')
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -49,10 +49,10 @@
     </div>
 </div>
 
-{!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'logout']) !!}
+{!! Form::open(['route' => 'logout', 'style' => 'display:none;', 'id' => 'logout']) !!}
 <button type="submit">Logout</button>
 {!! Form::close() !!}
 
-@include('partials.javascripts')
+@include('partials.lms.javascripts')
 </body>
 </html>

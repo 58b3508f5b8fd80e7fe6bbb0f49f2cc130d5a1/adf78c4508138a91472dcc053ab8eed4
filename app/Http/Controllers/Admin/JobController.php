@@ -154,5 +154,8 @@ class JobController extends Controller
 
     }
 
-
+    public function viewJobsAdd(){
+        $data['title']='Add Jobs';
+        return view('admin.addJobs',$data);
+    }
 }

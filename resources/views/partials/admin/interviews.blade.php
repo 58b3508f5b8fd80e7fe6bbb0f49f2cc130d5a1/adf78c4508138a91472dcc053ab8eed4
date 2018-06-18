@@ -39,7 +39,7 @@
                             @if($interview->application_status=='invited')
                                 <h2>
                                     <a href="javascript:void(0)"
-                                       onclick="showAssessModal('{{$interview->application_id}}');"
+                                       onclick="showAssessModal('{{$interview->interview_id}}');"
                                        class="careerfy-candidate-default-btn text-center"
                                        style="float: left; width:100%;"><i
                                                 class="careerfy-icon careerfy-download-arrow"></i>

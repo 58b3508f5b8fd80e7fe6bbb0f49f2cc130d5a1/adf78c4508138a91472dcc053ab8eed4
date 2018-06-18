@@ -63,16 +63,15 @@
     <script src="{{asset($public.'/js/loadingoverlay.min.js')}}"></script>
 
     <script>
-        function showAccessModal(id) {
-            $.get('/backend/tests/invite/' + id, function (interview) {
+        function showAssessModal(id) {
+            $.get('/backend/interviews/assess/' + id, function (interview) {
                 $('#interview-modal .modal-body').html(interview.html);
                 $('#interview-modal').modal('show');
             });
         }
 
         $('#interview-modal').on('shown.bs.modal', function () {
-
-            $('#invite-form').on('submit', function (e) {
+            $('#assess-form').on('submit', function (e) {
                 e.preventDefault();
                 $(".modal-body").LoadingOverlay("show");
                 var form = this;
@@ -85,15 +84,18 @@
                     contentType: false,
                     data: data,
                     processData: false,
-                    success: function (interview) {
+                    success: function (result) {
+                        $('#interviews').fadeOut(400);
                         $(".modal-body").LoadingOverlay("hide");
                         $('#interview-modal').modal('hide');
-                        swal("Oops!", interview.message, interview.state);
+                        swal("Wow!", result.message, result.state);
+                        $('#interviews').html(result.html);
+                        $('#interviews').fadeIn(800);
                     },
                     error: function () {
                         $(".modal-body").LoadingOverlay("hide");
                         $('#interview-modal').modal('hide');
-                        swal("Oops!", "Sorry, an error occured..","error");
+                        swal("Oops!", "Sorry, an error occurred..","error");
                     }
                 });
                 return false;

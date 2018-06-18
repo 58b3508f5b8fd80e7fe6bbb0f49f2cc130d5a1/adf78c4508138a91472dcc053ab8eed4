@@ -17,6 +17,13 @@ Route::get('/', function () {
 //1	Admin	admin@admin.com	$2y$10$l4MghrLnKXTRUDlR07XQeesKHRIaAe7WzDf90g751BEf70AwnJ5m.		2018-06-14 06:06:47	2018-06-14 06:06:47
 Auth::routes();
 
+// Change Password Routes...
+Route::get('change_password',
+    'Auth\ChangePasswordController@showChangePasswordForm')
+    ->name('change_password');
+Route::patch('change_password', 'Auth\ChangePasswordController@changePassword')
+    ->name('change_password');
+
 Route::middleware(['checkMaintenance'])->group(function () {
     Route::middleware(['auth', 'isUser', 'checkUserStatus'])->group(function (
     ) {
@@ -60,12 +67,16 @@ Route::middleware(['checkMaintenance'])->group(function () {
                 Route::get('/user/{id}', 'UserController@index');
                 Route::get('/applicants/{id}/{page?}/{per?}',
                     'JobController@jobApplicants');
-                Route::get('/jobs/{page?}/{per?}', 'JobController@jobs');
-                Route::get('/jobs/search/{page?}/{per?}',
-                    'JobController@searchJobs');
-                Route::get('/download/cv/{id}', 'UserController@downloadCV');
-                Route::post('/jobs/shortlist',
-                    'JobController@shortlistApplicant');
+                Route::get('/download/cv/{id}',
+                    'UserController@downloadCV');
+                Route::prefix('/jobs')->group(function () {
+                    Route::get('/{page?}/{per?}', 'JobController@jobs');
+                    Route::get('/search/{page?}/{per?}',
+                        'JobController@searchJobs');
+                    Route::post('/shortlist',
+                        'JobController@shortlistApplicant');
+                    Route::get('/add','JobController@viewJobsAdd');
+                });
                 Route::prefix('/tests')->group(function () {
                     Route::get('/', 'TestController@index');
                     Route::get('/view', 'TestController@index');
@@ -76,41 +87,59 @@ Route::middleware(['checkMaintenance'])->group(function () {
                     Route::get('/result/{id}',
                         'TestController@viewTestResults');
                 });
-                Route::get('/interviews',
-                    'InterviewController@viewJobInterviews');
-                Route::get('/interviews/{id}',
-                    'InterviewController@viewInterviews');
+                Route::prefix('/interviews')->group(function () {
+                    Route::get('/',
+                        'InterviewController@viewJobInterviews');
+                    Route::get('/{id}',
+                        'InterviewController@viewInterviews');
+                    Route::get('/assess/{id}',
+                        'InterviewController@getAssess');
+                    Route::post('/assess',
+                        'InterviewController@assessInterview');
+                });
             });
         });
     });
 
     Route::prefix('/learning')->group(function () {
         Route::namespace('Lms')->group(function () {
-            Route::get('/', 'HomeController@index');
-            Route::get('course/{slug}',
-                ['uses' => 'CoursesController@show', 'as' => 'courses.show']);
-            Route::post('course/payment',
-                [
-                    'uses' => 'CoursesController@payment',
-                    'as'   => 'courses.payment'
-                ]);
-            Route::post('course/{course_id}/rating',
-                [
-                    'uses' => 'CoursesController@rating',
-                    'as'   => 'courses.rating'
-                ]);
+            Route::middleware(['auth', 'isUser', 'applicantPassed'])
+                ->group(function () {
+                    Route::get('/', 'HomeController@index');
+                    Route::get('course/{slug}',
+                        [
+                            'uses' => 'CoursesController@show',
+                            'as'   => 'courses.show'
+                        ]);
+                    Route::post('course/payment',
+                        [
+                            'uses' => 'CoursesController@payment',
+                            'as'   => 'courses.payment'
+                        ]);
+                    Route::post('course/{course_id}/rating',
+                        [
+                            'uses' => 'CoursesController@rating',
+                            'as'   => 'courses.rating'
+                        ]);
 
-            Route::get('lesson/{course_id}/{slug}',
-                ['uses' => 'LessonsController@show', 'as' => 'lessons.show']);
-            Route::post('lesson/{slug}/test',
-                ['uses' => 'LessonsController@test', 'as' => 'lessons.test']);
-
+                    Route::get('lesson/{course_id}/{slug}',
+                        [
+                            'uses' => 'LessonsController@show',
+                            'as'   => 'lessons.show'
+                        ]);
+                    Route::post('lesson/{slug}/test',
+                        [
+                            'uses' => 'LessonsController@test',
+                            'as'   => 'lessons.test'
+                        ]);
+                });
             Route::group([
                 'middleware' => ['admin'],
-                'prefix'     => 'admin',
+                'prefix'     => '/admin',
                 'as'         => 'admin.'
             ],
                 function () {
+                    Route::get('/', 'Admin\DashboardController@index');
                     Route::get('/home', 'Admin\DashboardController@index');
                     Route::resource('permissions',
                         'Admin\PermissionsController');
@@ -230,5 +259,10 @@ Route::get('/faq', function () {
     return view('faq', ['title' => 'Frequently Asked Questions']);
 });
 Route::get('test', function (\Illuminate\Http\Request $request) {
-    echo $request->user()->type;
+    $routeCollection = Route::getRoutes();
+
+    echo sizeof($routeCollection);
+    foreach ($routeCollection as $value) {
+        echo $value->uri."<br>";
+    }
 });

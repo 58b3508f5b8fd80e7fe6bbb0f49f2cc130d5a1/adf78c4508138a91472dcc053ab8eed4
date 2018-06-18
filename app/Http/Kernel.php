@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\ApplicantPassed;
 use App\Http\Middleware\CheckMaintenance;
 use App\Http\Middleware\CheckUserStatus;
 use App\Http\Middleware\IsAdmin;
@@ -70,6 +72,8 @@ class Kernel extends HttpKernel
             'checkMaintenance' => CheckMaintenance::class,
             'checkUserStatus'  => CheckUserStatus::class,
             'isAdmin'          => IsAdmin::class,
-            'isUser'           => IsUser::class
+            'isUser'           => IsUser::class,
+            'admin'            => AdminMiddleware::class,
+            'applicantPassed'  => ApplicantPassed::class
         ];
 }

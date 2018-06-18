@@ -1,4 +1,4 @@
-<form method="POST" action="{{url('backend/tests/invite')}}" id="invite-form">
+<form method="POST" action="{{url('backend/interviews/assess')}}" id="assess-form">
     {{csrf_field()}}
     <input type="hidden" name="id" value="{{$applicant->application_id}}">
     <div class="careerfy-box-title">
@@ -56,38 +56,10 @@
                 @endif
             </li>
             <li class="col-md-12">
-                <label>Interview Type:</label>
-                <div class="list-group">
-                    <div class="careerfy-checkbox list-group-item" style="width: auto; padding-right:14px;">
-                        <input id="skype" name="type" type="radio" value="skype" required>
-                        <label for="skype"><span></span> Skype</label>
-                    </div>
-                    <div class="careerfy-checkbox list-group-item" style="width: auto; padding-right:14px;">
-                        <input id="whatsapp" name="type" type="radio" value="whatsapp">
-                        <label for="whatsapp"><span></span> Whatsapp</label>
-                    </div>
-                    <div class="careerfy-checkbox list-group-item" style="width: auto; padding-right:14px;">
-                        <input id="phone" name="type" type="radio" value="phone">
-                        <label for="phone"><span></span> Phone</label>
-                    </div>
-                    <div class="careerfy-checkbox list-group-item" style="width: auto; padding-right:14px;">
-                        <input id="physical" name="type" type="radio" value="physical meeting">
-                        <label for="physical"><span></span> Physical Meeting</label>
-                    </div>
-                </div>
-
-                @if ($errors->has('type'))
-                    <span class="text-danger">{{ $errors->first('type') }}</span>
-                @endif
-
-            </li>
-            <li class="col-md-6">
-                <label>Address</label>:</label>
-                <input name="address" type="text"
-                       placeholder="Enter Phone number" required>
-                <i class="fa fa-phone"></i>
-                @if ($errors->has('address'))
-                    <span class="text-danger">{{ $errors->first('address') }}</span>
+                <label>Interview Performance:</label>
+                <input class="form-control" name="performance" type="range" min="0" max="100" required>
+                @if ($errors->has('performance'))
+                    <span class="text-danger">{{ $errors->first('phone_no') }}</span>
                 @endif
             </li>
             <li class="careerfy-user-form-coltwo-full">
