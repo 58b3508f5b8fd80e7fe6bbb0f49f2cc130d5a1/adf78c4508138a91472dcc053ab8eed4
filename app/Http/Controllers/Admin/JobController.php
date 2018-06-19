@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Application;
 use App\Interview;
+use App\Job;
 use App\Job_test;
+use App\Online_test;
 use App\Result;
+use App\Test;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -20,6 +23,47 @@ class JobController extends Controller
         $data['title'] = 'Dashboard';
 
         return view('admin.jobs', $data);
+    }
+
+    public function addJobs(Request $request)
+    {
+        $details = $request->all();
+        $message = '';
+        $status = '';
+        unset($details['_token']);
+        unset($details['test']);
+        unset($details[0]);
+
+        $checkTest = Test::where('test_id', $request->test_id)->first();
+        if ($checkTest) {
+            $job_id = md5($details['title'] . $details['description']
+                . date('YmdHis') . str_random());
+            $details = array_merge($details, [
+                'job_id' => $job_id,
+            ]);
+            $addJob = Job::create($details);
+            $job_test = new Job_test();
+            $job_test->job_test_id = md5($job_id . $checkTest->test_id);
+            $job_test->job_id = $job_id;
+            $job_test->test_id = $checkTest->test_id;
+
+            if ($addJob && $job_test->save()) {
+                $message
+                    = "You've added <em>$request->title<em> successfully..";
+                $status = 'success';
+            }
+            else{
+                $message
+                    = "Oops! An error occurred. We were unable to add <em>$request->title<em>..";
+                $status = 'danger';
+            }
+        }
+
+
+        return redirect()->back()->with('status', [
+            'message' => $message,
+            'state'   => $status
+        ]);
     }
 
     public function jobs($page = 1, $per = 10)
@@ -154,8 +198,10 @@ class JobController extends Controller
 
     }
 
-    public function viewJobsAdd(){
-        $data['title']='Add Jobs';
-        return view('admin.addJobs',$data);
+    public function viewJobsAdd()
+    {
+        $data['title'] = 'Add Jobs';
+        $data['tests'] = Online_test::select('title', 'test_id')->get();
+        return view('dashboard.admin.addJob', $data);
     }
 }

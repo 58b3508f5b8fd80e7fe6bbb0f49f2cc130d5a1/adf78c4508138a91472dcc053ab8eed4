@@ -70,12 +70,14 @@ Route::middleware(['checkMaintenance'])->group(function () {
                 Route::get('/download/cv/{id}',
                     'UserController@downloadCV');
                 Route::prefix('/jobs')->group(function () {
+                    Route::get('/add', 'JobController@viewJobsAdd');
+                    Route::post('/add', 'JobController@addJobs');
                     Route::get('/{page?}/{per?}', 'JobController@jobs');
                     Route::get('/search/{page?}/{per?}',
                         'JobController@searchJobs');
                     Route::post('/shortlist',
                         'JobController@shortlistApplicant');
-                    Route::get('/add','JobController@viewJobsAdd');
+
                 });
                 Route::prefix('/tests')->group(function () {
                     Route::get('/', 'TestController@index');
@@ -263,6 +265,6 @@ Route::get('test', function (\Illuminate\Http\Request $request) {
 
     echo sizeof($routeCollection);
     foreach ($routeCollection as $value) {
-        echo $value->uri."<br>";
+        echo $value->uri . "<br>";
     }
 });
