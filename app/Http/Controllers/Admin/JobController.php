@@ -31,16 +31,18 @@ class JobController extends Controller
         $message = '';
         $status = '';
         unset($details['_token']);
-        unset($details['test']);
+        unset($details['test_id']);
         unset($details[0]);
 
-        $checkTest = Test::where('test_id', $request->test_id)->first();
+
+        $checkTest = Online_test::where('test_id', $request->test)->first();
         if ($checkTest) {
             $job_id = md5($details['title'] . $details['description']
                 . date('YmdHis') . str_random());
             $details = array_merge($details, [
                 'job_id' => $job_id,
             ]);
+            $details['qualification']=implode(',',$details['qualification']);
             $addJob = Job::create($details);
             $job_test = new Job_test();
             $job_test->job_test_id = md5($job_id . $checkTest->test_id);
@@ -51,19 +53,23 @@ class JobController extends Controller
                 $message
                     = "You've added <em>$request->title<em> successfully..";
                 $status = 'success';
-            }
-            else{
+            } else {
                 $message
                     = "Oops! An error occurred. We were unable to add <em>$request->title<em>..";
                 $status = 'danger';
             }
+        } else {
+            $message
+                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add <em>$request->title<em>..";
+            $status = 'danger';
         }
 
-
+        echo $message;
+        /*
         return redirect()->back()->with('status', [
             'message' => $message,
             'state'   => $status
-        ]);
+        ]);*/
     }
 
     public function jobs($page = 1, $per = 10)
@@ -92,7 +98,7 @@ class JobController extends Controller
 
     public function getSearchedJobs($page = 1, $per = 10, $terms)
     {
-        $jobs = Application::join('jobs', 'jobs.job_id', '=',
+        $jobs = Job::leftJoin('applications', 'jobs.job_id', '=',
             'applications.job_id')->where(
             function ($query) use ($terms) {
                 for ($i = 0; $i < count($terms); $i++) {
@@ -105,7 +111,7 @@ class JobController extends Controller
                         ->orWhere(DB::raw("LOWER(jobs.lga)"),
                             'like', DB::raw("LOWER('%$terms[$i]%')"));
                 }
-            })->select('jobs.*', 'applications.job_id',
+            })->select('jobs.*',
             DB::raw('count(`applications`.`job_id`) as count'))
             ->orderBy('jobs.close_at', 'desc')->orderBy('jobs.post_at', 'desc')
             ->groupBy('applications.job_id')->get();
