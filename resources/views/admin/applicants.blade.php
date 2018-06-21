@@ -3,7 +3,7 @@
     if(App::environment('production'))
     $public ='public';
 @endphp
-@extends('layouts.admin')
+@extends('layouts.admin.app')
 @section('title',$title)
 @section('content')
     <div class="container-fluid">

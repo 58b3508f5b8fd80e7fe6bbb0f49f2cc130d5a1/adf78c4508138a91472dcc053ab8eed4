@@ -1,9 +1,8 @@
 @php    $public='';    if(config('app.env') == 'production')    $public ='public'; @endphp
-@extends('layouts.admin')
+@extends('layouts.admin.app')
 @section('title',$title)
 @section('styles')
     {{--<link rel="stylesheet" type="text/css" href="{{asset($public.'/dashboard/css/BsMultiSelect.css')}}"/>--}}
-    <link rel="stylesheet" type="text/css" href="{{asset($public.'/dashboard/css/jquery.auto-complete.min.css')}}"/>
     <link href="{{asset($public.'/css/editor.css')}}" rel="stylesheet">
     <style>
     </style>
@@ -176,7 +175,6 @@
         }
 
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
             $("#description").Editor({
                 'print': false,
                 'togglescreen': false,

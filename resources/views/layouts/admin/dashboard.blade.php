@@ -326,13 +326,13 @@
     ga('send', 'pageview');
 </script>
 <script>
+
     $(function () {
         @if(!null == session('status') && !null == session('status'))
         swal("Status", "{!!session('status')!!}", "{!!session('state')!!}");
         @endif
-        $('.datatable').DataTable();
+        $('.dataTable').DataTable();
     });
-
 </script>
 @yield('scripts')
 </body>

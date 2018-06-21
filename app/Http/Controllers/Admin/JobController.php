@@ -34,7 +34,6 @@ class JobController extends Controller
         unset($details['test_id']);
         unset($details[0]);
 
-
         $checkTest = Online_test::where('test_id', $request->test)->first();
         if ($checkTest) {
             $job_id = md5($details['title'] . $details['description']
@@ -42,7 +41,7 @@ class JobController extends Controller
             $details = array_merge($details, [
                 'job_id' => $job_id,
             ]);
-            $details['qualification']=implode(',',$details['qualification']);
+            $details['qualification'] = implode(',', $details['qualification']);
             $addJob = Job::create($details);
             $job_test = new Job_test();
             $job_test->job_test_id = md5($job_id . $checkTest->test_id);
@@ -64,12 +63,10 @@ class JobController extends Controller
             $status = 'danger';
         }
 
-        echo $message;
-        /*
-        return redirect()->back()->with('status', [
-            'message' => $message,
-            'state'   => $status
-        ]);*/
+        return redirect('/backend/jobs')->with([
+            'status' => $message,
+            'state'  => $status
+        ]);
     }
 
     public function jobs($page = 1, $per = 10)
@@ -208,6 +205,6 @@ class JobController extends Controller
     {
         $data['title'] = 'Add Jobs';
         $data['tests'] = Online_test::select('title', 'test_id')->get();
-        return view('dashboard.admin.addJob', $data);
+        return view('admin.addJob', $data);
     }
 }

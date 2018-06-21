@@ -29,9 +29,9 @@ class InterviewController extends Controller
             } else {
                 $performance = 'failed';
             }
-            $application->status=$performance;
+            $application->status = $performance;
             $interview = Interview::find($applicant->iid);
-            $interview->performance=$score;
+            $interview->performance = $score;
 
             if ($interview->save() && $application->save()) {
                 $data['message']

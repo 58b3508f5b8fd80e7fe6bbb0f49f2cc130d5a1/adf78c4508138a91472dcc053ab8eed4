@@ -81,13 +81,17 @@ Route::middleware(['checkMaintenance'])->group(function () {
                 });
                 Route::prefix('/tests')->group(function () {
                     Route::get('/', 'TestController@index');
-                    Route::get('/view', 'TestController@index');
                     Route::get('/add', 'TestController@addTest');
                     Route::get('/invite/{id}', 'InterviewController@getInvite');
                     Route::post('/invite', 'InterviewController@sendInvite');
+                    Route::get('/questions/add/{id}', 'TestController@viewAddQuestion');
+                    Route::post('/questions/add/{id}', 'TestController@addQuestion');
+                    Route::get('/questions/edit', 'TestController@viewEditQuestions');
                     Route::get('/result', 'TestController@viewJobResults');
                     Route::get('/result/{id}',
                         'TestController@viewTestResults');
+                    Route::get('/view', 'TestController@index');
+                    Route::get('/view/{id}', 'TestController@viewTest');
                 });
                 Route::prefix('/interviews')->group(function () {
                     Route::get('/',
@@ -261,10 +265,22 @@ Route::get('/faq', function () {
     return view('faq', ['title' => 'Frequently Asked Questions']);
 });
 Route::get('test', function (\Illuminate\Http\Request $request) {
-    $routeCollection = Route::getRoutes();
+    $string='There is a name';
+        $start=0;
+        $limit=20;
+
+        $stripped_string =strip_tags($string); // if there are HTML or PHP tags
+        $string_array =explode(' ',$stripped_string);
+        $truncated_array = array_splice($string_array,$start,$limit);
+        $truncated_string=implode(' ',$truncated_array) . "...";
+
+        echo $truncated_string;
+
+
+    /*$routeCollection = Route::getRoutes();
 
     echo sizeof($routeCollection);
     foreach ($routeCollection as $value) {
         echo $value->uri . "<br>";
-    }
+    }*/
 });

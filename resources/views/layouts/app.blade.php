@@ -369,8 +369,7 @@
         });
     });
     @if(!null == session('status') && !null == session('status'))
-    @php $status=session('status') @endphp
-    swal("Status", "{{session('status')}}", "{{session('state')}}");
+    swal("Status", "{!!session('status')!!}", "{!!session('state')!!}");
     @endif
 </script>
 <script src="{{asset($public.'/js/bootstrap-notify.min.js')}}"></script>

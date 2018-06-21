@@ -3,7 +3,7 @@
     if(App::environment('production'))
     $public ='public';
 @endphp
-@extends('layouts.admin')
+@extends('layouts.admin.app')
 @section('styles')
     <style>
         li .disabled, li:hover .disabled, li:focus .disabled {

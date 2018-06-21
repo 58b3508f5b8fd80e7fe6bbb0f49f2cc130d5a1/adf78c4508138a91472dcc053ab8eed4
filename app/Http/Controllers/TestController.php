@@ -15,7 +15,7 @@ class TestController extends Controller
     //
     public function index($id)
     {
-        $data['title'] = "Online Online_test";
+        $data['title'] = "Online Test";
         $user = Application::join('results', 'applications.application_id',
             'results.application_id')->where([
             ['results.application_id', $id],
@@ -42,8 +42,8 @@ class TestController extends Controller
 
     public function getTest($id)
     {
-        $isTest = Job_test::join('tests', 'job_tests.test_id', '=',
-            'tests.test_id')
+        $isTest = Job_test::join('online_tests', 'job_tests.test_id', '=',
+            'online_tests.test_id')
             ->where('job_tests.job_id', $id)->first();
         return $isTest;
     }
@@ -83,10 +83,10 @@ class TestController extends Controller
         $questions = $request->all();
         $score = 0;
         $data = [];
-        $isValid = Online_test::join('results', 'tests.test_id', '=',
-            'results.test_id')->where('tests.test_id', $request->tid)
+        $isValid = Online_test::join('results', 'online_tests.test_id', '=',
+            'results.test_id')->where('online_tests.test_id', $request->tid)
             ->where('results.result_id', $request->rid)
-            ->select('tests.*', 'results.*', 'results.id as id')
+            ->select('online_tests.*', 'results.*', 'results.id as id')
             ->first();
 
         if ($isValid) {
