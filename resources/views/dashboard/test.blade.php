@@ -21,7 +21,7 @@
                                     </tr>
                                     <tr>
                                         <td>Description</td>
-                                        <td>{{$test->description}}</td>
+                                        <td>{!! $test->description !!}</td>
                                     </tr>
                                     <tr>
                                         <td>Length</td>

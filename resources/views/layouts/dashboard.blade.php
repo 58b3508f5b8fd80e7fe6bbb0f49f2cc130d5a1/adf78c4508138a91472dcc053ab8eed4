@@ -11,6 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>@yield('title') - {{config('app.name')}}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
           content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest | This is the demo of Codebase! You need to purchase a license for legal use! | DEMO">
     <meta name="author" content="pixelcave">
@@ -326,6 +327,11 @@
     ga('send', 'pageview');
 </script>
 <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $(function () {
         @if(!null == session('status') && !null == session('status'))
         swal("Status", "{!!session('status')!!}", "{!!session('state')!!}");

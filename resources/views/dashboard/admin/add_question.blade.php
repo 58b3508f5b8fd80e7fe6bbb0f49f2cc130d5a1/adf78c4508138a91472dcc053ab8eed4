@@ -71,14 +71,31 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <div class="col-6">
-                                <div class="form-material ">
-                                    <input class="form-control" id="answer" name="answer" type="text">
-                                    <label for="answer">Answer</label>
+                                <label for="answer">Answer</label>
+                                <div class="form-group">
+                                    <label class="css-control css-control-lg css-control-primary css-radio">
+                                        <input class="css-control-input" name="answer" checked="" type="radio"
+                                               value="a">
+                                        <span class="css-control-indicator"></span> A
+                                    </label>
+                                    <label class="css-control css-control-lg css-control-primary css-radio">
+                                        <input class="css-control-input" name="answer" type="radio" value="b">
+                                        <span class="css-control-indicator"></span> B
+                                    </label>
+                                    <label class="css-control css-control-lg css-control-primary css-radio">
+                                        <input class="css-control-input" name="answer" type="radio" value="c">
+                                        <span class="css-control-indicator"></span> C
+                                    </label>
+                                    <label class="css-control css-control-lg css-control-primary css-radio" value="d">
+                                        <input class="css-control-input" name="answer" type="radio">
+                                        <span class="css-control-indicator"></span> D
+                                    </label>
                                 </div>
                             </div>
-                            <div class="col-6 row">
+                            <div class="col-6">
                                 <div class="form-material ">
                                     <input class="form-control" id="score" name="score" type="number">
                                     <label for="score">Score</label>

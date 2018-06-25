@@ -81,7 +81,9 @@ Route::middleware(['checkMaintenance'])->group(function () {
                 });
                 Route::prefix('/tests')->group(function () {
                     Route::get('/', 'TestController@index');
-                    Route::get('/add', 'TestController@addTest');
+                    Route::get('/add', 'TestController@viewAddTest');
+                    Route::post('/add', 'TestController@addTest');
+                    Route::post('/delete', 'TestController@deleteTest');
                     Route::get('/invite/{id}', 'InterviewController@getInvite');
                     Route::post('/invite', 'InterviewController@sendInvite');
                     Route::get('/questions/add/{id}', 'TestController@viewAddQuestion');

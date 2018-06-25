@@ -10,6 +10,7 @@ use App\Result;
 use App\Test_question;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
@@ -43,16 +44,16 @@ class TestController extends Controller
             if ($question->save()) {
 
                 $message
-                    = "You've added <em>$request->title<em> successfully..";
+                    = "You've added $request->title successfully..";
                 $status = 'success';
             } else {
                 $message
-                    = "Oops! An error occurred. We were unable to add <em>$request->title<em>..";
+                    = "Oops! An error occurred. We were unable to add $request->title..";
                 $status = 'danger';
             }
         } else {
             $message
-                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add <em>$request->title<em>..";
+                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
             $status = 'danger';
         }
 
@@ -62,15 +63,64 @@ class TestController extends Controller
         ]);
     }
 
-    public function viewAddQuestion($id)
+    public function addTest(Request $request)
     {
-        $data['title'] = 'Add Test';
-        $isTest = Online_test::where('test_id', $id)->first();
-        if ($isTest) {
-            $data['test'] = $isTest;
-            return view('dashboard.admin.add_question', $data);
+        $test = new Online_test();
+        $test->test_id = md5($request->title . str_random() . date('YmdHis'));
+        $test->title = $request->title;
+        $test->description = $request->description;
+        $test->duration = $request->duration;
+        $test->length = $request->length;
+        $test->created_by = Auth::user()->user_id;
+        if ($test->save()) {
+
+            $message
+                = "You've added $request->title successfully..";
+            $status = 'success';
+        } else {
+            $message
+                = "Oops! An error occurred. We were unable to add $request->title..";
+            $status = 'danger';
         }
-        return redirect("/backend/tests/view");
+
+
+        return redirect("/backend/tests/")->with([
+            'status' => $message,
+            'state'  => $status
+        ]);
+
+    }
+
+    function deleteTest(Request $request)
+    {
+        $id = $request->id - 1921;
+        $test = Online_test::find($id);
+        if ($test) {
+            if ($test->delete()) {
+
+                $message
+                    = "You've deleted $test->title successfully..";
+                $status = 'success';
+            } else {
+                $message
+                    = "Oops! An error occurred. We were unable to add $request->title..";
+                $status = 'danger';
+            }
+        } else {
+            $message
+                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
+            $status = 'danger';
+        }
+
+        $subData['tests'] = Online_test::get();
+        $html = View::make('partials.admin.tests', $subData);
+        $data = [
+            'status' => $message,
+            'state'  => $status,
+            'html'   => $html->render()
+        ];
+
+        return response()->json($data);
     }
 
     public function getJobResults($page = 1, $per = 10)
@@ -105,6 +155,23 @@ class TestController extends Controller
         $data['per'] = $per;
 
         return $data;
+    }
+
+    public function viewAddQuestion($id)
+    {
+        $data['title'] = 'Add Test';
+        $isTest = Online_test::where('test_id', $id)->first();
+        if ($isTest) {
+            $data['test'] = $isTest;
+            return view('dashboard.admin.add_question', $data);
+        }
+        return redirect("/backend/tests/view");
+    }
+
+    public function viewAddTest()
+    {
+        $data['title'] = "Add Test";
+        return view('dashboard.admin.add_test', $data);
     }
 
     public function viewJobResults()

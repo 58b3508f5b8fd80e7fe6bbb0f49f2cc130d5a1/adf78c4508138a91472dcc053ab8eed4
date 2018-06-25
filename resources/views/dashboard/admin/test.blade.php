@@ -28,7 +28,7 @@
                         </tr>
                         <tr>
                             <td>Description</td>
-                            <td>{{$test->description}}</td>
+                            <td>{!! $test->description !!}</td>
                         </tr>
                         <tr>
                             <td>Length</td>
@@ -46,14 +46,15 @@
                     <h3 class="block-title">Questions
                         <small>({{$test->title}})</small>
                     </h3>
-                    <a href="{{url("/backend/tests/questions/add/$test->test_id")}}"
-                       class="btn btn-alt-primary pull-right"><i
-                                class="fa fa-plus"> Add Question</i></a>
                     <div class="block-options">
+                        <a href="{{url("/backend/tests/questions/add/$test->test_id")}}"
+                           class="btn btn-alt-primary"><i
+                                    class="fa fa-plus"> Add Question</i></a>
                         <button type="button" class="btn-block-option" data-toggle="block-option"
                                 data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
                         <button type="button" class="btn-block-option" data-toggle="block-option"
                                 data-action="content_toggle"><i class="si si-arrow-up"></i></button>
+
                     </div>
                 </div>
                 <div class="block-content block-content-full">
