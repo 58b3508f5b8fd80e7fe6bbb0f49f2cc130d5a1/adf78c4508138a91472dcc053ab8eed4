@@ -123,6 +123,47 @@ class TestController extends Controller
         return response()->json($data);
     }
 
+    function editTest(Request $request)
+    {
+        $id = $request->id - 335;
+        $test = Online_test::find($id);
+        $details = $request->all();
+        if ($test) {
+            array_push($details, ['updated_at' => date('Y-m-d H:i:s')]);
+
+            unset($details['_token']);
+            unset($details['id']);
+            unset($details[0]);
+
+            $isUpdated = Online_test::where('test_id', $test->test_id)
+                ->update($details);
+            if ($isUpdated) {
+
+                $message
+                    = "You've edited $test->title successfully..";
+                $status = 'success';
+            } else {
+                $message
+                    = "Oops! An error occurred. We were unable to add $request->title..";
+                $status = 'danger';
+            }
+        } else {
+            $message
+                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
+            $status = 'danger';
+        }
+
+        $subData['tests'] = Online_test::get();
+        $html = View::make('partials.admin.tests', $subData);
+        $data = [
+            'status' => $message,
+            'state'  => $status,
+            'html'   => $html->render()
+        ];
+
+        return response()->json($data);
+    }
+
     public function getJobResults($page = 1, $per = 10)
     {
         $results = Result::join('applications', 'results.application_id', '=',
@@ -172,6 +213,24 @@ class TestController extends Controller
     {
         $data['title'] = "Add Test";
         return view('dashboard.admin.add_test', $data);
+    }
+
+    public function viewEditTest(Request $request)
+    {
+        $id = $request->id - 973;
+        $test = Online_test::find($id);
+        if ($test) {
+            $subData['test'] = $test;
+            $html = View::make('partials.admin.edit_test', $subData);
+
+            $data = [
+                'html' => $html->render()
+            ];
+            return response()->json($data, '200');
+        }
+        return response()->json(['message' => 'Oops! Sorry, an error occured'],
+            '404');
+
     }
 
     public function viewJobResults()

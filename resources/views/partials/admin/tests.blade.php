@@ -42,9 +42,9 @@
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 <a class="btn btn-sm btn-outline-primary"
-                                   href="{{url("/backend/tests/edit/$test->test_id")}}"
+                                   href="javascript:void(0)" onclick="editTest('{{$test->id+973}}')"
                                    data-toggle="tooltip" title="Edit {{$test->title}}"
-                                   data-original-title="{{$test->title}}">
+                                   data-original-title="Edit {{$test->title}}">
                                     <i class="fa fa-pencil"></i>
                                 </a>
                                 <a class="btn btn-sm btn-outline-danger"

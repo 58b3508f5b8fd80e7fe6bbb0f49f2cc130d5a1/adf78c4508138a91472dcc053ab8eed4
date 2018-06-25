@@ -123,7 +123,7 @@
             $("#description").Editor(options);
 
             $('#test-form').on('submit', function (e) {
-                $('#description').val($("#description").Editor("getText"));
+                $('#description').val(this.Editor("getText"));
                 return true;
             });
         });

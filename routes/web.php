@@ -84,6 +84,8 @@ Route::middleware(['checkMaintenance'])->group(function () {
                     Route::get('/add', 'TestController@viewAddTest');
                     Route::post('/add', 'TestController@addTest');
                     Route::post('/delete', 'TestController@deleteTest');
+                    Route::get('/edit', 'TestController@viewEditTest');
+                    Route::post('/edit', 'TestController@editTest');
                     Route::get('/invite/{id}', 'InterviewController@getInvite');
                     Route::post('/invite', 'InterviewController@sendInvite');
                     Route::get('/questions/add/{id}', 'TestController@viewAddQuestion');
