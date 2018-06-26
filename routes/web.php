@@ -72,12 +72,14 @@ Route::middleware(['checkMaintenance'])->group(function () {
                 Route::prefix('/jobs')->group(function () {
                     Route::get('/add', 'JobController@viewJobsAdd');
                     Route::post('/add', 'JobController@addJobs');
+                    Route::post('/delete/{jid}', 'JobController@deleteJob');
+                    Route::get('/edit/{jid}', 'JobController@viewJobEdit');
+                    Route::post('/edit/{jid}', 'JobController@jobEdit');
                     Route::get('/{page?}/{per?}', 'JobController@jobs');
                     Route::get('/search/{page?}/{per?}',
                         'JobController@searchJobs');
                     Route::post('/shortlist',
                         'JobController@shortlistApplicant');
-
                 });
                 Route::prefix('/tests')->group(function () {
                     Route::get('/', 'TestController@index');
@@ -90,7 +92,9 @@ Route::middleware(['checkMaintenance'])->group(function () {
                     Route::post('/invite', 'InterviewController@sendInvite');
                     Route::get('/questions/add/{id}', 'TestController@viewAddQuestion');
                     Route::post('/questions/add/{id}', 'TestController@addQuestion');
-                    Route::get('/questions/edit', 'TestController@viewEditQuestions');
+                    Route::post('/questions/delete/{qid}', 'TestController@deleteQuestion');
+                    Route::get('/questions/edit/{qid}', 'TestController@viewEditQuestion');
+                    Route::post('/questions/edit/{qid}', 'TestController@editQuestion');
                     Route::get('/result', 'TestController@viewJobResults');
                     Route::get('/result/{id}',
                         'TestController@viewTestResults');

@@ -55,12 +55,12 @@ class JobController extends Controller
             } else {
                 $message
                     = "Oops! An error occurred. We were unable to add <em>$request->title<em>..";
-                $status = 'danger';
+                $status = 'error';
             }
         } else {
             $message
-                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add <em>$request->title<em>..";
-            $status = 'danger';
+                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
+            $status = 'error';
         }
 
         return redirect('/backend/jobs')->with([
@@ -69,6 +69,50 @@ class JobController extends Controller
         ]);
     }
 
+    function deleteJob(Request $request, $jid)
+    {
+        $id = $request->id - 4361;
+        $job = Job::find($id);
+        $title = $job->title;
+
+        if ($job & $job->job_id == $jid) {
+            $isLinked = Job_job::join('jobs', 'job_jobs.job_id', '=',
+                'jobs.job_id')->where('job_jobs.job_id', $job->job_id)
+                ->first();
+
+            if (!$isLinked) {
+                if ($job->delete()) {
+
+                    $message
+                        = "You've deleted $title successfully..";
+                    $status = 'success';
+                } else {
+                    $message
+                        = "Oops! An error occurred. \nWe were unable to delete $job->title..";
+                    $status = 'error';
+                }
+            } else {
+                $message
+                    = "Oops! An error occurred. \nThe job '$job->title' is linked to job '$isLinked->title'.\nYou should unlink the job before taking this action..";
+                $status = 'error';
+            }
+        } else {
+            $message
+                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
+            $status = 'error';
+        }
+
+        $subData['jobs'] = Online_job::get();
+        $html = View::make('partials.admin.jobs', $subData);
+        $data = [
+            'status' => $message,
+            'state'  => $status,
+            'html'   => $html->render()
+        ];
+
+        return response()->json($data);
+    }
+    
     public function jobs($page = 1, $per = 10)
     {
         $data = $this->getAppliedJobs($page, $per);
@@ -88,8 +132,7 @@ class JobController extends Controller
         $data = $this->getSearchedJobs($page, $per, $terms);
         $data['title'] = 'Jobs';
         $data['search'] = $query;
-
-
+        
         return view('admin.jobs', $data);
     }
 

@@ -125,7 +125,7 @@ class ProfileController extends Controller
             $status = 'success';
         } else {
             $message = 'An error occurred during update.';
-            $status = 'danger';
+            $status = 'error';
         }
         return redirect()->back()->with('status', [
             'message' => $message,
@@ -163,7 +163,7 @@ class ProfileController extends Controller
             $status = 'success';
         } else {
             $message = 'An error occurred during update.';
-            $status = 'danger';
+            $status = 'error';
         }
         return redirect()->back()->with('status', [
             'message' => $message,

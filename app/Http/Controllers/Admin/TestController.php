@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Application;
 use App\Interview;
+use App\Job_test;
 use App\Online_test;
 use App\Question;
 use App\Result;
@@ -49,12 +50,12 @@ class TestController extends Controller
             } else {
                 $message
                     = "Oops! An error occurred. We were unable to add $request->title..";
-                $status = 'danger';
+                $status = 'error';
             }
         } else {
             $message
                 = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
-            $status = 'danger';
+            $status = 'error';
         }
 
         return redirect("/backend/tests/view/$isTest->test_id")->with([
@@ -80,7 +81,7 @@ class TestController extends Controller
         } else {
             $message
                 = "Oops! An error occurred. We were unable to add $request->title..";
-            $status = 'danger';
+            $status = 'error';
         }
 
 
@@ -95,25 +96,69 @@ class TestController extends Controller
     {
         $id = $request->id - 1921;
         $test = Online_test::find($id);
-        if ($test) {
-            if ($test->delete()) {
+        $title = $test->title;
 
-                $message
-                    = "You've deleted $test->title successfully..";
-                $status = 'success';
+        if ($test) {
+            $isLinked = Job_test::join('jobs', 'job_tests.job_id', '=',
+                'jobs.job_id')->where('job_tests.test_id', $test->test_id)
+                ->first();
+
+            if (!$isLinked) {
+                if ($test->delete()) {
+
+                    $message
+                        = "You've deleted $title successfully..";
+                    $status = 'success';
+                } else {
+                    $message
+                        = "Oops! An error occurred. \nWe were unable to delete $test->title..";
+                    $status = 'error';
+                }
             } else {
                 $message
-                    = "Oops! An error occurred. We were unable to add $request->title..";
-                $status = 'danger';
+                    = "Oops! An error occurred. \nThe test '$test->title' is linked to job '$isLinked->title'.\nYou should unlink the test before taking this action..";
+                $status = 'error';
             }
         } else {
             $message
                 = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
-            $status = 'danger';
+            $status = 'error';
         }
 
         $subData['tests'] = Online_test::get();
         $html = View::make('partials.admin.tests', $subData);
+        $data = [
+            'status' => $message,
+            'state'  => $status,
+            'html'   => $html->render()
+        ];
+
+        return response()->json($data);
+    }
+
+    function deleteQuestion(Request $request, $qid)
+    {
+        $id = $request->id - 3217;
+        $question = Test_question::find($id);
+        if ($question && $question->question_id == $qid) {
+            if ($question->delete()) {
+                $message
+                    = "You've deleted the question successfully..";
+                $status = 'success';
+            } else {
+                $message
+                    = "Oops! An error occurred. We were unable to delete the question..";
+                $status = 'error';
+            }
+        } else {
+            $message
+                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to delete the question..";
+            $status = 'error';
+        }
+
+        $subData['questions'] = Test_question::where('test_id',
+            $question->test_id)->get();
+        $html = View::make('partials.admin.test', $subData);
         $data = [
             'status' => $message,
             'state'  => $status,
@@ -145,16 +190,59 @@ class TestController extends Controller
             } else {
                 $message
                     = "Oops! An error occurred. We were unable to add $request->title..";
-                $status = 'danger';
+                $status = 'error';
             }
         } else {
             $message
                 = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
-            $status = 'danger';
+            $status = 'error';
         }
 
         $subData['tests'] = Online_test::get();
         $html = View::make('partials.admin.tests', $subData);
+        $data = [
+            'status' => $message,
+            'state'  => $status,
+            'html'   => $html->render()
+        ];
+
+        return response()->json($data);
+    }
+
+    function editQuestion(Request $request, $qid)
+    {
+        $id = $request->id - 3217;
+        $question = Test_question::find($id);
+        $details = $request->all();
+        if ($question && $question->question_id == $qid) {
+            array_push($details, ['updated_at' => date('Y-m-d H:i:s')]);
+
+            unset($details['_token']);
+            unset($details['id']);
+            unset($details[0]);
+
+            $isUpdated = Test_question::where('question_id',
+                $question->question_id)
+                ->update($details);
+            if ($isUpdated) {
+
+                $message
+                    = "You've edited the question successfully..";
+                $status = 'success';
+            } else {
+                $message
+                    = "Oops! An error occurred. We were unable to add the question..";
+                $status = 'error';
+            }
+        } else {
+            $message
+                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
+            $status = 'error';
+        }
+
+        $subData['questions'] = Test_question::where('test_id',
+            $question->test_id)->get();
+        $html = View::make('partials.admin.test', $subData);
         $data = [
             'status' => $message,
             'state'  => $status,
@@ -213,6 +301,24 @@ class TestController extends Controller
     {
         $data['title'] = "Add Test";
         return view('dashboard.admin.add_test', $data);
+    }
+
+    public function viewEditQuestion(Request $request, $qid = null)
+    {
+        $id = $request->id - 3217;
+        $question = Test_question::find($id);
+        if ($question && $question->question_id == $qid) {
+            $subData['question'] = $question;
+            $html = View::make('partials.admin.edit_question', $subData);
+
+            $data = [
+                'html' => $html->render()
+            ];
+            return response()->json($data, '200');
+        }
+        return response()->json(['message' => 'Oops! Sorry, an error occured'],
+            '404');
+
     }
 
     public function viewEditTest(Request $request)

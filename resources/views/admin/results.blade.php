@@ -52,10 +52,7 @@
                 <div class="modal-body pull-left" id="invite" style="background-color: #f5f5f5; float:left;">
 
                 </div>
-
             </div>
-
-
         </div>
     </div>
 @endsection
