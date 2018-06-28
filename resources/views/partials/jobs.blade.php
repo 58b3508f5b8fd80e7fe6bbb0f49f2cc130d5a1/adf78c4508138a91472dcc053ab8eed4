@@ -79,7 +79,13 @@
                                                                     @endif
                                                                 </div>
                                                             </h2>
-                                                            <span>{{$job->description}}</span>
+                                                            <?php
+                                                            $description = strip_tags($job->description);
+                                                            $description = explode(' ', $description);
+                                                            $description = array_splice($description, 0, 40);
+                                                            $description = implode(' ', $description) . '...';
+                                                            ?>
+                                                            <span>{{$description}}</span>
                                                             <ul>
                                                                 <li><i class="fa fa-map-marker"></i>
                                                                     {{$job->state.', '.$job->lga}}

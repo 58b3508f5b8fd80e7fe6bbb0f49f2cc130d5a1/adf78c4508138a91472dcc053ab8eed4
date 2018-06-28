@@ -11,9 +11,16 @@ class VisitorController extends Controller
     //
     public function index()
     {
-        $data['title']='Home';
+        $data['title'] = 'Home';
         $data['jobs'] = $this->getJobs();
         return view('welcome', $data);
+    }
+
+    public function jobs(){
+        $data=$this->getAllJobs();
+        $data['title']='Jobs';
+
+        return view('searchJobs',$data);
     }
 
     public function getJobs()
@@ -26,15 +33,23 @@ class VisitorController extends Controller
     {
         $data = null;
         $query = $request->input('search');
-
         $terms = preg_split('/[\s,;:]+/', $query);
         $terms = array_filter($terms);
-
         $data = $this->getSearchedJobs($page, $per, $terms);
         $data['title'] = 'Jobs';
         $data['search'] = $query;
-
         return view('jobs', $data);
+    }
+
+    public function getAllJobs($page = 1, $per = 10)
+    {
+        $jobs = Job::orderBy('close_at', 'desc')->get();
+        $collection = collect($jobs);
+        $data['jobs'] = $collection->forPage($page, $per);
+        $data['pages'] = ceil(sizeof($jobs) / $per);
+        $data['page'] = $page;
+        $data['per'] = $per;
+        return $data;
     }
 
     public function getSearchedJobs($page = 1, $per = 10, $terms)
@@ -61,7 +76,6 @@ class VisitorController extends Controller
         $data['pages'] = ceil(sizeof($jobs) / $per);
         $data['page'] = $page;
         $data['per'] = $per;
-
         return $data;
     }
 }

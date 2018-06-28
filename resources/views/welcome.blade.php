@@ -13,7 +13,7 @@
             <div class="container">
                 <h1>Aim Higher. Reach Farther. Dream Bigger.</h1>
                 <p>A better career is out there. We'll help you find it to use.</p>
-                <form action="{{url('/site/jobs/search')}}" method="get" class="careerfy-banner-search" id="search">
+                <form method="get" class="careerfy-banner-search" id="search">
                     <ul>
                         <li>
                             <input name="search" placeholder="Job Title, Keywords, or Company" type="text">

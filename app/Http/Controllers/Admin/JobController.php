@@ -19,7 +19,7 @@ class JobController extends Controller
     //
     public function index()
     {
-        $data = $this->getAppliedJobs();
+        $data = $this->getJobs();
         $data['title'] = 'Dashboard';
 
         return view('admin.jobs', $data);
@@ -96,7 +96,7 @@ class JobController extends Controller
             $status = 'error';
         }
 
-        $subData = $this->getAppliedJobs();
+        $subData = $this->getJobs();
         $html = View::make('partials.admin.jobs', $subData);
         $data = [
             'status' => $message,
@@ -143,7 +143,7 @@ class JobController extends Controller
             $status = 'error';
         }
 
-        $subData = $this->getAppliedJobs();
+        $subData = $this->getJobs();
         $html = View::make('partials.admin.jobs', $subData);
         $data = [
             'status' => $message,
@@ -156,7 +156,7 @@ class JobController extends Controller
     
     public function jobs($page = 1, $per = 10)
     {
-        $data = $this->getAppliedJobs($page, $per);
+        $data = $this->getJobs($page, $per);
         $data['title'] = 'Jobs';
 
         return view('admin.jobs', $data);
@@ -230,7 +230,7 @@ class JobController extends Controller
         return $data;
     }
 
-    public function getAppliedJobs($page = 1, $per = 10)
+    public function getJobs($page = 1, $per = 10)
     {
         $jobs = Application::join('jobs', 'jobs.job_id', '=',
             'applications.job_id')->select('jobs.*', 'applications.job_id',
