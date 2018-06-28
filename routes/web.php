@@ -73,7 +73,7 @@ Route::middleware(['checkMaintenance'])->group(function () {
                     Route::get('/add', 'JobController@viewJobsAdd');
                     Route::post('/add', 'JobController@addJobs');
                     Route::post('/delete/{jid}', 'JobController@deleteJob');
-                    Route::get('/edit/{jid}', 'JobController@viewJobEdit');
+                    Route::get('/view/edit/{jid}', 'JobController@viewJobEdit');
                     Route::post('/edit/{jid}', 'JobController@jobEdit');
                     Route::get('/{page?}/{per?}', 'JobController@jobs');
                     Route::get('/search/{page?}/{per?}',
@@ -85,16 +85,21 @@ Route::middleware(['checkMaintenance'])->group(function () {
                     Route::get('/', 'TestController@index');
                     Route::get('/add', 'TestController@viewAddTest');
                     Route::post('/add', 'TestController@addTest');
-                    Route::post('/delete', 'TestController@deleteTest');
-                    Route::get('/edit', 'TestController@viewEditTest');
-                    Route::post('/edit', 'TestController@editTest');
+                    Route::post('/delete/{tid}', 'TestController@deleteTest');
+                    Route::get('/edit/{tid}', 'TestController@viewEditTest');
+                    Route::post('/edit/{tid}', 'TestController@editTest');
                     Route::get('/invite/{id}', 'InterviewController@getInvite');
                     Route::post('/invite', 'InterviewController@sendInvite');
-                    Route::get('/questions/add/{id}', 'TestController@viewAddQuestion');
-                    Route::post('/questions/add/{id}', 'TestController@addQuestion');
-                    Route::post('/questions/delete/{qid}', 'TestController@deleteQuestion');
-                    Route::get('/questions/edit/{qid}', 'TestController@viewEditQuestion');
-                    Route::post('/questions/edit/{qid}', 'TestController@editQuestion');
+                    Route::get('/questions/add/{id}',
+                        'TestController@viewAddQuestion');
+                    Route::post('/questions/add/{id}',
+                        'TestController@addQuestion');
+                    Route::post('/questions/delete/{qid}',
+                        'TestController@deleteQuestion');
+                    Route::get('/questions/edit/{qid}',
+                        'TestController@viewEditQuestion');
+                    Route::post('/questions/edit/{qid}',
+                        'TestController@editQuestion');
                     Route::get('/result', 'TestController@viewJobResults');
                     Route::get('/result/{id}',
                         'TestController@viewTestResults');
@@ -272,8 +277,8 @@ Route::get('/about', function () {
 Route::get('/faq', function () {
     return view('faq', ['title' => 'Frequently Asked Questions']);
 });
-Route::get('test', function (\Illuminate\Http\Request $request) {
-    $string='There is a name';
+Route::get('apptest', function (\Illuminate\Http\Request $request) {
+    /*$string='There is a name';
         $start=0;
         $limit=20;
 
@@ -282,9 +287,38 @@ Route::get('test', function (\Illuminate\Http\Request $request) {
         $truncated_array = array_splice($string_array,$start,$limit);
         $truncated_string=implode(' ',$truncated_array) . "...";
 
-        echo $truncated_string;
+        echo $truncated_string;*/
+/*    $url = url('/apptest');
+    $csrf = csrf_field();
 
+    echo "
+<form action='$url'>
+    $csrf
+    Nth Term: <input name='nth' value=''> <br>
+    <input type='submit'>
+</form><hr>";
 
+    if (isset($request->nth)) {
+
+        $a = 0;
+        $b = 1;
+        $c = 0;
+        $n = $request->nth;
+        for ($i = 0; $i < $n; $i++) {
+            if ($i <= 1) {
+                $c = $i;
+                $a=$b;
+                $b=$c;
+            } else {
+                $c=$a+$b;
+                $a=$b;
+                $b=$c;
+            }
+            echo "$c,";
+        }
+        echo "<br>The $n term is =-> $c";
+    }
+*/
     /*$routeCollection = Route::getRoutes();
 
     echo sizeof($routeCollection);

@@ -13,26 +13,27 @@
             <div class="container">
                 <h1>Aim Higher. Reach Farther. Dream Bigger.</h1>
                 <p>A better career is out there. We'll help you find it to use.</p>
-                <form class="careerfy-banner-search">
+                <form class="careerfy-banner-search" id="search">
                     <ul>
                         <li>
-                            <input value="Job Title, Keywords, or Company"
-                                   onblur="if(this.value == '') { this.value ='Job Title, Keywords, or Company'; }"
-                                   onfocus="if(this.value =='Job Title, Keywords, or Company') { this.value = ''; }"
-                                   type="text">
+                            <input name="search" placeholder="Job Title, Keywords, or Company" type="text">
                         </li>
                         <li>
-                            <input value="City, State or ZIP"
-                                   onblur="if(this.value == '') { this.value ='City, State or ZIP'; }"
-                                   onfocus="if(this.value =='City, State or ZIP') { this.value = ''; }" type="text">
+                            <input name="location" placeholder="City, State or ZIP" type="text">
                             <i class="careerfy-icon careerfy-location"></i>
                         </li>
+
                         <li>
                             <div class="careerfy-select-style">
-                                <select>
-                                    <option>Categories</option>
-                                    <option>Categories</option>
-                                    <option>Categories</option>
+                                <select name="qualification">
+                                    <option selected disabled>Qualification</option>
+                                    <option value="B.Sc.">Bachelors of Science (B.Sc.)</option>
+                                    <option value="B.Tech">Bachelors of Technology (B.Tech)</option>
+                                    <option value="B.Eng.">Bachelors of Engineering (B.Eng)</option>
+                                    <option value="OND">Ordinary National Diploma (OND)</option>
+                                    <option value="HND">Higher National Diploma (HND)</option>
+                                    <option value="SSCE">Senior Secondary Certificate Examinations (SSCE)</option>
+                                    <option value="FSLC">First School Leaving Certificate</option>
                                 </select>
                             </div>
                         </li>
@@ -41,10 +42,9 @@
                     </ul>
                 </form>
                 <div class="careerfy-banner-btn">
-                    <a href="#" class="careerfy-bgcolorhover"><i class="careerfy-icon careerfy-up-arrow"></i> Upload
+                    <a href="{{route('resume')}}" class="careerfy-bgcolorhover"><i
+                                class="careerfy-icon careerfy-up-arrow"></i> Upload
                         Your Resume</a>
-                    <a href="#" class="careerfy-bgcolorhover"><i class="careerfy-icon careerfy-portfolio"></i> Hiring?
-                        Post a job for free</a>
                 </div>
             </div>
         </div>
@@ -85,82 +85,81 @@
         </div>
         <!-- Main Section -->
 
-        <!-- Main Section -->
-        <div class="careerfy-main-section">
-            <div class="container">
-                <div class="row">
+    {{--<!-- Main Section -->
+    <div class="careerfy-main-section">
+        <div class="container">
+            <div class="row">
 
-                    <div class="col-md-12 careerfy-typo-wrap">
-                        <!-- Fancy Title -->
-                        <section class="careerfy-fancy-title">
-                            <h2>Popular Job Categories</h2>
-                            <p>A better career is out there. We'll help you find it to use.</p>
-                        </section>
-                        <!-- Categories -->
-                        <div class="categories-list">
-                            <ul class="careerfy-row">
-                                <li class="careerfy-column-3">
-                                    <i class="careerfy-icon careerfy-engineer"></i>
-                                    <a href="#">construction / facilities</a>
-                                    <span>(15 Open Vacancies)</span>
-                                </li>
-                                <li class="careerfy-column-3">
-                                    <i class="careerfy-icon careerfy-car"></i>
-                                    <a href="#">automotive jobs</a>
-                                    <span>(12 Open Vacancies)</span>
-                                </li>
-                                <li class="careerfy-column-3">
-                                    <i class="careerfy-icon careerfy-accounting"></i>
-                                    <a href="#">Accounting / Finance</a>
-                                    <span>(8 Open Vacancies)</span>
-                                </li>
-                                <li class="careerfy-column-3">
-                                    <i class="careerfy-icon careerfy-hospital"></i>
-                                    <a href="#">Health Care</a>
-                                    <span>(5 Open Vacancies)</span>
-                                </li>
-                                <li class="careerfy-column-3">
-                                    <i class="careerfy-icon careerfy-antenna"></i>
-                                    <a href="#">Telecommunications</a>
-                                    <span>(7 Open Vacancies)</span>
-                                </li>
-                                <li class="careerfy-column-3">
-                                    <i class="careerfy-icon careerfy-books"></i>
-                                    <a href="#">education training</a>
-                                    <span>(22 Open Vacancies)</span>
-                                </li>
-                                <li class="careerfy-column-3">
-                                    <i class="careerfy-icon careerfy-fast-food"></i>
-                                    <a href="#">Restaurant / food services</a>
-                                    <span>(30 Open Vacancies)</span>
-                                </li>
-                                <li class="careerfy-column-3">
-                                    <i class="careerfy-icon careerfy-business"></i>
-                                    <a href="#">Sales & Marketing</a>
-                                    <span>(40 Open Vacancies)</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="careerfy-plain-btn"><a href="#">Browse All Categories</a></div>
-                        <!-- Categories -->
+                <div class="col-md-12 careerfy-typo-wrap">
+                    <!-- Fancy Title -->
+                    <section class="careerfy-fancy-title">
+                        <h2>Popular Job Categories</h2>
+                        <p>A better career is out there. We'll help you find it to use.</p>
+                    </section>
+                    <!-- Categories -->
+                    <div class="categories-list">
+                        <ul class="careerfy-row">
+                            <li class="careerfy-column-3">
+                                <i class="careerfy-icon careerfy-engineer"></i>
+                                <a href="#">construction / facilities</a>
+                                <span>(15 Open Vacancies)</span>
+                            </li>
+                            <li class="careerfy-column-3">
+                                <i class="careerfy-icon careerfy-car"></i>
+                                <a href="#">automotive jobs</a>
+                                <span>(12 Open Vacancies)</span>
+                            </li>
+                            <li class="careerfy-column-3">
+                                <i class="careerfy-icon careerfy-accounting"></i>
+                                <a href="#">Accounting / Finance</a>
+                                <span>(8 Open Vacancies)</span>
+                            </li>
+                            <li class="careerfy-column-3">
+                                <i class="careerfy-icon careerfy-hospital"></i>
+                                <a href="#">Health Care</a>
+                                <span>(5 Open Vacancies)</span>
+                            </li>
+                            <li class="careerfy-column-3">
+                                <i class="careerfy-icon careerfy-antenna"></i>
+                                <a href="#">Telecommunications</a>
+                                <span>(7 Open Vacancies)</span>
+                            </li>
+                            <li class="careerfy-column-3">
+                                <i class="careerfy-icon careerfy-books"></i>
+                                <a href="#">education training</a>
+                                <span>(22 Open Vacancies)</span>
+                            </li>
+                            <li class="careerfy-column-3">
+                                <i class="careerfy-icon careerfy-fast-food"></i>
+                                <a href="#">Restaurant / food services</a>
+                                <span>(30 Open Vacancies)</span>
+                            </li>
+                            <li class="careerfy-column-3">
+                                <i class="careerfy-icon careerfy-business"></i>
+                                <a href="#">Sales & Marketing</a>
+                                <span>(40 Open Vacancies)</span>
+                            </li>
+                        </ul>
                     </div>
-
+                    <div class="careerfy-plain-btn"><a href="#">Browse All Categories</a></div>
+                    <!-- Categories -->
                 </div>
+
             </div>
         </div>
-        <!-- Main Section -->
+    </div>--}}
+    <!-- Main Section -->
 
         <!-- Main Section -->
         <div class="careerfy-main-section careerfy-parallex-full">
             <div class="container">
                 <div class="row">
-
                     <aside class="col-md-6 careerfy-typo-wrap">
                         <div class="careerfy-parallex-text">
                             <h2>Millions of jobs. <br> Find the one that’s right for you.</h2>
-                            <p>Search all the open positions on the web. Get your own personalized salary estimate. Read
-                                reviews on over 600,000 companies worldwide. The right job is out there.</p>
-                            <a href="#" class="careerfy-static-btn careerfy-bgcolor"><span>Search Jobs</span></a>
+                            <p>Search all the open positions on the web. Get your own personalized salary estimate. The
+                                right job is out there.</p>
+                            <a href="#search" class="careerfy-static-btn careerfy-bgcolor"><span>Search Jobs</span></a>
                         </div>
                     </aside>
                     <aside class="col-md-6 careerfy-typo-wrap">
@@ -177,7 +176,6 @@
         <div class="careerfy-main-section">
             <div class="container">
                 <div class="row">
-
                     <div class="col-md-12 careerfy-typo-wrap">
                         <!-- Fancy Title -->
                         <section class="careerfy-fancy-title">
@@ -187,160 +185,33 @@
                         <!-- Featured Jobs Listings -->
                         <div class="careerfy-job-listing careerfy-featured-listing">
                             <ul class="careerfy-row">
-                                <li class="careerfy-column-6">
-                                    <div class="careerfy-table-layer">
-                                        <div class="careerfy-table-row">
-                                            <figure><a href="#"><img
-                                                            src="{{asset($public.'/jpg/featured-listing-1.jpg')}}"
-                                                            alt=""></a></figure>
-                                            <div class="careerfy-featured-listing-text">
-                                                <h2><a href="#">Dropbox -- UX designer</a></h2>
-                                                <a href="#" class="careerfy-like-list"><i
-                                                            class="careerfy-icon careerfy-heart"></i></a>
-                                                <time datetime="2008-02-14 20:00">September 15, 2017</time>
-                                                <div class="careerfy-featured-listing-options">
-                                                    <ul>
-                                                        <li><i class="careerfy-icon careerfy-maps-and-flags"></i> <a
-                                                                    href="#">Rennes,</a> <a href="#">France</a></li>
-                                                        <li>
-                                                            <i class="careerfy-icon careerfy-filter-tool-black-shape"></i>
-                                                            <a href="#">Accountancy</a></li>
-                                                    </ul>
-                                                    <a href="#" class="careerfy-option-btn">Freelance</a>
+                                @foreach($jobs as $job)
+                                    <li class="careerfy-column-6">
+                                        <div class="careerfy-table-layer">
+                                            <div class="careerfy-table-row">
+                                                <figure><a href="#"><img
+                                                                src="{{asset($public.'/jpg/featured-listing-1.jpg')}}"
+                                                                alt=""></a></figure>
+                                                <div class="careerfy-featured-listing-text">
+                                                    <h2><a href="#">{{$job->title}}</a></h2>
+                                                    <a href="#" class="careerfy-like-list"><i
+                                                                class="careerfy-icon careerfy-heart"></i></a>
+                                                    <time>Deadline: {{date('jS M, Y', strtotime($job->close_at))}}</time>
+                                                    <div class="careerfy-featured-listing-options">
+                                                        <ul>
+                                                            <li><i class="careerfy-icon careerfy-maps-and-flags"></i> <a
+                                                                        href="#">{{$job->state}},</a> <a href="#">{{$job->country}}</a></li>
+                                                            <li>
+                                                                <i class="careerfy-icon careerfy-filter-tool-black-shape"></i>
+                                                                <a href="#">{{$job->qualification}}</a></li>
+                                                        </ul>
+                                                        <a href="#" class="careerfy-option-btn">Apply</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="careerfy-column-6">
-                                    <div class="careerfy-table-layer">
-                                        <div class="careerfy-table-row">
-                                            <figure><a href="#"><img
-                                                            src="{{asset($public.'/jpg/featured-listing-2.jpg')}}"
-                                                            alt=""></a></figure>
-                                            <div class="careerfy-featured-listing-text">
-                                                <h2><a href="#">Dropbox -- UX designer</a></h2>
-                                                <a href="#" class="careerfy-like-list"><i
-                                                            class="careerfy-icon careerfy-heart"></i></a>
-                                                <time datetime="2008-02-14 20:00">September 15, 2017</time>
-                                                <div class="careerfy-featured-listing-options">
-                                                    <ul>
-                                                        <li><i class="careerfy-icon careerfy-maps-and-flags"></i> <a
-                                                                    href="#">Derry,</a> <a href="#">United Kingdom</a>
-                                                        </li>
-                                                        <li>
-                                                            <i class="careerfy-icon careerfy-filter-tool-black-shape"></i>
-                                                            <a href="#">Automotive</a></li>
-                                                    </ul>
-                                                    <a href="#" class="careerfy-option-btn careerfy-blue">Full time</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="careerfy-column-6">
-                                    <div class="careerfy-table-layer">
-                                        <div class="careerfy-table-row">
-                                            <figure><a href="#"><img
-                                                            src="{{asset($public.'/jpg/featured-listing-3.jpg')}}"
-                                                            alt=""></a></figure>
-                                            <div class="careerfy-featured-listing-text">
-                                                <h2><a href="#">Dropbox -- UX designer</a></h2>
-                                                <a href="#" class="careerfy-like-list"><i
-                                                            class="careerfy-icon careerfy-heart"></i></a>
-                                                <time datetime="2008-02-14 20:00">September 15, 2017</time>
-                                                <div class="careerfy-featured-listing-options">
-                                                    <ul>
-                                                        <li><i class="careerfy-icon careerfy-maps-and-flags"></i> <a
-                                                                    href="#">Aberdeen,</a> <a href="#">United
-                                                                Kingdom</a></li>
-                                                        <li>
-                                                            <i class="careerfy-icon careerfy-filter-tool-black-shape"></i>
-                                                            <a href="#">Banking</a></li>
-                                                    </ul>
-                                                    <a href="#" class="careerfy-option-btn careerfy-red">Temporary</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="careerfy-column-6">
-                                    <div class="careerfy-table-layer">
-                                        <div class="careerfy-table-row">
-                                            <figure><a href="#"><img
-                                                            src="{{asset($public.'/jpg/featured-listing-4.jpg')}}"
-                                                            alt=""></a></figure>
-                                            <div class="careerfy-featured-listing-text">
-                                                <h2><a href="#">Dropbox -- UX designer</a></h2>
-                                                <a href="#" class="careerfy-like-list"><i
-                                                            class="careerfy-icon careerfy-heart"></i></a>
-                                                <time datetime="2008-02-14 20:00">September 15, 2017</time>
-                                                <div class="careerfy-featured-listing-options">
-                                                    <ul>
-                                                        <li><i class="careerfy-icon careerfy-maps-and-flags"></i> <a
-                                                                    href="#">Saint-Etienne,</a> <a href="#">France</a>
-                                                        </li>
-                                                        <li>
-                                                            <i class="careerfy-icon careerfy-filter-tool-black-shape"></i>
-                                                            <a href="#">Restaurant</a></li>
-                                                    </ul>
-                                                    <a href="#" class="careerfy-option-btn careerfy-green">Part time</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="careerfy-column-6">
-                                    <div class="careerfy-table-layer">
-                                        <div class="careerfy-table-row">
-                                            <figure><a href="#"><img
-                                                            src="{{asset($public.'/jpg/featured-listing-5.jpg')}}"
-                                                            alt=""></a></figure>
-                                            <div class="careerfy-featured-listing-text">
-                                                <h2><a href="#">Dropbox -- UX designer</a></h2>
-                                                <a href="#" class="careerfy-like-list"><i
-                                                            class="careerfy-icon careerfy-heart"></i></a>
-                                                <time datetime="2008-02-14 20:00">September 15, 2017</time>
-                                                <div class="careerfy-featured-listing-options">
-                                                    <ul>
-                                                        <li><i class="careerfy-icon careerfy-maps-and-flags"></i> <a
-                                                                    href="#">London,</a> <a href="#">United Kingdom</a>
-                                                        </li>
-                                                        <li>
-                                                            <i class="careerfy-icon careerfy-filter-tool-black-shape"></i>
-                                                            <a href="#">Real Estate</a></li>
-                                                    </ul>
-                                                    <a href="#" class="careerfy-option-btn careerfy-blue">Full time</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="careerfy-column-6">
-                                    <div class="careerfy-table-layer">
-                                        <div class="careerfy-table-row">
-                                            <figure><a href="#"><img
-                                                            src="{{asset($public.'/jpg/featured-listing-6.jpg')}}"
-                                                            alt=""></a></figure>
-                                            <div class="careerfy-featured-listing-text">
-                                                <h2><a href="#">Dropbox -- UX designer</a></h2>
-                                                <a href="#" class="careerfy-like-list"><i
-                                                            class="careerfy-icon careerfy-heart"></i></a>
-                                                <time datetime="2008-02-14 20:00">September 15, 2017</time>
-                                                <div class="careerfy-featured-listing-options">
-                                                    <ul>
-                                                        <li><i class="careerfy-icon careerfy-maps-and-flags"></i> <a
-                                                                    href="#">Rennes,</a> <a href="#">France</a></li>
-                                                        <li>
-                                                            <i class="careerfy-icon careerfy-filter-tool-black-shape"></i>
-                                                            <a href="#">Education</a></li>
-                                                    </ul>
-                                                    <a href="#" class="careerfy-option-btn">Freelance</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <!-- Featured Jobs Listings -->
@@ -395,7 +266,7 @@
         </div>
         <!-- Main Section -->
 
-        <!-- Main Section -->
+        {{--<!-- Main Section -->
         <div class="careerfy-main-section">
             <div class="container">
                 <div class="row">
@@ -467,9 +338,9 @@
                 </div>
             </div>
         </div>
-        <!-- Main Section -->
+        <!-- Main Section -->--}}
 
-        <!-- Main Section -->
+        {{--<!-- Main Section -->
         <div class="careerfy-main-section careerfy-parallex-text-full">
             <div class="container">
                 <div class="row">
@@ -492,8 +363,8 @@
             </div>
         </div>
         <!-- Main Section -->
-
+--}}
     </div>
     <!-- Main Content -->
 
-   @endsection
+@endsection

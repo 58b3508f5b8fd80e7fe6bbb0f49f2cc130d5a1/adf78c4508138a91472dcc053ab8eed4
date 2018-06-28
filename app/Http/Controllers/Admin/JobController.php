@@ -73,18 +73,12 @@ class JobController extends Controller
     {
         $id = $request->id - 4361;
         $job = Job::find($id);
-        $title = $job->title;
 
-        if ($job & $job->job_id == $jid) {
-            $isLinked = Job_job::join('jobs', 'job_jobs.job_id', '=',
-                'jobs.job_id')->where('job_jobs.job_id', $job->job_id)
-                ->first();
-
-            if (!$isLinked) {
+        if ($job) {
+            if ($job->job_id == $jid) {
                 if ($job->delete()) {
-
                     $message
-                        = "You've deleted $title successfully..";
+                        = "You've deleted $job->title successfully..";
                     $status = 'success';
                 } else {
                     $message
@@ -93,16 +87,63 @@ class JobController extends Controller
                 }
             } else {
                 $message
-                    = "Oops! An error occurred. \nThe job '$job->title' is linked to job '$isLinked->title'.\nYou should unlink the job before taking this action..";
+                    = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
                 $status = 'error';
             }
         } else {
             $message
-                = "Oops! An error occurred, we couldn't verify some of your data. We were unable to add $request->title..";
+                = "Oops! An error occurred,\nthis job does not exist..";
             $status = 'error';
         }
 
-        $subData['jobs'] = Online_job::get();
+        $subData = $this->getAppliedJobs();
+        $html = View::make('partials.admin.jobs', $subData);
+        $data = [
+            'status' => $message,
+            'state'  => $status,
+            'html'   => $html->render()
+        ];
+
+        return response()->json($data);
+    }
+
+    function editJob(Request $request, $jid = null)
+    {
+        $id = $request->id - 4361;
+        $job = Job::find($id);
+        $details = $request->all();
+        if ($job) {
+            if ($job->job_id == $jid) {
+                array_push($details, ['updated_at' => date('Y-m-d H:i:s')]);
+
+                unset($details['_token']);
+                unset($details['id']);
+                unset($details[0]);
+
+                $isUpdated = Job::where('job_id', $job->job_id)
+                    ->update($details);
+                if ($isUpdated) {
+
+                    $message
+                        = "You've edited $job->title successfully..";
+                    $status = 'success';
+                } else {
+                    $message
+                        = "Oops! An error occurred. We were unable to edit the job..";
+                    $status = 'error';
+                 }
+            } else {
+                $message
+                    = "Oops! An error occurred, we couldn't verify some of your data. We were unable to edit the job";
+                $status = 'error';
+            }
+        } else {
+            $message
+                = "Oops! An error occurred, the job was not found..";
+            $status = 'error';
+        }
+
+        $subData = $this->getAppliedJobs();
         $html = View::make('partials.admin.jobs', $subData);
         $data = [
             'status' => $message,
@@ -132,7 +173,7 @@ class JobController extends Controller
         $data = $this->getSearchedJobs($page, $per, $terms);
         $data['title'] = 'Jobs';
         $data['search'] = $query;
-        
+
         return view('admin.jobs', $data);
     }
 
@@ -250,4 +291,26 @@ class JobController extends Controller
         $data['tests'] = Online_test::select('title', 'test_id')->get();
         return view('admin.addJob', $data);
     }
+
+    public function viewJobEdit(Request $request, $jid)
+    {
+        $id = $request->id - 973;
+        $job = Job::find($id);
+        if ($job) {
+            if($job->job_id == $jid) {
+                $subData['job'] = $job;
+                $subData['tests'] = Online_test::select('title', 'test_id')->get();
+                $html = View::make('partials.admin.edit_job', $subData);
+
+                $data = [
+                    'html' => $html->render()
+                ];
+                return response()->json($data, '200');
+            }
+        }
+
+        return response()->json(['message' => 'Oops! Sorry, an error occured'],
+            '404');
+    }
+
 }
