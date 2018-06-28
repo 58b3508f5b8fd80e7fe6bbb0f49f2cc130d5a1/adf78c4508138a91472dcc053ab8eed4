@@ -13,7 +13,7 @@
             <div class="container">
                 <h1>Aim Higher. Reach Farther. Dream Bigger.</h1>
                 <p>A better career is out there. We'll help you find it to use.</p>
-                <form class="careerfy-banner-search" id="search">
+                <form action="{{url('/site/jobs/search')}}" method="get" class="careerfy-banner-search" id="search">
                     <ul>
                         <li>
                             <input name="search" placeholder="Job Title, Keywords, or Company" type="text">
@@ -196,11 +196,13 @@
                                                     <h2><a href="#">{{$job->title}}</a></h2>
                                                     <a href="#" class="careerfy-like-list"><i
                                                                 class="careerfy-icon careerfy-heart"></i></a>
-                                                    <time>Deadline: {{date('jS M, Y', strtotime($job->close_at))}}</time>
+                                                    <time>
+                                                        Deadline: {{date('jS M, Y', strtotime($job->close_at))}}</time>
                                                     <div class="careerfy-featured-listing-options">
                                                         <ul>
                                                             <li><i class="careerfy-icon careerfy-maps-and-flags"></i> <a
-                                                                        href="#">{{$job->state}},</a> <a href="#">{{$job->country}}</a></li>
+                                                                        href="#">{{$job->state}},</a> <a
+                                                                        href="#">{{$job->country}}</a></li>
                                                             <li>
                                                                 <i class="careerfy-icon careerfy-filter-tool-black-shape"></i>
                                                                 <a href="#">{{$job->qualification}}</a></li>
@@ -215,7 +217,7 @@
                             </ul>
                         </div>
                         <!-- Featured Jobs Listings -->
-                        <div class="careerfy-plain-btn"><a href="#">View All Jobs</a></div>
+                        <div class="careerfy-plain-btn"><a href="{{url('/site/jobs')}}">View All Jobs</a></div>
                     </div>
 
                 </div>

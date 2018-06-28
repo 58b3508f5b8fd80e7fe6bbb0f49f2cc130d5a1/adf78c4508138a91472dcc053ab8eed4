@@ -101,7 +101,7 @@
 <!-- Footer -->
     <footer id="careerfy-footer" class="careerfy-footer-one">
         <div class="container">
-            <!-- Footer Widget -->
+            {{--<!-- Footer Widget -->
             <div class="careerfy-footer-widget">
                 <div class="row">
                     <aside class="widget col-md-4 widget_contact_info">
@@ -146,7 +146,7 @@
                     </aside>
                 </div>
             </div>
-            <!-- Footer Widget -->
+            <!-- Footer Widget -->--}}
             <!-- CopyRight -->
             <div class="careerfy-copyright">
                 <p>Copyrights © 2018, <a href="{{config('app.owner_url')}}"

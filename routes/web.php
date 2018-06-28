@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome', ['title' => 'home']);
-});
+Route::get('/', 'VisitorController@index');
 //1	Admin	admin@admin.com	$2y$10$l4MghrLnKXTRUDlR07XQeesKHRIaAe7WzDf90g751BEf70AwnJ5m.		2018-06-14 06:06:47	2018-06-14 06:06:47
 Auth::routes();
 
@@ -25,6 +23,10 @@ Route::patch('change_password', 'Auth\ChangePasswordController@changePassword')
     ->name('change_password');
 
 Route::middleware(['checkMaintenance'])->group(function () {
+    Route::prefix('/site')->group(function(){
+        Route::get('/jobs/search','VisitorController@searchJobs');
+        Route::get('/jobs','VisitorController@index');
+    });
     Route::middleware(['auth', 'isUser', 'checkUserStatus'])->group(function (
     ) {
         Route::get('/home', 'HomeController@index')->name('home');

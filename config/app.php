@@ -54,6 +54,11 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'designer'     => 'GreenWhiteDev',
+    'designer_url' => 'https://greenwhitedev.com.ng',
+    'owner'     => 'Touching Lives Skills',
+    'owner_url' => 'https://touchinglivesskills.xyz',
+    
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
