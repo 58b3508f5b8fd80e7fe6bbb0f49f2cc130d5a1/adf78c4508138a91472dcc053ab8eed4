@@ -40,25 +40,26 @@ Route::middleware(['checkMaintenance'])->group(function () {
             Route::post('/jobs/test/start', 'TestController@startTest');
             Route::post('/jobs/test/submit', 'TestController@submitTest');
 
+            Route::prefix('/resume')->group(function () {
+                Route::get('/download/cv', 'ResumeController@downloadCV');
+                Route::get('/modal/{action}/{type}/{id?}',
+                    'ResumeController@getModal');
+                Route::post('/delete', 'ResumeController@delete');
+                Route::post('/delete', 'ResumeController@delete');
+                Route::post('/coverletter', 'ResumeController@coverLetter');
+                Route::post('/education', 'ResumeController@addEducation');
+                Route::post('/experiences', 'ResumeController@addExperience');
+                Route::post('/honors', 'ResumeController@addHonors');
+                Route::post('/skills', 'ResumeController@addSkills');
+                Route::post('/curriculumvitae', 'ResumeController@curriculumVitae');
+            });
         });
         Route::get('/profile', 'ProfileController@index')->name('profile');
         Route::post('profile/update', 'ProfileController@profile')
             ->name('update_profile');
         Route::post('/profile/avatar', 'ProfileController@avatar')
             ->name('update_avatar');
-        Route::prefix('/resume')->group(function () {
-            Route::get('/download/cv', 'ResumeController@downloadCV');
-            Route::get('/modal/{action}/{type}/{id?}',
-                'ResumeController@getModal');
-            Route::post('/delete', 'ResumeController@delete');
-            Route::post('/delete', 'ResumeController@delete');
-            Route::post('/coverletter', 'ResumeController@coverLetter');
-            Route::post('/education', 'ResumeController@addEducation');
-            Route::post('/experiences', 'ResumeController@addExperience');
-            Route::post('/honors', 'ResumeController@addHonors');
-            Route::post('/skills', 'ResumeController@addSkills');
-            Route::post('/curriculumvitae', 'ResumeController@curriculumVitae');
-        });
+
 
         // drg >> Routes for the administrators
         Route::middleware(['isAdmin'])->group(function () {

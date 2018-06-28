@@ -16,7 +16,7 @@ class ProfileController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('isUser');
     }
 
     public function index()
@@ -36,37 +36,45 @@ class ProfileController extends Controller
         $id = (int)$request->input('id') - 1933;
         $userMeta = User_meta::find($id);
         $user = Auth::user();
-        if ($request->hasFile('avatar_location')
-            && $request->file('avatar_location')->isValid()
-        ) {
-            if ($userMeta->avatar_location !== null
-                && $userMeta->avatar_location !== config('app.default-image')
+        if ($userMeta) {
+            if ($request->hasFile('avatar_location')
+                && $request->file('avatar_location')->isValid()
             ) {
-                Storage::delete($userMeta->avatar_location);
-            }
-            $location = $request->file('avatar_location')
-                ->store('careers.touchinglivesskills/app/user/avatar');
-            $userMeta->avatar_location = $location;
-            $user->avatar_location = $location;
+                if ($userMeta->avatar_location !== null
+                    && $userMeta->avatar_location
+                    !== config('app.default-image')
+                ) {
+                    Storage::delete($userMeta->avatar_location);
+                }
+                $location = $request->file('avatar_location')
+                    ->store('careers.touchinglivesskills/app/user/avatar');
+                $userMeta->avatar_location = $location;
+                $user->avatar_location = $location;
 
-            if ($userMeta->save() && $user->save()) {
-                $data['message'] = 'Your profile image has been changed. '
-                    . $location;
-                $data['state'] = 'success';
-                $data['type'] = 'img';
-                $data['avatar'] = Storage::url($user->avatar_location);
-                $data['success'] = true;
+                if ($userMeta->save() && $user->save()) {
+                    $data['message'] = 'Your profile image has been changed. '
+                        . $location;
+                    $data['state'] = 'success';
+                    $data['type'] = 'img';
+                    $data['avatar'] = Storage::url($user->avatar_location);
+                    $data['success'] = true;
+                } else {
+                    $data['message'] = "Oops!, we couldn't save your image";
+                    $data['state'] = 'danger';
+                    $data['error'] = "Oops!, we couldn't save your image";
+                }
             } else {
-                $data['message'] = 'Sorry, an error occurred';
+                $data['message'] = 'Oops!, your file is invalid';
                 $data['state'] = 'danger';
-                $data['error'] = 'Sorry, an error occurred';
+                $data['error'] = "Oops!, your file is invalid";
             }
         } else {
-            $data['message'] = 'Sorry, an error occurred';
+            $data['message']
+                = 'Oops! You need to fill in other profile details before uploading your avatar.';
             $data['state'] = 'danger';
-            $data['error'] = 'Sorry, an error occurred';
+            $data['error']
+                = 'Oops! You need to fill in other profile details before uploading your avatar.';
         }
-
         return response()->json($data);
     }
 
@@ -127,9 +135,9 @@ class ProfileController extends Controller
             $message = 'An error occurred during update.';
             $status = 'error';
         }
-        return redirect()->back()->with('status', [
-            'message' => $message,
-            'state'   => $status
+        return redirect()->back()->with([
+            'status' => $message,
+            'state'  => $status
         ]);
     }
 
@@ -165,9 +173,9 @@ class ProfileController extends Controller
             $message = 'An error occurred during update.';
             $status = 'error';
         }
-        return redirect()->back()->with('status', [
-            'message' => $message,
-            'state'   => $status
+        return redirect()->back()->with([
+            'status' => $message,
+            'state'  => $status
         ]);
     }
 }
