@@ -5,7 +5,7 @@ Congratulations on your completion of "{{$test}}".
 
 The test will be reviewed shortly, and you will be contacted if successful.
 
-@component('mail::button', ['url' => ''])
+@component('mail::button', ['url' => '/home'])
 View Dashboard
 @endcomponent
 

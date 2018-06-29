@@ -124,7 +124,8 @@ class InterviewController extends Controller
             ['application_id', $id],
             ['status', 'processing']
         ])->first();
-        if ($applicant) {
+        $isInvited = Interview::where('interview_id', $id)->first();
+        if ($applicant && !$isInvited) {
             $application = Application::find($applicant->id);
             $application->status = "invited";
 
@@ -139,7 +140,7 @@ class InterviewController extends Controller
                 $user = User::where('user_id', $application->resume_id)
                     ->first();
                 Mail::to($user->email)
-                    ->send(new \App\Mail\SendInvite($user,$application));
+                    ->send(new \App\Mail\SendInvite($user, $application, $interview));
                 $data['message']
                     = "An invite has been sent to $request->full_name";
                 $data['state'] = "success";

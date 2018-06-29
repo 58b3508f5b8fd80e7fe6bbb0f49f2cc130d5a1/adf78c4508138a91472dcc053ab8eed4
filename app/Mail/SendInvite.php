@@ -20,11 +20,12 @@ class SendInvite extends Mailable
      */
     public $user;
 
-    public function __construct($user, $application)
+    public function __construct($user, $application, $interview)
     {
         //
         $this->user = $user;
         $this->job = Job::where('job_id', $application->job_id)->first();
+        $this->interview = $interview;
     }
 
     /**
@@ -35,6 +36,9 @@ class SendInvite extends Mailable
     public function build()
     {
         return $this->markdown('emails.interviews.invite')
-            ->with(['user' => $this->user, 'job' => $this->job]);
+            ->with(['user'      => $this->user,
+                    'job'       => $this->job,
+                    'interview' => $this->interview
+            ]);
     }
 }

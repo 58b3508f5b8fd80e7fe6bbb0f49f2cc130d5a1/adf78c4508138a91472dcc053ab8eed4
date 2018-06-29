@@ -61,7 +61,7 @@
                                                 @foreach($results as $result)
                                                     <tr>
                                                         <td>
-                                                            <h2><a href="#">{{$result->title}}</a></h2>
+                                                            <h2><a href="{{url("/backend/tests/result/$result->test_id")}}">{{$result->title}}</a></h2>
                                                         </td>
                                                         <td><span>{{$result->count}}</span></td>
                                                         <td>{{$result->maximum}}</td>
