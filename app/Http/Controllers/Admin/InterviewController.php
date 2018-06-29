@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Application;
 use App\Interview;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 
 class InterviewController extends Controller
@@ -134,6 +136,10 @@ class InterviewController extends Controller
             $interview->address = $request->address;
 
             if ($interview->save() && $application->save()) {
+                $user = User::where('user_id', $application->resume_id)
+                    ->first();
+                Mail::to($user->email)
+                    ->send(new \App\Mail\SendInvite($user,$application));
                 $data['message']
                     = "An invite has been sent to $request->full_name";
                 $data['state'] = "success";

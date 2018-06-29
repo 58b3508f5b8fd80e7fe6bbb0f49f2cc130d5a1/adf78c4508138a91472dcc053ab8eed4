@@ -9,6 +9,7 @@ use App\Result;
 use App\Online_test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class TestController extends Controller
 {
@@ -113,12 +114,16 @@ class TestController extends Controller
                 $application->save();
                 $result->save();
 
+                Mail::to(Auth::user()->email)
+                    ->send(new \App\Mail\FinishedTest($result->id));
+
                 $data['title'] = 'Submited';
                 $data['score'] = $score;
                 $data['percent'] = ($score / $isValid->length) * 100;
+
             } else {
                 $data['error']
-                    = "Oops! We cant find the client writing this test..";
+                    = "Oops! We can't find the client writing this test..";
             }
         } else {
             $data['error'] = "Oops! This is not a valid test";

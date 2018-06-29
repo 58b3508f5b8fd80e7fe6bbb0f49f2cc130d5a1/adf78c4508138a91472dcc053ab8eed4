@@ -334,3 +334,8 @@ Route::get('apptest', function (\Illuminate\Http\Request $request) {
         echo $value->uri . "<br>";
     }*/
 });
+
+Route::get('/mailable', function () {
+    $data['user']=Auth::user();
+    return new App\Mail\FinishedTest(1);
+});

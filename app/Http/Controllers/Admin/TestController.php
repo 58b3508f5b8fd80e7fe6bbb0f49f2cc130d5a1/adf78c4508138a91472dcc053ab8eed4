@@ -279,8 +279,7 @@ class TestController extends Controller
         $results = Result::join('applications', 'results.application_id', '=',
             'applications.application_id')
             ->join('jobs', 'applications.job_id', '=', 'jobs.job_id')
-            ->select(DB::raw('COUNT(`results`.`result_id`) as count, MAX(`score`) as maximum, MIN(`score`) as minimum'),
-                'results.*', 'jobs.*')->get();
+            ->get();
         $collection = collect($results);
         $data['results'] = $collection->forPage($page, $per);
         $data['pages'] = ceil(sizeof($results) / $per);
