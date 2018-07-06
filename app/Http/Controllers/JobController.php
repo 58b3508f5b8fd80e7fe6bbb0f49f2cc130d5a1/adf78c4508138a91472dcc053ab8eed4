@@ -6,6 +6,7 @@ use App\Application;
 use App\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 
 class JobController extends Controller
@@ -48,7 +49,7 @@ class JobController extends Controller
             $html = View::make('partials.jobs', $subData);
             $data['html'] = $html->render();
             Mail::to(Auth::user()->email)
-                ->send(new \App\Mail\JobApplied($result->id));
+                ->send(new \App\Mail\JobApplied($job->title));
         } else {
             $data['message'] = 'Sorry, an error occurred';
             $data['state'] = 'danger';

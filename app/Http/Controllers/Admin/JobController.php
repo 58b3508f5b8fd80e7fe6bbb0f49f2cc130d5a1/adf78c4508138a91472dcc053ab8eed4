@@ -9,9 +9,12 @@ use App\Job_test;
 use App\Online_test;
 use App\Result;
 use App\Test;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 
 class JobController extends Controller
@@ -131,7 +134,7 @@ class JobController extends Controller
                     $message
                         = "Oops! An error occurred. We were unable to edit the job..";
                     $status = 'error';
-                 }
+                }
             } else {
                 $message
                     = "Oops! An error occurred, we couldn't verify some of your data. We were unable to edit the job";
@@ -153,7 +156,7 @@ class JobController extends Controller
 
         return response()->json($data);
     }
-    
+
     public function jobs($page = 1, $per = 10)
     {
         $data = $this->getJobs($page, $per);
@@ -263,6 +266,9 @@ class JobController extends Controller
             $result->status = 'open';
 
             if ($result->save() && $applicant->save()) {
+                $user= User::where('user_id', $resume_id)->first();
+                Mail::to($user->email)
+                    ->send(new \App\Mail\ShortlistApplicant($user, $applicant->application_id));
                 $data['message']
                     = "The applicant has been shortlisted";
                 $data['state'] = "danger";
@@ -297,9 +303,10 @@ class JobController extends Controller
         $id = $request->id - 973;
         $job = Job::find($id);
         if ($job) {
-            if($job->job_id == $jid) {
+            if ($job->job_id == $jid) {
                 $subData['job'] = $job;
-                $subData['tests'] = Online_test::select('title', 'test_id')->get();
+                $subData['tests'] = Online_test::select('title', 'test_id')
+                    ->get();
                 $html = View::make('partials.admin.edit_job', $subData);
 
                 $data = [

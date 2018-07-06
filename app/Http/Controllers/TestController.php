@@ -24,7 +24,6 @@ class TestController extends Controller
             ['applications.status', 'shortlisted']
         ])->first();
         if ($user) {
-
             $test = $this->getTest($user->job_id);
 
             if ($test) {
@@ -43,10 +42,10 @@ class TestController extends Controller
 
     public function getTest($id)
     {
-        $isTest = Job_test::join('online_tests', 'job_tests.test_id', '=',
+        $test = Job_test::join('online_tests', 'job_tests.test_id', '=',
             'online_tests.test_id')
             ->where('job_tests.job_id', $id)->first();
-        return $isTest;
+        return $test;
     }
 
     public function startTest(Request $request)

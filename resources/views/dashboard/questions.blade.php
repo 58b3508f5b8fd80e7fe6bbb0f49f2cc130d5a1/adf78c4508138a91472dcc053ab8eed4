@@ -102,9 +102,8 @@
 @section('scripts')
     <script src="{{asset($public.'/dashboard/js/jquery.simple.timer.js')}}"></script>
     <script>
-
+        window.setInterval(submitQuestions, 1000);
         function submitQuestions(){
-            e.preventDefault();
             var form = $('#questions-form');
 
             var data = new FormData(form);

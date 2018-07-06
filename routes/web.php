@@ -51,7 +51,8 @@ Route::middleware(['checkMaintenance'])->group(function () {
                 Route::post('/experiences', 'ResumeController@addExperience');
                 Route::post('/honors', 'ResumeController@addHonors');
                 Route::post('/skills', 'ResumeController@addSkills');
-                Route::post('/curriculumvitae', 'ResumeController@curriculumVitae');
+                Route::post('/curriculumvitae',
+                    'ResumeController@curriculumVitae');
             });
         });
         Route::get('/profile', 'ProfileController@index')->name('profile');
@@ -335,7 +336,11 @@ Route::get('apptest', function (\Illuminate\Http\Request $request) {
     }*/
 });
 
-Route::get('/mailable', function () {
-    $data['user']=Auth::user();
+Route::get('test/dateadd', function () {
+    echo date_format(date_add(date_create('2012-08-14 12:01:01'),
+        date_interval_create_from_date_string('1000 days')), 'jS M, Y');
+});
+Route::get('/mailable/', function () {
+    $data['user'] = Auth::user();
     return new App\Mail\FinishedTest(1);
 });

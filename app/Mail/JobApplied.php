@@ -16,9 +16,10 @@ class JobApplied extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($job)
     {
         //
+        $this->job = $job;
     }
 
     /**
@@ -28,6 +29,7 @@ class JobApplied extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.jobs.applied');
+        return $this->markdown('emails.jobs.applied')
+            ->with(['job' => $this->job]);
     }
 }

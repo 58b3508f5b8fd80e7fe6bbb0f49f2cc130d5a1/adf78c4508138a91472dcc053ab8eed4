@@ -1,5 +1,5 @@
 @component('mail::message')
-# Hello {{$name}}
+# Hello {{Auth::user()->first_name}}
 
 We recieved your application for the post of {{$job}}. We will get back to you after a full review of your application.
 
