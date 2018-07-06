@@ -31,13 +31,11 @@
                             <h2>Contact Information</h2>
                             <p>Ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos...</p>
                             <ul class="careerfy-contact-info-list">
-                                <li><i class="careerfy-icon careerfy-placeholder"></i> International Noel Nawab Street
-                                    Los Alamitos CA 90720, USA
+                                <li><i class="careerfy-icon careerfy-placeholder"></i> Nwaniba Road Uyo.
                                 </li>
-                                <li><i class="careerfy-icon careerfy-mail"></i> <a href="#">Email: Info@Website.Com</a>
+                                <li><i class="careerfy-icon careerfy-mail"></i> <a href="#">Email: info@touchinglivesskills.xyz</a>
                                 </li>
-                                <li><i class="careerfy-icon careerfy-technology"></i> Call: 123.456.78910</li>
-                                <li><i class="careerfy-icon careerfy-fax"></i> Fax: (800) 123 4567 89</li>
+                                <li><i class="careerfy-icon careerfy-technology"></i> Call: +2349069911327, +2348035929609</li>
                             </ul>
                             <div class="careerfy-contact-media">
                                 <a href="#" class="careerfy-icon careerfy-facebook-logo"></a>

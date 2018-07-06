@@ -10,7 +10,7 @@
 @endsection
 @section('content')
     <main id="main-container" style="min-height: 258px;">
-        <form action="{{url('/jobs/test/submit')}}" method="post">
+        <form action="{{url('/jobs/test/submit')}}" method="post" id="questions-form">
             {{csrf_field()}}
             <input type="hidden" name="rid" value="{{$result->result_id}}">
             <input type="hidden" name="tid" value="{{$test->test_id}}">
@@ -102,9 +102,10 @@
 @section('scripts')
     <script src="{{asset($public.'/dashboard/js/jquery.simple.timer.js')}}"></script>
     <script>
-        $('#user-form').on('submit', function (e) {
+
+        function submitQuestions(){
             e.preventDefault();
-            var form = $('#test-form');
+            var form = $('#questions-form');
 
             var data = new FormData(form);
 
@@ -115,15 +116,23 @@
                 data: data,
                 processData: false,
                 success: function (result) {
-                    alert(result.message);
+
                 },
                 error: function () {
-                    alert('Sorry, an error occurred');
+
                 }
             });
             return false;
-        })
-        $('.timer').startTimer();
+        }
 
+        $('.timer').startTimer({
+            onComplete: function(element){
+                element.addClass('is-complete');
+                swal('Your Time is UP', {
+                    icon: 'error',
+                });
+                $('#questions-form').submit();
+            }
+        });
     </script>
 @endsection

@@ -47,6 +47,8 @@ class JobController extends Controller
             $subData['title'] = 'Jobs';
             $html = View::make('partials.jobs', $subData);
             $data['html'] = $html->render();
+            Mail::to(Auth::user()->email)
+                ->send(new \App\Mail\JobApplied($result->id));
         } else {
             $data['message'] = 'Sorry, an error occurred';
             $data['state'] = 'danger';

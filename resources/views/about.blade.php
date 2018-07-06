@@ -17,18 +17,22 @@
                     <div class="col-md-6 careerfy-typo-wrap">
                         <div class="careerfy-about-text">
                             <h2>About Our Company</h2>
-                            <span class="careerfy-about-sub">Pellentesque accumsan nisl varius risus mollis varius sed eu neque Cras fringilla sagittis rhoncus.</span>
-                            <p>In accumsan pulvinar maximus. Phasellus elementum rutrum dolor id mollis aece et lectus
-                                accumsan ipsum facilisis malesuada vel ut diam. Pellentesque vitae tempus sapien, vel
-                                aliquam nulla. In in fringilla massa, id consectetur lacus tibul.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a auctor urna, et
-                                porttitor lorem. Fusce at neque et orci rhoncus hendrerit. Praesent nec quam ac orci
-                                placerat semper.</p>
+                            <p>Touching Lives skills is a Project of Touching Lives international in Collaboration with
+                                the Government of Developing Geographical Areas. Its aim and objectives is to reach out
+                                to the poor population with skills and empowerment for development, that way fulfilling
+                                the visions of the United nations development Program UNDP.</p>
+                            <p>We major on skills basically gear towards production, manufacturing and trade of locally
+                                made goods in regions of our reach. such Skills rage from production of Accessories and
+                                minor goods in fashion and designs, to paint and paper production, to few areas of
+                                Agriculture including Pastoral and crop farming, to electrical like solar panel
+                                production, to food production in pastries, make-up and body treat with cosmetology,
+                                programming and trades/marketing.</p>
                             <a href="#" class="careerfy-static-btn careerfy-bgcolor"><span>Search Jobs</span></a>
                         </div>
                     </div>
                     <div class="col-md-6 careerfy-typo-wrap">
-                        <div class="careerfy-about-thumb"><img src="{{asset($public.'/png/about-us-thumb.png')}}" alt=""></div>
+                        <div class="careerfy-about-thumb"><img src="{{asset($public.'/png/about-us-thumb.png')}}"
+                                                               alt=""></div>
                     </div>
                     <div class="col-md-12 careerfy-typo-wrap">
                         <div class="careerfy-modren-counter">
@@ -57,7 +61,7 @@
         </div>
         <!-- Main Section -->
 
-        <!-- Main Section -->
+        {{--<!-- Main Section -->
         <div class="careerfy-main-section careerfy-testimonial-full">
             <div class="container-fluid">
                 <div class="row">
@@ -65,7 +69,8 @@
                     <div class="careerfy-typo-wrap">
                         <div class="careerfy-testimonial-section">
                             <div class="row">
-                                <aside class="col-md-5"><img src="{{asset($public.'/jpg/testimonial-thumb-1.jpg')}}" alt=""></aside>
+                                <aside class="col-md-5"><img src="{{asset($public.'/jpg/testimonial-thumb-1.jpg')}}"
+                                                             alt=""></aside>
                                 <aside class="col-md-7">
                                     <div class="careerfy-testimonial-slider">
                                         <div class="careerfy-testimonial-slide-layer">
@@ -197,9 +202,9 @@
                 </div>
             </div>
         </div>
-        <!-- Main Section -->
+        <!-- Main Section -->--}}
 
-        <!-- Main Section -->
+        {{--<!-- Main Section -->
         <div class="careerfy-main-section careerfy-parallex-text-full">
             <div class="container">
                 <div class="row">
@@ -214,13 +219,14 @@
                         </div>
                     </aside>
                     <aside class="col-md-6 careerfy-typo-wrap">
-                        <div class="careerfy-logo-thumb"><img src="{{asset($public.'/jpg/multiple-logos.jpg')}}" alt=""></div>
+                        <div class="careerfy-logo-thumb"><img src="{{asset($public.'/jpg/multiple-logos.jpg')}}" alt="">
+                        </div>
                     </aside>
 
                 </div>
             </div>
         </div>
-        <!-- Main Section -->
+        <!-- Main Section -->--}}
 
     </div>
     <!-- Main Content -->

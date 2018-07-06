@@ -91,7 +91,6 @@ class TestController extends Controller
             ->first();
 
         if ($isValid) {
-
             $score = Test_question::where(function ($query) use ($questions) {
                 foreach ($questions as $question => $answer) {
                     $query->orWhere([
@@ -129,11 +128,10 @@ class TestController extends Controller
             $data['error'] = "Oops! This is not a valid test";
         }
         if ($request->ajax()) {
-
+            return $request->json($data);
         }
 
         $data['title'] = 'Submited';
-
         return view('dashboard.submitted', $data);
 
     }

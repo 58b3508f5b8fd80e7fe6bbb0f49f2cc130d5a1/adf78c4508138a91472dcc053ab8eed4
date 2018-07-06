@@ -1,10 +1,12 @@
 @component('mail::message')
-# Introduction
+# Hello {{$name}}
 
-The body of your message.
+We recieved your application for the post of {{$job}}. We will get back to you after a full review of your application.
 
-@component('mail::button', ['url' => ''])
-Button Text
+We are glad you chose to work with us.
+
+@component('mail::button', ['url' => '/home'])
+View Dashboard
 @endcomponent
 
 Thanks,<br>
