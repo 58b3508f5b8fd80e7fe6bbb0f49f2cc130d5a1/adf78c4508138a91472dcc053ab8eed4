@@ -69,7 +69,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="png/favicon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="png/apple-touch-icon-180x180.png"><link rel="stylesheet" id="css-main" href="css/codebase.min-1.4.css">
 </head>
-<body><div id="page-container" class="sidebar-o sidebar-inverse side-scroll page-header-fixed main-content-narrow">
+<body><div id="page-container"  class="sidebar-o sidebar-inverse side-scroll page-header-fixed main-content-narrow">
     <aside id="side-overlay">
         <div id="side-overlay-scroll">
             <div class="content-header content-header-fullrow">
