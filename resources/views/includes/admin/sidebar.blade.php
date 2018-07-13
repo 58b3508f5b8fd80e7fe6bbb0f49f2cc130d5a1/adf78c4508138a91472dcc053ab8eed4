@@ -25,6 +25,7 @@
                                 class="careerfy-icon careerfy-heart"></i> Test Results</a></li>
                 <li @if(isset($applied_sidebar)) class="active" @endif><a href="{{url('/backend/settings')}}"><i
                                 class="careerfy-icon careerfy-briefcase-1"></i> Settings</a></li>
+                @if(Auth::user()->access >=10)<li><a href="{{url('/admin')}}"><i class="fa fa-gears"></i>Control Panel</a></li>@endif
                 <li><a href="{{ url('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="careerfy-icon careerfy-logout"></i> Logout</a></li>

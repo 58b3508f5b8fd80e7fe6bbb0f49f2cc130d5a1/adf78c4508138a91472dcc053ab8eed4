@@ -15,18 +15,74 @@
             border-color: #ddd !important;
         }
 
+        .careerfy-subheader-with-bg .careerfy-page-title {
+            padding: 20px 0 0 0;
+        }
+
+        .job-list {
+            list-style: none;
+            margin-top: 10px;
+        }
     </style>
 @endsection
 @section('title',$title)
 @section('content')
     <div class="container-fluid">
-        <div class="careerfy-subheader careerfy-subheader-without-bg">
+        <div class="careerfy-subheader careerfy-subheader-with-bg">
+            <span class="careerfy-banner-transparent"></span>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="careerfy-page-title">
-                            <h1>Companies</h1>
-                            <p>Thousands of prestigious employers for you, search for a recruiter right now.</p>
+                            <h1>Start your job search now..</h1>
+                            <form method="get" action="{{url('/openings/search')}}" class="careerfy-banner-search"
+                                  id="search">
+
+                                <ul>
+                                    <li>
+                                        <input name="search" placeholder="Job Title, Keywords, or Company"
+                                               value="{{$search or null}}" type="text">
+                                    </li>
+                                    <li>
+                                        <input name="location" placeholder="City, State or ZIP" type="text"
+                                               value="{{$location or null}}">
+                                        <i class="careerfy-icon careerfy-location"></i>
+                                    </li>
+
+                                    <li>
+                                        <div class="careerfy-select-style">
+                                            @php $qualification = $qualification ?? ''; @endphp
+                                            <select name="qualification">
+                                                <option selected="" disabled="">Qualification</option>
+                                                <option @if($qualification == "B.Sc") selected @endif value="B.Sc.">
+                                                    Bachelors of Science (B.Sc.)
+                                                </option>
+                                                <option @if($qualification == "B.Tech") selected @endif value="B.Tech">
+                                                    Bachelors of Technology (B.Tech)
+                                                </option>
+                                                <option @if($qualification == "B.Eng") selected @endif value="B.Eng">
+                                                    Bachelors of Engineering (B.Eng)
+                                                </option>
+                                                <option @if($qualification == "OND") selected @endif value="OND">
+                                                    Ordinary National Diploma (OND)
+                                                </option>
+                                                <option @if($qualification == "HND") selected @endif value="HND">Higher
+                                                    National Diploma (HND)
+                                                </option>
+                                                <option @if($qualification == "SSCE") selected @endif value="SSCE">
+                                                    Senior Secondary Certificate Examinations (SSCE)
+                                                </option>
+                                                <option @if($qualification == "FSLC") selected @endif value="FSLC">First
+                                                    School Leaving Certificate
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                    <li class="careerfy-banner-submit"><input value="" type="submit"> <i
+                                                class="careerfy-icon careerfy-search"></i></li>
+                                </ul>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -36,7 +92,7 @@
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Pages</a></li>
-                    <li>Candidates</li>
+                    <li>Faq's</li>
                 </ul>
             </div>
         </div>
@@ -53,7 +109,7 @@
                                         <!-- Profile Title -->
                                         <div class="careerfy-profile-title">
                                             <h2>Available Jobs</h2>
-                                            <form action="{{url('/site/jobs/search')}}" method="get"
+                                            <form action="{{url('/openings/search')}}" method="get"
                                                   class="careerfy-employer-search">
                                                 <input placeholder="Search jobs"
                                                        name="search" value="{{$search or null}}"
@@ -82,7 +138,7 @@
                                                 </div>
                                                 <!-- Manage Jobs Body -->
                                                 @foreach($jobs as $job)
-                                                    <li class="careerfy-column-12">
+                                                    <li class="careerfy-column-12 job-list">
                                                         <div class="careerfy-applied-jobs-wrap">
                                                             <div class="careerfy-applied-jobs-text">
                                                                 <div class="careerfy-applied-jobs-left col-xs-12">

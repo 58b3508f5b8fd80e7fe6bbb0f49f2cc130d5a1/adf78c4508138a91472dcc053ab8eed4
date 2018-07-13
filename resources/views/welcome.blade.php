@@ -11,9 +11,8 @@
         <span class="careerfy-banner-transparent"></span>
         <div class="careerfy-banner-caption">
             <div class="container">
-                <h1>Aim Higher. Reach Farther. Dream Bigger.</h1>
-                <p>A better career is out there. We'll help you find it to use.</p>
-                <form method="get" class="careerfy-banner-search" id="search">
+                <h1>Our people are our Assets.</h1>
+                <form method="get" action="{{url('/openings/search')}}" class="careerfy-banner-search" id="search">
                     <ul>
                         <li>
                             <input name="search" placeholder="Job Title, Keywords, or Company" type="text">
@@ -22,7 +21,6 @@
                             <input name="location" placeholder="City, State or ZIP" type="text">
                             <i class="careerfy-icon careerfy-location"></i>
                         </li>
-
                         <li>
                             <div class="careerfy-select-style">
                                 <select name="qualification">
@@ -156,10 +154,12 @@
                 <div class="row">
                     <aside class="col-md-6 careerfy-typo-wrap">
                         <div class="careerfy-parallex-text">
-                            <h2>Millions of jobs. <br> Find the one that’s right for you.</h2>
-                            <p>Search all the open positions on the web. Get your own personalized salary estimate. The
-                                right job is out there.</p>
-                            <a href="#search" class="careerfy-static-btn careerfy-bgcolor"><span>Search Jobs</span></a>
+                            <h2>Our Hiring Criteria</h2>
+                            <p>In view of the above, we are looking to hire persons who are skilled, motivated and
+                                passionate about humanity into our team. We have some core values which we hold in high
+                                esteem expected of our potential employees and they are ...</p>
+                            <a href="{{url('criteria')}}"
+                               class="careerfy-static-btn careerfy-bgcolor"><span>Read more</span></a>
                         </div>
                     </aside>
                     <aside class="col-md-6 careerfy-typo-wrap">
@@ -217,7 +217,7 @@
                             </ul>
                         </div>
                         <!-- Featured Jobs Listings -->
-                        <div class="careerfy-plain-btn"><a href="{{url('/site/jobs')}}">View All Jobs</a></div>
+                        <div class="careerfy-plain-btn"><a href="{{url('/openings')}}">View All Jobs</a></div>
                     </div>
 
                 </div>

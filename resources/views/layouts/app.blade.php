@@ -37,6 +37,15 @@
             })(document, window, 0);</script>
     @endif
     @yield('styles')
+    <style>
+        .careerfy-subheader {
+            padding: 0;
+        }
+
+        #site-nav a {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -48,8 +57,8 @@
     <header id="careerfy-header" class="careerfy-header-one">
         <div class="container">
             <div class="row">
-                <aside class="col-md-2"><a href="index-2.html" class="careerfy-logo"><img
-                                src="{{asset($public.'/png/logo.png')}}" alt=""></a>
+                <aside class="col-md-2"><a href="{{url('/')}}" class="careerfy-logo"><img
+                                src="{{asset($public.'/png/sitelogo.png')}}" alt=""></a>
                 </aside>
                 <aside class="col-md-6">
                     <nav class="careerfy-navigation">
@@ -64,10 +73,11 @@
                         <div class="collapse navbar-collapse" id="careerfy-navbar-collapse-1">
                             <ul class="navbar-nav">
                                 <li class="active"><a href="{{url('/')}}">Home</a></li>
-                                <li><a href="{{url('/about')}}">About us</a></li>
-                                <li><a href="{{url('/contact')}}">Contact</a></li>
-                                <li><a href="{{url('/faq')}}">Faq's</a></li>
 
+                                <li><a href="{{url('/criteria')}}">Hiring Criteria</a></li>
+                                <li><a href="{{url('/openings')}}">Openings</a></li>
+                                <li><a href="{{url('/application')}}">How to Apply</a></li>
+                                <li><a href="{{url('/contact')}}">Contact</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -82,9 +92,9 @@
                         @endguest
                         @auth
                             <ul class="careerfy-user-section">
-                                <li><a class="careerfy-color careerfy-open-signin-tab" href="{{route('home')}}">Dashboard</a>
+                                <li><a class="careerfy-color" href="{{route('home')}}">Dashboard</a>
                                 </li>
-                                <li><a class="careerfy-color careerfy-open-signin-tab" href="{{ route('logout') }}"
+                                <li><a class="careerfy-color" href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                 </li>
                             </ul>
@@ -101,64 +111,69 @@
 <!-- Footer -->
     <footer id="careerfy-footer" class="careerfy-footer-one">
         <div class="container">
-            {{--<!-- Footer Widget -->
+            <!-- Footer Widget -->
             <div class="careerfy-footer-widget">
                 <div class="row">
-                    <aside class="widget col-md-4 widget_contact_info">
+                    <aside class="widget col-md-7 widget_contact_info">
                         <div class="widget_contact_wrap">
-                            <a class="careerfy-footer-logo" href="index-2.html"><img
-                                        src="{{asset($public.'/png/footer-logo.png')}}" alt=""></a>
-                            <p>Sed consequat sapien faus quam bibendum convallis quis in nulla. Pellentesque volutpat
-                                odio eget diam cursus semper. Sed coquat sapien faucibus quam.</p>
-                            <a href="#" class="careerfy-classic-btn careerfy-bgcolor">Learn more</a>
+                            <a class="careerfy-footer-logo" href="{{url('/')}}"><img
+                                        src="{{asset($public.'/png/sitelogo.png')}}" alt=""></a>
+                            <p>Touching Lives Skills is a team of ebullient, passionate and hardworking group of persons
+                                with the sole aim of empowering nations with skills necessary for the alleviation and
+                                mitigation of poverty. We are building a prosperous world where people can come into
+                                their dignity and pride, and we have skilled, articulate and inspired people with
+                                distinct characters whose combined efforts will help the organization actualize its set
+                                goal.</p>
+                            <a href="{{url('/criteria')}}" class="careerfy-classic-btn careerfy-bgcolor">Learn more</a>
                         </div>
                     </aside>
-                    <aside class="widget col-md-3 widget_nav_manu">
-                        <div class="footer-widget-title"><h2>Quick Links</h2></div>
-                        <ul>
-                            <li><a href="#">Shortcodes</a></li>
-                            <li><a href="#">Job Page</a></li>
-                            <li><a href="#">Job Page Alternative</a></li>
-                            <li><a href="#">Resume Page</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact</a></li>
+                    <aside class="widget col-md-5 widget_nav_manu">
+                        <h2 style="color:#999999">Site Nav</h2>
+                        <ul class="list-group" id="site-nav">
+                            <li class="list-group-item"><a href="{{url('criteria')}}">Hiring Criteria</a></li>
+                            <li class="list-group-item"><a href="{{url('/openings')}}">Openings</a></li>
+                            <li class="list-group-item"><a href="{{url('/application')}}">How to apply</a></li>
+                            <li class="list-group-item"><a href="{{url('/contact')}}">Contact Us</a></li>
+
+                            @guest
+                                <li class="list-group-item" style="width: 50%;">
+                                    <a class="careerfy-color careerfy-open-signin-tab"
+                                       href="#">Register</a></li>
+                                <li class="list-group-item" style="width: 50%;">
+                                    <a class="careerfy-color careerfy-open-signup-tab"
+                                       href="#">Sign in</a></li>
+                            @endguest
+                            @auth
+                                <li class="list-group-item" style="width: 50%;">
+                                    <a href="{{url('/home')}}">Dashboard</a>
+                                </li>
+                                <li class="list-group-item col-md-6" style="width: 50%;">
+                                    <a class="careerfy-color"
+                                       href="{{ route('logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                </li>
+                            @endauth
+
                         </ul>
                     </aside>
-                    <aside class="widget col-md-3 widget_nav_manu">
-                        <div class="footer-widget-title"><h2>For Candidates</h2></div>
-                        <ul>
-                            <li><a href="#">Browse Jobs</a></li>
-                            <li><a href="#">Browse Categories</a></li>
-                            <li><a href="#">Submit Resume</a></li>
-                            <li><a href="#">Candidate Dashboard</a></li>
-                            <li><a href="#">Job Alerts</a></li>
-                            <li><a href="#">My Bookmarks</a></li>
-                        </ul>
-                    </aside>
-                    <aside class="widget col-md-2 widget_nav_manu">
-                        <div class="footer-widget-title"><h2>For Employers</h2></div>
-                        <ul>
-                            <li><a href="#">Browse Candidates</a></li>
-                            <li><a href="#">Employer Dashboard</a></li>
-                            <li><a href="#">Add Job</a></li>
-                            <li><a href="#">Job Packages</a></li>
-                        </ul>
-                    </aside>
+
                 </div>
             </div>
-            <!-- Footer Widget -->--}}
+            <!-- Footer Widget -->
             <!-- CopyRight -->
             <div class="careerfy-copyright">
-                <p>Copyrights © 2018, <a href="{{config('app.owner_url')}}"
-                                         class="careerfy-color">{{config('app.owner')}}</a>. Designed by <a
+                <p>Copyrights © {{date('Y')}}, <a href="{{config('app.owner_url')}}"
+                                                  class="careerfy-color">{{config('app.owner')}}</a>. Designed by <a
                             href="{{config('app.designer_url')}}" class="careerfy-color">{{config('app.designer')}}</a>
                 </p>
                 <ul class="careerfy-social-network">
-                    <li><a href="#" class="careerfy-bgcolorhover fa fa-facebook"></a></li>
-                    <li><a href="#" class="careerfy-bgcolorhover fa fa-twitter"></a></li>
-                    <li><a href="#" class="careerfy-bgcolorhover fa fa-dribbble"></a></li>
+                    <li><a href="https://facebook.com/projectproduceabakinitiative/"
+                           class="careerfy-bgcolorhover fa fa-facebook"></a></li>
+                    <li><a href="https://instagram.com/touchinglivesskills/"
+                           class="careerfy-bgcolorhover fa fa-instagram"></a></li>
+                    {{--<li><a href="#" class="careerfy-bgcolorhover fa fa-dribbble"></a></li>
                     <li><a href="#" class="careerfy-bgcolorhover fa fa-linkedin"></a></li>
-                    <li><a href="#" class="careerfy-bgcolorhover fa fa-instagram"></a></li>
+                    <li><a href="#" class="careerfy-bgcolorhover fa fa-instagram"></a></li>--}}
                 </ul>
             </div>
             <!-- CopyRight -->

@@ -67,35 +67,34 @@ function deleteResume(elem) {
 function resumeDelete(data) {
 
     swal({
-        title: "Are you sure?",
-        text: "Are you sure that you want to delete " + data.title + "?",
-        type: "warning",
-        showCancelButton: true,
-        closeOnConfirm: true,
-        confirmButtonText: "Yes, delete it!",
-        confirmButtonColor: "#ec6c62"
-    }, function (isConfirm) {
-        $.post('/resume/delete', data, function (result) {
-            $.notify({
-                    // options
-                    icon: 'fa fa-check',
-                    message: result.message,
-                },
-                {
-                    'type': result.state
-                });
-            $('#resume-' + result.type).fadeOut(800).html(result.html).fadeIn(1200);
-        }).fail(function () {
-            $.notify({
-                    // options
-                    icon: 'fa fa-times',
-                    message: "Sorry, an error occurred",
-                },
-                {
-                    'type': 'danger'
-                });
+        title: "Are you sure to delete " + data.title + "?",
+        text: "Once deleted, you will not be able to recover this test!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            $.post('/resume/delete', data, function (result) {
+                $.notify({
+                        // options
+                        icon: 'fa fa-check',
+                        message: result.message,
+                    },
+                    {
+                        'type': result.state
+                    });
+                $('#resume-' + result.type).fadeOut(800).html(result.html).fadeIn(1200);
+            }).fail(function () {
+                $.notify({
+                        // options
+                        icon: 'fa fa-times',
+                        message: "Sorry, an error occurred",
+                    },
+                    {
+                        'type': 'danger'
+                    });
+            });
         });
-    });
 }
 
 function getModal(type, action, id = null) {

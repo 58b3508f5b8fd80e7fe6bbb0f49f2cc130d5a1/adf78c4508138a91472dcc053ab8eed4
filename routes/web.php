@@ -23,10 +23,9 @@ Route::patch('change_password', 'Auth\ChangePasswordController@changePassword')
     ->name('change_password');
 
 Route::middleware(['checkMaintenance'])->group(function () {
-    Route::prefix('/site')->group(function () {
-        Route::get('/jobs/search', 'VisitorController@searchJobs');
-        Route::get('/jobs', 'VisitorController@jobs');
-    });
+    Route::get('/openings/search', 'VisitorController@searchJobs');
+    Route::get('/openings', 'VisitorController@jobs');
+
     Route::middleware(['auth'])->group(function () {
         Route::middleware(['isUser', 'checkUserStatus'])->group(function () {
             Route::get('/home', 'HomeController@index')->name('home');
@@ -65,6 +64,16 @@ Route::middleware(['checkMaintenance'])->group(function () {
         // drg >> Routes for the administrators
         Route::middleware(['isAdmin'])->group(function () {
             Route::namespace('Admin')->group(function () {
+                Route::middleware(['isSuper'])->group(function () {
+                    Route::namespace('Control')->group(function () {
+                        Route::prefix('/admin', function () {
+
+                            Route::get('', 'AdminController@controlPanel');
+                            Route::get('control',
+                                'AdminController@controlPanel');
+                        });
+                    });
+                });
                 Route::prefix('/backend')->group(function () {
                     Route::get('', 'AdminController@index');
                     Route::get('/user/{id}', 'UserController@index');
@@ -282,6 +291,9 @@ Route::get('/contact', function () {
 });
 Route::get('/about', function () {
     return view('about', ['title' => 'About Us']);
+});
+Route::get('/criteria', function () {
+    return view('criteria', ['title' => 'About Us']);
 });
 Route::get('/faq', function () {
     return view('faq', ['title' => 'Frequently Asked Questions']);

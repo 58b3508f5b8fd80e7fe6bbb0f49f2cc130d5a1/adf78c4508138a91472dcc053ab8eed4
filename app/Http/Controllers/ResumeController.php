@@ -120,7 +120,7 @@ class ResumeController extends Controller
         if ($experience->save()) {
             $data['message'] = 'Your experience has been added.';
             $data['state'] = 'success';
-            $subData['experiences'] = $this->getExperiences();
+            $subData['experiences'] = $this->getExperience();
             $html = View::make('partials.sub.experience', $subData);
             $data['html'] = $html->render();
         } else {

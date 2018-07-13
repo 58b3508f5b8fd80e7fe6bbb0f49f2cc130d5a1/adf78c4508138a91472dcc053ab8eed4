@@ -19,6 +19,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Main Section -->
 
         <!-- Main Section -->
@@ -38,10 +39,13 @@
                                 <li><i class="careerfy-icon careerfy-technology"></i> Call: +2349069911327, +2348035929609</li>
                             </ul>
                             <div class="careerfy-contact-media">
-                                <a href="#" class="careerfy-icon careerfy-facebook-logo"></a>
+                                <a href="https://facebook.com/projectproduceabakinitiative/" class="careerfy-icon careerfy-facebook-logo"></a>
+                                <a href="https://instagram.com/touchinglivesskills/" class="careerfy-icon careerfy-instagram-logo"></a>
+{{--
                                 <a href="#" class="careerfy-icon careerfy-twitter-logo"></a>
                                 <a href="#" class="careerfy-icon careerfy-linkedin-button"></a>
                                 <a href="#" class="careerfy-icon careerfy-dribbble-logo"></a>
+--}}
                             </div>
                         </div>
                         <div class="careerfy-contact-form">
@@ -89,39 +93,6 @@
         <!-- Main Section -->
 
         <!-- Main Section -->
-        <div class="careerfy-main-section careerfy-partner-slider-full">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-md-12">
-                        <!-- Fancy Title -->
-                        <section class="careerfy-fancy-title">
-                            <h2>Find the one that’s right for you.</h2>
-                            <p>A better career is out there. We'll help you find it to use.</p>
-                        </section>
-                        <div class="careerfy-partner-slider">
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-1.png')}}"
-                                                                                        alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-2.png')}}"
-                                                                                        alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-3.png')}}"
-                                                                                        alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-4.png')}}"
-                                                                                        alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-5.png')}}"
-                                                                                        alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-6.png')}}"
-                                                                                        alt=""></a></div>
-                            <div class="careerfy-partner-slider-layer"><a href="#"><img src="{{asset($public.'/png/partner-logo-3.png')}}"
-                                                                                        alt=""></a></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- Main Section -->
-
         <!-- Main Section -->
         <div class="careerfy-main-section contact-service-full">
             <div class="container">
@@ -133,17 +104,17 @@
                                 <li class="col-md-4">
                                     <h2>Want to join us?</h2>
                                     <i class="careerfy-icon careerfy-user-2"></i>
-                                    <a href="#">Careers</a>
+                                    <a href="{{url('criteria')}}">Hiring Criteria</a>
                                 </li>
                                 <li class="col-md-4">
-                                    <h2>Read our latest news</h2>
+                                    <h2>Search our openings</h2>
                                     <i class="careerfy-icon careerfy-newspaper"></i>
-                                    <a href="#">Our Blog</a>
+                                    <a href="{{url('openings')}}">Openings</a>
                                 </li>
                                 <li class="col-md-4">
                                     <h2>Have questions?</h2>
                                     <i class="careerfy-icon careerfy-discuss-issue"></i>
-                                    <a href="#">Our FAQ</a>
+                                    <a href="{{url('application')}}">How To Apply</a>
                                 </li>
                             </ul>
                         </div>
