@@ -7,6 +7,7 @@ use App\Http\Middleware\ApplicantPassed;
 use App\Http\Middleware\CheckMaintenance;
 use App\Http\Middleware\CheckUserStatus;
 use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\IsSuperAdmin;
 use App\Http\Middleware\IsUser;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -73,6 +74,7 @@ class Kernel extends HttpKernel
             'checkUserStatus'  => CheckUserStatus::class,
             'isAdmin'          => IsAdmin::class,
             'isUser'           => IsUser::class,
+            'isSuper'          => IsSuperAdmin::class,
             'admin'            => AdminMiddleware::class,
             'applicantPassed'  => ApplicantPassed::class
         ];

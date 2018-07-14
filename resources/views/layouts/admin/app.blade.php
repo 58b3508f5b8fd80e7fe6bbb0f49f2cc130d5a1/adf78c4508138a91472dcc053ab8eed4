@@ -55,7 +55,7 @@
         <div class="container">
             <div class="row">
                 <aside class="col-md-2"><a href="{{url('/')}}" class="careerfy-logo"><img
-                                src="{{asset($public.'/png/sitelogo.png')}}" alt=""></a>
+                                src="{{asset($public.'/png/logo.png')}}" alt=""></a>
                 </aside>
                 <aside class="col-md-6">
                     <nav class="careerfy-navigation">

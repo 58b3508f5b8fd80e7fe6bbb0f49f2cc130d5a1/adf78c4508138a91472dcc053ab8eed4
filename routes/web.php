@@ -66,11 +66,10 @@ Route::middleware(['checkMaintenance'])->group(function () {
             Route::namespace('Admin')->group(function () {
                 Route::middleware(['isSuper'])->group(function () {
                     Route::namespace('Control')->group(function () {
-                        Route::prefix('/admin', function () {
-
-                            Route::get('', 'AdminController@controlPanel');
-                            Route::get('control',
-                                'AdminController@controlPanel');
+                        Route::prefix('/admin')->group(function () {
+                            Route::get('', 'AdminController@index');
+                            Route::get('/jobs', 'JobController@index');
+                            Route::post('getjobs', 'JobController@dataTableJobs');
                         });
                     });
                 });
@@ -82,6 +81,7 @@ Route::middleware(['checkMaintenance'])->group(function () {
                     Route::get('/download/cv/{id}',
                         'UserController@downloadCV');
                     Route::prefix('/jobs')->group(function () {
+                        Route::get('', 'JobController@index');
                         Route::get('/add', 'JobController@viewJobsAdd');
                         Route::post('/add', 'JobController@addJobs');
                         Route::post('/delete/{jid}', 'JobController@deleteJob');
@@ -347,11 +347,20 @@ Route::get('apptest', function (\Illuminate\Http\Request $request) {
         echo $value->uri . "<br>";
     }*/
 });
+Route::prefix('apptest')->group(function () {
+    Route::get('routelist', function () {
+        $routeList = Route::getRoutes();
 
-Route::get('test/dateadd', function () {
-    echo date_format(date_add(date_create('2012-08-14 12:01:01'),
-        date_interval_create_from_date_string('1000 days')), 'jS M, Y');
+        foreach ($routeList as $value) {
+            echo $value->uri() . '<br>';
+        }
+    });
+    Route::get('dateadd', function () {
+        echo date_format(date_add(date_create('2012-08-14 12:01:01'),
+            date_interval_create_from_date_string('1000 days')), 'jS M, Y');
+    });
 });
+
 Route::get('/mailable/', function () {
     $data['user'] = Auth::user();
     return new App\Mail\FinishedTest(1);

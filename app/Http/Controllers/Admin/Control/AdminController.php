@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Control;
 
 use App\Resume;
 use Illuminate\Http\Request;
@@ -11,12 +11,6 @@ class AdminController extends Controller
 {
     //
     public function index()
-    {
-        $job = new JobController();
-        return $job->index();
-    }
-
-    public function controlPanel()
     {
         $data['title']='Control Panel';
         return view('dashboard.admin.control.index', $data);
