@@ -203,7 +203,7 @@
     font-size: 50px;
     display: block;
     margin-bottom: 28px;
-    color: #13b5ea;
+    color: #1e82d6;
     -webkit-transition: all 0.4s ease-in-out;
     -moz-transition: all 0.4s ease-in-out;
     -ms-transition: all 0.4s ease-in-out;
@@ -240,7 +240,7 @@
 
 .careerfy-plain-btn a {
     display: inline-block;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     padding: 17px 25px;
     line-height: 1;
     color: #ffffff;
@@ -436,11 +436,11 @@
 
 .careerfy-filterable ul li i {
     margin-right: 0px;
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-filterable ul li:hover a {
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-filterable ul li a {
@@ -459,13 +459,13 @@
 }
 
 .careerfy-filterable ul li:hover a i {
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-filterable-select select {
     padding: 4px 0px;
     background: #fff;
-    color: #13b5ea;
+    color: #1e82d6;
     height: 26px;
     width: 110px;
     border: none;
@@ -491,7 +491,7 @@
 .careerfy-filterable-select:after {
     content: "\e964";
     font-family: icomoon;
-    color: #13b5ea;
+    color: #1e82d6;
     right: 0px;
     top: 1px;
     position: absolute;
@@ -581,7 +581,7 @@
     left: 15px;
     bottom: 15px;
     padding: 4px 10px;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     line-height: 1;
     border-radius: 40px;
     color: #ffffff;
@@ -595,7 +595,7 @@
 }
 
 .careerfy-job-tag a {
-    color: #13b5ea;
+    color: #1e82d6;
     font-size: 12px;
     margin-bottom: 4px;
 }
@@ -657,7 +657,7 @@
 }
 
 .careerfy-job-like:hover {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -724,7 +724,7 @@
 .careerfy-pagination-blog ul li:hover span,
 .careerfy-pagination-blog ul li span.current,
 .careerfy-pagination-blog ul li a.current{
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -853,8 +853,8 @@
 .careerfy-checkbox input[type="checkbox"] + label:hover span,
 .careerfy-checkbox input[type="radio"]:checked + label span,
 .careerfy-checkbox input[type="radio"] + label:hover span {
-    border-color: #13b5ea;
-    background-color: #13b5ea;
+    border-color: #1e82d6;
+    background-color: #1e82d6;
     box-shadow: 0px 0px 0px 3px #ffffff inset;
 }
 
@@ -894,7 +894,7 @@
 
 .careerfy-seemore {
     font-size: 13px;
-    color: #13b5ea;
+    color: #1e82d6;
     font-style: italic;
     font-weight: 400;
     text-decoration: underline;
@@ -966,7 +966,7 @@
 }
 
 .careerfy-list-option ul li a {
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-list-option {
@@ -1092,7 +1092,7 @@
 
 .careerfy-jobdetail-postinfo {
     font-style: italic;
-    color: #13b5ea;
+    color: #1e82d6;
     font-size: 11px;
     margin-left: 5px;
     font-weight: 400;
@@ -1151,25 +1151,25 @@
 .careerfy-jobdetail-options li i {
     font-size: 16px;
     margin-right: 5px;
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-jobdetail-view {
     font-size: 10px;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     padding: 1px 9px;
     border-radius: 40px;
     margin-left: 4px;
 }
 
 .careerfy-jobdetail-btn.active {
-    border: 1px solid #13b5ea;
+    border: 1px solid #1e82d6;
     margin-right: 9px;
 }
 
 .careerfy-jobdetail-btn {
     float: left;
-    color: #13b5ea;
+    color: #1e82d6;
     font-weight: 500;
     padding: 9px 11px 8px 11px;
     line-height: 1;
@@ -1229,7 +1229,7 @@
 
 .careerfy-jobdetail-services i {
     font-size: 32px;
-    color: #13b5ea;
+    color: #1e82d6;
     float: left;
     padding-top: 10px;
 }
@@ -1281,7 +1281,7 @@
 
 .careerfy-list-style-icon li i {
     margin: 8px 15px 0px 0px;
-    color: #13b5ea;
+    color: #1e82d6;
     float: left;
     font-size: 13px;
 }
@@ -1306,7 +1306,7 @@
 }
 
 .careerfy-jobdetail-tags a:hover {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -1353,7 +1353,7 @@
 
 .widget_apply_job span {
     display: block;
-    color: #13b5ea;
+    color: #1e82d6;
     font-weight: 500;
     margin-bottom: 15px;
 }
@@ -1526,7 +1526,7 @@
     background-color: #fafcfc;
     padding: 18px 20px;
     text-align: center;
-    color: #13b5ea;
+    color: #1e82d6;
     border: 1px solid #efefef;
     border-top: none;
     font-weight: 600;
@@ -1573,7 +1573,7 @@
 
 .careerfy-employer-list small {
     font-size: 12px;
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-employer-list h2 {
@@ -1625,8 +1625,8 @@
 .careerfy-employer-list-btn {
     float: right;
     padding: 9px 16px;
-    border: 1px solid #13b5ea;
-    color: #13b5ea;
+    border: 1px solid #1e82d6;
+    color: #1e82d6;
     font-weight: 500;
     line-height: 1;
     border-radius: 4px;
@@ -1638,7 +1638,7 @@
 }
 
 .careerfy-employer-list-btn:hover {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -1679,7 +1679,7 @@
 .careerfy-employer-grid figcaption small {
     display: inline-block;
     font-size: 12px;
-    color: #13b5ea;
+    color: #1e82d6;
     margin-bottom: 5px;
 }
 
@@ -1708,7 +1708,7 @@
     border: 1px solid #ececec;
     border-top: none;
     background-color: #fcfcfc;
-    color: #13b5ea;
+    color: #1e82d6;
     font-weight: 500;
     font-size: 14px;
     text-align: center;
@@ -1721,7 +1721,7 @@
 }
 
 ul li:hover .careerfy-employer-grid-btn {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -1768,11 +1768,11 @@ ul li:hover .careerfy-employer-grid-btn {
 
 .careerfy-employerdetail-btn {
     float: left;
-    color: #13b5ea;
+    color: #1e82d6;
     font-weight: 500;
     padding: 13px 15px 13px 15px;
     line-height: 1;
-    border: 1px solid #13b5ea;
+    border: 1px solid #1e82d6;
     margin-right: 9px;
     font-size: 14px;
     -webkit-transition: all 0.4s ease-in-out;
@@ -1783,7 +1783,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-employerdetail-btn:hover {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -2028,7 +2028,7 @@ ul li:hover .careerfy-employer-grid-btn {
     padding: 14px 10px 13px 10px;
     border-radius: 3px;
     border: none;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     text-transform: uppercase;
     font-weight: 500;
     line-height: 1;
@@ -2094,9 +2094,9 @@ ul li:hover .careerfy-employer-grid-btn {
     float: left;
     padding: 11px 13px;
     line-height: 1;
-    color: #13b5ea;
+    color: #1e82d6;
     font-size: 12px;
-    border: 1px solid #13b5ea;
+    border: 1px solid #1e82d6;
     border-radius: 40px;
     font-weight: 500;
     -webkit-transition: all 0.4s ease-in-out;
@@ -2113,7 +2113,7 @@ ul li:hover .careerfy-employer-grid-btn {
 
 .careerfy-fileUpload:hover span {
     color: #ffffff;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
 }
 
 .careerfy-fileUpload input.careerfy-upload {
@@ -2168,7 +2168,7 @@ ul li:hover .careerfy-employer-grid-btn {
 
 .careerfy-employer-dashboard-nav ul li:hover i, .careerfy-employer-dashboard-nav ul li.active i,
 .careerfy-employer-dashboard-nav ul li:hover a, .careerfy-employer-dashboard-nav ul li.active a {
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-employer-dashboard-nav ul li:hover a, .careerfy-employer-dashboard-nav ul li.active a {
@@ -2200,7 +2200,7 @@ ul li:hover .careerfy-employer-grid-btn {
     margin-bottom: 17px;
     line-height: 1;
     font-size: 22px;
-    color: #13b5ea;
+    color: #1e82d6;
     font-weight: 400;
     float: left;
 }
@@ -2298,11 +2298,11 @@ ul li:hover .careerfy-employer-grid-btn {
     float: left;
     width: 100%;
     font-size: 14px;
-    color: #13b5ea;
+    color: #1e82d6;
     padding: 12px 5px 13px 5px;
     line-height: 1;
     border-radius: 2px;
-    border: 1px solid #13b5ea;
+    border: 1px solid #1e82d6;
     background-color: transparent;
 }
 
@@ -2365,7 +2365,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-company-photo .careerfy-fileUpload span {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     border: 1px solid #0585af;
     border-radius: 4px;
     color: #ffffff;
@@ -2373,18 +2373,18 @@ ul li:hover .careerfy-employer-grid-btn {
 
 .careerfy-typo-wrap .careerfy-employer-profile-submit {
     float: left;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     font-size: 16px;
     color: #ffffff;
     border-radius: 4px;
     padding: 13px 24px;
     line-height: 1;
-    border: 1px solid #13b5ea;
+    border: 1px solid #1e82d6;
 }
 
 .careerfy-typo-wrap .main-tab-section .careerfy-employer-profile-submit:hover {
     background-color: transparent;
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-typo-wrap button, .careerfy-typo-wrap input[type="button"], .careerfy-typo-wrap input[type="submit"] {
@@ -2397,7 +2397,7 @@ ul li:hover .careerfy-employer-grid-btn {
 
 .careerfy-typo-wrap button:hover, .careerfy-typo-wrap button:focus, .careerfy-typo-wrap input[type="button"]:hover, .careerfy-typo-wrap input[type="button"]:focus,
 .careerfy-typo-wrap input[type="submit"]:hover, .careerfy-typo-wrap input[type="submit"]:focus {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -2612,7 +2612,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-managejobs-appli {
-    color: #13b5ea;
+    color: #1e82d6;
     font-size: 12px;
 }
 
@@ -2691,7 +2691,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-transactions-tbody small {
-    color: #13b5ea;
+    color: #1e82d6;
     font-size: 12px;
 }
 
@@ -2821,7 +2821,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-resumes-subtitle a {
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-employer-resumes figcaption ul li:first-child {
@@ -2917,7 +2917,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-resumes-options li:hover a {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -2966,7 +2966,7 @@ ul li:hover .careerfy-employer-grid-btn {
     position: absolute;
     left: -60px;
     top: 50%;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     width: 80%;
     height: 3px;
     margin-top: -19px;
@@ -2978,7 +2978,7 @@ ul li:hover .careerfy-employer-grid-btn {
     position: absolute;
     left: -60px;
     top: 50%;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     width: 80%;
     height: 3px;
     margin-top: -19px;
@@ -2990,7 +2990,7 @@ ul li:hover .careerfy-employer-grid-btn {
     position: absolute;
     left: -120px;
     top: 50%;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     width: 150%;
     height: 3px;
     margin-top: -19px;
@@ -3018,7 +3018,7 @@ ul li:hover .careerfy-employer-grid-btn {
 
 .careerfy-employer-jobnav ul li:hover i,
 .careerfy-employer-jobnav ul li.active i {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
 }
 
 .careerfy-employer-jobnav ul li i {
@@ -3148,7 +3148,7 @@ ul li:hover .careerfy-employer-grid-btn {
     left: 0px;
     top: 0px;
     line-height: 1;
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-payment-method-wrap {
@@ -3204,8 +3204,8 @@ ul li:hover .careerfy-employer-grid-btn {
     display: inline-block;
     padding: 11px 22px 12px 22px;
     font-size: 12px;
-    color: #13b5ea;
-    border: 1px solid #13b5ea;
+    color: #1e82d6;
+    border: 1px solid #1e82d6;
     border-radius: 3px;
     line-height: 1;
     margin: 0px 6px;
@@ -3217,7 +3217,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-employer-confitmation a:hover {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     border-color: #0585af;
     color: #ffffff;
 }
@@ -3260,7 +3260,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-candidate-default-text ul li a.careerfy-candidate-default-studio {
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-candidate-default-text ul li a {
@@ -3289,7 +3289,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-candidate-default-text h2 i {
-    color: #13b5ea;
+    color: #1e82d6;
     font-size: 14px;
 }
 
@@ -3317,8 +3317,8 @@ ul li:hover .careerfy-employer-grid-btn {
 .careerfy-candidate-default-btn {
     float: right;
     font-size: 12px;
-    color: #13b5ea;
-    border: 1px solid #13b5ea;
+    color: #1e82d6;
+    border: 1px solid #1e82d6;
     line-height: 1;
     padding: 8px 9px;
     margin-top: 7px;
@@ -3330,7 +3330,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-candidate-default-btn:hover {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -3415,7 +3415,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-candidate-grid figure figcaption p a a {
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-candidate-grid-option li a {
@@ -3502,7 +3502,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .jobsearch_candidate_info p a, .jobsearch_candidate_info small {
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .jobsearch_candidate_info small {
@@ -3551,8 +3551,8 @@ ul li:hover .careerfy-employer-grid-btn {
 .careerfy-candidate-download-btn {
     display: inline-block;
     font-size: 14px;
-    color: #13b5ea;
-    border: 1px solid #13b5ea;
+    color: #1e82d6;
+    border: 1px solid #1e82d6;
     border-radius: 40px;
     padding: 10px 23px;
     line-height: 1;
@@ -3570,7 +3570,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-candidate-download-btn:hover {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -3602,7 +3602,7 @@ ul li:hover .careerfy-employer-grid-btn {
     border: 1px solid #dedede;
     box-shadow: 0px 0px 0px 3px #ffffff inset;
     border-radius: 100%;
-    color: #13b5ea;
+    color: #1e82d6;
     padding-top: 9px;
     margin-right: 11px;
 }
@@ -3632,7 +3632,7 @@ ul li:hover .careerfy-employer-grid-btn {
 .careerfy-candidate-timeline small {
     float: left;
     font-size: 12px;
-    color: #13b5ea;
+    color: #1e82d6;
     padding: 19px 0px 0px 0px;
     margin-left: 16px;
     position: relative;
@@ -3655,7 +3655,7 @@ ul li:hover .careerfy-employer-grid-btn {
     position: absolute;
     left: 2px;
     top: 3px;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     width: 8px;
     height: 8px;
     border-radius: 100%;
@@ -3668,7 +3668,7 @@ ul li:hover .careerfy-employer-grid-btn {
 .careerfy-candidate-timeline-text span {
     line-height: 1;
     font-size: 12px;
-    color: #13b5ea;
+    color: #1e82d6;
     margin-bottom: 11px;
     display: block;
 }
@@ -3840,7 +3840,7 @@ ul li:hover .careerfy-employer-grid-btn {
 
 .careerfy-resume-addbtn {
     float: right;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     font-size: 10px;
     color: #ffffff;
     text-transform: uppercase;
@@ -3914,7 +3914,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-resume-education span {
-    color: #13b5ea;
+    color: #1e82d6;
     font-size: 12px;
 }
 
@@ -4050,7 +4050,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-candidate-savedjobs tbody td span {
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-savedjobs-links {
@@ -4101,7 +4101,7 @@ ul li:hover .careerfy-employer-grid-btn {
 }
 
 .careerfy-applied-jobs-text span {
-    color: #13b5ea;
+    color: #1e82d6;
     font-size: 12px;
     line-height: 1;
     margin-bottom: 8px;
@@ -4245,9 +4245,9 @@ ul li:hover .careerfy-employer-grid-btn {
     float: left;
     padding: 11px 22px;
     line-height: 1;
-    color: #13b5ea;
+    color: #1e82d6;
     font-size: 14px;
-    border: 1px solid #13b5ea;
+    border: 1px solid #1e82d6;
     border-radius: 3px;
     font-weight: 400;
     margin-bottom: 13px;
@@ -4265,7 +4265,7 @@ ul li:hover .careerfy-employer-grid-btn {
 
 .careerfy-cvupload-file:hover span {
     color: #ffffff;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
 }
 
 .careerfy-cvupload-file input.careerfy-upload-btn {
@@ -4378,7 +4378,7 @@ ul li:hover .careerfy-employer-grid-btn {
 
 .careerfy-add-popup input[type="submit"] {
     float: left;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 500;
@@ -4662,7 +4662,7 @@ body.careerfy-modal-active {
     padding: 12px 15px;
     border-radius: 40px;
     border: none;
-    background-color: #13b5ea;
+    background-color: #1e82d6;
     color: #ffffff;
 }
 
@@ -4679,7 +4679,7 @@ body.careerfy-modal-active {
 }
 
 .careerfy-user-form-info p a {
-    color: #13b5ea;
+    color: #1e82d6;
 }
 
 .careerfy-user-form-info .careerfy-checkbox {
@@ -4951,7 +4951,7 @@ body.careerfy-modal-active {
 }
 
 .careerfy-typo-wrap .ui-widget-header {
-    background-color: #13b5ea;
+    background-color: #1e82d6;
 }
 
 .careerfy-typo-wrap .ui-widget.ui-widget-content {
@@ -4959,7 +4959,7 @@ body.careerfy-modal-active {
 }
 
 .careerfy-typo-wrap .ui-state-default, .careerfy-typo-wrap .ui-widget-content .ui-state-default {
-    background-color: #13b5ea;
-    border-color: #13b5ea;
+    background-color: #1e82d6;
+    border-color: #1e82d6;
     box-shadow: 0px 0px 0px 3px #fff inset;
 }

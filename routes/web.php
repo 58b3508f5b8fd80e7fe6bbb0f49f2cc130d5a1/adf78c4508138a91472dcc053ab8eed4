@@ -69,6 +69,8 @@ Route::middleware(['checkMaintenance'])->group(function () {
                         Route::prefix('/admin')->group(function () {
                             Route::get('', 'AdminController@index');
                             Route::get('/jobs', 'JobController@index');
+                            Route::get('/jobs/add', 'JobController@viewJobsAdd');
+                            Route::post('/jobs/add', 'JobController@addJobs');
                             Route::post('getjobs', 'JobController@dataTableJobs');
                         });
                     });

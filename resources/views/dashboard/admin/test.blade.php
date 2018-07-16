@@ -23,7 +23,6 @@
 
 @endsection
 @section('content')
-    <main id="main-container" style="min-height: 192px;">
         <div class="content">
             <div class="block">
                 <div class="block-content">

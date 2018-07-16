@@ -29,8 +29,8 @@
                         <th class="d-none d-sm-table-cell">LGA</th>
                         <th class="d-none d-sm-table-cell">Experience</th>
                         <th class="d-none d-sm-table-cell">Qualification</th>
-                        <th class="d-none d-sm-table-cell">Created at</th>
-                        <th class="d-none d-sm-table-cell">Updated at</th>
+                        <th class="d-none d-sm-table-cell">Post at</th>
+                        <th class="d-none d-sm-table-cell">Close at</th>
                     </tr>
                     </thead>
 
@@ -39,18 +39,21 @@
         </div>
     </div>
 
-
 @endsection
 @section('scripts')
     <script src="{{asset($public.'/dashboard/js/dataTables.min.js')}}"></script>
     <script src="{{asset($public.'/dashboard/js/buttons.min.js')}}"></script>
     <script src="{{asset($public.'/dashboard/js/buttons.flash.min.js')}}"></script>
+    <script src="{{asset($public.'/dashboard/js/dataTables.select.min.js')}}"></script>
+    <script src="{{asset($public.'/dashboard/js/dataTables.editor.min.js')}}"></script>
     <script src="{{asset($public.'/dashboard/js/jszip.min.js')}}"></script>
     <script src="{{asset($public.'/dashboard/js/pdfmake.min.js')}}"></script>
     <script src="{{asset($public.'/dashboard/js/vfs_fonts.js')}}"></script>
     <script src="{{asset($public.'/dashboard/js/buttons.html5.min.js')}}"></script>
     <script src="{{asset($public.'/dashboard/js/buttons.print.min.js')}}"></script>
+
     <script>
+        var editor;
         $(document).ready(function () {
             $('.data-table').DataTable({
                 dom: 'lBfrtip',
@@ -67,18 +70,21 @@
                     {data: 'lga', name: 'lga'},
                     {data: 'experience', name: 'experience'},
                     {data: 'qualification', name: 'qualification'},
-                    {data: 'created_at', name: 'created_at'},
-                    {data: 'updated_at', name: 'updated_at'}
+                    {data: 'post_at', name: 'post_at'},
+                    {data: 'close_at', name: 'close_at'}
                 ],
                 buttons: [
-                    'excel', 'pdf', 'print'
+                    'excel',
+                    'pdf',
+                    'print'
                 ],
                 "columnDefs": [{
                     "orderable": false,
                     "targets": [1, 2, 3, 4, 5, 6, 7]
                 }],
                 "aLengthMenu": [[25, 50, 100, 200, -1], [25, 50, 100, 200, "All"]],
-                "iDisplayLength": 25
+                "iDisplayLength": 25,
+                responsive:true
             });
         });
     </script>

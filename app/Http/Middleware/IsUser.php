@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Application;
 use App\Http\Controllers\HomeController;
 use Closure;
 use Illuminate\Http\Response;
@@ -26,6 +27,11 @@ class IsUser
             return new Response (view('errors.600'));
         }
 
+        $applicant = Application::where('resume_id', $request->user()->user_id)
+            ->where('status', 'passed')->first();
+        if($applicant){
+            $request->session()->flash('userPassed', true);
+        }
         return $next ($request);
     }
 }

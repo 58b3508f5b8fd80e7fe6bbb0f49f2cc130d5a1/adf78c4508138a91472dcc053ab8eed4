@@ -208,19 +208,7 @@
     <main id="main-container">
         @yield('content')
     </main>
-    <footer id="page-footer" class="opacity-0">
-        <div class="content py-20 font-size-xs clearfix">
-            <div class="float-right">
-                Designed by <a class="font-w600" href="{{config('app.designer_url')}}"
-                               target="_blank">{{config('app.designer')}}</a>
-            </div>
-            <div class="float-left">
-                <a class="font-w600" href="{{url(config('app.owner_url'))}}" target="_blank">{{config('app.owner')}}</a>
-                &copy; <span
-                        class="js-year-copy">{{date('Y')}}</span>
-            </div>
-        </div>
-    </footer>
+    @include('partials.html.footer')
 </div>
 <script src="{{asset($public.'/dashboard/js/codebase.min-1.4.js')}}"></script>
 <script src="{{asset($public.'/dashboard/js/chart.bundle.min.js')}}"></script>

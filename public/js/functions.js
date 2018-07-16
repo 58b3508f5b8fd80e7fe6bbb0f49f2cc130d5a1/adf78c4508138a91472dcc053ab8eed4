@@ -28,7 +28,7 @@ jQuery(document).ready(function($) {
     jQuery('.jobsearch_progressbar1').progressBar({
         percentage : false,
         backgroundColor : "#dbdbdb",
-        barColor : "#13b5ea",
+        barColor : "#1e82d6",
         animation : true,
         height : "6",
     });

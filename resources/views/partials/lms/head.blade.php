@@ -23,7 +23,6 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link href="{{ url('adminlte/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 <link rel="stylesheet"
       href="{{ url('adminlte/css') }}/select2.min.css"/>
 <link href="{{ url('adminlte/css/AdminLTE.min.css') }}" rel="stylesheet">

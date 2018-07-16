@@ -84,14 +84,14 @@ class JobController extends Controller
             ->groupBy('applications.job_id')
             ->select('jobs.title', 'jobs.country', 'jobs.state', 'jobs.lga',
                 'jobs.experience',
-                'jobs.qualification', 'jobs.created_at', 'jobs.updated_at');
+                'jobs.qualification', 'jobs.post_at', 'jobs.close_at');
 
         return $dataTables->eloquent($jobs)
-            ->editColumn('created_at', function (Job $job) {
-                return date('jS M, Y', strtotime($job->created_at));
+            ->editColumn('post_at', function (Job $job) {
+                return date('jS M, Y', strtotime($job->post_at));
             })
-            ->editColumn('updated_at', function (Job $job) {
-                return date('jS M, Y', strtotime($job->updated_at));
+            ->editColumn('close_at', function (Job $job) {
+                return date('jS M, Y', strtotime($job->close_at));
             })
             ->order(function ($query) {
                 if (request()->has('num')) {
@@ -325,7 +325,7 @@ class JobController extends Controller
     {
         $data['title'] = 'Add Jobs';
         $data['tests'] = Online_test::select('title', 'test_id')->get();
-        return view('admin.addJob', $data);
+        return view('dashboard.admin.control.addJob', $data);
     }
 
     public function viewJobEdit(Request $request, $jid)

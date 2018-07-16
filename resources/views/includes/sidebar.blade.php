@@ -16,6 +16,8 @@
                 <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('jobs')}}"><i class="careerfy-icon careerfy-heart"></i> Job Alerts</a></li>
                 <li @if(isset($applied_sidebar)) class="active" @endif><a href="{{route('applied')}}"><i class="careerfy-icon careerfy-briefcase-1"></i>
                         Applied Jobs</a></li>
+                <li @if(isset($applied_sidebar)) class="active" @endif><a href="{{route('applied')}}"><i class="careerfy-icon careerfy-briefcase-1"></i>
+                        Applied Jobs</a></li>
                 <li><a href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="careerfy-icon careerfy-logout"></i> Logout</a></li>
