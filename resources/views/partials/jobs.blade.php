@@ -58,14 +58,15 @@
                                                                                 Test
                                                                             </a>
 
-                                                                        @endif
-                                                                        <a class="text-danger btn"
-                                                                           data-title="{{$job->title}}"
-                                                                           data-id="{{$job->id+113}}"
-                                                                           onclick="cancelJob(this)"><i
-                                                                                    class="fa fa-times"></i> Cancel
-                                                                        </a>
 
+                                                                        @elseif(in_array( $job->status,['applied','shortlisted']) )
+                                                                            <a class="text-danger btn"
+                                                                               data-title="{{$job->title}}"
+                                                                               data-id="{{$job->id+113}}"
+                                                                               onclick="cancelJob(this)"><i
+                                                                                        class="fa fa-times"></i> Cancel
+                                                                            </a>
+                                                                        @endif
                                                                     @endif
                                                                 </div>
                                                             </h2>

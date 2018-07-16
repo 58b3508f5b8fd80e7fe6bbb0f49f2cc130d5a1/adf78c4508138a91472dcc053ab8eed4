@@ -411,7 +411,7 @@
                     @endcan
                     @can('course_access')
                         <li>
-                            <a class="{{ $request->segment(2) == 'courses' ? 'active' : '' }}"
+                            <a class="{{ $request->segment(3) == 'courses' ? 'active' : '' }}"
                                href="{{ route('admin.courses.index') }}">
                                 <i class="si si-note"></i>
                                 <span class="sidebar-mini-hide">@lang('global.courses.title')</span>
@@ -421,7 +421,7 @@
 
                     @can('lesson_access')
                         <li>
-                            <a class="{{ $request->segment(2) == 'lessons' ? 'active' : '' }}"
+                            <a class="{{ $request->segment(3) == 'lessons' ? 'active' : '' }}"
                                href="{{ route('admin.lessons.index') }}">
                                 <i class="si si-list"></i>
                                 <span class="sidebar-mini-hide">@lang('global.lessons.title')</span>
@@ -431,7 +431,7 @@
 
                     @can('question_access')
                         <li>
-                            <a class="{{ $request->segment(2) == 'questions' ? 'active' : '' }}"
+                            <a class="{{ $request->segment(3) == 'questions' ? 'active' : '' }}"
                                href="{{ route('admin.questions.index') }}">
                                 <i class="si si-question"></i>
                                 <span class="sidebar-mini-hide">@lang('global.questions.title')</span>
@@ -441,7 +441,7 @@
 
                     @can('questions_option_access')
                         <li>
-                            <a class="{{ $request->segment(2) == 'questions_options' ? 'active' : '' }}"
+                            <a class="{{ $request->segment(3) == 'questions_options' ? 'active' : '' }}"
                                href="{{ route('admin.questions_options.index') }}">
                                 <i class="si si-options"></i>
                                 <span class="sidebar-mini-hide">@lang('global.questions-options.title')</span>
@@ -451,7 +451,7 @@
 
                     @can('test_access')
                         <li>
-                            <a class="{{ $request->segment(2) == 'tests' ? 'active' : '' }}"
+                            <a class="{{ $request->segment(3) == 'tests' ? 'active' : '' }}"
                                href="{{ route('admin.tests.index') }}">
                                 <i class="si si-pencil"></i>
                                 <span class="sidebar-mini-hide">@lang('global.tests.title')</span>

@@ -3,7 +3,8 @@
     <div class="careerfy-typo-wrap">
         <div class="careerfy-employer-dashboard-nav">
             <figure>
-                <a href="#" class="employer-dashboard-thumb"><img src="{{Storage::url(Auth::user()->avatar_location)}}" class="user-avatar" alt=""></a>
+                <a href="#" class="employer-dashboard-thumb"><img src="{{Storage::url(Auth::user()->avatar_location)}}"
+                                                                  class="user-avatar" alt=""></a>
                 <figcaption>
 
                     <h3>{{Auth::user()->first_name.' '.Auth::user()->last_name}}</h3>
@@ -11,13 +12,20 @@
                 </figcaption>
             </figure>
             <ul>
-                <li @if(isset($profile_sidebar)) class="active" @endif><a href="{{route('profile')}}"><i class="careerfy-icon careerfy-user"></i> My Profile</a></li>
-                <li @if(isset($resume_sidebar)) class="active" @endif><a href="{{route('resume')}}"><i class="careerfy-icon careerfy-resume"></i> My Resume</a></li>
-                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('jobs')}}"><i class="careerfy-icon careerfy-heart"></i> Job Alerts</a></li>
-                <li @if(isset($applied_sidebar)) class="active" @endif><a href="{{route('applied')}}"><i class="careerfy-icon careerfy-briefcase-1"></i>
+                <li @if(isset($profile_sidebar)) class="active" @endif><a href="{{route('profile')}}"><i
+                                class="careerfy-icon careerfy-user"></i> My Profile</a></li>
+                <li @if(isset($resume_sidebar)) class="active" @endif><a href="{{route('resume')}}"><i
+                                class="careerfy-icon careerfy-resume"></i> My Resume</a></li>
+                <li @if(isset($jobs_sidebar)) class="active" @endif><a href="{{route('jobs')}}"><i
+                                class="careerfy-icon careerfy-heart"></i> Job Alerts</a></li>
+                <li @if(isset($applied_sidebar)) class="active" @endif><a href="{{route('applied')}}"><i
+                                class="careerfy-icon careerfy-briefcase-1"></i>
                         Applied Jobs</a></li>
-                <li @if(isset($applied_sidebar)) class="active" @endif><a href="{{route('applied')}}"><i class="careerfy-icon careerfy-briefcase-1"></i>
-                        Applied Jobs</a></li>
+                @if(session('userPassed'))
+                    <li><a href="{{url('learning')}}"><i class="careerfy-icon careerfy-books"></i>
+                            Start Learning</a>
+                    </li>
+                @endif
                 <li><a href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="careerfy-icon careerfy-logout"></i> Logout</a></li>

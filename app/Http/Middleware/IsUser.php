@@ -27,6 +27,7 @@ class IsUser
             return new Response (view('errors.600'));
         }
 
+        $request->session()->flash('userPassed', false);
         $applicant = Application::where('resume_id', $request->user()->user_id)
             ->where('status', 'passed')->first();
         if($applicant){
