@@ -28,6 +28,7 @@ class InterviewController extends Controller
             $application = Application::find($applicant->aid);
             if ($score > 50) {
                 $performance = 'passed';
+
             } else {
                 $performance = 'failed';
             }

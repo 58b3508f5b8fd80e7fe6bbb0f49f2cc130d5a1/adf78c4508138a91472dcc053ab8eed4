@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+@php
+    $public='';
+    if(App::environment('production'))
+    $public ='public';
+@endphp
+        <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,16 +17,16 @@
     <title>{{ $page_title or 'TLCareers LMS' }}</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{asset($public.'/lms/css/bootstrap.min.css'}}" rel="stylesheet">
+    <link href="{{asset($public.'/lms/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{{asset($public.'/lms/css/shop-homepage.css'}}" rel="stylesheet">
+    <link href="{{asset($public.'/lms/css/shop-homepage.css')}}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'}}"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'}}"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv..js')}}""></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min..js')}}""></script>
     <![endif]-->
 
 </head>
@@ -41,19 +46,16 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/">Quick LMS</a>
+                        <a class="navbar-brand" href="/">TLCareers</a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{url('/')}}">Home</a>
                             </li>
                             <li>
-                                <a href="#">Services</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact</a>
+                                <a href="{{url('/home')}}">Dashboard</a>
                             </li>
                         </ul>
                     </div>
@@ -116,7 +118,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Quick LMS 2017</p>
+                    <p>Copyright &copy; <a href="{{config('app.owner_url')}}">{{config('app.owner')}} 2017</a></p>
                 </div>
             </div>
         </footer>
@@ -125,10 +127,10 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="{{asset($public.'/lms/js/jquery.js'}}"></script>
+    <script src="{{asset($public.'/lms/js/jquery.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{asset($public.'/lms/js/bootstrap.min.js'}}"></script>
+    <script src="{{asset($public.'/lms/js/bootstrap.min.js')}}"></script>
 
 </body>
 

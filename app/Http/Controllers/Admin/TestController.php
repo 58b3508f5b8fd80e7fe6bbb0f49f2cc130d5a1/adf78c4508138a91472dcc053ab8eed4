@@ -279,6 +279,7 @@ class TestController extends Controller
         $results = Result::join('applications', 'results.application_id', '=',
             'applications.application_id')
             ->join('jobs', 'applications.job_id', '=', 'jobs.job_id')
+            ->groupBy('results.test_id')
             ->get();
         $collection = collect($results);
         $data['results'] = $collection->forPage($page, $per);
