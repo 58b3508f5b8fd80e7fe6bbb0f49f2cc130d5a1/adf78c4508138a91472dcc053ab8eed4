@@ -300,7 +300,7 @@ class JobController extends Controller
 
     public function viewJobEdit(Request $request, $jid)
     {
-        $id = $request->id - 973;
+        $id = $request->id - 4361;
         $job = Job::find($id);
         if ($job) {
             if ($job->job_id == $jid) {

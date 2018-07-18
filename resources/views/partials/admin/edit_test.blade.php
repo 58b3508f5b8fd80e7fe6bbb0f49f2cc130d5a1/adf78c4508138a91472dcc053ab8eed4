@@ -1,4 +1,4 @@
-<form action="{{url("/backend/tests/edit")}}" method="post"
+<form action="{{url("/backend/tests/edit/".($test->test_id))}}" method="post"
       id="test-form">
     {{csrf_field()}}
     <input type="hidden" name="id" value="{{$test->id+335}}">

@@ -42,14 +42,14 @@
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 <a class="btn btn-sm btn-outline-primary"
-                                   href="javascript:void(0)" onclick="editTest('{{$test->id+973}}')"
+                                   href="javascript:void(0)" onclick="editTest('{{$test->id+973}}','{{$test->test_id}}')"
                                    data-toggle="tooltip" title="Edit {{$test->title}}"
                                    data-original-title="Edit {{$test->title}}">
                                     <i class="fa fa-pencil"></i>
                                 </a>
                                 <a class="btn btn-sm btn-outline-danger"
                                    href="javascript:void(0)"
-                                   onclick='deleteTest("{{$test->id+1921}}","{{str_replace('"',"'",$test->title)}}")'
+                                   onclick='deleteTest("{{$test->id+1921}}","{{str_replace('"',"'",$test->title)}}","{{$test->test_id}}")'
                                    data-toggle="tooltip" title="Delete {{$test->title}}"
                                    data-original-title="Delete {{$test->title}}">
                                     <i class="fa fa-times"></i>

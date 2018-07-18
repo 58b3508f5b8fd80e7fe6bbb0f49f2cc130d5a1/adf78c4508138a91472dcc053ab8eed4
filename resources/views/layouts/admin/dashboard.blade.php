@@ -31,6 +31,9 @@
     <link rel="stylesheet" id="css-main" href="{{asset($public.'/dashboard/css/datatables.min.css')}}">
     <link rel="stylesheet" href="{{asset($public.'/css/sweetalert.min.css')}}">
     <style>
+        body, html{
+            font-size: 14px;
+        }
         .content-heading{
             padding: 0;
             margin:0;
@@ -42,7 +45,7 @@
 <div id="page-container" class="sidebar-inverse side-scroll page-header-fixed main-content-narrow side-trans-enabled">
     @include('partials.html.sidebar')
     @include('partials.html.topbar')
-    <main id="main-container">
+    <main id="main-container" style="min-height: 192px;">
         @yield('content')
     </main>
     @include('partials.html.footer')

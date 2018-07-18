@@ -1,5 +1,6 @@
-<form action="{{url('/backend/jobs/add')}}" method="post" id="job-form">
+<form action="{{url('/backend/jobs/edit/'.$job->job_id)}}" method="post" id="job-form">
     {{csrf_field()}}
+    <input type="hidden" value="{{$job->id+4361}}" name="id">
     <ul class="careerfy-row careerfy-employer-profile-form">
         <li class="careerfy-column-12">
             <label for="title">Title</label>
@@ -95,7 +96,7 @@
         </li>
         <li class="careerfy-column-12">
             <label for="description">Description</label>
-            <textarea id="description" name="description">{{$job->description}}</textarea>
+            <textarea id="job-description" name="description">{{$job->description}}</textarea>
         </li>
         <li class="careerfy-column-6">
             <button type="submit" class="btn btn-alt-primary">Submit</button>

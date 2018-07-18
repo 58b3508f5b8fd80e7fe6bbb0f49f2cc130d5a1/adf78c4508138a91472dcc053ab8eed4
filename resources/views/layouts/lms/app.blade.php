@@ -63,7 +63,7 @@
 </head>
 <body>
 <div id="page-container" class="sidebar-o sidebar-inverse side-scroll page-header-fixed page-header-modern main-content-boxed">
-    @include('partials.html.sidebar')
+    @include('partials.lms.sidebar')
     @include('partials.html.topbar')
 
     <main id="main-container">

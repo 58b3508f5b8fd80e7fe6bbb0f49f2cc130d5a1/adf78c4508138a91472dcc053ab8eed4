@@ -356,18 +356,6 @@
                         <a href="{{url('/backend')}}"><i class="si si-user"></i><span
                                     class="sidebar-mini-hide">Admin Panel</span></a>
                     </li>
-                    <li class="nav-main-heading"><span class="sidebar-mini-visible">Jobs</span><span
-                                class="sidebar-mini-hidden">Jobs</span></li>
-                    <li>
-                        <a href="{{url('/admin/jobs')}}"><i class="si si-briefcase"></i><span
-                                    class="sidebar-mini-hide">View Jobs</span></a>
-                    </li>
-                    <li class="nav-main-heading"><span class="sidebar-mini-visible">Tests</span><span
-                                class="sidebar-mini-hidden">Tests</span></li>
-                    <li>
-                        <a href="{{url('/admin/tests')}}"><i class="si si-pencil"></i><span
-                                    class="sidebar-mini-hide">View Tests</span></a>
-                    </li>
                     <li class="nav-main-heading"><span class="sidebar-mini-visible">Learning Management</span><span
                                 class="sidebar-mini-hidden">Learning Management</span></li>
                     <li>
@@ -479,6 +467,12 @@
                             <i class="si si-logout"></i>
                             <span class="sidebar-mini-hide">@lang('global.app_logout')</span>
                         </a>
+                    </li>
+                    <li class="nav-main-heading"><span class="sidebar-mini-visible">Jobs</span><span
+                                class="sidebar-mini-hidden">Jobs</span></li>
+                    <li>
+                        <a href="{{url('/admin/jobs')}}"><i class="si si-briefcase"></i><span
+                                    class="sidebar-mini-hide">View Jobs</span></a>
                     </li>
                 </ul>
             </div>

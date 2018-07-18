@@ -162,9 +162,9 @@
             });
         });
 
-        function editTest(id, title) {
+        function editTest(id, tid) {
             var data = {'id': id};
-            $.get('/backend/tests/edit', data, function (result) {
+            $.get('/backend/tests/edit/' + tid, data, function (result) {
                 $('#test-modal .block-content').html(result.html);
                 $('#test-modal').modal('show');
             }).fail(function () {
@@ -172,7 +172,7 @@
             });
         }
 
-        function deleteTest(id, title) {
+        function deleteTest(id, title, tid) {
             swal({
                 title: "Are you sure to delete " + title + "?",
                 text: "Once deleted, you will not be able to recover this test!",
@@ -183,7 +183,7 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         var data = {'id': id};
-                        $.post('/backend/tests/delete', data, function (result) {
+                        $.post('/backend/tests/delete/'+tid, data, function (result) {
                             $('#tests').fadeOut(500);
                             $('#tests').html(result.html);
                             swal(result.status, {

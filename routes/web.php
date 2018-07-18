@@ -72,6 +72,7 @@ Route::middleware(['checkMaintenance'])->group(function () {
                             Route::get('/jobs/add', 'JobController@viewJobsAdd');
                             Route::post('/jobs/add', 'JobController@addJobs');
                             Route::post('getjobs', 'JobController@dataTableJobs');
+                            Route::get('/tests','TestController@index');
                         });
                     });
                 });
@@ -89,7 +90,7 @@ Route::middleware(['checkMaintenance'])->group(function () {
                         Route::post('/delete/{jid}', 'JobController@deleteJob');
                         Route::get('/view/edit/{jid}',
                             'JobController@viewJobEdit');
-                        Route::post('/edit/{jid}', 'JobController@jobEdit');
+                        Route::post('/edit/{jid}', 'JobController@editJob');
                         Route::get('/{page?}/{per?}', 'JobController@jobs');
                         Route::get('/search/{page?}/{per?}',
                             'JobController@searchJobs');

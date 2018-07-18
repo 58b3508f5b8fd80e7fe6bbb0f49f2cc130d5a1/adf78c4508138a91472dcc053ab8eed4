@@ -50,7 +50,7 @@
         </div>
     </div>
     <div id="job-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <!-- Modal content-->
             <div class="modal-content" style="background-color: #fff;">
                 <div class="modal-header" style="background-color:#2c3e50;">
@@ -112,7 +112,7 @@
                 'select_all': false,
                 'togglescreen': false
             };
-            let elements = ['#job', '#option-a', '#option-b', '#option-c', '#option-d'];
+            let elements = ['#job-description'];
 
             for (let i = 0; i < elements.length; i++) {
                 let content = $(elements[i]).val();
