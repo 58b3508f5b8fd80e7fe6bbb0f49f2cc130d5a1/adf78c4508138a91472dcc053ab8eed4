@@ -1,0 +1,1058 @@
+-- MySQL dump 10.16  Distrib 10.1.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: 127.0.0.1    Database: careers
+-- ------------------------------------------------------
+-- Server version	10.1.22-MariaDB-
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `answers`
+--
+
+DROP TABLE IF EXISTS `answers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `answers` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `question_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `resume_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `given_answer` enum('a','b','c','d') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correct_answer` enum('a','b','c','d') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `answers`
+--
+
+LOCK TABLES `answers` WRITE;
+/*!40000 ALTER TABLE `answers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `answers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `applications`
+--
+
+DROP TABLE IF EXISTS `applications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `applications` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `application_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `resume_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `status` enum('applied','shortlisted','processing','invited','passed','failed') COLLATE utf8mb4_unicode_ci DEFAULT 'applied',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `applications_application_id_unique` (`application_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `applications`
+--
+
+LOCK TABLES `applications` WRITE;
+/*!40000 ALTER TABLE `applications` DISABLE KEYS */;
+/*!40000 ALTER TABLE `applications` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `course_student`
+--
+
+DROP TABLE IF EXISTS `course_student`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `course_student` (
+  `course_id` int(10) unsigned DEFAULT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
+  `rating` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  KEY `course_student_course_id_foreign` (`course_id`),
+  KEY `course_student_user_id_foreign` (`user_id`),
+  CONSTRAINT `course_student_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `course_student_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `course_student`
+--
+
+LOCK TABLES `course_student` WRITE;
+/*!40000 ALTER TABLE `course_student` DISABLE KEYS */;
+/*!40000 ALTER TABLE `course_student` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `course_user`
+--
+
+DROP TABLE IF EXISTS `course_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `course_user` (
+  `course_id` int(10) unsigned DEFAULT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
+  KEY `fk_p_54418_54417_user_cou_596eece522b73` (`course_id`),
+  KEY `fk_p_54417_54418_course_u_596eece522bee` (`user_id`),
+  CONSTRAINT `fk_p_54417_54418_course_u_596eece522bee` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_p_54418_54417_user_cou_596eece522b73` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `course_user`
+--
+
+LOCK TABLES `course_user` WRITE;
+/*!40000 ALTER TABLE `course_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `course_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `courses`
+--
+
+DROP TABLE IF EXISTS `courses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `courses` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `price` decimal(15,2) DEFAULT NULL,
+  `course_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `published` tinyint(4) DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `courses_deleted_at_index` (`deleted_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `courses`
+--
+
+LOCK TABLES `courses` WRITE;
+/*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `courses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `education`
+--
+
+DROP TABLE IF EXISTS `education`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `education` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `resume_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `institution` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qualification` enum('B.Sc','B.Tech','B.Eng','M.Sc') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `started_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `finished_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1053 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `education`
+--
+
+LOCK TABLES `education` WRITE;
+/*!40000 ALTER TABLE `education` DISABLE KEYS */;
+/*!40000 ALTER TABLE `education` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `experiences`
+--
+
+DROP TABLE IF EXISTS `experiences`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `experiences` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `resume_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `company` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `started_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `finished_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `status` enum('current','old') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `experiences`
+--
+
+LOCK TABLES `experiences` WRITE;
+/*!40000 ALTER TABLE `experiences` DISABLE KEYS */;
+/*!40000 ALTER TABLE `experiences` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `honors`
+--
+
+DROP TABLE IF EXISTS `honors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `honors` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `resume_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `received_at` year(4) NOT NULL,
+  `company` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1898 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `honors`
+--
+
+LOCK TABLES `honors` WRITE;
+/*!40000 ALTER TABLE `honors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `honors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `interviews`
+--
+
+DROP TABLE IF EXISTS `interviews`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `interviews` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `interview_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `resume_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `due_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `performance` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `interviews`
+--
+
+LOCK TABLES `interviews` WRITE;
+/*!40000 ALTER TABLE `interviews` DISABLE KEYS */;
+/*!40000 ALTER TABLE `interviews` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_tests`
+--
+
+DROP TABLE IF EXISTS `job_tests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_tests` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `job_test_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `test_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `job_tests_job_test_id_unique` (`job_test_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1584 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_tests`
+--
+
+LOCK TABLES `job_tests` WRITE;
+/*!40000 ALTER TABLE `job_tests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `job_tests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jobs`
+--
+
+DROP TABLE IF EXISTS `jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jobs` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `job_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `state` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lga` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `experience` int(11) NOT NULL,
+  `qualification` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `salary_from` int(11) NOT NULL,
+  `salary_to` int(11) NOT NULL,
+  `post_at` timestamp NULL DEFAULT NULL,
+  `close_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `jobs_job_id_unique` (`job_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1590 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jobs`
+--
+
+LOCK TABLES `jobs` WRITE;
+/*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lesson_student`
+--
+
+DROP TABLE IF EXISTS `lesson_student`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lesson_student` (
+  `lesson_id` int(10) unsigned DEFAULT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  KEY `lesson_student_lesson_id_foreign` (`lesson_id`),
+  KEY `lesson_student_user_id_foreign` (`user_id`),
+  CONSTRAINT `lesson_student_lesson_id_foreign` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `lesson_student_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lesson_student`
+--
+
+LOCK TABLES `lesson_student` WRITE;
+/*!40000 ALTER TABLE `lesson_student` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lesson_student` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lessons`
+--
+
+DROP TABLE IF EXISTS `lessons`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lessons` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `course_id` int(10) unsigned DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lesson_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `short_text` text COLLATE utf8mb4_unicode_ci,
+  `full_text` text COLLATE utf8mb4_unicode_ci,
+  `position` int(10) unsigned DEFAULT NULL,
+  `free_lesson` tinyint(4) DEFAULT '0',
+  `published` tinyint(4) DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `54419_596eedbb6686e` (`course_id`),
+  KEY `lessons_deleted_at_index` (`deleted_at`),
+  CONSTRAINT `54419_596eedbb6686e` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lessons`
+--
+
+LOCK TABLES `lessons` WRITE;
+/*!40000 ALTER TABLE `lessons` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lessons` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `media`
+--
+
+DROP TABLE IF EXISTS `media`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `media` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `model_id` int(10) unsigned DEFAULT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `collection_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `disk` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` int(10) unsigned NOT NULL,
+  `manipulations` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `custom_properties` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_column` int(10) unsigned DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `media_model_id_model_type_index` (`model_id`,`model_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `media`
+--
+
+LOCK TABLES `media` WRITE;
+/*!40000 ALTER TABLE `media` DISABLE KEYS */;
+/*!40000 ALTER TABLE `media` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `online_tests`
+--
+
+DROP TABLE IF EXISTS `online_tests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `online_tests` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `test_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `duration` int(11) NOT NULL,
+  `length` int(11) NOT NULL,
+  `created_by` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `online_tests`
+--
+
+LOCK TABLES `online_tests` WRITE;
+/*!40000 ALTER TABLE `online_tests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `online_tests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permission_role`
+--
+
+DROP TABLE IF EXISTS `permission_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permission_role` (
+  `permission_id` int(10) unsigned DEFAULT NULL,
+  `role_id` int(10) unsigned DEFAULT NULL,
+  KEY `fk_p_54415_54416_role_per_596eec08308d0` (`permission_id`),
+  KEY `fk_p_54416_54415_permissi_596eec0830986` (`role_id`),
+  CONSTRAINT `fk_p_54415_54416_role_per_596eec08308d0` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_p_54416_54415_permissi_596eec0830986` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permission_role`
+--
+
+LOCK TABLES `permission_role` WRITE;
+/*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permissions`
+--
+
+DROP TABLE IF EXISTS `permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permissions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permissions`
+--
+
+LOCK TABLES `permissions` WRITE;
+/*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `question_test`
+--
+
+DROP TABLE IF EXISTS `question_test`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `question_test` (
+  `question_id` int(10) unsigned DEFAULT NULL,
+  `test_id` int(10) unsigned DEFAULT NULL,
+  KEY `fk_p_54420_54422_test_que_596eeef70992f` (`question_id`),
+  KEY `fk_p_54422_54420_question_596eeef7099af` (`test_id`),
+  CONSTRAINT `fk_p_54420_54422_test_que_596eeef70992f` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_p_54422_54420_question_596eeef7099af` FOREIGN KEY (`test_id`) REFERENCES `tests` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `question_test`
+--
+
+LOCK TABLES `question_test` WRITE;
+/*!40000 ALTER TABLE `question_test` DISABLE KEYS */;
+/*!40000 ALTER TABLE `question_test` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `questions`
+--
+
+DROP TABLE IF EXISTS `questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `questions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `question` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `question_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `questions_deleted_at_index` (`deleted_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `questions`
+--
+
+LOCK TABLES `questions` WRITE;
+/*!40000 ALTER TABLE `questions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `questions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `questions_options`
+--
+
+DROP TABLE IF EXISTS `questions_options`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `questions_options` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `question_id` int(10) unsigned DEFAULT NULL,
+  `option_text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correct` tinyint(4) DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `54421_596eee8745a1e` (`question_id`),
+  KEY `questions_options_deleted_at_index` (`deleted_at`),
+  CONSTRAINT `54421_596eee8745a1e` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `questions_options`
+--
+
+LOCK TABLES `questions_options` WRITE;
+/*!40000 ALTER TABLE `questions_options` DISABLE KEYS */;
+/*!40000 ALTER TABLE `questions_options` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `results`
+--
+
+DROP TABLE IF EXISTS `results`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `results` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `result_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `resume_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `application_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `test_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `score` int(11) DEFAULT NULL,
+  `status` enum('open','closed','canceled') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'open',
+  `started_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `results_result_id_unique` (`result_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `results`
+--
+
+LOCK TABLES `results` WRITE;
+/*!40000 ALTER TABLE `results` DISABLE KEYS */;
+/*!40000 ALTER TABLE `results` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `resumes`
+--
+
+DROP TABLE IF EXISTS `resumes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `resumes` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `resume_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cover_letter` text COLLATE utf8mb4_unicode_ci,
+  `cv_location` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cv_ext` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `resumes_resume_id_unique` (`resume_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=353 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `resumes`
+--
+
+LOCK TABLES `resumes` WRITE;
+/*!40000 ALTER TABLE `resumes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `resumes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_user`
+--
+
+DROP TABLE IF EXISTS `role_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role_user` (
+  `role_id` int(10) unsigned DEFAULT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
+  KEY `fk_p_54416_54417_user_rol_596eec0af3746` (`role_id`),
+  KEY `fk_p_54417_54416_role_use_596eec0af37c1` (`user_id`),
+  CONSTRAINT `fk_p_54416_54417_user_rol_596eec0af3746` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_p_54417_54416_role_use_596eec0af37c1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_user`
+--
+
+LOCK TABLES `role_user` WRITE;
+/*!40000 ALTER TABLE `role_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `skills`
+--
+
+DROP TABLE IF EXISTS `skills`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `skills` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `resume_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `percentage` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3003 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `skills`
+--
+
+LOCK TABLES `skills` WRITE;
+/*!40000 ALTER TABLE `skills` DISABLE KEYS */;
+/*!40000 ALTER TABLE `skills` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `test_questions`
+--
+
+DROP TABLE IF EXISTS `test_questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `test_questions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `question_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `test_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `question` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `option_a` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `option_b` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `option_c` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `option_d` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `answer` enum('a','b','c','d') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `score` int(11) DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `questions_question_id_unique` (`question_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `test_questions`
+--
+
+LOCK TABLES `test_questions` WRITE;
+/*!40000 ALTER TABLE `test_questions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `test_questions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tests`
+--
+
+DROP TABLE IF EXISTS `tests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tests` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `course_id` int(10) unsigned DEFAULT NULL,
+  `lesson_id` int(10) unsigned DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `published` tinyint(4) DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `54422_596eeef514d00` (`course_id`),
+  KEY `54422_596eeef53411a` (`lesson_id`),
+  KEY `tests_deleted_at_index` (`deleted_at`),
+  CONSTRAINT `54422_596eeef514d00` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `54422_596eeef53411a` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tests`
+--
+
+LOCK TABLES `tests` WRITE;
+/*!40000 ALTER TABLE `tests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tests_results`
+--
+
+DROP TABLE IF EXISTS `tests_results`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tests_results` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `test_id` int(10) unsigned DEFAULT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
+  `test_result` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tests_results_test_id_foreign` (`test_id`),
+  KEY `tests_results_user_id_foreign` (`user_id`),
+  CONSTRAINT `tests_results_test_id_foreign` FOREIGN KEY (`test_id`) REFERENCES `tests` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `tests_results_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tests_results`
+--
+
+LOCK TABLES `tests_results` WRITE;
+/*!40000 ALTER TABLE `tests_results` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tests_results` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tests_results_answers`
+--
+
+DROP TABLE IF EXISTS `tests_results_answers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tests_results_answers` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tests_result_id` int(10) unsigned DEFAULT NULL,
+  `question_id` int(10) unsigned DEFAULT NULL,
+  `option_id` int(10) unsigned DEFAULT NULL,
+  `correct` tinyint(4) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tests_results_answers_tests_result_id_foreign` (`tests_result_id`),
+  KEY `tests_results_answers_question_id_foreign` (`question_id`),
+  KEY `tests_results_answers_option_id_foreign` (`option_id`),
+  CONSTRAINT `tests_results_answers_option_id_foreign` FOREIGN KEY (`option_id`) REFERENCES `questions_options` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `tests_results_answers_question_id_foreign` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `tests_results_answers_tests_result_id_foreign` FOREIGN KEY (`tests_result_id`) REFERENCES `tests_results` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tests_results_answers`
+--
+
+LOCK TABLES `tests_results_answers` WRITE;
+/*!40000 ALTER TABLE `tests_results_answers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tests_results_answers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_metas`
+--
+
+DROP TABLE IF EXISTS `user_metas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_metas` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dob` timestamp NULL DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `state` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lga` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_no` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `experience` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `current_salary` int(11) DEFAULT NULL,
+  `expected_salary` int(11) DEFAULT NULL,
+  `languages` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `education` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `avatar_location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'careers.touchinglivesskills/app/user/avatar/default-user.png',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_metas_user_id_unique` (`user_id`),
+  UNIQUE KEY `user_metas_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=354 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_metas`
+--
+
+LOCK TABLES `user_metas` WRITE;
+/*!40000 ALTER TABLE `user_metas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_metas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_no` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `job_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` enum('user','staff','admin') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `access` int(11) NOT NULL DEFAULT '0',
+  `status` enum('visitor','registered','applicant','processing','staff') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'visitor',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `avatar_location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'careers.touchinglivesskills/app/user/avatar/default-user.png',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_user_id_unique` (`user_id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-07-18 22:35:35

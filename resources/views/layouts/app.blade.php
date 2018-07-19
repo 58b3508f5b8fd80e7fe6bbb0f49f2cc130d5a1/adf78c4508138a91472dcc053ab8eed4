@@ -38,6 +38,9 @@
     @endif
     @yield('styles')
     <style>
+        .careerfy-applied-jobs-text span{
+            font-size: 14px;
+        }
         .careerfy-subheader {
             padding: 0;
         }
@@ -124,7 +127,7 @@
                                 their dignity and pride, and we have skilled, articulate and inspired people with
                                 distinct characters whose combined efforts will help the organization actualize its set
                                 goal.</p>
-                            <a href="{{url('/criteria')}}" class="careerfy-classic-btn careerfy-bgcolor">Learn more</a>
+                            <a href="#" class="careerfy-classic-btn careerfy-bgcolor">Learn more</a>
                         </div>
                     </aside>
                     <aside class="widget col-md-5 widget_nav_manu">
@@ -201,8 +204,7 @@
                             <li class="active" style="width:100%;">
                                 <a href="#">
                                     <i class="careerfy-icon careerfy-user"></i>
-                                    <span>Candidate</span>
-                                    <small>I want to be a part of Touching Lives Skills.</small>
+                                    <span>Sign in</span>
                                 </a>
                             </li>
                         </ul>
@@ -234,21 +236,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="careerfy-box-title careerfy-box-title-sub">
-                        <span>Or Sign In With</span>
-                    </div>
-                    <div class="clearfix"></div>
-                    <ul class="careerfy-login-media">
-                        <li><a href="#"><i class="fa fa-facebook"></i> Sign In with Facebook</a></li>
-                        <li><a href="#" data-original-title="google"><i class="fa fa-google"></i> Sign In with
-                                Google</a>
-                        </li>
-                        <li><a href="#" data-original-title="twitter"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
-                        </li>
-                        <li><a href="#" data-original-title="linkedin"><i class="fa fa-linkedin"></i> Sign In with
-                                LinkedIn</a>
-                        </li>
-                    </ul>
                 </form>
 
             </div>
@@ -267,16 +254,12 @@
                 </div>
                 <form method="POST" action="{{ route('register') }}">
                     {{csrf_field()}}
-                    <div class="careerfy-box-title">
-                        <span>Choose your Account Type</span>
-                    </div>
                     <div class="careerfy-user-options">
                         <ul>
                             <li class="active" style="width:100%;">
                                 <a href="#">
                                     <i class="careerfy-icon careerfy-user"></i>
-                                    <span>Candidate</span>
-                                    <small>I want to discover awesome job opportunities.</small>
+                                    <span>Register now</span>
                                 </a>
                             </li>
                         </ul>

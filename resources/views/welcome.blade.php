@@ -11,7 +11,7 @@
         <span class="careerfy-banner-transparent"></span>
         <div class="careerfy-banner-caption">
             <div class="container">
-                <h1>Our people are our Assets.</h1>
+                <h1>Our people are our Best Assets.</h1>
                 <form method="get" action="{{url('/openings/search')}}" class="careerfy-banner-search" id="search">
                     <ul>
                         <li>
@@ -50,6 +50,7 @@
     <!-- Banner -->
 
     <!-- Main Content -->
+{{--
     <div class="careerfy-main-content">
 
         <!-- Main Section -->
@@ -81,6 +82,7 @@
                 </div>
             </div>
         </div>
+--}}
         <!-- Main Section -->
 
     {{--<!-- Main Section -->
@@ -147,6 +149,26 @@
         </div>
     </div>--}}
     <!-- Main Section -->
+
+        <!-- Main Section -->
+        <div class="careerfy-main-section careerfy-parallex-full">
+            <div class="container">
+                <div class="row">
+                    <aside class="col-md-12 careerfy-typo-wrap">
+                        <div class="careerfy-parallex-text text-center">
+                            <h2>About Touching Lives</h2>
+                            <p>Touching Lives Skills is a team of ebullient, passionate and hardworking group of persons
+                                with the sole aim of empowering nations with skills necessary for the alleviation and
+                                mitigation of poverty. We are building a prosperous world where people can come into
+                                their dignity and pride, and we have skilled, articulate and inspired people with
+                                distinct characters whose combined efforts will help the organization actualize its set
+                                goal.</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+        <!-- Main Section -->
 
         <!-- Main Section -->
         <div class="careerfy-main-section careerfy-parallex-full">

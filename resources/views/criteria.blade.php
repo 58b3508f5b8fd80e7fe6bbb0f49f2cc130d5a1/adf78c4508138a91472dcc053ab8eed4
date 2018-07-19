@@ -16,13 +16,6 @@
 
                     <div class="col-md-6 careerfy-typo-wrap">
                         <div class="careerfy-about-text">
-                            <h2>About Our Company</h2>
-                            <p>Touching Lives Skills is a team of ebullient, passionate and hardworking group of persons
-                                with the sole aim of empowering nations with skills necessary for the alleviation and
-                                mitigation of poverty. We are building a prosperous world where people can come into
-                                their dignity and pride, and we have skilled, articulate and inspired people with
-                                distinct characters whose combined efforts will help the organization actualize its set
-                                goal.</p>
                             <h2>Our Hiring Criteria</h2>
                             <p>In view of the above, we are looking to hire persons who are skilled, motivated and
                                 passionate about humanity into our team. We have some core values which we hold in high

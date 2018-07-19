@@ -39,7 +39,7 @@
                             <div class="col-12">
                                 <div class="form-material ">
                                     <input class="form-control" id="title" name="title" type="text"
-                                           placeholder="Enter your test title here">
+                                           placeholder="Enter your test title here" required>
                                     <label for="title">Title</label>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                 <div class="form-material ">
                                     <label for="description">Description</label>
                                     <textarea class="form-control" id="description"
-                                              name="description" rows="3"></textarea>
+                                              name="description" rows="3" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -58,13 +58,13 @@
                         <div class="form-group row">
                             <div class="col-6">
                                 <div class="form-material ">
-                                    <input class="form-control" id="duration" name="duration" type="number">
+                                    <input class="form-control" id="duration" name="duration" type="number" required>
                                     <label for="duration">Duration</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-material ">
-                                    <input class="form-control" id="length" name="length" type="number">
+                                    <input class="form-control" id="length" name="length" type="number" required>
                                     <label for="length">Length</label>
                                 </div>
                             </div>
@@ -129,7 +129,8 @@
             $("#description").Editor(options);
 
             $('#test-form').on('submit', function (e) {
-                $('#description').val(this.Editor("getText"));
+                text=$('#description').Editor("getText");
+                $('#description').val(text);
                 return true;
             });
         });

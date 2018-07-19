@@ -84,7 +84,7 @@ class JobController extends Controller
         $applications = Application::where('resume_id', Auth::user()->user_id)
             ->pluck('job_id');
         $jobs = Job::whereNotIn('job_id', $applications)
-            ->whereDate('jobs.close_at', '<=', date('Y-m-d'))->limit(100)
+            ->whereDate('jobs.close_at', '>=', date('Y-m-d'))->limit(100)
             ->latest()->get();
         return $jobs;
     }

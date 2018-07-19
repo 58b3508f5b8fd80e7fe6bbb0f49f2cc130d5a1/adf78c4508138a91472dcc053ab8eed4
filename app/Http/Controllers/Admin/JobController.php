@@ -79,6 +79,8 @@ class JobController extends Controller
 
         if ($job) {
             if ($job->job_id == $jid) {
+                $applications = Application::where('job_id', $job->job_id)
+                    ->pluck('application_id');
                 if ($job->delete()) {
                     $message
                         = "You've deleted $job->title successfully..";
@@ -235,7 +237,7 @@ class JobController extends Controller
 
     public function getJobs($page = 1, $per = 10)
     {
-        $jobs = Application::join('jobs', 'jobs.job_id', '=',
+        $jobs = Job::leftJoin('applications', 'jobs.job_id', '=',
             'applications.job_id')->select('jobs.*', 'applications.job_id',
             DB::raw('count(`applications`.`job_id`) as count'))
             ->orderBy('jobs.close_at', 'desc')->orderBy('jobs.post_at', 'desc')
@@ -266,9 +268,10 @@ class JobController extends Controller
             $result->status = 'open';
 
             if ($result->save() && $applicant->save()) {
-                $user= User::where('user_id', $resume_id)->first();
+                $user = User::where('user_id', $resume_id)->first();
                 Mail::to($user->email)
-                    ->send(new \App\Mail\ShortlistApplicant($user, $applicant->application_id));
+                    ->send(new \App\Mail\ShortlistApplicant($user,
+                        $applicant->application_id));
                 $data['message']
                     = "The applicant has been shortlisted";
                 $data['state'] = "danger";

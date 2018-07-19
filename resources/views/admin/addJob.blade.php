@@ -114,9 +114,8 @@
 
                                         </li>
                                         <li class="careerfy-column-6">
-
+                                            <label for="test">Add Test</label>
                                             <div class="careerfy-profile-select">
-                                                <label for="test">Add Test</label>
                                                 <select id="test" name="test">
                                                     <option selected disabled>Choose a test for the Job..</option>
                                                     @foreach($tests as $test)

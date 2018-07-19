@@ -37,8 +37,14 @@
             })(document, window, 0);</script>
     @endif
     <style>
+        .careerfy-applied-jobs-text span{
+            font-size: 12.5px;
+        }
         .careerfy-subheader{
             padding:0;
+        }
+        #site-nav a {
+            display: block;
         }
     </style>
     @yield('styles')
