@@ -76,10 +76,11 @@
                         <div class="collapse navbar-collapse" id="careerfy-navbar-collapse-1">
                             <ul class="navbar-nav">
                                 <li class="active"><a href="{{url('/')}}">Home</a></li>
-                                <li><a href="{{url('/about')}}">About us</a></li>
-                                <li><a href="{{url('/contact')}}">Contact</a></li>
-                                <li><a href="{{url('/faq')}}">Faq's</a></li>
 
+                                <li><a href="{{url('/criteria')}}">Hiring Criteria</a></li>
+                                <li><a href="{{url('/openings')}}">Openings</a></li>
+                                <li><a href="{{url('/application')}}">How to Apply</a></li>
+                                <li><a href="{{url('/contact')}}">Contact</a></li>
                             </ul>
                         </div>
                     </nav>

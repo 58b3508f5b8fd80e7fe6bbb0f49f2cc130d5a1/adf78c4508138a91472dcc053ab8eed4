@@ -201,8 +201,7 @@
                     <div class="col-md-12 careerfy-typo-wrap">
                         <!-- Fancy Title -->
                         <section class="careerfy-fancy-title">
-                            <h2>Featured Jobs Listings</h2>
-                            <p>A better career is out there. We'll help you find it to use.</p>
+                            <h2>Our Openings</h2>
                         </section>
                         <!-- Featured Jobs Listings -->
                         <div class="careerfy-job-listing careerfy-featured-listing">
@@ -239,7 +238,7 @@
                             </ul>
                         </div>
                         <!-- Featured Jobs Listings -->
-                        <div class="careerfy-plain-btn"><a href="{{url('/openings')}}">View All Jobs</a></div>
+                        <div class="careerfy-plain-btn"><a href="{{url('/openings')}}">View All Openings</a></div>
                     </div>
 
                 </div>

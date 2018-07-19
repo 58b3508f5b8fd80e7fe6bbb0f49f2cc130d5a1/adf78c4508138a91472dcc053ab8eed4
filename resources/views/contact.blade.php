@@ -30,13 +30,13 @@
                     <div class="col-md-12">
                         <div class="careerfy-contact-info-sec">
                             <h2>Contact Information</h2>
-                            <p>Ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos...</p>
+                            <p>Feel free to contact us</p>
                             <ul class="careerfy-contact-info-list">
-                                <li><i class="careerfy-icon careerfy-placeholder"></i> Nwaniba Road Uyo.
+                                <li><i class="careerfy-icon careerfy-placeholder"></i> No. 2 Atakpo Street, off Nwaniba Road Uyo.
                                 </li>
-                                <li><i class="careerfy-icon careerfy-mail"></i> <a href="#">Email: info@touchinglivesskills.xyz</a>
+                                <li><i class="careerfy-icon careerfy-mail"></i> <a href="#">Email: humanresources@touchinglivesskills.xyz</a>
                                 </li>
-                                <li><i class="careerfy-icon careerfy-technology"></i> Call: +2349069911327, +2348035929609</li>
+                                <li><i class="careerfy-icon careerfy-technology"></i> Call: +2349069911327, +2348063707358</li>
                             </ul>
                             <div class="careerfy-contact-media">
                                 <a href="https://facebook.com/projectproduceabakinitiative/" class="careerfy-icon careerfy-facebook-logo"></a>
