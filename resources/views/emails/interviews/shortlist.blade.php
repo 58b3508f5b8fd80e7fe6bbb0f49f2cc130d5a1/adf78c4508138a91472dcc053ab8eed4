@@ -9,7 +9,7 @@ You are expected to finish this test on or before <strong>{{date_format(date_add
 
 Click the link below to proceed with your test..
 
-@component('mail::button', ['url' => "jobs/test/$job->application_id"])
+@component('mail::button', ['url' => url("/jobs/test/$job->application_id")])
     Start Test
 @endcomponent
 

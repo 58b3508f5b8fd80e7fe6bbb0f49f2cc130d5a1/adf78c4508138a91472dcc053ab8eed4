@@ -75,6 +75,26 @@
                                                             $description = explode(' ', $description);
                                                             $description = array_splice($description, 0, 40);
                                                             $description = implode(' ', $description) . '...';
+                                                            switch ($job->status) {
+                                                                case 'applied':
+                                                                    $label = 'warning';
+                                                                    break;
+                                                                case 'shortlisted':
+                                                                    $label = 'default';
+                                                                    break;
+                                                                case 'processing':
+                                                                    $label = 'info';
+                                                                    break;
+                                                                case 'invited':
+                                                                    $label = 'primary';
+                                                                    break;
+                                                                case 'passed':
+                                                                    $label = 'success';
+                                                                    break;
+                                                                default:
+                                                                    $label = 'warning';
+                                                                    break;
+                                                            }
                                                             ?>
                                                             <span>{{$description}}</span>
                                                             <ul>
@@ -95,7 +115,7 @@
                                                                 </li>
                                                                 @if($type != 'new')
                                                                     <li>
-                                                                        Status: {{strtoupper($job->status)}}
+                                                                        Status: <strong class="label label-{{$label}}">{{strtoupper($job->status)}}</strong>
                                                                     </li>
                                                                 @endif
                                                             </ul>

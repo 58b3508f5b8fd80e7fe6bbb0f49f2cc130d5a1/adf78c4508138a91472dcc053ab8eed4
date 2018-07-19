@@ -34,7 +34,7 @@
                 <div class="careerfy-table-layer careerfy-managejobs-tbody">
                     <div class="careerfy-table-row">
                         <div class="careerfy-table-cell">
-                            <h6><a href="#">{{$job->title}}</a></h6>
+                            <h6><a href="{{url("/backend/applicants/$job->job_id")}}">{{$job->title}}</a></h6>
                             <ul>
                                 <li><i class="careerfy-icon careerfy-calendar"></i>
                                     Created:

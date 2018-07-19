@@ -131,7 +131,7 @@
             <div class="content-header-section d-none d-lg-block">
                 <ul class="nav-main-header">
                     <li>
-                        <a href="{{url('/')}}"><i class="si si-compass"></i>Dashboard</a>
+                        <a href="{{url('/home')}}"><i class="si si-compass"></i>Dashboard</a>
                     </li>
                     <li>
                         <a href="{{url()->previous()}}"><i class="si si-action-undo"></i>Go Back</a>

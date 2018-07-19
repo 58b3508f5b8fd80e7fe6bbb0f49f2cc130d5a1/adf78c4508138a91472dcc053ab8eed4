@@ -55,6 +55,15 @@
                     <span class="text-danger">{{ $errors->first('phone_no') }}</span>
                 @endif
             </li>
+            <li class="col-md-6">
+                <label>Due Date</label>:</label>
+                <input value="{{$applicant->due_date or null}}" name="due_date" type="date"
+                       placeholder="Enter Due Date (YYYY-MM-DD)" required>
+                <i class="fa fa-phone"></i>
+                @if ($errors->has('phone_no'))
+                    <span class="text-danger">{{ $errors->first('phone_no') }}</span>
+                @endif
+            </li>
             <li class="col-md-12">
                 <label>Interview Type:</label>
                 <div class="list-group">

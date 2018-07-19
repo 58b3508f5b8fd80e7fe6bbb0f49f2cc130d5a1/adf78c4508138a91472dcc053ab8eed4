@@ -133,7 +133,7 @@ class InterviewController extends Controller
             $interview = new Interview();
             $interview->interview_id = $application->application_id;
             $interview->resume_id = $application->resume_id;
-            $interview->due_date = $request->date;
+            $interview->due_date = $request->due_date;
             $interview->type = $request->type;
             $interview->address = $request->address;
 

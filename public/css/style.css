@@ -181,7 +181,7 @@ label {
 button {
     border: none;
 }
-textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+textarea, input[type="text"],input[type="date"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
     background-color: #f2f2f2;
     border: none;
     color: #666;
@@ -476,7 +476,7 @@ address                         { font-style: italic; }
     margin-bottom: 33px;
 }
 .careerfy-banner-search ul,
-.careerfy-banner-search input[type="text"],
+.careerfy-banner-search input[type="text"],input[type="date"],
 .careerfy-banner-search input[type="submit"],
 .careerfy-select-style select {
     float: left;
@@ -489,7 +489,7 @@ address                         { font-style: italic; }
     position: relative;
 }
 .careerfy-banner-search ul li:last-child { width: 6%; }
-.careerfy-banner-search input[type="text"] {
+.careerfy-banner-search input[type="text"],input[type="date"] {
     background-color: #ffffff;
     height: 60px;
     border: 1px solid #f2f2f2;
@@ -1104,7 +1104,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
 }
 /* Search Widget */
 .careerfy-search-form-widget,.careerfy-search-form-widget form,
-.careerfy-search-form-widget form input[type="text"] {
+.careerfy-search-form-widget form input[type="text"],input[type="date"] {
     float: left;
     width: 100%;
 }
@@ -1117,7 +1117,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
     margin-bottom: 10px;
     font-weight: 500;
 }
-.careerfy-search-form-widget form input[type="text"] {
+.careerfy-search-form-widget form input[type="text"],input[type="date"] {
     background-color: #f3f3f3;
     height: 41px;
     font-size: 15px;
@@ -1690,7 +1690,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
 }
 .careerfy-contact-info-list li a { color: #ffffff; }
 .careerfy-contact-media,.careerfy-contact-form,
-.careerfy-contact-form form,.careerfy-contact-form input[type="text"],
+.careerfy-contact-form form,.careerfy-contact-form input[type="text"],input[type="date"],
 .careerfy-contact-form textarea {
     float: left;
     width: 100%;
@@ -1722,7 +1722,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
     margin-bottom: 20px;
 }
 .careerfy-contact-form ul li.careerfy-contact-form-full{ width: 100%; }
-.careerfy-contact-form input[type="text"] {
+.careerfy-contact-form input[type="text"],input[type="date"] {
     background-color: #ffffff;
     border: 1px solid #efefef;
     font-size: 12px;

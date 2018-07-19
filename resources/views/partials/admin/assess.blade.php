@@ -56,8 +56,8 @@
                 @endif
             </li>
             <li class="col-md-12">
-                <label>Interview Performance:</label>
-                <input class="form-control" name="performance" type="range" min="0" max="100" required>
+                <label>Interview Performance: <strong class="label label-default">(<span id="performance-range"></span> %)</strong></label>
+                <input id="performance" class="form-control" name="performance" type="range" min="0" max="100" required>
                 @if ($errors->has('performance'))
                     <span class="text-danger">{{ $errors->first('phone_no') }}</span>
                 @endif

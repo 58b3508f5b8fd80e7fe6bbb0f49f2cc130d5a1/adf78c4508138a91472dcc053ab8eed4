@@ -723,7 +723,7 @@
 .careerfy-pagination-blog ul li:hover a,
 .careerfy-pagination-blog ul li:hover span,
 .careerfy-pagination-blog ul li span.current,
-.careerfy-pagination-blog ul li a.current{
+.careerfy-pagination-blog ul li a.current {
     background-color: #1e82d6;
     color: #ffffff;
 }
@@ -2470,7 +2470,7 @@ ul li:hover .careerfy-employer-grid-btn {
     background-color: #ffffff;
 }
 
-.careerfy-employer-search select{
+.careerfy-employer-search select {
     float: left;
     width: 100%;
     height: 32px;
@@ -4605,7 +4605,7 @@ body.careerfy-modal-active {
 
 /* Login User Form */
 .careerfy-user-form, .careerfy-user-form label, .careerfy-user-form-info,
-.careerfy-user-form input[type="text"], .careerfy-user-form input[type="password"], .careerfy-user-form input[type="email"], .careerfy-user-form input[type="submit"] {
+.careerfy-user-form input[type="text"], .careerfy-user-form input[type="date"], .careerfy-user-form input[type="password"], .careerfy-user-form input[type="email"], .careerfy-user-form input[type="submit"] {
     float: left;
     width: 100%;
     text-align: left;
@@ -4632,7 +4632,7 @@ body.careerfy-modal-active {
     margin-bottom: 10px;
 }
 
-.careerfy-user-form input[type="text"],
+.careerfy-user-form input[type="text"], .careerfy-user-form input[type="date"],
 .careerfy-user-form input[type="password"],
 .careerfy-user-form input[type="date"],
 .careerfy-user-form input[type="number"],

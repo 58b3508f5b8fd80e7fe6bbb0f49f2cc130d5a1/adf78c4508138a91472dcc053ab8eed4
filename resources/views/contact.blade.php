@@ -53,33 +53,23 @@
                             <form>
                                 <ul>
                                     <li>
-                                        <input value="Enter Your Name"
-                                               onblur="if(this.value == '') { this.value ='Enter Your Name'; }"
-                                               onfocus="if(this.value =='Enter Your Name') { this.value = ''; }"
-                                               type="text">
+                                        <input placeholder="Enter Your Full Name" type="text" name="full_name">
                                         <i class="careerfy-icon careerfy-user"></i>
                                     </li>
                                     <li>
-                                        <input value="Subject" onblur="if(this.value == '') { this.value ='Subject'; }"
-                                               onfocus="if(this.value =='Subject') { this.value = ''; }" type="text">
+                                        <input placeholder="Subject" type="text" name="subject">
                                         <i class="careerfy-icon careerfy-user"></i>
                                     </li>
                                     <li>
-                                        <input value="Enter Your Email Address"
-                                               onblur="if(this.value == '') { this.value ='Enter Your Email Address'; }"
-                                               onfocus="if(this.value =='Enter Your Email Address') { this.value = ''; }"
-                                               type="text">
+                                        <input placeholder="Enter Your Email Address" type="text" name="email">
                                         <i class="careerfy-icon careerfy-mail"></i>
                                     </li>
                                     <li>
-                                        <input value="Enter Your Phone Number"
-                                               onblur="if(this.value == '') { this.value ='Enter Your Phone Number'; }"
-                                               onfocus="if(this.value =='Enter Your Phone Number') { this.value = ''; }"
-                                               type="text">
+                                        <input placeholder="Enter Your Phone Number" type="text" name="phone_no">
                                         <i class="careerfy-icon careerfy-technology"></i>
                                     </li>
                                     <li class="careerfy-contact-form-full">
-                                        <textarea>Track your results on the local or global market , depending on your needs. You can track everything in the most popular search engines - Google, Bing, Yahoo and Yandex. Improve your search performance and increase traffic with our turn-key. Positionly is the only solution on the market that provides a simple and transparent way to monitor.the effectiveness.</textarea>
+                                        <textarea></textarea>
                                     </li>
                                     <li><input type="submit" value="Submit"></li>
                                 </ul>

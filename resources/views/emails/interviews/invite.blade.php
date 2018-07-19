@@ -5,7 +5,7 @@ You have been invited for an interview with {{config('app.owner')}} for the post
 
 <ul>
     <li>Type: <b>{{$interview->type}}</b></li>
-    <li>Due date: <b>{{$interview->due_date}}</b></li>
+    <li>Due date: <b>{{date('jS M, Y', strtotime($interview->due_date))}}</b></li>
     <li>Location: <b>{{$interview->address}}</b></li>
 </ul>
 

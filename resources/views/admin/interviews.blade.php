@@ -61,6 +61,11 @@
         }
 
         $('#interview-modal').on('shown.bs.modal', function () {
+            window.setInterval(setRange,200);
+            function setRange() {
+                let value=$('#performance').val();
+                $('#performance-range').html(value);
+            }
             $('#assess-form').on('submit', function (e) {
                 e.preventDefault();
                 $(".modal-body").LoadingOverlay("show");
