@@ -43,7 +43,7 @@ class ShortlistApplicant extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.interviews.shortlist')->with([
+        return $this->subject('You are Shortlisted')->markdown('emails.interviews.shortlist')->with([
             'user' => $this->user,
             'job'  => $this->job
         ]);

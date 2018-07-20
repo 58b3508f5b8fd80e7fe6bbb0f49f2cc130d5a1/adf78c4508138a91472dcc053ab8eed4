@@ -81,12 +81,19 @@ class JobController extends Controller
 
     public function getJobs($page = 1)
     {
-        $applications = Application::where('resume_id', Auth::user()->user_id)
-            ->pluck('job_id');
-        $jobs = Job::whereNotIn('job_id', $applications)
-            ->whereDate('jobs.close_at', '>=', date('Y-m-d'))->limit(100)
-            ->latest()->get();
-        return $jobs;
+        $jobs = Application::where('resume_id', Auth::user()->user_id)
+            ->whereIn('status', ['invited', 'passed'])->first();
+        if(!$jobs) {
+            $applications = Application::where('resume_id',
+                Auth::user()->user_id)
+                ->pluck('job_id');
+
+            $jobs = Job::whereNotIn('job_id', $applications)
+                ->whereDate('jobs.close_at', '>=', date('Y-m-d'))->limit(100)
+                ->latest()->get();
+            return $jobs;
+        }
+        return [];
     }
 
     public function getAppliedJobs($page = 1)

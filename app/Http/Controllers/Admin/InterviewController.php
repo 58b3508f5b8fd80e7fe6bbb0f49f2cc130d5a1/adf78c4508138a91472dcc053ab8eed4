@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Application;
 use App\Interview;
+use App\Job;
+use App\Mail\AssessInterview;
+use App\Result;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,11 +31,23 @@ class InterviewController extends Controller
             $application = Application::find($applicant->aid);
             if ($score > 50) {
                 $performance = 'passed';
-
+                $user = User::where('user_id', $application->resume_id)
+                    ->first();
+                $job=Job::where('job_id',$application->job_id)->first();
+                Mail::to($user->email)
+                    ->send(new AssessInterview($user,$job));
             } else {
                 $performance = 'failed';
             }
             $application->status = $performance;
+            $deleteApplications = Application::where('resume_id',
+                $application->resume_id)
+                ->where('application_id', '<>', $application->application_id)
+                ->delete();
+            $deleteResults = Result::where('resume_id',
+                $application->resume_id)
+                ->where('application_id', '<>', $application->application_id)
+                ->delete();
             $interview = Interview::find($applicant->iid);
             $interview->performance = $score;
 
@@ -141,7 +156,8 @@ class InterviewController extends Controller
                 $user = User::where('user_id', $application->resume_id)
                     ->first();
                 Mail::to($user->email)
-                    ->send(new \App\Mail\SendInvite($user, $application, $interview));
+                    ->send(new \App\Mail\SendInvite($user, $application,
+                        $interview));
                 $data['message']
                     = "An invite has been sent to $request->full_name";
                 $data['state'] = "success";

@@ -35,7 +35,7 @@ class SendInvite extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.interviews.invite')
+        return $this->subject("You are Invited")->markdown('emails.interviews.invite')
             ->with(['user'      => $this->user,
                     'job'       => $this->job,
                     'interview' => $this->interview

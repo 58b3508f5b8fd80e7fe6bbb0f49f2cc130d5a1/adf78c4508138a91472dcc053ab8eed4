@@ -37,7 +37,7 @@ class FinishedTest extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.tests.finished')->with([
+        return $this->subject('Test Completed ('.$this->test->title.')')->markdown('emails.tests.finished')->with([
             'test' => $this->test
         ]);
     }

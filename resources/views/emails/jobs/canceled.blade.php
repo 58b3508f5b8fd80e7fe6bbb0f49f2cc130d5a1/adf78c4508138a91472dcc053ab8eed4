@@ -1,10 +1,12 @@
 @component('mail::message')
-# Introduction
+# Hello {{$user->first_name}}
 
-The body of your message.
+We've noticed that you canceled your application for {{$job->title}}.
 
-@component('mail::button', ['url' => ''])
-Button Text
+You can still search our database for more openings.
+
+@component('mail::button', ['url' => url('/openings')])
+Openings
 @endcomponent
 
 Thanks,<br>

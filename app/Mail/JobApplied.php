@@ -29,7 +29,7 @@ class JobApplied extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.jobs.applied')
+        return $this->subject('Application for '.$this->job->title.' received')->markdown('emails.jobs.applied')
             ->with(['job' => $this->job]);
     }
 }

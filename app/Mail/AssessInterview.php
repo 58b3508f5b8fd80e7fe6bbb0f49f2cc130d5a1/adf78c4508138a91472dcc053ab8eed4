@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class JobCanceled extends Mailable
+class AssessInterview extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,10 +30,7 @@ class JobCanceled extends Mailable
      */
     public function build()
     {
-        return $this->subject("You've Canceled " . $this->job->title)
-            ->markdown('emails.jobs.canceled')->with([
-            'user' => $this->user,
-            'job'  => $this->job
-        ]);
+        return $this->subject("You've passed for ".$this->job->title)->markdown('emails.interviews.assess')
+            ->with(['user' => $this->user, 'job' => $this->job]);
     }
 }

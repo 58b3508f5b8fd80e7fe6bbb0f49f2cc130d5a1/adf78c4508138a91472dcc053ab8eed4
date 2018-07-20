@@ -25,15 +25,15 @@
                             <div class="careerfy-typo-wrap">
                                 <div class="careerfy-employer-box-section">
                                     <div class="careerfy-profile-title">
-                                        <h2>Saved Jobs</h2>
-                                        <form class="careerfy-employer-search">
+                                        <h2>Interviews</h2>
+                                        {{--<form class="careerfy-employer-search">
                                             <input value="Search orders"
                                                    onblur="if(this.value == '') { this.value ='Search orders'; }"
                                                    onfocus="if(this.value =='Search orders') { this.value = ''; }"
                                                    type="text">
                                             <input value="" type="submit">
                                             <i class="careerfy-icon careerfy-search"></i>
-                                        </form>
+                                        </form>--}}
                                     </div>
                                     <div class="careerfy-candidate-savedjobs">
                                         <div class="careerfy-candidate-savedjobs-wrap">
@@ -65,7 +65,7 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <!-- Pagination -->
+                                    {{--<!-- Pagination -->
                                     <div class="careerfy-pagination-blog">
                                         <ul class="page-numbers">
                                             <li><a class="prev page-numbers" href="#"><span><i
@@ -79,7 +79,7 @@
                                                                 class="careerfy-icon careerfy-arrows4"></i></span></a>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div>--}}
                                 </div>
                             </div>
                         </div>
