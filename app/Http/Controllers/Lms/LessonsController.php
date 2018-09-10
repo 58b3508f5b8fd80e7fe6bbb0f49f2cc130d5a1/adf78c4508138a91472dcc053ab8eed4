@@ -38,7 +38,7 @@ class LessonsController extends Controller
             ->orderBy('position', 'asc')
             ->first();
 
-        $purchased_course = $lesson->course->students()->where('user_id', \Auth::id())->count() > 0;
+        $purchased_course = $lesson->course->students()->where('course_student.user_id', \Auth::id())->count() > 0;
         $test_exists = FALSE;
         if ($lesson->test && $lesson->test->questions->count() > 0) {
             $test_exists = TRUE;

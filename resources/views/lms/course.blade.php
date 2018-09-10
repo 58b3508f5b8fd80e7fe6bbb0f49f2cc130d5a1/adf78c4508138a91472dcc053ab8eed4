@@ -27,7 +27,7 @@
 
     <p>
         @if (\Auth::check())
-            @if ($course->students()->where('user_id', \Auth::id())->count() == 0)
+            @if ($course->students()->where('course_student.user_id', \Auth::id())->count() == 0)
             <form action="{{ route('courses.payment') }}" method="POST">
                 <input type="hidden" name="course_id" value="{{ $course->id }}" />
                 <input type="hidden" name="amount" value="{{ $course->price * 100 }}" />

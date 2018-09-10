@@ -206,6 +206,7 @@
         </div>
     </header>
     <main id="main-container">
+
         @yield('content')
     </main>
     @include('partials.html.footer')

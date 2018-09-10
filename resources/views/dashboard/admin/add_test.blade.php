@@ -50,7 +50,7 @@
                                 <div class="form-material ">
                                     <label for="description">Description</label>
                                     <textarea class="form-control" id="description"
-                                              name="description" rows="3" required></textarea>
+                                              name="description" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>

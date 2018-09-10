@@ -27,11 +27,11 @@
                             <div class="careerfy-employer-box-section">
                                 <div class="careerfy-profile-title">
                                     <h2>{{$title}}</h2>
-                                    <form class="careerfy-employer-search">
+                                    {{--<form class="careerfy-employer-search">
                                         <input value="Search orders" type="text">
                                         <input value="" type="submit">
                                         <i class="careerfy-icon careerfy-search"></i>
-                                    </form>
+                                    </form>--}}
                                 </div>
                                 <div class="careerfy-applied-jobs">
                                     <ul class="careerfy-row">
