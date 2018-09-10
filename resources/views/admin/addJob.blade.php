@@ -85,13 +85,13 @@
 
                                         <li class="careerfy-column-6">
                                             <label for="post-date">Post date</label>
-                                            <input id="post-date"
+                                            <input id="post-date" required
                                                    name="post_at" type="date"
                                                    placeholder="Select Post Date">
                                         </li>
                                         <li class="careerfy-column-6">
                                             <label for="deadline-date">Deadline date</label>
-                                            <input id="deadline-date"
+                                            <input id="deadline-date" required
                                                    name="close_at" type="date"
                                                    placeholder="Select Deadline Date">
                                         </li>
@@ -116,7 +116,7 @@
                                         <li class="careerfy-column-6">
                                             <label for="test">Add Test</label>
                                             <div class="careerfy-profile-select">
-                                                <select id="test" name="test">
+                                                <select id="test" name="test" required>
                                                     <option selected disabled>Choose a test for the Job..</option>
                                                     @foreach($tests as $test)
                                                         <option value="{{$test->test_id}}">{{$test->title}}</option>
