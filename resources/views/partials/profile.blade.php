@@ -26,8 +26,8 @@
                     <div class="row">
                         @include('includes.sidebar',['profile_sidebar'=>true])
                         <div class="careerfy-column-9">
-                            @if(!null == session('status') &&!null == session('state'))
-                                <div class="alert alert-{{session('alert')}}">{{session('status')}}</div>
+                            @if(!null == session('status') && !null == session('state'))
+                                <div class="alert alert-{{session('state')}}">{{session('status')}}</div>
                             @endif
                             <div class="careerfy-typo-wrap">
                                 @if(isset($profile->description))
@@ -91,7 +91,7 @@
                                                 <li class="careerfy-column-6">
                                                     <label>First Name *</label>
                                                     <input value="{{$profile->first_name or old('first_name')}}"
-                                                           type="text" name="first_name">
+                                                           type="text" name="first_name" required>
                                                     @if ($errors->has('first_name'))
                                                         <span class="text-danger">
                                                             <strong>{{ $errors->first('first_name') }}</strong>
@@ -101,7 +101,7 @@
                                                 <li class="careerfy-column-6">
                                                     <label>Last Name *</label>
                                                     <input value="{{$profile->last_name or old('last_name')}}"
-                                                           type="text" name="last_name">
+                                                           type="text" name="last_name" required>
                                                     @if ($errors->has('last_name'))
                                                         <span class="text-danger">
                                                             <strong>{{ $errors->first('last_name') }}</strong>
@@ -123,7 +123,7 @@
                                                     <label>Date of Birth:</label>
                                                     <input name="dob"
                                                            value="@if(isset($profile->dob)){{date('Y-m-d',strtotime($profile->dob))}}@endif"
-                                                           type="text">
+                                                           type="date" required>
                                                     @if ($errors->has('dob'))
                                                         <span class="text-danger">
                                                             <strong>{{ $errors->first('dob') }}</strong>
@@ -135,7 +135,7 @@
                                                     <label>Phone *</label>
                                                     <input name="phone_no"
                                                            value="{{$profile->phone_no or old('phone_number')}}"
-                                                           placeholder="Phone No." type="text">
+                                                           placeholder="Phone No." type="text" required>
                                                     @if ($errors->has('phone_no'))
                                                         <span class="text-danger">
                                                             <strong>{{ $errors->first('phone_no') }}</strong>
@@ -146,7 +146,7 @@
                                                     <label>Job Title *</label>
                                                     <input value="{{$profile->job_title or old('job_title')}}"
                                                            placeholder="Job Title" name="job_title"
-                                                           type="text">
+                                                           type="text" required>
                                                     @if ($errors->has('title'))
                                                         <span class="text-danger">
                                                             <strong>{{ $errors->first('title') }}</strong>
@@ -171,7 +171,8 @@
                                                 <li class="careerfy-column-6">
                                                     <label>Country *</label>
                                                     <div class="careerfy-profile-select">
-                                                        <select name="country" state="country">
+                                                        <select name="country" required>
+                                                            <option selected value="Nigeria">Nigeria</option>
                                                             @foreach(__('countries.index') as $country)
                                                                 <option @if(isset($profile->country)&&( $profile->country == $country || old('country') == $country)) selected
                                                                         @endif value="{{$country}}">{{$country}}</option>
@@ -187,7 +188,8 @@
                                                 <li class="careerfy-column-6">
                                                     <label>Region *</label>
                                                     <div class="careerfy-profile-select">
-                                                        <select name="state" id="state">
+                                                        <select name="state" id="state" required>
+                                                            <option disabled selected>Select state</option>
                                                             @foreach(__('states.index') as $state)
                                                                 <option value="{{$state}}"
                                                                         @if(isset($profile->state)&& ($profile->state == $state || old('state') == $state)) selected @endif>{{$state}}</option>
@@ -203,7 +205,7 @@
                                                 <li class="careerfy-column-6">
                                                     <label>LGA</label>
                                                     <div class="careerfy-profile-select">
-                                                        <select name="lga" id="lga">
+                                                        <select name="lga" id="lga" required>
                                                             <option>{{$profile->lga or old('lga')}}</option>
                                                         </select>
                                                     </div>
@@ -275,24 +277,6 @@
                                                         </span>
                                                     @endif
                                                 </li>
-                                                {{--<li class="careerfy-column-6">
-                                                    <label>Languages *</label>
-                                                    <div class="careerfy-profile-select">
-                                                        <select name="languages">
-                                                            <option>English</option>
-                                                            <option>English</option>
-                                                        </select>
-                                                    </div>
-                                                </li>
-                                                <li class="careerfy-column-6">
-                                                    <label>Education Levels *</label>
-                                                    <div class="careerfy-profile-select">
-                                                        <select name="education">
-                                                            <option>B.sc Master</option>
-                                                            <option>B.sc Master</option>
-                                                        </select>
-                                                    </div>
-                                                </li>--}}
                                             </ul>
                                         </div>
                                         <input class="careerfy-employer-profile-submit" value="Save Setting"
