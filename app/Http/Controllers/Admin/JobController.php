@@ -238,10 +238,10 @@ class JobController extends Controller
     public function getJobs($page = 1, $per = 10)
     {
         $jobs = Job::leftJoin('applications', 'jobs.job_id', '=',
-            'applications.job_id')->select('jobs.*', 'applications.job_id',
+            'applications.job_id')->select('jobs.*',
             DB::raw('count(`applications`.`job_id`) as count'))
             ->orderBy('jobs.close_at', 'desc')->orderBy('jobs.post_at', 'desc')
-            ->groupBy('applications.job_id')->get();
+            ->groupBy('jobs.job_id')->get();
 
         $collection = collect($jobs);
         $data['jobs'] = $collection->forPage($page, $per);

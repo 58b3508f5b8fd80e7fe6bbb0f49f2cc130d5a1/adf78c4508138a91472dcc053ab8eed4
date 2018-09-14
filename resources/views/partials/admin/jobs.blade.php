@@ -24,7 +24,6 @@
                 <div class="careerfy-table-row">
                     <div class="careerfy-table-cell">Job Title</div>
                     <div class="careerfy-table-cell">Applications</div>
-                    <div class="careerfy-table-cell">Shortlisted</div>
                     <div class="careerfy-table-cell">Status</div>
                     <div class="careerfy-table-cell"></div>
                 </div>
@@ -57,10 +56,6 @@
                                     href="{{url("/backend/applicants/$job->job_id")}}"
                                     class="careerfy-managejobs-appli">{{$job->count}}
                                 Application(s)</a></div>
-                        <div class="careerfy-table-cell"><a
-                                    href="{{url("/backend/applicants/$job->job_id")}}"
-                                    class="careerfy-managejobs-appli">{{$job->count}}
-                                Shortlisted</a></div>
 
                         <div class="careerfy-table-cell"><span
                                     class="careerfy-managejobs-option">Pending</span>
